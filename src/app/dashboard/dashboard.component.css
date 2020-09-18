@@ -1,0 +1,60 @@
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox .mat-checkbox-frame,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+  background-color: #01bdd6 !important;
+  transform: scale(1);
+}
+
+.mat-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  vertical-align: middle;
+}
+
+.mat-header-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.table-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-table {
+  display: table;
+}
+
+.edit {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 2% !important;
+  width: 2% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.remove {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 2% !important;
+  width: 2% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
