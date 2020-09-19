@@ -15,9 +15,10 @@ import { MatRippleModule } from "@angular/material/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
-import { ResponsiveTableComponent } from "../../responsive-table/responsive-table.component";
 import { MatTableModule } from "@angular/material/table";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { ResponsiveTableComponent } from "../../responsive-table/responsive-table.component";
+import { ProjectCardComponent } from "../../project-card/project-card.component";
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     IconsComponent,
     NotificationsComponent,
     ResponsiveTableComponent,
+    ProjectCardComponent,
   ],
 })
 export class AdminLayoutModule {}

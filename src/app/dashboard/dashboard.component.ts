@@ -7,6 +7,7 @@ import { Issue } from "../interfaces/Issue";
   styleUrls: ["./dashboard.component.css"],
 })
 export class DashboardComponent implements OnInit {
+  quickLinks: string[] = ["first", "second", "third"];
   TASKS: Issue[] = [
     {
       project: "Frontend",

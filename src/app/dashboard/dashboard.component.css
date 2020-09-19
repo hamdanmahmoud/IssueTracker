@@ -58,3 +58,25 @@
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+
+.container-project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 250px;
+  justify-content: space-around;
+  background-color: #01bdd6;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.project-card {
+  float: left;
+  width: 30%;
+  flex-basis: 20%;
+  margin: 20px;
+  border: 5px solid darkcyan;
+  border-radius: 25px;
+  flex-shrink: 10%;
+  flex-grow: 30%;
+}

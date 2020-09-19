@@ -1,0 +1,13 @@
+<div class="project-card-interior">
+  <div class="title">
+    <h5>{{ projectName }}</h5>
+  </div>
+  <div class="short-description">
+    <h6>{{ shortDescription }}</h6>
+  </div>
+  <div *ngIf="quickLinks" class="quick-links">
+    <li *ngFor="let link of quickLinks">
+      {{ link }}
+    </li>
+  </div>
+</div>
