@@ -3,12 +3,10 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { LoginComponent } from "./pages/login/login.component";
-import { RegisterComponent } from "./pages/register/register.component";
+import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
 import { InviteToProjectComponent } from "./invite-to-project/invite-to-project.component";
-import { TablesComponent } from "./pages/tables/tables.component";
-import { ProjectCardComponent } from "./project-card/project-card.component";
 
 const routes: Routes = [
   {
@@ -18,12 +16,12 @@ const routes: Routes = [
   },
   {
     path: "",
-    component: AdminLayoutComponent,
+    component: CoreLayoutComponent,
     children: [
       {
         path: "",
         loadChildren:
-          "./layouts/admin-layout/admin-layout.module#AdminLayoutModule",
+          "./layouts/core-layout/core-layout.module#CoreLayoutModule",
       },
     ],
   },

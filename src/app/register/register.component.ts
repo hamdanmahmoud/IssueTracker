@@ -5,7 +5,7 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./register.component.html",
   styleUrls: [
     "./register.component.scss",
-    "../../../assets/scss/argon-styles.scss",
+    "../../assets/scss/argon-styles.scss",
   ],
 })
 export class RegisterComponent implements OnInit {

@@ -3,10 +3,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: [
-    "./login.component.scss",
-    "../../../assets/scss/argon-styles.scss",
-  ],
+  styleUrls: ["./login.component.scss", "../../assets/scss/argon-styles.scss"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   constructor() {}

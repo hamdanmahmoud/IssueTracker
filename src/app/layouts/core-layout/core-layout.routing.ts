@@ -9,7 +9,7 @@ import { NotificationsComponent } from "../../notifications/notifications.compon
 import { IssuesComponent } from "app/issues/issues.component";
 import { ProjectsComponent } from "app/projects/projects.component";
 
-export const AdminLayoutRoutes: Routes = [
+export const CoreLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
   { path: "projects", component: ProjectsComponent },
