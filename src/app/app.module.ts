@@ -10,7 +10,7 @@ import { ComponentsModule } from "./components/components.module";
 import { AppComponent } from "./app.component";
 
 import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
-import { InviteToProjectComponent } from "./invite-to-project/invite-to-project.component";
+import { InviteToProjectComponent } from "./layouts/core-layout/project/invite-to-project/invite-to-project.component";
 import { API } from "./API.conf";
 
 @NgModule({

@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { Project } from "../interfaces/Project";
+import { Project } from "../../../../models/Project";
 
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html",
   styleUrls: [
     "./projects.component.css",
-    "../dashboard/dashboard.component.css",
+    "../../dashboard/dashboard.component.css",
   ],
 })
 export class ProjectsComponent implements OnInit {

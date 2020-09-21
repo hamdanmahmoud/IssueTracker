@@ -3,8 +3,8 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreLayoutRoutes } from "./core-layout.routing";
-import { DashboardComponent } from "../../dashboard/dashboard.component";
-import { UserProfileComponent } from "../../user-profile/user-profile.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { TableListComponent } from "../../table-list/table-list.component";
 import { TypographyComponent } from "../../typography/typography.component";
 import { IconsComponent } from "../../icons/icons.component";
@@ -17,12 +17,12 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { IssuesTableComponent } from "../../issues-table/issues-table.component";
-import { ProjectCardComponent } from "../../project-card/project-card.component";
+import { IssuesTableComponent } from "./issue/issues-table/issues-table.component";
+import { ProjectCardComponent } from "./project/project-card/project-card.component";
 import { MatCardModule } from "@angular/material/card";
-import { IssuesComponent } from "app/issues/issues.component";
-import { ProjectsComponent } from "app/projects/projects.component";
-import { ProjectsTableComponent } from "app/projects-table/projects-table.component";
+import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
+import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
+import { ProjectsTableComponent } from "app/layouts/core-layout/project/projects-table/projects-table.component";
 
 @NgModule({
   imports: [

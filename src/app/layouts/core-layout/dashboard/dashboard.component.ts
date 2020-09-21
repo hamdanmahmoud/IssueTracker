@@ -1,13 +1,47 @@
 import { Component, OnInit } from "@angular/core";
-import { Issue } from "../interfaces/Issue";
+import { ProjectCard } from "../../../models/ProjectCard";
+import { Issue } from "../../../models/Issue";
 
 @Component({
-  selector: "app-issues",
-  templateUrl: "./issues.component.html",
-  styleUrls: ["./issues.component.css", "../dashboard/dashboard.component.css"],
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"],
 })
-export class IssuesComponent implements OnInit {
-  quickLinks: string[] = ["first", "second", "third"];
+export class DashboardComponent implements OnInit {
+  PROJECTS: ProjectCard[] = [
+    {
+      title: "Frontend",
+      summary: "This is the first part of the A project",
+      urgentIssues: 3,
+      assignedToMe: 2,
+      allOpen: 7,
+      id: "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
+    },
+    {
+      title: "Backend",
+      summary: "Short description for project with title B",
+      urgentIssues: 2,
+      assignedToMe: 2,
+      allOpen: 5,
+      id: "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+    },
+    {
+      title: "System design",
+      summary: "Short description",
+      urgentIssues: 0,
+      assignedToMe: 2,
+      allOpen: 4,
+      id: "6108a364-6dbc-421f-a40e-ab3f8886c681",
+    },
+    {
+      title: "Database configuration",
+      summary: "Another short description for this last project",
+      urgentIssues: 0,
+      assignedToMe: 2,
+      allOpen: 3,
+      id: "d77de362-7804-4e9d-9b7c-ea338e80ec69",
+    },
+  ];
   TASKS: Issue[] = [
     {
       project: "Frontend",
@@ -103,7 +137,7 @@ export class IssuesComponent implements OnInit {
   ];
 
   constructor() {
-    console.log("Issues");
+    console.log("Dashboard");
   }
   ngOnInit(): void {}
 }

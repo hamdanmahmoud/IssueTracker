@@ -5,7 +5,7 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./invite-to-project.component.html",
   styleUrls: [
     "./invite-to-project.component.scss",
-    "../../assets/scss/argon-styles.scss",
+    "../../../../../assets/scss/argon-styles.scss",
   ],
 })
 export class InviteToProjectComponent implements OnInit {

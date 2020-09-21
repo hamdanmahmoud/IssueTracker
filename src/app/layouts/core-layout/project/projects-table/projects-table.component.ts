@@ -1,13 +1,16 @@
 import { SelectionModel } from "@angular/cdk/collections";
 import { Component, Input, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { API } from "../API.conf";
-import { Project } from "app/interfaces/Project";
+import { API } from "../../../../API.conf";
+import { Project } from "app/models/Project";
 
 @Component({
   selector: "app-projects-table",
   templateUrl: "./projects-table.component.html",
-  styleUrls: ["./projects-table.component.scss", "../../assets/css/argon.css"],
+  styleUrls: [
+    "./projects-table.component.scss",
+    "../../../../../assets/css/argon.css",
+  ],
 })
 export class ProjectsTableComponent implements OnInit {
   @Input()

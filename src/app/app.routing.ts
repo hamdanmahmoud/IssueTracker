@@ -4,9 +4,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
 import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
-import { InviteToProjectComponent } from "./invite-to-project/invite-to-project.component";
+import { LoginComponent } from "./layouts/auth-layout/login/login.component";
+import { RegisterComponent } from "./layouts/auth-layout/register/register.component";
+import { InviteToProjectComponent } from "./layouts/core-layout/project/invite-to-project/invite-to-project.component";
 
 const routes: Routes = [
   {

@@ -1,13 +1,13 @@
 import { Routes } from "@angular/router";
 
-import { DashboardComponent } from "../../dashboard/dashboard.component";
-import { UserProfileComponent } from "../../user-profile/user-profile.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { TableListComponent } from "../../table-list/table-list.component";
 import { TypographyComponent } from "../../typography/typography.component";
 import { IconsComponent } from "../../icons/icons.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
-import { IssuesComponent } from "app/issues/issues.component";
-import { ProjectsComponent } from "app/projects/projects.component";
+import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
+import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
 
 export const CoreLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
