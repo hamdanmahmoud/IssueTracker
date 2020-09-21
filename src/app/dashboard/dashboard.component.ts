@@ -42,7 +42,6 @@ export class DashboardComponent implements OnInit {
       id: "d77de362-7804-4e9d-9b7c-ea338e80ec69",
     },
   ];
-  quickLinks: string[] = ["first", "second", "third"];
   TASKS: Issue[] = [
     {
       project: "Frontend",

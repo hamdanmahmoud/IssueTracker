@@ -6,16 +6,16 @@
           <div class="card-header card-header-tabs card-header-darker-cyan">
             <div class="nav-tabs-navigation">
               <div class="nav-tabs-wrapper">
-                <span class="nav-tabs-title">Issues:</span>
+                <span class="nav-tabs-title">Projects:</span>
                 <ul class="nav nav-tabs" data-tabs="tabs">
                   <li class="nav-item">
                     <a
                       mat-button
                       class="nav-link active"
-                      href="#bugs"
+                      href="#createdbyme"
                       data-toggle="tab"
                     >
-                      <i class="material-icons">bug_report</i> Bugs
+                      <i class="material-icons">api</i> Created by me
                       <div class="ripple-container"></div>
                     </a>
                   </li>
@@ -23,10 +23,11 @@
                     <a
                       mat-button
                       class="nav-link"
-                      href="#tasks"
+                      href="#collabs"
                       data-toggle="tab"
                     >
-                      <i class="material-icons">add_task</i> Tasks
+                      <i class="material-icons">supervised_user_circle</i>
+                      Collaborating to
                       <div class="ripple-container"></div>
                     </a>
                   </li>
@@ -37,20 +38,18 @@
 
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane active" id="bugs">
-                <app-issues-table
-                  [data]="BUGS"
-                  [displayedColumns]="columnsToDisplayForIssues"
-                  [statusList]="statusList"
-                ></app-issues-table>
+              <div class="tab-pane active" id="createdbyme">
+                <app-projects-table
+                  [data]="projectsCreatedByMe"
+                  [displayedColumns]="columnsToDisplayForProjects"
+                ></app-projects-table>
               </div>
 
-              <div class="tab-pane" id="tasks">
-                <app-issues-table
-                  [data]="TASKS"
-                  [displayedColumns]="columnsToDisplayForIssues"
-                  [statusList]="statusList"
-                ></app-issues-table>
+              <div class="tab-pane" id="collabs">
+                <app-projects-table
+                  [data]="collaborations"
+                  [displayedColumns]="columnsToDisplayForProjects"
+                ></app-projects-table>
               </div>
             </div>
           </div>

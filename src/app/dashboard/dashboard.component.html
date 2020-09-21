@@ -8,7 +8,6 @@
             <app-project-card
               class="project-card"
               [project]="project"
-              [quickLinks]="quickLinks"
             ></app-project-card>
           </div>
         </div>
@@ -52,19 +51,19 @@
           <div class="card-body">
             <div class="tab-content">
               <div class="tab-pane active" id="bugs">
-                <app-responsive-table
+                <app-issues-table
                   [data]="BUGS"
                   [displayedColumns]="columnsToDisplayForIssues"
                   [statusList]="statusList"
-                ></app-responsive-table>
+                ></app-issues-table>
               </div>
 
               <div class="tab-pane" id="tasks">
-                <app-responsive-table
+                <app-issues-table
                   [data]="TASKS"
                   [displayedColumns]="columnsToDisplayForIssues"
                   [statusList]="statusList"
-                ></app-responsive-table>
+                ></app-issues-table>
               </div>
             </div>
           </div>

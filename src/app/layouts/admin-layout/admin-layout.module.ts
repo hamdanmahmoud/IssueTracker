@@ -17,10 +17,12 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { ResponsiveTableComponent } from "../../responsive-table/responsive-table.component";
+import { IssuesTableComponent } from "../../issues-table/issues-table.component";
 import { ProjectCardComponent } from "../../project-card/project-card.component";
 import { MatCardModule } from "@angular/material/card";
 import { IssuesComponent } from "app/issues/issues.component";
+import { ProjectsComponent } from "app/projects/projects.component";
+import { ProjectsTableComponent } from "app/projects-table/projects-table.component";
 
 @NgModule({
   imports: [
@@ -45,9 +47,11 @@ import { IssuesComponent } from "app/issues/issues.component";
     TypographyComponent,
     IconsComponent,
     NotificationsComponent,
-    ResponsiveTableComponent,
+    IssuesTableComponent,
+    ProjectsTableComponent,
     ProjectCardComponent,
     IssuesComponent,
+    ProjectsComponent,
   ],
 })
 export class AdminLayoutModule {}

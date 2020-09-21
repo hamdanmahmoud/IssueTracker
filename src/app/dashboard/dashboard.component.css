@@ -75,4 +75,13 @@
   display: flex;
   height: auto;
   margin: 5px;
+  transition: box-shadow 1s;
+}
+
+.project-card:hover {
+  box-shadow: 0 10px 50px 0 rgba(0, 179, 211, 0.5);
+}
+
+.project-card:hover::after {
+  opacity: 1;
 }

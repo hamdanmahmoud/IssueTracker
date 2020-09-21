@@ -6,54 +6,13 @@ import { TableListComponent } from "../../table-list/table-list.component";
 import { TypographyComponent } from "../../typography/typography.component";
 import { IconsComponent } from "../../icons/icons.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
-import { ProjectCardComponent } from "app/project-card/project-card.component";
 import { IssuesComponent } from "app/issues/issues.component";
+import { ProjectsComponent } from "app/projects/projects.component";
 
 export const AdminLayoutRoutes: Routes = [
-  // {
-  //   path: '',
-  //   children: [ {
-  //     path: 'dashboard',
-  //     component: DashboardComponent
-  // }]}, {
-  // path: '',
-  // children: [ {
-  //   path: 'userprofile',
-  //   component: UserProfileComponent
-  // }]
-  // }, {
-  //   path: '',
-  //   children: [ {
-  //     path: 'icons',
-  //     component: IconsComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'notifications',
-  //         component: NotificationsComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'maps',
-  //         component: MapsComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'typography',
-  //         component: TypographyComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'upgrade',
-  //         component: UpgradeComponent
-  //     }]
-  // }
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
+  { path: "projects", component: ProjectsComponent },
   { path: "issues", component: IssuesComponent },
   { path: "table-list", component: TableListComponent },
   { path: "typography", component: TypographyComponent },

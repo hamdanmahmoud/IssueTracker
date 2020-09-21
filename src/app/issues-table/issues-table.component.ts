@@ -5,14 +5,11 @@ import { Issue } from "../interfaces/Issue";
 import { API } from "../API.conf";
 
 @Component({
-  selector: "app-responsive-table",
-  templateUrl: "./responsive-table.component.html",
-  styleUrls: [
-    "./responsive-table.component.scss",
-    "../../assets/css/argon.css",
-  ],
+  selector: "app-issues-table",
+  templateUrl: "./issues-table.component.html",
+  styleUrls: ["./issues-table.component.scss", "../../assets/css/argon.css"],
 })
-export class ResponsiveTableComponent implements OnInit {
+export class IssuesTableComponent implements OnInit {
   @Input()
   data: Issue[];
 
@@ -20,7 +17,7 @@ export class ResponsiveTableComponent implements OnInit {
   displayedColumns: string[];
 
   @Input()
-  statusList: string[];
+  statusList?: string[];
 
   dataSource: MatTableDataSource<Issue>;
   selection = new SelectionModel<Issue>(true, []);

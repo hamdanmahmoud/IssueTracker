@@ -1,5 +1,5 @@
 .mat-card {
-  background: linear-gradient(87deg, #22c2ce 0, #2ca3ac 100%) !important;
+  background: linear-gradient(60deg, #00acc1, #00838f);
 }
 
 ::ng-deep .mat-card-header-text {
@@ -9,7 +9,7 @@
 mat-card::ng-deep.mat-card-header-text {
   width: 11rem;
   height: auto;
-  font-weight: 900;
+  font-weight: 500;
 }
 
 mat-card::ng-deep.mat-card-title {
@@ -19,7 +19,7 @@ mat-card::ng-deep.mat-card-title {
 }
 
 mat-card::ng-deep.mat-card-subtitle {
-  color: rgb(71, 71, 71);
+  color: rgb(233, 233, 233);
   font-size: small;
 }
 
@@ -34,6 +34,8 @@ mat-card::ng-deep.mat-card-subtitle {
   margin: 1rem;
   font-size: medium;
   margin-bottom: 0rem;
+  font-weight: 700;
+  color: rgb(230, 230, 230);
 }
 
 .mat-card-actions .mat-button,
@@ -51,6 +53,7 @@ mat-card::ng-deep.mat-card-subtitle {
 .action {
   display: flex;
   flex-direction: row;
+  color: rgb(230, 230, 230);
 }
 
 .dot {

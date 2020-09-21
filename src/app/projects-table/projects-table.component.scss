@@ -5,6 +5,10 @@
   transform: scale(1);
 }
 
+::ng-deep .mat-select-panel {
+  max-height: none !important;
+}
+
 .mat-cell {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -27,7 +31,7 @@
   display: table;
 }
 
-.mat-column-assignees {
+.mat-column-collaborators {
   word-wrap: break-word !important;
   white-space: unset !important;
   flex: 20 3 5% !important;
@@ -57,22 +61,6 @@
   .avatar + .avatar {
     margin-left: -1rem;
   }
-}
-
-.mat-column-status {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 10 3 5% !important;
-  width: 8% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
 }
 
 .mat-column-created {
@@ -123,22 +111,6 @@
   hyphens: auto;
 }
 
-.status-cell {
-  color: white;
-  font-weight: bold;
-  border-radius: 0px;
-}
-
-.status-cell.status-CANCELED,
-.status-cell.status-PENDING,
-.status-cell.status-IN_PROGRESS,
-.status-cell.status-IN_REVIEW,
-.status-cell.status-RESOLVED,
-.status-cell.status-DONE,
-.status-cell.status-TO_DO {
-  border-radius: 30px;
-}
-
 ::ng-deep .mat-select-value-text {
   color: rgb(255, 255, 255);
 }
@@ -150,75 +122,4 @@
 td.mat-cell {
   border-top-style: none;
   border-bottom-style: none;
-}
-
-::ng-deep .mat-select-value.status-PENDING {
-  background-color: rgb(255, 190, 11);
-}
-
-::ng-deep .mat-select-value.status-CANCELED {
-  background-color: rgb(39, 105, 23);
-}
-
-::ng-deep .mat-select-value.status-PENDING {
-  background-color: rgb(255, 190, 11);
-}
-
-::ng-deep .mat-select-value.status-IN_PROGRESS {
-  background-color: rgb(0, 117, 126);
-}
-
-::ng-deep .mat-select-value.status-RESOLVED {
-  background-color: rgb(45, 136, 255);
-}
-
-::ng-deep .mat-select-value.status-IN_REVIEW {
-  background-color: rgb(0, 52, 150);
-}
-
-::ng-deep .mat-select-value.status-TO_DO {
-  background-color: rgb(255, 0, 170);
-}
-
-::ng-deep .mat-select-value.status-DONE {
-  background-color: rgb(97, 97, 85);
-}
-
-.status-dropdown {
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-}
-
-.status-PENDING {
-  background-color: rgb(255, 190, 11);
-}
-
-.status-CANCELED {
-  background-color: rgb(39, 105, 23);
-}
-
-.status-IN_PROGRESS {
-  background-color: rgb(0, 117, 126);
-}
-
-.status-RESOLVED {
-  background-color: rgb(45, 136, 255);
-}
-
-.status-IN_REVIEW {
-  background-color: rgb(0, 52, 150);
-}
-
-.status-TO_DO {
-  background-color: rgb(255, 0, 170);
-}
-
-.status-DONE {
-  background-color: rgb(97, 97, 85);
-}
-
-.progress-bar {
-  box-shadow: none;
-  border-radius: 0;
-  height: auto;
 }

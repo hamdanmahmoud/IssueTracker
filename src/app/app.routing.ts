@@ -39,10 +39,6 @@ const routes: Routes = [
     path: "register",
     component: RegisterComponent,
   },
-  {
-    path: "tables",
-    component: TablesComponent,
-  },
 ];
 
 @NgModule({

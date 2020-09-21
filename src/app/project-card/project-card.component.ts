@@ -10,9 +10,6 @@ export class ProjectCardComponent implements OnInit {
   @Input()
   project: ProjectCard;
 
-  @Input()
-  quickLinks: string[];
-
   constructor() {}
 
   ngOnInit(): void {}
