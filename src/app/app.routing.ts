@@ -8,6 +8,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { InviteToProjectComponent } from "./invite-to-project/invite-to-project.component";
 import { TablesComponent } from "./pages/tables/tables.component";
+import { ProjectCardComponent } from "./project-card/project-card.component";
 
 const routes: Routes = [
   {

@@ -19,6 +19,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { ResponsiveTableComponent } from "../../responsive-table/responsive-table.component";
 import { ProjectCardComponent } from "../../project-card/project-card.component";
+import { MatCardModule } from "@angular/material/card";
+import { IssuesComponent } from "app/issues/issues.component";
 
 @NgModule({
   imports: [
@@ -34,6 +36,7 @@ import { ProjectCardComponent } from "../../project-card/project-card.component"
     MatTooltipModule,
     MatTableModule,
     MatCheckboxModule,
+    MatCardModule,
   ],
   declarations: [
     DashboardComponent,
@@ -44,6 +47,7 @@ import { ProjectCardComponent } from "../../project-card/project-card.component"
     NotificationsComponent,
     ResponsiveTableComponent,
     ProjectCardComponent,
+    IssuesComponent,
   ],
 })
 export class AdminLayoutModule {}

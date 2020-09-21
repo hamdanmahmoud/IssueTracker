@@ -1,0 +1,71 @@
+.mat-card {
+  background: linear-gradient(87deg, #22c2ce 0, #2ca3ac 100%) !important;
+}
+
+::ng-deep .mat-card-header-text {
+  padding-left: 0px !important;
+}
+
+mat-card::ng-deep.mat-card-header-text {
+  width: 11rem;
+  height: auto;
+  font-weight: 900;
+}
+
+mat-card::ng-deep.mat-card-title {
+  color: white;
+  font-size: x-large;
+  justify-content: center;
+}
+
+mat-card::ng-deep.mat-card-subtitle {
+  color: rgb(71, 71, 71);
+  font-size: small;
+}
+
+mat-card::ng-deep.mat-card-actions,
+mat-card::ng-deep.mat-card-subtitle {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0;
+}
+
+.actions-header {
+  margin: 1rem;
+  font-size: medium;
+  margin-bottom: 0rem;
+}
+
+.mat-card-actions .mat-button,
+.mat-card-actions .mat-raised-button,
+.mat-card-actions .mat-stroked-button {
+  margin: 0 0px !important;
+}
+
+.button-text {
+  font-size: 0.8rem;
+  float: left;
+  overflow: auto;
+}
+
+.action {
+  display: flex;
+  flex-direction: row;
+}
+
+.dot {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: #14757c;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  font-weight: 900;
+}
+
+.dot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}

@@ -1,13 +1,27 @@
-<div class="project-card-interior">
-  <div class="title">
-    <h5>{{ projectName }}</h5>
-  </div>
-  <div class="short-description">
-    <h6>{{ shortDescription }}</h6>
-  </div>
-  <div *ngIf="quickLinks" class="quick-links">
-    <li *ngFor="let link of quickLinks">
-      {{ link }}
-    </li>
-  </div>
-</div>
+<mat-card class="mat-elevation-z5">
+  <mat-card-header>
+    <mat-card-title> {{ project.title }}</mat-card-title>
+    <mat-card-subtitle> {{ project.summary }} </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <div class="actions-header">QUICK LINKS</div>
+    <div class="action">
+      <button mat-button class="button-text">Urgent issues</button>
+      <div class="dot-container">
+        <span class="dot">{{ project.urgentIssues }}</span>
+      </div>
+    </div>
+    <div class="action">
+      <button mat-button class="button-text">Assigned to me</button>
+      <div class="dot-container">
+        <span class="dot">{{ project.assignedToMe }}</span>
+      </div>
+    </div>
+    <div class="action">
+      <button mat-button class="button-text">All open</button>
+      <div class="dot-container">
+        <span class="dot">{{ project.allOpen }}</span>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

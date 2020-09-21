@@ -1,16 +1,14 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ProjectCard } from "app/interfaces/ProjectCard";
 
 @Component({
   selector: "app-project-card",
   templateUrl: "./project-card.component.html",
-  styleUrls: ["./project-card.component.css"],
+  styleUrls: ["./project-card.component.scss"],
 })
 export class ProjectCardComponent implements OnInit {
   @Input()
-  projectName: string;
-
-  @Input()
-  shortDescription: string;
+  project: ProjectCard;
 
   @Input()
   quickLinks: string[];
