@@ -13,6 +13,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatCardModule } from "@angular/material/card";
+import { MatIconModule } from "@angular/material/icon";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
@@ -25,6 +26,7 @@ import { ProjectCardComponent } from "./project/project-card/project-card.compon
 import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
 import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
 import { ProjectsTableComponent } from "app/layouts/core-layout/project/projects-table/projects-table.component";
+import { ProjectDetailsComponent } from "./project/project-details/project-details.component";
 
 @NgModule({
   imports: [
@@ -41,6 +43,7 @@ import { ProjectsTableComponent } from "app/layouts/core-layout/project/projects
     MatTableModule,
     MatCheckboxModule,
     MatCardModule,
+    MatIconModule,
   ],
   declarations: [
     DashboardComponent,
@@ -54,6 +57,7 @@ import { ProjectsTableComponent } from "app/layouts/core-layout/project/projects
     ProjectsTableComponent,
     ProjectCardComponent,
     ProjectsComponent,
+    ProjectDetailsComponent,
   ],
 })
 export class CoreLayoutModule {}

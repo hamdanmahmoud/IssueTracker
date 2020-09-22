@@ -9,6 +9,7 @@ import { NotificationsComponent } from "../../notifications/notifications.compon
 import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
 import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
 import { InviteToProjectComponent } from "./project/invite-to-project/invite-to-project.component";
+import { ProjectDetailsComponent } from "./project/project-details/project-details.component";
 
 export const CoreLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -20,4 +21,8 @@ export const CoreLayoutRoutes: Routes = [
   { path: "icons", component: IconsComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "invite", component: InviteToProjectComponent }, // might remove this
+  {
+    path: "project-details",
+    component: ProjectDetailsComponent,
+  },
 ];

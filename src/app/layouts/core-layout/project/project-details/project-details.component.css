@@ -1,0 +1,56 @@
+.top-container {
+  margin-top: 5rem;
+  position: relative;
+}
+
+.headline {
+  text-align: center;
+}
+
+.container {
+  background-color: white;
+  border-radius: 6px;
+}
+
+@media (min-width: 1000px) {
+  .container {
+    max-width: 400px;
+    position: absolute;
+    left: 30%;
+  }
+  .btn-add-mail,
+  .btn-remove-mail {
+    max-width: 150px;
+  }
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(8, 147, 172) !important;
+}
+
+.buttons-buttom {
+  width: 100%;
+  display: inline-block;
+}
+
+.btn-add-mail,
+.btn-remove-mail {
+  width: 100%;
+}
+
+.btn-add-mail {
+  float: right;
+}
+
+.btn-remove-mail {
+  float: left;
+}
+
+.btn-create {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #03a9be;
+  font-weight: 700;
+}
