@@ -4,15 +4,22 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
 import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
-import { LoginComponent } from "./layouts/auth-layout/login/login.component";
-import { RegisterComponent } from "./layouts/auth-layout/register/register.component";
-import { InviteToProjectComponent } from "./layouts/core-layout/project/invite-to-project/invite-to-project.component";
 
 const routes: Routes = [
   {
     path: "",
     redirectTo: "dashboard",
     pathMatch: "full",
+  },
+  {
+    path: "auth",
+    children: [
+      {
+        path: "",
+        loadChildren:
+          "./layouts/auth-layout/auth-layout.module#AuthLayoutModule",
+      },
+    ],
   },
   {
     path: "",
@@ -24,18 +31,6 @@ const routes: Routes = [
           "./layouts/core-layout/core-layout.module#CoreLayoutModule",
       },
     ],
-  },
-  {
-    path: "invite",
-    component: InviteToProjectComponent,
-  },
-  {
-    path: "login",
-    component: LoginComponent,
-  },
-  {
-    path: "register",
-    component: RegisterComponent,
   },
 ];
 

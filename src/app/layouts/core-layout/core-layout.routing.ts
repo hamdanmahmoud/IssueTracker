@@ -8,6 +8,7 @@ import { IconsComponent } from "../../icons/icons.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
 import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
+import { InviteToProjectComponent } from "./project/invite-to-project/invite-to-project.component";
 
 export const CoreLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -18,4 +19,5 @@ export const CoreLayoutRoutes: Routes = [
   { path: "typography", component: TypographyComponent },
   { path: "icons", component: IconsComponent },
   { path: "notifications", component: NotificationsComponent },
+  { path: "invite", component: InviteToProjectComponent }, // might remove this
 ];
