@@ -37,27 +37,7 @@
   </div>
   <div class="right-side">
     <div class="right-form">
-      <form #addressForm="ngForm" class="" (ngSubmit)="logValue()">
-        <section *ngFor="let mail of mails; let i = index" class="mail-inputs">
-          <input type="text" [(ngModel)]="mail.address" name="mail_{{ i }}" />
-        </section>
-        <br /><br />
-        <div class="buttons-bottom">
-          <button type="button" class="btn btn-submit" (click)="addMail()">
-            Add mail
-          </button>
-          <button
-            type="button"
-            class="btn btn-danger"
-            (click)="removeLastMail()"
-          >
-            Remove mail
-          </button>
-          <button type="button" class="btn btn-info" (click)="next()">
-            Next
-          </button>
-        </div>
-      </form>
+      <app-project-details></app-project-details>
     </div>
   </div>
 </div>

@@ -59,5 +59,6 @@ import { ProjectDetailsComponent } from "./project/project-details/project-detai
     ProjectsComponent,
     ProjectDetailsComponent,
   ],
+  exports: [ProjectDetailsComponent],
 })
 export class CoreLayoutModule {}

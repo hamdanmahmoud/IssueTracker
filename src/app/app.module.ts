@@ -10,8 +10,9 @@ import { ComponentsModule } from "./components/components.module";
 import { AppComponent } from "./app.component";
 
 import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
-import { InviteToProjectComponent } from "./layouts/core-layout/project/invite-to-project/invite-to-project.component";
 import { API } from "./API.conf";
+import { InviteToProjectComponent } from "./layouts/core-layout/project/invite-to-project/invite-to-project.component";
+import { ProjectDetailsComponent } from "./layouts/core-layout/project/project-details/project-details.component";
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { API } from "./API.conf";
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ProjectDetailsComponent,
   ],
   declarations: [AppComponent, CoreLayoutComponent, InviteToProjectComponent],
   providers: [API],
