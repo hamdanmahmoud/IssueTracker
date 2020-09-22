@@ -1,5 +1,4 @@
-import { Component, OnInit } from "@angular/core";
-import { Project } from "../../../../models/Project";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-project-details",
@@ -10,6 +9,9 @@ import { Project } from "../../../../models/Project";
   ],
 })
 export class ProjectDetailsComponent implements OnInit {
+  @Input()
+  action: "create" | "edit";
+
   public mails: any[] = [
     {
       address: "",
@@ -30,5 +32,11 @@ export class ProjectDetailsComponent implements OnInit {
     if (this.mails.length > 1) this.mails.splice(this.mails.length - 1);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.action === "create") return;
+
+    // TODO: edit logic goes here
+  }
+
+  ngAfterViewInit(): void {}
 }

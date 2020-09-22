@@ -30,6 +30,26 @@
                       <div class="ripple-container"></div>
                     </a>
                   </li>
+                  <div class="buttons-container">
+                    <li>
+                      <button
+                        mat-raised-button
+                        class="text-button new-button"
+                        [routerLink]="['/create-issue']"
+                      >
+                        Create issue
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        mat-raised-button
+                        color="warn"
+                        class="text-button remove-button"
+                      >
+                        Remove
+                      </button>
+                    </li>
+                  </div>
                 </ul>
               </div>
             </div>

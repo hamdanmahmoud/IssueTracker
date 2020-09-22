@@ -10,6 +10,8 @@ import { Project } from "../../../../models/Project";
   ],
 })
 export class ProjectsComponent implements OnInit {
+  isRemoveButtonEnabled: boolean = true;
+
   projectsCreatedByMe: Project[] = [
     {
       title: "Frontend",
@@ -106,7 +108,7 @@ export class ProjectsComponent implements OnInit {
     },
   ];
 
-  columnsToDisplayForProjects: string[] = [
+  columnsToDisplayForMyProjects: string[] = [
     "select",
     "title",
     "summary",
@@ -117,8 +119,25 @@ export class ProjectsComponent implements OnInit {
     "remove",
   ];
 
+  columnsToDisplayForCollaborations: string[] = [
+    "title",
+    "summary",
+    "owner",
+    "collaborators",
+    "created",
+  ];
+
   constructor() {
     console.log("Project");
   }
+
+  handleInCollaborationClick(): void {
+    this.isRemoveButtonEnabled = false;
+  }
+
+  handleCreatedByMeClick(): void {
+    this.isRemoveButtonEnabled = true;
+  }
+
   ngOnInit(): void {}
 }

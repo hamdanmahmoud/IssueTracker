@@ -1,0 +1,50 @@
+<div class="col-lg-12 col-md-12">
+  <div class="card">
+    <div class="container">
+      <div class="headline">
+        <h3>{{ action.charAt(0).toUpperCase() + action.slice(1) }} issue</h3>
+      </div>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Project</mat-label>
+        <mat-select>
+          <mat-option value="option">Project 1 </mat-option>
+          <mat-option value="option">Project 2</mat-option>
+          <mat-option value="option">Project 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-select [(value)]="defaultIssueType" [compareWith]="compareFn">
+          <mat-select-trigger
+            ><mat-icon
+              class="selection-icon"
+              [ngStyle]="{ color: defaultIssueType.color }"
+              >{{ defaultIssueType.iconName }}</mat-icon
+            >{{ defaultIssueType.name }}</mat-select-trigger
+          >
+          <mat-option *ngFor="let issueType of issueTypes" [value]="issueType">
+            <mat-icon [ngStyle]="{ color: issueType.color }">{{
+              issueType.iconName
+            }}</mat-icon
+            >{{ issueType.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Summary</mat-label>
+        <textarea matInput maxlength="80"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput maxlength="1200" rows="15"></textarea>
+      </mat-form-field>
+      <button
+        type="button"
+        class="btn btn-submit btn-create"
+        (click)="addMail()"
+      >
+        {{ action }}
+      </button>
+    </div>
+  </div>
+</div>

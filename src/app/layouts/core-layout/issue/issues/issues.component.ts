@@ -108,5 +108,6 @@ export class IssuesComponent implements OnInit {
   constructor() {
     console.log("Issues");
   }
+
   ngOnInit(): void {}
 }

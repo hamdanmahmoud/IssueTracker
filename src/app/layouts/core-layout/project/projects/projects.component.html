@@ -14,6 +14,7 @@
                       class="nav-link active"
                       href="#createdbyme"
                       data-toggle="tab"
+                      (click)="handleCreatedByMeClick()"
                     >
                       <i class="material-icons">api</i> Created by me
                     </a>
@@ -24,6 +25,7 @@
                       class="nav-link"
                       href="#collabs"
                       data-toggle="tab"
+                      (click)="handleInCollaborationClick()"
                     >
                       <i class="material-icons">supervised_user_circle</i>
                       In collaboration
@@ -31,7 +33,11 @@
                   </li>
                   <div class="buttons-container">
                     <li>
-                      <button mat-raised-button class="text-button new-button">
+                      <button
+                        mat-raised-button
+                        class="text-button new-button"
+                        [routerLink]="['/create-project']"
+                      >
                         New project
                       </button>
                     </li>
@@ -40,6 +46,7 @@
                         mat-raised-button
                         color="warn"
                         class="text-button remove-button"
+                        disabled="{{ !isRemoveButtonEnabled }}"
                       >
                         Remove
                       </button>
@@ -55,14 +62,14 @@
               <div class="tab-pane active" id="createdbyme">
                 <app-projects-table
                   [data]="projectsCreatedByMe"
-                  [displayedColumns]="columnsToDisplayForProjects"
+                  [displayedColumns]="columnsToDisplayForMyProjects"
                 ></app-projects-table>
               </div>
 
               <div class="tab-pane" id="collabs">
                 <app-projects-table
                   [data]="collaborations"
-                  [displayedColumns]="columnsToDisplayForProjects"
+                  [displayedColumns]="columnsToDisplayForCollaborations"
                 ></app-projects-table>
               </div>
             </div>

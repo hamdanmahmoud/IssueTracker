@@ -8,8 +8,8 @@ import { IconsComponent } from "../../icons/icons.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
 import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
-import { InviteToProjectComponent } from "./project/invite-to-project/invite-to-project.component";
-import { ProjectDetailsComponent } from "./project/project-details/project-details.component";
+import { CreateProjectComponent } from "./project/create-project/create-project.component";
+import { CreateIssueComponent } from "./issue/create-issue/create-issue.component";
 
 export const CoreLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -20,9 +20,12 @@ export const CoreLayoutRoutes: Routes = [
   { path: "typography", component: TypographyComponent },
   { path: "icons", component: IconsComponent },
   { path: "notifications", component: NotificationsComponent },
-  { path: "invite", component: InviteToProjectComponent }, // might remove this
   {
-    path: "project-details",
-    component: ProjectDetailsComponent,
+    path: "create-project",
+    component: CreateProjectComponent,
+  },
+  {
+    path: "create-issue",
+    component: CreateIssueComponent,
   },
 ];

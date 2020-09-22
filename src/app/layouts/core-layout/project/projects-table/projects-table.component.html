@@ -37,7 +37,9 @@
         *matCellDef="let element"
       >
         <span class="table-cell">
-          <span class="table-cell">{{ element.title }}</span>
+          <span class="table-cell">
+            <a href="javascript:void(0)"> {{ element.title }}</a></span
+          >
         </span>
       </td>
     </ng-container>
@@ -57,9 +59,7 @@
         mat-cell
         *matCellDef="let element"
       >
-        <span class="table-cell"
-          ><a href="javascript:void(0)">{{ element.summary }}</a></span
-        >
+        <span class="table-cell">{{ element.summary }}</span>
       </td>
     </ng-container>
 

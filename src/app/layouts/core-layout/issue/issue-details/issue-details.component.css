@@ -49,3 +49,13 @@
   background-color: #03a9be;
   font-weight: 700;
 }
+
+.selection-icon {
+  position: relative;
+  top: 6px;
+  margin-right: 16px;
+}
+
+.customSelectMenu .mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 0 !important;
+}

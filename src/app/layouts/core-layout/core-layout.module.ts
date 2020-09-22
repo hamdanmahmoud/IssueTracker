@@ -26,7 +26,10 @@ import { ProjectCardComponent } from "./project/project-card/project-card.compon
 import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
 import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
 import { ProjectsTableComponent } from "app/layouts/core-layout/project/projects-table/projects-table.component";
+import { CreateProjectComponent } from "./project/create-project/create-project.component";
 import { ProjectDetailsComponent } from "./project/project-details/project-details.component";
+import { IssueDetailsComponent } from "./issue/issue-details/issue-details.component";
+import { CreateIssueComponent } from "./issue/create-issue/create-issue.component";
 
 @NgModule({
   imports: [
@@ -57,8 +60,11 @@ import { ProjectDetailsComponent } from "./project/project-details/project-detai
     ProjectsTableComponent,
     ProjectCardComponent,
     ProjectsComponent,
+    CreateProjectComponent,
     ProjectDetailsComponent,
+    IssueDetailsComponent,
+    CreateIssueComponent,
   ],
-  exports: [ProjectDetailsComponent],
+  exports: [ProjectDetailsComponent, IssueDetailsComponent],
 })
 export class CoreLayoutModule {}

@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
 import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
-import { ProjectDetailsComponent } from "./layouts/core-layout/project/project-details/project-details.component";
 
 const routes: Routes = [
   {

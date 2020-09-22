@@ -11,8 +11,6 @@ import { AppComponent } from "./app.component";
 
 import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
 import { API } from "./API.conf";
-import { InviteToProjectComponent } from "./layouts/core-layout/project/invite-to-project/invite-to-project.component";
-import { ProjectDetailsComponent } from "./layouts/core-layout/project/project-details/project-details.component";
 
 @NgModule({
   imports: [
@@ -23,9 +21,8 @@ import { ProjectDetailsComponent } from "./layouts/core-layout/project/project-d
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    ProjectDetailsComponent,
   ],
-  declarations: [AppComponent, CoreLayoutComponent, InviteToProjectComponent],
+  declarations: [AppComponent, CoreLayoutComponent],
   providers: [API],
   bootstrap: [AppComponent],
 })
