@@ -23,9 +23,10 @@ mat-list.make-scrollable {
 .left-container {
   background-color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-basis: 10rem;
   margin: 10px;
+  align-content: stretch;
 }
 
 .right-container {

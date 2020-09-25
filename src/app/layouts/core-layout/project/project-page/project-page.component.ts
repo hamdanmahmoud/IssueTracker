@@ -45,7 +45,7 @@ export class ProjectPageComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.issues = tasks;
+    this.issues = [...tasks, ...tasks];
     this.displayedIssue = this.issues[0];
   }
 }
