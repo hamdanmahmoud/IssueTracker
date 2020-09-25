@@ -6,19 +6,37 @@
   <mat-card-actions>
     <div class="actions-header">QUICK LINKS</div>
     <div class="action">
-      <button mat-button class="button-text">Urgent issues</button>
+      <button
+        mat-button
+        [routerLink]="['/projects', project.id]"
+        class="button-text"
+      >
+        Urgent issues
+      </button>
       <div class="dot-container">
         <span class="dot">{{ project.urgentIssues }}</span>
       </div>
     </div>
     <div class="action">
-      <button mat-button class="button-text">Assigned to me</button>
+      <button
+        [routerLink]="['/projects', project.id]"
+        mat-button
+        class="button-text"
+      >
+        Assigned to me
+      </button>
       <div class="dot-container">
         <span class="dot">{{ project.assignedToMe }}</span>
       </div>
     </div>
     <div class="action">
-      <button mat-button class="button-text">All open</button>
+      <button
+        mat-button
+        [routerLink]="['/projects', project.id]"
+        class="button-text"
+      >
+        All open
+      </button>
       <div class="dot-container">
         <span class="dot">{{ project.allOpen }}</span>
       </div>
