@@ -25,8 +25,16 @@ mat-list.make-scrollable {
   text-overflow: ellipsis;
 }
 
+.avatar-container {
+  display: flex;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .avatar.avatar-sm {
   overflow: hidden !important;
+  margin-left: auto;
+  order: 2;
 }
 
 .mat-list-icon {
