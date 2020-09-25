@@ -6,10 +6,11 @@ import { TableListComponent } from "../../table-list/table-list.component";
 import { TypographyComponent } from "../../typography/typography.component";
 import { IconsComponent } from "../../icons/icons.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
-import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
-import { ProjectsComponent } from "app/layouts/core-layout/project/projects/projects.component";
+import { IssuesComponent } from "./issue/issues/issues.component";
+import { ProjectsComponent } from "./project/projects/projects.component";
 import { CreateProjectComponent } from "./project/create-project/create-project.component";
 import { CreateIssueComponent } from "./issue/create-issue/create-issue.component";
+import { ProjectPageComponent } from "./project/project-page/project-page.component";
 
 export const CoreLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -21,11 +22,15 @@ export const CoreLayoutRoutes: Routes = [
   { path: "icons", component: IconsComponent },
   { path: "notifications", component: NotificationsComponent },
   {
-    path: "create-project",
+    path: "projects/create",
     component: CreateProjectComponent,
   },
   {
-    path: "create-issue",
+    path: "issues/create",
     component: CreateIssueComponent,
+  },
+  {
+    path: "projects/:id",
+    component: ProjectPageComponent,
   },
 ];

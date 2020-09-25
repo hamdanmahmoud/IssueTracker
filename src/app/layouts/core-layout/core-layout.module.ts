@@ -30,6 +30,9 @@ import { CreateProjectComponent } from "./project/create-project/create-project.
 import { ProjectDetailsComponent } from "./project/project-details/project-details.component";
 import { IssueDetailsComponent } from "./issue/issue-details/issue-details.component";
 import { CreateIssueComponent } from "./issue/create-issue/create-issue.component";
+import { ProjectPageComponent } from "./project/project-page/project-page.component";
+import { IssuePageComponent } from "./issue/issue-page/issue-page.component";
+import { MatListModule } from "@angular/material/list";
 
 @NgModule({
   imports: [
@@ -47,6 +50,7 @@ import { CreateIssueComponent } from "./issue/create-issue/create-issue.componen
     MatCheckboxModule,
     MatCardModule,
     MatIconModule,
+    MatListModule,
   ],
   declarations: [
     DashboardComponent,
@@ -64,6 +68,8 @@ import { CreateIssueComponent } from "./issue/create-issue/create-issue.componen
     ProjectDetailsComponent,
     IssueDetailsComponent,
     CreateIssueComponent,
+    ProjectPageComponent,
+    IssuePageComponent,
   ],
   exports: [ProjectDetailsComponent, IssueDetailsComponent],
 })

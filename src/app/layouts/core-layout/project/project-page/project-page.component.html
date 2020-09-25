@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="left-container noselect">
+    <mat-list class="make-scrollable">
+      <mat-list-item *ngFor="let issue of issues">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <div mat-line>{{ issue.summary }}</div>
+        <div mat-line>
+          <div class="priority">
+            <span class="mr-2">{{ issue.priority }}%</span>
+            <div>
+              <div class="progress">
+                <div
+                  class="progress-bar {{
+                    issue.priority >= 80
+                      ? 'bg-danger'
+                      : issue.priority >= 60
+                      ? 'bg-warning'
+                      : issue.priority >= 40
+                      ? 'bg-info'
+                      : 'bg-success'
+                  }}"
+                  role="progressbar"
+                  attr.aria-valuenow="{{ issue.priority }}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: {{ issue.priority }}%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div mat-line>
+          <a href="javascript:void(0)" class="avatar avatar-sm">
+            <img
+              alt="Profile picture of reporter"
+              src="../../assets/img/{{ issue.reporter }}.jpg"
+              class="rounded-circle"
+            />
+          </a>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="right-container">
+    <p>Some text here</p>
+    <!-- <div class="primary-right">
+      <div class="summary">{{ displayedIssue.summary }}</div>
+      <div class="description">{{ displayedIssue.description }}</div>
+    </div>
+    <div class="secondary-right">
+      <div class="summary">{{ displayedIssue.reporter }}</div>
+      <div class="description">{{ displayedIssue.assignees }}</div>
+      <div class="action"><p>dropdown here</p></div>
+      <div class="priority">
+        <div class="priority">
+          <span class="mr-2">{{ displayedIssue.priority }}%</span>
+          <div>
+            <div class="progress">
+              <div
+                class="progress-bar {{
+                  displayedIssue.priority >= 80
+                    ? 'bg-danger'
+                    : issue.priority >= 60
+                    ? 'bg-warning'
+                    : issue.priority >= 40
+                    ? 'bg-info'
+                    : 'bg-success'
+                }}"
+                role="progressbar"
+                attr.aria-valuenow="{{ displayedIssue.priority }}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: {{ displayedIssue.priority }}%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

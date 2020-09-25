@@ -1,0 +1,59 @@
+mat-list.make-scrollable {
+  overflow-y: scroll;
+}
+
+.mat-list-item {
+  font-size: small;
+  height: auto !important;
+  display: flex;
+  overflow: hidden;
+}
+
+.container {
+  height: 800px;
+  margin-top: 10rem;
+  background-color: green;
+  width: 100%;
+  max-width: 1600px !important;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.left-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 10rem;
+  margin: 10px;
+}
+
+.right-container {
+  background-color: blue;
+  flex: 1;
+  margin: 10px;
+}
+
+.avatar.avatar-sm {
+  overflow: hidden !important;
+}
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.progress-bar {
+  box-shadow: none;
+  border-radius: 0;
+  height: auto;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}

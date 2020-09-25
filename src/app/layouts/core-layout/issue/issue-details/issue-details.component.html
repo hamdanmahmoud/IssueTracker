@@ -7,10 +7,10 @@
       <br />
       <mat-form-field appearance="fill">
         <mat-label>Project</mat-label>
-        <mat-select>
-          <mat-option value="option">Project 1 </mat-option>
-          <mat-option value="option">Project 2</mat-option>
-          <mat-option value="option">Project 3</mat-option>
+        <mat-select [(value)]="defaultProject">
+          <mat-option *ngFor="let project of projects" [value]="project">{{
+            project.title
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="legacy">
@@ -41,7 +41,7 @@
       <button
         type="button"
         class="btn btn-submit btn-create"
-        (click)="addMail()"
+        (click)="saveIssue()"
       >
         {{ action }}
       </button>
