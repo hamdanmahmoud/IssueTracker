@@ -1,0 +1,40 @@
+<mat-list-item *ngFor="let issue of issues">
+  <mat-icon
+    mat-list-icon
+    [ngStyle]="{ color: issue.type === 'task' ? 'green' : 'red' }"
+    >{{ issue.type === "task" ? "assignment" : "bug_report" }}</mat-icon
+  >
+  <div mat-line class="ellipsis-overflow">{{ issue.summary }}</div>
+  <div mat-line>
+    <span class="mr-2">{{ issue.priority }}%</span>
+
+    <div class="progress">
+      <div
+        class="progress-bar {{
+          issue.priority >= 80
+            ? 'bg-danger'
+            : issue.priority >= 60
+            ? 'bg-warning'
+            : issue.priority >= 40
+            ? 'bg-info'
+            : 'bg-success'
+        }}"
+        role="progressbar"
+        attr.aria-valuenow="{{ issue.priority }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width: {{ issue.priority }}%"
+      ></div>
+    </div>
+  </div>
+  <div mat-line>
+    <a href="javascript:void(0)" class="avatar avatar-sm">
+      <img
+        alt="Profile picture of reporter"
+        src="../../assets/img/{{ issue.reporter }}.jpg"
+        class="rounded-circle"
+      />
+    </a>
+  </div>
+  <mat-divider></mat-divider>
+</mat-list-item>

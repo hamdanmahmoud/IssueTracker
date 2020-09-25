@@ -55,7 +55,8 @@ export const tasks: Issue[] = [
   },
   {
     project: "Backend",
-    summary: "Summary for this exact issue",
+    summary:
+      "Summary for this exact exact exact exact exact exact exact exact exact exact issue",
     reporter: "4d3944fe-5861-477c-b50a-4eee542667d5",
     assignees: ["dfefdd1f-1975-4795-8f38-dc77a849cc50"],
     status: "PENDING",

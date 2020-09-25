@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Issue } from "app/models/Issue";
-import { tasks } from "../../../../fake/fakeData";
+import { tasks, bugs } from "../../../../fake/fakeData";
 export interface Section {
   name: string;
   updated: Date;
@@ -45,7 +45,7 @@ export class ProjectPageComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.issues = [...tasks, ...tasks];
+    this.issues = [...bugs, ...tasks, ...bugs, ...tasks, ...bugs];
     this.displayedIssue = this.issues[0];
   }
 }

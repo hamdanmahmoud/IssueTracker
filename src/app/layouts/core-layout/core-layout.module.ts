@@ -33,6 +33,7 @@ import { CreateIssueComponent } from "./issue/create-issue/create-issue.componen
 import { ProjectPageComponent } from "./project/project-page/project-page.component";
 import { IssuePageComponent } from "./issue/issue-page/issue-page.component";
 import { MatListModule } from "@angular/material/list";
+import { IssueListItems } from "./issue/issue-list-items/issue-list-items.component";
 
 @NgModule({
   imports: [
@@ -70,6 +71,7 @@ import { MatListModule } from "@angular/material/list";
     CreateIssueComponent,
     ProjectPageComponent,
     IssuePageComponent,
+    IssueListItems,
   ],
   exports: [ProjectDetailsComponent, IssueDetailsComponent],
 })

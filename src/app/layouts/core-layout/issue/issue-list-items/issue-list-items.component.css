@@ -1,0 +1,40 @@
+mat-list.make-scrollable {
+  overflow-y: scroll;
+}
+
+.mat-list-item {
+  font-size: small;
+  height: auto !important;
+  display: flex;
+  overflow: hidden;
+}
+
+@media (max-width: 576px) {
+  ::ng-deep .mat-list-item-content {
+    padding: 0 !important;
+  }
+}
+
+::ng-deep .mat-list-item-content {
+  width: 100% !important;
+}
+
+.ellipsis-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avatar.avatar-sm {
+  overflow: hidden !important;
+}
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.progress-bar {
+  box-shadow: none;
+  border-radius: 0;
+  height: auto;
+}

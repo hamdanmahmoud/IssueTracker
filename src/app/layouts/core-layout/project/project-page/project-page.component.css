@@ -1,52 +1,31 @@
-mat-list.make-scrollable {
-  overflow-y: scroll;
-}
-
-.mat-list-item {
-  font-size: small;
-  height: auto !important;
-  display: flex;
-  overflow: hidden;
-}
-
 .container {
   height: 800px;
   margin-top: 10rem;
-  background-color: green;
+  background-color: white;
   width: 100%;
   max-width: 1600px !important;
   display: flex;
   flex-direction: row;
   padding: 10px;
+  border-radius: 1%;
+  overflow: hidden;
 }
 
 .left-container {
   background-color: white;
   display: flex;
   flex-direction: row;
-  flex-basis: 10rem;
+  flex-basis: 20rem;
+  flex-grow: 0;
   margin: 10px;
   align-content: stretch;
+  min-width: 1rem;
 }
 
 .right-container {
-  background-color: blue;
+  background-color: white;
   flex: 1;
   margin: 10px;
-}
-
-.avatar.avatar-sm {
-  overflow: hidden !important;
-}
-
-.mat-list-icon {
-  color: rgba(0, 0, 0, 0.54);
-}
-
-.progress-bar {
-  box-shadow: none;
-  border-radius: 0;
-  height: auto;
 }
 
 .noselect {
@@ -57,4 +36,8 @@ mat-list.make-scrollable {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
+}
+
+mat-list.make-scrollable {
+  overflow-y: scroll;
 }
