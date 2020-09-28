@@ -1,9 +1,11 @@
+import { User } from "./User";
+
 export interface Issue {
   project: string;
   summary: string;
   description: string;
-  reporter: string;
-  assignees: string[];
+  reporter: User;
+  assignees: User[];
   status: string;
   created: Date;
   priority: number;
