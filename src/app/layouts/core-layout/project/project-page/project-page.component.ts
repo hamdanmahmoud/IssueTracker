@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Issue } from "app/models/Issue";
 import { IssueStatus } from "app/models/IssueStatus";
-import { tasks, bugs, statusOptions } from "../../../../fake/fakeData";
+import { tasks, bugs } from "../../../../fake/fakeData";
 export interface Section {
   name: string;
   updated: Date;
@@ -11,20 +11,17 @@ export interface Section {
   templateUrl: "./project-page.component.html",
   styleUrls: [
     "./project-page.component.css",
-    "../../issue/issues-table/issues-table.component.scss",
     "../../../../../assets/css/argon.css",
   ],
 })
 export class ProjectPageComponent implements OnInit {
   issues: Issue[];
-  displayedIssue: Issue;
-  statusList: IssueStatus[];
+  selectedIssue: Issue;
 
   constructor() {}
 
   ngOnInit(): void {
     this.issues = [...bugs, ...tasks, ...bugs, ...tasks, ...bugs];
-    this.statusList = statusOptions;
-    this.displayedIssue = this.issues[0];
+    this.selectedIssue = this.issues[0];
   }
 }
