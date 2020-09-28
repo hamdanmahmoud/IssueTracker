@@ -26,6 +26,8 @@
   background-color: white;
   flex: 1;
   margin: 10px;
+  margin-top: 2rem;
+  display: flex;
 }
 
 .noselect {
@@ -40,4 +42,55 @@
 
 mat-list.make-scrollable {
   overflow-y: scroll;
+}
+
+.summary {
+  font-weight: 900;
+  font-size: xx-large;
+}
+
+.description {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  font-weight: 600;
+  color: black;
+  font-size: larger;
+}
+
+.primary-right {
+  text-align: justify;
+  text-justify: inter-word;
+  flex: 2.5;
+}
+
+.secondary-right {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.assignees {
+  margin-top: 1rem;
+}
+
+.action {
+  margin-top: 1rem;
+}
+
+.priority {
+  margin-top: 1rem;
+}
+
+.secondary-right-subtitle {
+  font-weight: 900;
+}
+
+.action-dropdown {
+  font-weight: bold;
+}
+
+::ng-deep .mat-select-arrow {
+  border-left: 15px solid transparent !important;
+  border-right: none !important;
+  border-top: 15px solid transparent !important;
+  border-image-repeat: stretch !important;
 }

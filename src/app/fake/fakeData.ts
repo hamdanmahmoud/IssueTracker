@@ -42,6 +42,13 @@ export const tasks: Issue[] = [
   {
     project: "Frontend",
     summary: "Summary for this particular issue",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+    pariatur. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: "10204d49-4251-4219-945f-a2f4aaa7dd41",
     assignees: [
       "4d3944fe-5861-477c-b50a-4eee542667d5",
@@ -57,6 +64,13 @@ export const tasks: Issue[] = [
     project: "Backend",
     summary:
       "Summary for this exact exact exact exact exact exact exact exact exact exact issue",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+      pariatur. Excepteur sint occaecat cupidatat non proident, 
+      sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: "4d3944fe-5861-477c-b50a-4eee542667d5",
     assignees: ["dfefdd1f-1975-4795-8f38-dc77a849cc50"],
     status: "PENDING",
@@ -68,6 +82,13 @@ export const tasks: Issue[] = [
   {
     project: "System design",
     summary: "Summary for this awesome issue",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+    pariatur. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: "4d3944fe-5861-477c-b50a-4eee542667d5",
     assignees: [
       "10204d49-4251-4219-945f-a2f4aaa7dd41",
@@ -83,6 +104,13 @@ export const tasks: Issue[] = [
   {
     project: "Database configuration",
     summary: "Summary for this issue",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+    pariatur. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: "dfefdd1f-1975-4795-8f38-dc77a849cc50",
     assignees: ["4d3944fe-5861-477c-b50a-4eee542667d5"],
     status: "PENDING",
@@ -97,6 +125,13 @@ export const bugs: Issue[] = [
   {
     project: "Frontend",
     summary: "Summary for this particular issue",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+    pariatur. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: "4d3944fe-5861-477c-b50a-4eee542667d5",
     assignees: [
       "dfefdd1f-1975-4795-8f38-dc77a849cc50",

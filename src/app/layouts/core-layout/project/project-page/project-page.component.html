@@ -10,10 +10,51 @@
       <div class="description">{{ displayedIssue.description }}</div>
     </div>
     <div class="secondary-right">
-      <div class="reporter">{{ displayedIssue.reporter }}</div>
-      <div class="assignees">{{ displayedIssue.assignees }}</div>
-      <div class="action"><p>dropdown here</p></div>
+      <div class="reporter">
+        <div class="secondary-right-subtitle">Reporter</div>
+        <a href="javascript:void(0)" class="avatar avatar-sm">
+          <img
+            alt="Image placeholder"
+            src="/assets/img/{{ displayedIssue.reporter }}.jpg"
+            class="rounded-circle"
+          />
+        </a>
+      </div>
+      <div class="assignees">
+        <div class="secondary-right-subtitle">Assignees</div>
+        <div class="avatar-group" data-toggle="tooltip">
+          <a
+            *ngFor="let assignee of displayedIssue.assignees"
+            href="javascript:void(0)"
+            class="avatar avatar-sm"
+          >
+            <img
+              alt="Image placeholder"
+              src="/assets/img/{{ assignee }}.jpg"
+              class="rounded-circle"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="action">
+        <div class="secondary-right-subtitle">Status</div>
+        <div class="action-dropdown">
+          <mat-select
+            [(ngModel)]="displayedIssue.status"
+            class="status-{{ displayedIssue.status }}"
+          >
+            <mat-option
+              *ngFor="let status of statusList"
+              [value]="status"
+              class="status-dropdown not-empty-select"
+            >
+              <span class="status-cell status-{{ status }}">{{ status }}</span>
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
       <div class="priority">
+        <div class="secondary-right-subtitle">Priority</div>
         <span class="mr-2">{{ displayedIssue.priority }}%</span>
         <div>
           <div class="progress">
