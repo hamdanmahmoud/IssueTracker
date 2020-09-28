@@ -4,26 +4,26 @@ import { Project } from "app/models/Project";
 import { ProjectCard } from "app/models/ProjectCard";
 import { User } from "app/models/User";
 
-const mahmoud: User = {
-  id: "10204d49-4251-4219-945f-a2f4aaa7dd41",
-  firstName: "Mahmoud-Tudor",
-  lastName: "Hamdan",
-  mail: "hamdan.mahmoudtudor@gmail.com",
-};
+const mahmoud: User = new User(
+  "10204d49-4251-4219-945f-a2f4aaa7dd41",
+  "Mahmoud-Tudor",
+  "Hamdan",
+  "hamdan.mahmoudtudor@gmail.com"
+);
 
-const ana: User = {
-  id: "dfefdd1f-1975-4795-8f38-dc77a849cc50",
-  firstName: "Ana-Maria",
-  lastName: "Tanase",
-  mail: "tanase.anamaria97@gmail.com",
-};
+const ana: User = new User(
+  "dfefdd1f-1975-4795-8f38-dc77a849cc50",
+  "Ana-Maria",
+  "Tanase",
+  "tanase.anamaria97@gmail.com"
+);
 
-const hori: User = {
-  id: "4d3944fe-5861-477c-b50a-4eee542667d5",
-  firstName: "George-Horatiu",
-  lastName: "Niculae",
-  mail: "niculae.georgehoratiu@gmail.com",
-};
+const hori: User = new User(
+  "4d3944fe-5861-477c-b50a-4eee542667d5",
+  "George-Horatiu",
+  "Niculae",
+  "niculae.georgehoratiu@gmail.com"
+);
 
 export const dashboardProjects: ProjectCard[] = [
   {
