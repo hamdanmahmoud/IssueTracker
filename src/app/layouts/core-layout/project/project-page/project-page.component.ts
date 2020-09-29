@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 import { Issue } from "app/models/Issue";
 import { tasks, bugs } from "../../../../fake/fakeData";
 
@@ -16,22 +17,28 @@ export interface Section {
   ],
 })
 export class ProjectPageComponent implements OnInit {
-  form: FormGroup;
   issues: Issue[];
   selectedIssue: Issue;
   selectedIssueId: string;
-  amount: number = 500;
+  sortBy: undefined | "open" | "mine" | "urgent";
 
-  constructor() {}
-  deposit() {
-    console.log("This amount is", this.amount);
-    this.amount += 100;
-  }
+  constructor(private route: ActivatedRoute) {}
+
   ngOnInit(): void {
     console.log("Project-page");
+
+    this.route.queryParams.subscribe((params) => {
+      this.sortBy = params["sortBy"];
+    });
+
+    // TODO: having the criteria, service call logic goes here
     this.issues = [...bugs, ...tasks].sort(
       (a, b) => new Date(b.created).valueOf() - new Date(a.created).valueOf()
     );
+
+    // selection logic
+
+    this.issues.forEach((issue) => (issue.selected = false));
     this.selectedIssue = this.issues[0];
     this.selectedIssue.selected = true;
     this.selectedIssueId = this.selectedIssue.id;

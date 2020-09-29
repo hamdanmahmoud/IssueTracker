@@ -52,7 +52,7 @@
             <div class="tab-content">
               <div class="tab-pane active" id="bugs">
                 <app-issues-table
-                  [data]="BUGS"
+                  [data]="bugs"
                   [displayedColumns]="columnsToDisplayForIssues"
                   [statusList]="statusList"
                 ></app-issues-table>
@@ -60,7 +60,7 @@
 
               <div class="tab-pane" id="tasks">
                 <app-issues-table
-                  [data]="TASKS"
+                  [data]="tasks"
                   [displayedColumns]="columnsToDisplayForIssues"
                   [statusList]="statusList"
                 ></app-issues-table>

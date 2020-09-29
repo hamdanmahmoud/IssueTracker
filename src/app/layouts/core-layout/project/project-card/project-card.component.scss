@@ -50,6 +50,15 @@ mat-card::ng-deep.mat-card-subtitle {
   overflow: auto;
 }
 
+.button-text:disabled {
+  color: red;
+  display: none;
+}
+
+.disabled-div {
+  display: none;
+}
+
 .action {
   display: flex;
   flex-direction: row;

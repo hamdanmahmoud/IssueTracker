@@ -9,36 +9,50 @@
       <button
         mat-button
         [routerLink]="['/projects', project.id]"
+        [queryParams]="{ sortBy: 'urgent' }"
+        disabled="{{ !project.urgentIssues }}"
         class="button-text"
       >
         Urgent issues
       </button>
       <div class="dot-container">
-        <span class="dot">{{ project.urgentIssues }}</span>
+        <span class="dot {{ !project.urgentIssues ? 'disabled-div' : '' }}">{{
+          project.urgentIssues
+        }}</span>
       </div>
     </div>
     <div class="action">
       <button
-        [routerLink]="['/projects', project.id]"
         mat-button
+        [routerLink]="['/projects', project.id]"
+        [queryParams]="{ sortBy: 'mine' }"
+        disabled="{{ !project.assignedToMe }}"
         class="button-text"
       >
         Assigned to me
       </button>
-      <div class="dot-container">
-        <span class="dot">{{ project.assignedToMe }}</span>
+      <div
+        class="dot-container {{ !project.assignedToMe ? 'disabled-div' : '' }}"
+      >
+        <span class="dot {{ !project.assignedToMe ? 'disabled-div' : '' }}">{{
+          project.assignedToMe
+        }}</span>
       </div>
     </div>
     <div class="action">
       <button
         mat-button
         [routerLink]="['/projects', project.id]"
+        [queryParams]="{ sortBy: 'open' }"
+        disabled="{{ !project.allOpen }}"
         class="button-text"
       >
         All open
       </button>
-      <div class="dot-container">
-        <span class="dot">{{ project.allOpen }}</span>
+      <div class="dot-container {{ !project.allOpen ? 'disabled-div' : '' }}">
+        <span class="dot {{ !project.assignedToMe ? 'disabled-div' : '' }}">{{
+          project.allOpen
+        }}</span>
       </div>
     </div>
   </mat-card-actions>

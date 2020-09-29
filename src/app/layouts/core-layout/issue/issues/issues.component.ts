@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { IssueStatus } from "app/models/IssueStatus";
 import { Issue } from "../../../../models/Issue";
 import {
-  tasks,
-  bugs,
+  allIssues,
   columnsToDisplayForIssues,
   statusOptions,
 } from "../../../../fake/fakeData";
@@ -16,8 +15,8 @@ import {
   ],
 })
 export class IssuesComponent implements OnInit {
-  TASKS: Issue[];
-  BUGS: Issue[];
+  tasks: Issue[];
+  bugs: Issue[];
   columnsToDisplayForIssues: string[];
   statusList: IssueStatus[];
 
@@ -26,8 +25,8 @@ export class IssuesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.TASKS = tasks;
-    this.BUGS = bugs;
+    this.tasks = allIssues.filter((issue) => issue.type === "task");
+    this.bugs = allIssues.filter((issue) => issue.type === "bug");
     this.columnsToDisplayForIssues = columnsToDisplayForIssues;
     this.statusList = statusOptions;
   }

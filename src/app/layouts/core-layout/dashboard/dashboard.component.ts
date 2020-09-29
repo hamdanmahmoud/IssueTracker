@@ -3,8 +3,7 @@ import { ProjectCard } from "../../../models/ProjectCard";
 import { Issue } from "../../../models/Issue";
 import {
   dashboardProjects,
-  tasks,
-  bugs,
+  allIssues,
   columnsToDisplayForIssues,
   statusOptions,
 } from "../../../fake/fakeData";
@@ -17,8 +16,8 @@ import { IssueStatus } from "app/models/IssueStatus";
 })
 export class DashboardComponent implements OnInit {
   PROJECTS: ProjectCard[];
-  TASKS: Issue[];
-  BUGS: Issue[];
+  tasks: Issue[];
+  bugs: Issue[];
   columnsToDisplayForIssues: string[];
   statusList: IssueStatus[];
 
@@ -27,8 +26,8 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit(): void {
     this.PROJECTS = dashboardProjects;
-    this.TASKS = tasks;
-    this.BUGS = bugs;
+    this.tasks = allIssues.filter((issue) => issue.type === "task");
+    this.bugs = allIssues.filter((issue) => issue.type === "bug");
     this.columnsToDisplayForIssues = columnsToDisplayForIssues;
     this.statusList = statusOptions;
   }

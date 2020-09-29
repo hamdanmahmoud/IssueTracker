@@ -5,7 +5,7 @@ import { ProjectCard } from "app/models/ProjectCard";
 import { User } from "app/models/User";
 
 const mahmoud: User = new User(
-  "10204d49-4251-4219-945f-a2f4aaa7dd41",
+  "4d3944fe-5861-477c-b50a-4eee542667d5",
   "Mahmoud-Tudor",
   "Hamdan",
   "hamdan.mahmoudtudor@gmail.com"
@@ -19,7 +19,7 @@ const ana: User = new User(
 );
 
 const hori: User = new User(
-  "4d3944fe-5861-477c-b50a-4eee542667d5",
+  "10204d49-4251-4219-945f-a2f4aaa7dd41",
   "George-Horatiu",
   "Niculae",
   "niculae.georgehoratiu@gmail.com"
@@ -73,7 +73,7 @@ export const tasks: Issue[] = [
     sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: mahmoud,
     assignees: [hori, ana],
-    status: "PENDING",
+    status: "CANCELED",
     created: new Date(Date.now() + Math.round(Math.random() * 10000)),
     priority: 60,
     type: "task",
@@ -92,7 +92,7 @@ export const tasks: Issue[] = [
       sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: hori,
     assignees: [ana],
-    status: "PENDING",
+    status: "RESOLVED",
     created: new Date(Date.now() + Math.round(Math.random() * 10000)),
     priority: 40,
     type: "task",
@@ -111,7 +111,7 @@ export const tasks: Issue[] = [
     sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: hori,
     assignees: [mahmoud, ana],
-    status: "PENDING",
+    status: "IN_REVIEW",
     created: new Date(Date.now() + Math.round(Math.random() * 10000)),
     priority: 90,
     type: "task",
@@ -130,7 +130,7 @@ export const tasks: Issue[] = [
     sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     reporter: ana,
     assignees: [mahmoud],
-    status: "PENDING",
+    status: "IN_PROGRESS",
     created: new Date(Date.now() + Math.round(Math.random() * 10000)),
     priority: 30,
     type: "task",
@@ -228,7 +228,7 @@ export const bugs: Issue[] = [
   },
 ];
 
-const allIssues: Issue[] = [...tasks, ...bugs];
+export const allIssues: Issue[] = [...tasks, ...bugs];
 
 export const columnsToDisplayForIssues: string[] = [
   "select",
