@@ -78,11 +78,11 @@ export const tasks: Issue[] = [
     priority: 60,
     type: "task",
     id: "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
+    selected: false,
   },
   {
     project: "Backend",
-    summary:
-      "Summary for this exact exact exact exact exact exact exact exact exact exact issue",
+    summary: "Summary for this exact exact exact exact exact exact issue",
     description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
@@ -97,6 +97,7 @@ export const tasks: Issue[] = [
     priority: 40,
     type: "task",
     id: "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+    selected: false,
   },
   {
     project: "System design",
@@ -115,6 +116,7 @@ export const tasks: Issue[] = [
     priority: 90,
     type: "task",
     id: "6108a364-6dbc-421f-a40e-ab3f8886c681",
+    selected: false,
   },
   {
     project: "Database configuration",
@@ -133,6 +135,23 @@ export const tasks: Issue[] = [
     priority: 30,
     type: "task",
     id: "d77de362-7804-4e9d-9b7c-ea338e80ec69",
+    selected: false,
+  },
+  {
+    project: "DevOps Pipeline",
+    summary: "Summary for this task",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat.`,
+    reporter: mahmoud,
+    assignees: [hori],
+    status: "DONE",
+    created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+    priority: 50,
+    type: "task",
+    id: "6e545769-f64f-4b4b-8417-f50885752b89",
+    selected: false,
   },
 ];
 
@@ -154,8 +173,62 @@ export const bugs: Issue[] = [
     priority: 80,
     type: "bug",
     id: "4d3944fe-5861-477c-b50a-4eee542667d5",
+    selected: false,
+  },
+  {
+    project: "Backend",
+    summary: "Summary for this backend issue",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    reporter: mahmoud,
+    assignees: [],
+    status: "TO_DO",
+    created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+    priority: 50,
+    type: "bug",
+    id: "2e48e03d-c5f4-4596-a201-0e98a38d60e3",
+    selected: false,
+  },
+  {
+    project: "System design",
+    summary: "Don't forget about db schema",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+    pariatur.`,
+    reporter: ana,
+    assignees: [mahmoud],
+    status: "RESOLVED",
+    created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+    priority: 70,
+    type: "bug",
+    id: "1873b77a-1c61-4a6e-956f-43832fe4c021",
+    selected: false,
+  },
+  {
+    project: "Wonderful project",
+    summary: "Some very smart summary",
+    description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    reporter: ana,
+    assignees: [hori, mahmoud],
+    status: "IN_REVIEW",
+    created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+    priority: 35,
+    type: "bug",
+    id: "4e7c3eeb-fe7a-4acd-b565-79d0ad73eba9",
+    selected: false,
   },
 ];
+
+const allIssues: Issue[] = [...tasks, ...bugs];
 
 export const columnsToDisplayForIssues: string[] = [
   "select",
@@ -294,3 +367,7 @@ Rick Owens’ bed design but the back is...`;
 export const profileName: string = "Mahmoud Hamdan";
 
 export const profileTitle: string = "Software engineer";
+
+export function getIssueById(id: string) {
+  return allIssues.find((issue) => issue.id === id);
+}

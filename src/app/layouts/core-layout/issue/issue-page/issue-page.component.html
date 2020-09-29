@@ -1,8 +1,8 @@
 <div class="main-container">
   <div class="primary-right">
-    <div class="summary">{{ displayedIssue.summary }}</div>
-    <div class="issue-id">{{ displayedIssue.id }}</div>
-    <div class="description">{{ displayedIssue.description }}</div>
+    <div class="summary">{{ selectedIssue.summary }}</div>
+    <div class="issue-id">{{ selectedIssue.id }}</div>
+    <div class="description">{{ selectedIssue.description }}</div>
   </div>
   <div class="secondary-right">
     <div class="reporter">
@@ -10,7 +10,7 @@
       <a href="javascript:void(0)" class="avatar avatar-sm">
         <img
           alt="Image placeholder"
-          src="/assets/img/{{ displayedIssue.reporter.getId() }}.jpg"
+          src="/assets/img/{{ selectedIssue.reporter.getId() }}.jpg"
           class="rounded-circle"
         />
       </a>
@@ -19,7 +19,7 @@
       <div class="secondary-right-subtitle">Assignees</div>
       <div class="avatar-group" data-toggle="tooltip">
         <a
-          *ngFor="let assignee of displayedIssue.assignees"
+          *ngFor="let assignee of selectedIssue.assignees"
           href="javascript:void(0)"
           class="avatar avatar-sm"
         >
@@ -35,8 +35,8 @@
       <div class="secondary-right-subtitle">Status</div>
       <div class="action-dropdown">
         <mat-select
-          [(ngModel)]="displayedIssue.status"
-          class="status-{{ displayedIssue.status }}"
+          [(ngModel)]="selectedIssue.status"
+          class="status-{{ selectedIssue.status }}"
         >
           <mat-option
             *ngFor="let status of statusList"
@@ -50,24 +50,24 @@
     </div>
     <div class="priority">
       <div class="secondary-right-subtitle">Priority</div>
-      <span class="mr-2">{{ displayedIssue.priority }}%</span>
+      <span class="mr-2">{{ selectedIssue.priority }}%</span>
       <div>
         <div class="progress">
           <div
             class="progress-bar {{
-              displayedIssue.priority >= 80
+              selectedIssue.priority >= 80
                 ? 'bg-danger'
-                : displayedIssue.priority >= 60
+                : selectedIssue.priority >= 60
                 ? 'bg-warning'
-                : displayedIssue.priority >= 40
+                : selectedIssue.priority >= 40
                 ? 'bg-info'
                 : 'bg-success'
             }}"
             role="progressbar"
-            attr.aria-valuenow="{{ displayedIssue.priority }}"
+            attr.aria-valuenow="{{ selectedIssue.priority }}"
             aria-valuemin="0"
             aria-valuemax="100"
-            style="width: {{ displayedIssue.priority }}%"
+            style="width: {{ selectedIssue.priority }}%"
           ></div>
         </div>
       </div>

@@ -11,6 +11,7 @@ import { ProjectsComponent } from "./project/projects/projects.component";
 import { CreateProjectComponent } from "./project/create-project/create-project.component";
 import { CreateIssueComponent } from "./issue/create-issue/create-issue.component";
 import { ProjectPageComponent } from "./project/project-page/project-page.component";
+import { IssuePageComponent } from "./issue/issue-page/issue-page.component";
 
 export const CoreLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -32,5 +33,9 @@ export const CoreLayoutRoutes: Routes = [
   {
     path: "projects/:id",
     component: ProjectPageComponent,
+  },
+  {
+    path: "issues/:id",
+    component: IssuePageComponent,
   },
 ];

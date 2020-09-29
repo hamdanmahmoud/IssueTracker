@@ -1,10 +1,13 @@
 <div class="container">
   <div class="left-container noselect">
     <mat-list class="make-scrollable">
-      <app-issue-list-items [issues]="issues"></app-issue-list-items>
+      <app-issue-list-items
+        [issues]="issues"
+        [selectIssue]="selectIssue.bind(this)"
+      ></app-issue-list-items>
     </mat-list>
   </div>
   <div class="right-container">
-    <app-issue-page [displayedIssue]="selectedIssue"></app-issue-page>
+    <app-issue-page [selectedIssueId]="selectedIssueId"></app-issue-page>
   </div>
 </div>

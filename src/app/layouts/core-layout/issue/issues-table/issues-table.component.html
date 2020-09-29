@@ -62,7 +62,7 @@
         *matCellDef="let element"
       >
         <span class="table-cell"
-          ><a href="javascript:void(0)">{{ element.summary }}</a></span
+          ><a [routerLink]="[element.id]">{{ element.summary }}</a></span
         >
       </td>
     </ng-container>

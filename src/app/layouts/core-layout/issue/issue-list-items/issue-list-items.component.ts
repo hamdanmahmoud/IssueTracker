@@ -13,7 +13,14 @@ export class IssueListItems implements OnInit {
   @Input()
   issues: Issue[];
 
+  @Input()
+  selectIssue: (issue: Issue) => void;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("IssueList");
+    console.log(this.issues);
+    console.log(this.selectIssue);
+  }
 }

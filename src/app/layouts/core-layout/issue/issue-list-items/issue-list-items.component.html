@@ -1,4 +1,8 @@
-<mat-list-item *ngFor="let issue of issues">
+<mat-list-item
+  *ngFor="let issue of issues"
+  (click)="selectIssue(issue)"
+  class="{{ issue.selected ? 'selected' : '' }}"
+>
   <mat-icon
     mat-list-icon
     [ngStyle]="{ color: issue.type === 'task' ? 'green' : 'red' }"

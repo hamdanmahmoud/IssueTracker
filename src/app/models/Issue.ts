@@ -11,4 +11,5 @@ export interface Issue {
   priority: number;
   type: string;
   id: string;
+  selected: boolean;
 }

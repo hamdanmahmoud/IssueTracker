@@ -7,6 +7,11 @@ mat-list.make-scrollable {
   height: auto !important;
   display: flex;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.mat-list-item.selected {
+  background-color: rgb(150, 207, 245);
 }
 
 @media (max-width: 576px) {
