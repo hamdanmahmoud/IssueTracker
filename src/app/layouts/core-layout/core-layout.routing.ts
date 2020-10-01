@@ -31,7 +31,11 @@ export const CoreLayoutRoutes: Routes = [
     component: CreateIssueComponent,
   },
   {
-    path: "projects/:id",
+    path: "projects/:projectId",
+    component: ProjectPageComponent,
+  },
+  {
+    path: "projects/:projectId/issues/:issueId",
     component: ProjectPageComponent,
   },
   {

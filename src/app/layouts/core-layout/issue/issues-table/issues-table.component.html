@@ -38,8 +38,8 @@
       >
         <span class="table-cell">
           <span class="table-cell"
-            ><a [routerLink]="['/projects', element.project]">{{
-              element.project
+            ><a [routerLink]="['/projects', element.project.id]">{{
+              element.project.title
             }}</a></span
           >
         </span>
@@ -62,7 +62,15 @@
         *matCellDef="let element"
       >
         <span class="table-cell"
-          ><a [routerLink]="[element.id]">{{ element.summary }}</a></span
+          ><a
+            [routerLink]="[
+              '/projects',
+              element.project.id,
+              'issues',
+              element.id
+            ]"
+            >{{ element.summary }}</a
+          ></span
         >
       </td>
     </ng-container>

@@ -1,7 +1,8 @@
+import { Project } from "./Project";
 import { User } from "./User";
 
 export interface Issue {
-  project: string;
+  project: Project;
   summary: string;
   description: string;
   reporter: User;
