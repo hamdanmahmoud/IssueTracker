@@ -5,14 +5,35 @@
   width: 100%;
   max-width: 1600px !important;
   background-color: white;
-  margin-top: 10rem;
   border-radius: 1%;
   padding: 10px;
 }
 
+.text-button {
+  height: 3rem;
+  font-weight: 600;
+  width: 9rem;
+  margin-left: 10px;
+}
+
+.new-button {
+  color: rgb(5, 61, 71);
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 700px) {
+  .buttons-container {
+    margin-left: auto;
+    flex-direction: row;
+  }
+}
+
 .main-container {
   height: 800px;
-  margin-top: 2rem;
   background-color: white;
   display: flex;
   flex-direction: row;

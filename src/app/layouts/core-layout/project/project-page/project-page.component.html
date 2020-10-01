@@ -1,18 +1,88 @@
-<div class="container">
-  <div class="project-navbar">
-    <p>it works</p>
-  </div>
-  <div class="main-container">
-    <div class="left-container noselect">
-      <mat-list class="make-scrollable">
-        <app-issue-list-items
-          [issues]="issues"
-          [selectIssue]="selectIssue.bind(this)"
-        ></app-issue-list-items>
-      </mat-list>
+<!-- <div class="container">
+  <div class="col-lg-12 col-md-12">
+    <div class="card">
+      <div class="card-header card-header-tabs card-header-darker-cyan">
+        <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <span class="nav-tabs-title">{{ project.title }}</span>
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <div class="buttons-container">
+                <li>
+                  <button
+                    mat-raised-button
+                    class="text-button new-button"
+                    [routerLink]="['create']"
+                  >
+                    Manage roles
+                  </button>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-container">
+        <div class="left-container noselect">
+          <mat-list class="make-scrollable">
+            <app-issue-list-items
+              [issues]="issues"
+              [selectIssue]="selectIssue.bind(this)"
+            ></app-issue-list-items>
+          </mat-list>
+        </div>
+        <div class="right-container">
+          <app-issue-page [selectedIssueId]="selectedIssueId"></app-issue-page>
+        </div>
+      </div>
     </div>
-    <div class="right-container">
-      <app-issue-page [selectedIssueId]="selectedIssueId"></app-issue-page>
+  </div>
+</div> -->
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-darker-cyan">
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                <span class="nav-tabs-title">{{ project.title }}</span>
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <div class="buttons-container">
+                    <li>
+                      <button
+                        mat-raised-button
+                        class="text-button new-button"
+                        [routerLink]="['create']"
+                      >
+                        Manage roles
+                      </button>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="main-container">
+              <div class="left-container noselect">
+                <mat-list class="make-scrollable">
+                  <app-issue-list-items
+                    [issues]="issues"
+                    [selectIssue]="selectIssue.bind(this)"
+                  ></app-issue-list-items>
+                </mat-list>
+              </div>
+              <div class="right-container">
+                <app-issue-page
+                  [selectedIssueId]="selectedIssueId"
+                ></app-issue-page>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

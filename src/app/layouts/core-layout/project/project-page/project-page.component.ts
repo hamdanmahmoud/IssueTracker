@@ -1,8 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { Issue } from "app/models/Issue";
-import { tasks, bugs } from "../../../../fake/fakeData";
+import { Project } from "app/models/Project";
+import {
+  tasks,
+  bugs,
+  projectsCreatedByMe,
+  collaborations,
+} from "../../../../fake/fakeData";
 
 export interface Section {
   name: string;
@@ -13,10 +18,13 @@ export interface Section {
   templateUrl: "./project-page.component.html",
   styleUrls: [
     "./project-page.component.css",
-    "../../../../../assets/css/argon.css",
+    "../../dashboard/dashboard.component.css",
+    // "../../../../../assets/css/argon.css",
   ],
 })
 export class ProjectPageComponent implements OnInit {
+  projectId: string;
+  project: Project;
   issues: Issue[];
   selectedIssue: Issue;
   selectedIssueId: string;
@@ -26,6 +34,13 @@ export class ProjectPageComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Project-page");
+
+    this.projectId = this.route.snapshot.paramMap.get("id");
+    this.project = [...projectsCreatedByMe, ...collaborations].find(
+      (project) => project.id === this.projectId
+    );
+
+    console.log("Project is", this.project);
 
     this.route.queryParams.subscribe((params) => {
       this.sortBy = params["sortBy"];
