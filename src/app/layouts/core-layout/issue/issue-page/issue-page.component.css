@@ -2,6 +2,16 @@
   display: flex;
 }
 
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .secondary-right {
+    margin-left: 0 !important;
+  }
+}
+
 .summary {
   font-weight: 900;
   font-size: xx-large;

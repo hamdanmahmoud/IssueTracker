@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="left-container noselect">
-    <mat-list class="make-scrollable">
-      <app-issue-list-items
-        [issues]="issues"
-        [selectIssue]="selectIssue.bind(this)"
-      ></app-issue-list-items>
-    </mat-list>
+  <div class="project-navbar">
+    <p>it works</p>
   </div>
-  <div class="right-container">
-    <app-issue-page [selectedIssueId]="selectedIssueId"></app-issue-page>
+  <div class="main-container">
+    <div class="left-container noselect">
+      <mat-list class="make-scrollable">
+        <app-issue-list-items
+          [issues]="issues"
+          [selectIssue]="selectIssue.bind(this)"
+        ></app-issue-list-items>
+      </mat-list>
+    </div>
+    <div class="right-container">
+      <app-issue-page [selectedIssueId]="selectedIssueId"></app-issue-page>
+    </div>
   </div>
 </div>
