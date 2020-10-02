@@ -18,6 +18,24 @@
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  .remove-button {
+    display: none;
+  }
+}
+
+@media (max-width: 370px) {
+  .new-button {
+    width: 100%;
+    height: auto;
+    white-space: normal;
+  }
+
+  .mat-button {
+    white-space: normal;
+  }
+}
+
 @media (min-width: 700px) {
   .buttons-container {
     margin-left: auto;

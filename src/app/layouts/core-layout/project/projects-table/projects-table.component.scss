@@ -9,6 +9,11 @@
   max-height: none !important;
 }
 
+.mat-cell:first-of-type,
+.mat-header-cell:first-of-type {
+  padding-left: 0;
+}
+
 .mat-cell {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -31,20 +36,51 @@
   display: table;
 }
 
-.mat-column-collaborators {
-  word-wrap: break-word !important;
-  white-space: unset !important;
+.mat-column-select {
+  flex: 10 3 5% !important;
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+
+.mat-column-title {
   flex: 20 3 5% !important;
-  width: 20% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
 
-  word-break: break-word;
+.mat-column-summary {
+  flex: 40 3 15% !important;
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
 
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+.mat-column-owner {
+  flex: 10 3 5% !important;
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+
+.mat-column-collaborators {
+  // word-wrap: break-word !important;
+  // white-space: wrap !important;
+  flex: 20 3 15% !important;
+  // width: 20% !important;
+  // overflow-wrap: break-word;
+  // word-wrap: break-word;
+  // word-break: break-word;
+
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
 }
 
 .avatar-group {
@@ -64,15 +100,12 @@
 }
 
 .mat-column-created {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 8 3 5% !important;
-  width: 8% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
+  // word-wrap: break-word !important;
+  // white-space: unset !important;
+  flex: 20 3 10% !important;
+  // width: 8% !important;
+  // overflow-wrap: break-word;
+  // word-break: break-word;
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
@@ -82,13 +115,10 @@
 .mat-column-edit {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 1% !important;
+  flex: 0 0 3% !important;
   width: 1% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
-  word-break: break-word;
-
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
@@ -98,13 +128,10 @@
 .mat-column-remove {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 1% !important;
+  flex: 0 0 3% !important;
   width: 1% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
-  word-break: break-word;
-
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
@@ -122,4 +149,37 @@
 td.mat-cell {
   border-top-style: none;
   border-bottom-style: none;
+}
+
+.mobile-label {
+  display: none;
+}
+
+.mat-row {
+  height: 4rem;
+}
+
+@media (max-width: 768px) {
+  .mobile-label {
+    width: 5rem;
+    display: inline-block;
+    font-weight: bold;
+    white-space: nowrap !important;
+    margin-right: 1rem;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column !important;
+    align-items: start;
+    padding: 30px 24px;
+    height: auto;
+  }
+
+  .only-desktop {
+    display: none;
+  }
 }

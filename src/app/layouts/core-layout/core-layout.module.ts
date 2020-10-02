@@ -17,8 +17,6 @@ import { MatIconModule } from "@angular/material/icon";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { TableListComponent } from "../../table-list/table-list.component";
-import { TypographyComponent } from "../../typography/typography.component";
 import { IconsComponent } from "../../icons/icons.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { IssuesTableComponent } from "./issue/issues-table/issues-table.component";
@@ -34,7 +32,7 @@ import { ProjectPageComponent } from "./project/project-page/project-page.compon
 import { IssuePageComponent } from "./issue/issue-page/issue-page.component";
 import { MatListModule } from "@angular/material/list";
 import { IssueListItems } from "./issue/issue-list-items/issue-list-items.component";
-import { AssigneesListComponent } from './issue/assignees-list/assignees-list.component';
+import { AssigneesListComponent } from "./issue/assignees-list/assignees-list.component";
 
 @NgModule({
   imports: [
@@ -57,8 +55,6 @@ import { AssigneesListComponent } from './issue/assignees-list/assignees-list.co
   declarations: [
     DashboardComponent,
     UserProfileComponent,
-    TableListComponent,
-    TypographyComponent,
     IconsComponent,
     NotificationsComponent,
     IssuesTableComponent,

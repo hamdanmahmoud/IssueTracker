@@ -15,20 +15,34 @@ import { IssueStatus } from "app/models/IssueStatus";
   styleUrls: ["./dashboard.component.css"],
 })
 export class DashboardComponent implements OnInit {
-  PROJECTS: ProjectCard[];
+  projectCards: ProjectCard[];
   tasks: Issue[];
   bugs: Issue[];
+  statusDropdownOptions: IssueStatus[];
   columnsToDisplayForIssues: string[];
-  statusList: IssueStatus[];
 
   constructor() {
     console.log("Dashboard");
   }
+
   ngOnInit(): void {
-    this.PROJECTS = dashboardProjects;
+    this.projectCards = dashboardProjects;
+
     this.tasks = allIssues.filter((issue) => issue.type === "task");
     this.bugs = allIssues.filter((issue) => issue.type === "bug");
+
     this.columnsToDisplayForIssues = columnsToDisplayForIssues;
-    this.statusList = statusOptions;
+    this.removeColumnsFromIssuesTable("select", "edit", "delete");
+
+    this.statusDropdownOptions = statusOptions;
+  }
+
+  removeColumnsFromIssuesTable(...columns: string[]): void {
+    columns.forEach((column) => {
+      this.columnsToDisplayForIssues.splice(
+        this.columnsToDisplayForIssues.indexOf(column),
+        1
+      );
+    });
   }
 }
