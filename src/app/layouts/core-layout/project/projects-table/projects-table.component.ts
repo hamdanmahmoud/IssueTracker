@@ -9,6 +9,7 @@ import { Project } from "app/models/Project";
   templateUrl: "./projects-table.component.html",
   styleUrls: [
     "./projects-table.component.scss",
+    "../../../../../assets/scss/responsive-table-styles.scss",
     "../../../../../assets/css/argon.css",
   ],
 })

@@ -1,130 +1,62 @@
-::ng-deep .mat-checkbox-checked .mat-checkbox-background,
-::ng-deep .mat-checkbox .mat-checkbox-frame,
-::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
-  background-color: #01bdd6 !important;
-  transform: scale(1);
-}
-
 ::ng-deep .mat-select-panel {
   max-height: none !important;
 }
 
-.mat-cell {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-  vertical-align: middle;
+.mat-column-select,
+.mat-column.project,
+.mat-column-summary,
+.mat-column-reporter,
+.mat-column-assignees,
+.mat-column-status,
+.mat-column-created,
+.mat-column-priority,
+.mat-column-edit,
+.mat-column-remove {
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
-.mat-header-cell {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: middle;
+.mat-column-select {
+  flex: 10 3 5% !important;
 }
 
-.table-cell {
-  overflow: hidden;
-  text-overflow: ellipsis;
+.mat-column-project {
+  flex: 20 3 5% !important;
 }
 
-.mat-table {
-  display: table;
+.mat-column-summary {
+  flex: 40 3 15% !important;
+}
+
+.mat-column-reporter {
+  flex: 10 3 5% !important;
 }
 
 .mat-column-assignees {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 20 3 5% !important;
-  width: 20% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-}
-
-.avatar-group {
-  .avatar {
-    position: relative;
-    z-index: 2;
-    border: 2px solid;
-
-    &:hover {
-      z-index: 3;
-    }
-  }
-
-  .avatar + .avatar {
-    margin-left: -1rem;
-  }
+  flex: 20 3 15% !important;
 }
 
 .mat-column-status {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 10 3 5% !important;
-  width: 8% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  flex: 20 3 5% !important;
 }
 
 .mat-column-created {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 8 3 5% !important;
-  width: 8% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  flex: 20 3 10% !important;
+}
 
-  word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+.mat-column-priority {
+  flex: 30 3 15%;
+  padding-left: 0 !important;
 }
 
 .mat-column-edit {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 0 0 1% !important;
-  width: 1% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  flex: 0 0 3% !important;
 }
 
 .mat-column-remove {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 0 0 1% !important;
-  width: 1% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  flex: 0 0 3% !important;
 }
 
 .status-cell {
@@ -143,17 +75,16 @@
   border-radius: 30px;
 }
 
+// ::ng-deep .mat-select {
+//   width: 100%;
+// }
+
 ::ng-deep .mat-select-value-text {
   color: rgb(255, 255, 255);
 }
 
 ::ng-deep .mat-select {
   border-radius: 0px solid transparent;
-}
-
-td.mat-cell {
-  border-top-style: none;
-  border-bottom-style: none;
 }
 
 ::ng-deep .mat-select-value.status-PENDING {
@@ -225,4 +156,20 @@ td.mat-cell {
   box-shadow: none;
   border-radius: 0;
   height: auto;
+}
+
+@media (max-width: 768px) {
+  .mobile-label.status-label {
+    width: 10rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .mobile-label.status-label {
+    width: 5rem;
+  }
+
+  .mat-cell.mat-column-status {
+    display: inline;
+  }
 }

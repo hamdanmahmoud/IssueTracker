@@ -9,6 +9,7 @@ import { API } from "../../../../API.conf";
   templateUrl: "./issues-table.component.html",
   styleUrls: [
     "./issues-table.component.scss",
+    "../../../../../assets/scss/responsive-table-styles.scss",
     "../../../../../assets/css/argon.css",
   ],
 })

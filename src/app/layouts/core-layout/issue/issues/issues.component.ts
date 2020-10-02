@@ -11,6 +11,7 @@ import {
   templateUrl: "./issues.component.html",
   styleUrls: [
     "./issues.component.css",
+    "../../project/projects/projects.component.css",
     "../../dashboard/dashboard.component.css",
   ],
 })
