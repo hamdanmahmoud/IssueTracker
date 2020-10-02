@@ -84,14 +84,14 @@ td.mat-cell {
   border-bottom-style: none;
 }
 
-.mobile-label {
-  display: none;
+@media (min-width: 768px) {
+  .mobile-label {
+    display: none;
+  }
+  .only-desktop {
+    display: unset;
+  }
 }
-
-.mat-row {
-  height: 6rem;
-}
-
 @media (max-width: 768px) {
   .mobile-label {
     width: 5rem;
