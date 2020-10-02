@@ -1,7 +1,7 @@
 <div *ngIf="data">
   <mat-table [dataSource]="dataSource" class="table">
     <ng-container matColumnDef="select">
-      <mat-header-cell *matHeaderCellDef class="mat-column-select">
+      <mat-header-cell *matHeaderCellDef class="mat-column mat-column-select">
         <mat-checkbox
           (change)="$event ? masterToggle() : null"
           [checked]="selection.hasValue() && isAllSelected()"
@@ -10,7 +10,10 @@
         >
         </mat-checkbox>
       </mat-header-cell>
-      <mat-cell *matCellDef="let row" class="only-desktop mat-column-select">
+      <mat-cell
+        *matCellDef="let row"
+        class="only-desktop mat-column mat-column-select"
+      >
         <mat-checkbox
           (click)="$event.stopPropagation()"
           (change)="$event ? selection.toggle(row) : null"
@@ -25,14 +28,14 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-project"
+        class="mat-column mat-column-project"
       >
         Project
       </mat-header-cell>
       <mat-cell
         fxLayoutAlign="start center"
         *matCellDef="let element"
-        class="mat-column-project"
+        class="mat-column mat-column-project"
       >
         <span class="mobile-label">Project:</span>
 
@@ -50,7 +53,7 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-summary"
+        class="mat-column mat-column-summary"
       >
         Summary
       </mat-header-cell>
@@ -58,7 +61,7 @@
         fxLayoutAlign="start center"
         *matCellDef="let element"
         mat-cell
-        class="mat-column-summary"
+        class="mat-column mat-column-summary"
       >
         <span class="mobile-label">Summary:</span>
 
@@ -80,14 +83,14 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-reporter"
+        class="mat-column mat-column-reporter"
       >
         Reporter
       </mat-header-cell>
       <mat-cell
         fxLayoutAlign="start center"
         *matCellDef="let element"
-        class="mat-column-reporter"
+        class="mat-column mat-column-reporter"
       >
         <span class="mobile-label">Reporter:</span>
 
@@ -106,14 +109,14 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-assignees"
+        class="mat-column mat-column-assignees"
       >
         Assignees
       </mat-header-cell>
       <mat-cell
         fxLayoutAlign="start center"
         *matCellDef="let element"
-        class="mat-column-assignees"
+        class="mat-column mat-column-assignees"
       >
         <div class="avatar-group" data-toggle="tooltip">
           <span class="mobile-label">Assignees:</span>
@@ -139,14 +142,14 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-status"
+        class="mat-column mat-column-status"
       >
         Status
       </mat-header-cell>
       <mat-cell
         fxLayoutAlign="start center"
         *matCellDef="let element"
-        class="mat-column-status"
+        class="mat-column mat-column-status"
       >
         <span class="mobile-label status-label">Status:</span>
 
@@ -169,14 +172,14 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-created"
+        class="mat-column mat-column-created"
       >
         Created
       </mat-header-cell>
       <mat-cell
         fxLayoutAlign="start center"
         *matCellDef="let element"
-        class="mat-column-created"
+        class="mat-column mat-column-created"
       >
         <span class="mobile-label">Created:</span>
 
@@ -188,7 +191,7 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-priority"
+        class="mat-column mat-column-priority"
       >
         Priority
       </mat-header-cell>
@@ -196,7 +199,7 @@
         fxLayoutAlign="start center"
         mat-cell
         *matCellDef="let element"
-        class="mat-column-priority only-desktop"
+        class="mat-column mat-column-priority only-desktop"
       >
         <div class="d-flex align-items-center">
           <span class="mobile-label">Priority:</span>
@@ -230,12 +233,12 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-edit"
+        class="mat-column mat-column-edit"
       ></mat-header-cell>
       <mat-cell
         fxLayoutAlign="start center"
         *matCellDef="let element"
-        class="mat-column-edit only-desktop"
+        class="mat-column mat-column-edit only-desktop"
       >
         <button
           mat-raised-button
@@ -253,12 +256,12 @@
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
-        class="mat-column-remove"
+        class="mat-column mat-column-remove"
       ></mat-header-cell>
       <mat-cell
         fxLayoutAlign="start center"
         *matCellDef="let element"
-        class="mat-column-remove only-desktop"
+        class="mat-column mat-column-remove only-desktop"
       >
         <button
           mat-raised-button

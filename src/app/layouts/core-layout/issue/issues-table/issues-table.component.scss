@@ -23,15 +23,15 @@
 }
 
 .mat-column-project {
-  flex: 20 3 5% !important;
+  flex: 20 3 10% !important;
 }
 
 .mat-column-summary {
-  flex: 40 3 15% !important;
+  flex: 40 3 30% !important;
 }
 
 .mat-column-reporter {
-  flex: 10 3 5% !important;
+  flex: 10 3 15% !important;
 }
 
 .mat-column-assignees {
@@ -39,7 +39,7 @@
 }
 
 .mat-column-status {
-  flex: 20 3 5% !important;
+  flex: 20 3 8% !important;
 }
 
 .mat-column-created {
@@ -161,6 +161,12 @@
 @media (max-width: 768px) {
   .mobile-label.status-label {
     width: 10rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .mat-cell.mat-column-reporter {
+    display: inline;
   }
 }
 
