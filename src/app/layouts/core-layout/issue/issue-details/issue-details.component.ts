@@ -47,4 +47,8 @@ export class IssueDetailsComponent implements OnInit {
   compareFn(f1, f2): boolean {
     return f1 && f2 ? f1.name === f2.name : f1 === f2;
   }
+
+  saveIssue() {
+    throw "Not implemented";
+  }
 }
