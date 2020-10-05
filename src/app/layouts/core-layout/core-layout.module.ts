@@ -33,6 +33,8 @@ import { IssuePageComponent } from "./issue/issue-page/issue-page.component";
 import { MatListModule } from "@angular/material/list";
 import { IssueListItems } from "./issue/issue-list-items/issue-list-items.component";
 import { AssigneesListComponent } from "./issue/assignees-list/assignees-list.component";
+import { MultiSelectComponent } from "./multi-select/multi-select.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   imports: [
@@ -51,6 +53,7 @@ import { AssigneesListComponent } from "./issue/assignees-list/assignees-list.co
     MatCardModule,
     MatIconModule,
     MatListModule,
+    MatDialogModule,
   ],
   declarations: [
     DashboardComponent,
@@ -70,6 +73,7 @@ import { AssigneesListComponent } from "./issue/assignees-list/assignees-list.co
     IssuePageComponent,
     IssueListItems,
     AssigneesListComponent,
+    MultiSelectComponent,
   ],
   exports: [ProjectDetailsComponent, IssueDetailsComponent],
 })

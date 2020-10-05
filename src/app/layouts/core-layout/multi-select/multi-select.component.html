@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ optionsType }}</mat-label>
+  <mat-select [formControl]="options" multiple>
+    <mat-option *ngFor="let option of optionsList" [value]="option">{{
+      optionsType === "Users"
+        ? option.firstName + " " + option.lastName
+        : option
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
