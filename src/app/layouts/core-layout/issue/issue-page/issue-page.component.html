@@ -11,7 +11,7 @@
         <a href="javascript:void(0)" class="avatar avatar-sm">
           <img
             alt="Image placeholder"
-            src="/assets/img/{{ selectedIssue.reporter.getId() }}.jpg"
+            src="{{ selectedIssue.reporter.getImageUrl() }}"
             class="rounded-circle"
           />
         </a>
@@ -27,7 +27,7 @@
             >
               <img
                 alt="Image placeholder"
-                src="/assets/img/{{ assignee.getId() }}.jpg"
+                src="{{ assignee.getImageUrl() }}"
                 class="rounded-circle"
               />
             </a>

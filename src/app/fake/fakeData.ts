@@ -9,21 +9,24 @@ export const mahmoud: User = new User(
   "4d3944fe-5861-477c-b50a-4eee542667d5",
   "Mahmoud-Tudor",
   "Hamdan",
-  "hamdan.mahmoudtudor@gmail.com"
+  "hamdan.mahmoudtudor@gmail.com",
+  "https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_960_720.jpg"
 );
 
 export const ana: User = new User(
   "dfefdd1f-1975-4795-8f38-dc77a849cc50",
   "Ana-Maria",
   "Tanase",
-  "tanase.anamaria97@gmail.com"
+  "tanase.anamaria97@gmail.com",
+  "https://resilientblog.co/wp-content/uploads/2019/07/sky-quotes.jpg"
 );
 
 export const hori: User = new User(
   "10204d49-4251-4219-945f-a2f4aaa7dd41",
   "George-Horatiu",
   "Niculae",
-  "niculae.georgehoratiu@gmail.com"
+  "niculae.georgehoratiu@gmail.com",
+  "https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
 );
 
 export const project1: Project = {

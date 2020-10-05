@@ -8,9 +8,10 @@ export class LoggedInUser extends User {
     firstName: string,
     lastName: string,
     mail: string,
+    imageUrl: string,
     token: string
   ) {
-    super(id, firstName, lastName, mail);
+    super(id, firstName, lastName, mail, imageUrl);
     this.token = token;
   }
 
