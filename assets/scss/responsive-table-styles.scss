@@ -1,0 +1,122 @@
+.mat-cell:first-of-type,
+.mat-header-cell:first-of-type {
+  padding-left: 0;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox .mat-checkbox-frame,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+  background-color: #01bdd6 !important;
+  transform: scale(1);
+}
+
+.mat-cell:not(.mat-column-select, .mat-column-title) {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.mat-cell.mat-column-select {
+  padding-top: 1rem;
+}
+
+.mat-cell.mat-column-status {
+  margin-right: 40px;
+}
+
+.mat-header-cell.mat-column-project,
+.mat-header-cell.mat-column-status {
+  margin-right: 30px;
+}
+
+.mat-cell.mat-column-project,
+.mat-cell.mat-column-priority {
+  margin-right: 30px;
+}
+
+.mat-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  vertical-align: middle;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.mat-column.mat-column-reporter {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  width: 40% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+}
+
+.mat-header-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.table-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-table {
+  display: table;
+}
+
+.avatar-group {
+  .avatar {
+    position: relative;
+    z-index: 2;
+    border: 2px solid;
+
+    &:hover {
+      z-index: 3;
+    }
+  }
+
+  .avatar + .avatar {
+    margin-left: -1rem;
+  }
+}
+
+td.mat-cell {
+  border-top-style: none !important;
+  border-bottom-style: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-label {
+    display: none;
+  }
+  .only-desktop {
+    display: unset;
+  }
+}
+@media (max-width: 768px) {
+  .mobile-label {
+    width: 5rem;
+    display: inline-block;
+    font-weight: bold;
+    white-space: nowrap !important;
+    margin-right: 1rem;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column !important;
+    align-items: start;
+    padding: 30px 24px;
+    height: auto;
+  }
+
+  .only-desktop {
+    display: none;
+  }
+}
