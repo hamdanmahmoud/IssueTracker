@@ -17,18 +17,31 @@
     </div>
     <div class="assignees">
       <div class="secondary-right-subtitle">Assignees</div>
-      <div class="avatar-group" data-toggle="tooltip">
-        <a
-          *ngFor="let assignee of selectedIssue.assignees"
-          href="javascript:void(0)"
-          class="avatar avatar-sm"
-        >
-          <img
-            alt="Image placeholder"
-            src="/assets/img/{{ assignee.getId() }}.jpg"
-            class="rounded-circle"
-          />
-        </a>
+      <div class="assignees-row">
+        <div class="avatar-group" data-toggle="tooltip">
+          <a
+            *ngFor="let assignee of selectedIssue.assignees"
+            href="javascript:void(0)"
+            class="avatar avatar-sm"
+          >
+            <img
+              alt="Image placeholder"
+              src="/assets/img/{{ assignee.getId() }}.jpg"
+              class="rounded-circle"
+            />
+          </a>
+        </div>
+        <div class="edit-assignees">
+          <button
+            mat-raised-button
+            type="button"
+            matTooltip="Edit Asignees"
+            [matTooltipPosition]="'above'"
+            class="btn btn-primary btn-link btn-sm btn-just-icon"
+          >
+            <i class="material-icons">edit</i>
+          </button>
+        </div>
       </div>
     </div>
     <div class="action">

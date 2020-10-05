@@ -13,33 +13,11 @@
     position: absolute;
     left: 30%;
   }
-  .btn-add-mail,
-  .btn-remove-mail {
-    max-width: 150px;
-  }
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
   color: rgb(8, 147, 172) !important;
-}
-
-.buttons-buttom {
-  width: 100%;
-  display: inline-block;
-}
-
-.btn-add-mail,
-.btn-remove-mail {
-  width: 100%;
-}
-
-.btn-add-mail {
-  float: right;
-}
-
-.btn-remove-mail {
-  float: left;
 }
 
 .btn-create {
