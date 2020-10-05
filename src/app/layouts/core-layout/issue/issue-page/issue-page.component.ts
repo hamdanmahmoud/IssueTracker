@@ -47,7 +47,10 @@ export class IssuePageComponent implements OnInit {
       width: "300px",
       height: "600px",
       // data: {
-      //   selectedOptionsList: [Permission.ADD_COMMENTS, Permission.ASSIGN_ISSUES],
+      //   selectedOptionsList: [
+      //     Permission.ADD_COMMENTS,
+      //     Permission.ASSIGN_ISSUES,
+      //   ],
       // },
       data: { selectedOptionsList: this.selectedIssue.assignees },
     });

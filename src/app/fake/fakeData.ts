@@ -1,5 +1,6 @@
 import { Issue } from "app/models/Issue";
 import { IssueStatus } from "app/models/IssueStatus";
+import { Permission } from "app/models/Permission";
 import { Project } from "app/models/Project";
 import { ProjectCard } from "app/models/ProjectCard";
 import { User } from "app/models/User";
@@ -322,6 +323,21 @@ export const columnsToDisplayForCollaborations: string[] = [
   "owner",
   "collaborators",
   "created",
+];
+
+export const allPermissions: Permission[] = [
+  Permission.ADD_COMMENTS,
+  Permission.ADMINISTER_ROLES,
+  Permission.ASSIGN_ISSUES,
+  Permission.CANCEL_ISSUES,
+  Permission.CLOSE_ISSUES,
+  Permission.CREATE_ISSUES,
+  Permission.DELETE_ALL_COMMENTS,
+  Permission.DELETE_ISSUES,
+  Permission.DELETE_OWN_COMMENTS,
+  Permission.EDIT_ALL_COMMENTS,
+  Permission.EDIT_ISSUES,
+  Permission.EDIT_OWN_COMMENTS,
 ];
 
 export const statusOptions: IssueStatus[] = [
