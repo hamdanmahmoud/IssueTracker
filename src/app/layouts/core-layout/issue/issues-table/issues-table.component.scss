@@ -39,7 +39,7 @@
 }
 
 .mat-column-status {
-  flex: 20 3 8% !important;
+  flex: 30 3 10% !important;
 }
 
 .mat-column-created {
@@ -63,6 +63,21 @@
   color: white;
   font-weight: bold;
   border-radius: 0px;
+  height: 1.5rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+:host::ng-deep .status-cell.dropdown-cell {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 35px !important;
+  line-height: 7rem;
+}
+
+::ng-deep .status-dropdown.mat-option {
+  line-height: 2em !important;
 }
 
 .status-cell.status-CANCELED,
@@ -79,16 +94,12 @@
 //   width: 100%;
 // }
 
-::ng-deep .mat-select-value-text {
+:host::ng-deep .mat-select-value-text {
   color: rgb(255, 255, 255);
 }
 
 ::ng-deep .mat-select {
   border-radius: 0px solid transparent;
-}
-
-::ng-deep .mat-select-value.status-PENDING {
-  background-color: rgb(255, 190, 11);
 }
 
 ::ng-deep .mat-select-value.status-CANCELED {
@@ -122,6 +133,7 @@
 .status-dropdown {
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
+  width: 100%;
 }
 
 .status-PENDING {

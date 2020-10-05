@@ -1,0 +1,18 @@
+:host::ng-deep .mat-select-value-text {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  font-size: medium;
+}
+
+.not-a-dropdown-option {
+  font-size: small !important;
+}
+
+.additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+::ng-deep .mat-select-panel {
+  min-width: 5rem !important;
+}

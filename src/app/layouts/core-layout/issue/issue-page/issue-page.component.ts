@@ -44,8 +44,8 @@ export class IssuePageComponent implements OnInit {
   onEditAssigneesClick() {
     console.log("Clicked edit assignees");
     const dialogRef = this.dialog.open(MultiSelectComponent, {
-      width: "300px",
-      height: "600px",
+      width: "20rem",
+      height: "15rem",
       // data: {
       //   selectedOptionsList: [
       //     Permission.ADD_COMMENTS,

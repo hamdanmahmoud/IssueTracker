@@ -49,6 +49,7 @@
   margin: 10px;
   align-content: stretch;
   min-width: 7rem;
+  border-right: 3px groove rgba(85, 85, 85, 0.164);
 }
 
 .right-container {
@@ -57,6 +58,7 @@
   margin: 10px;
   margin-top: 2rem;
   display: flex;
+  flex-shrink: 1;
 }
 
 .noselect {
@@ -70,5 +72,21 @@
 }
 
 mat-list.make-scrollable {
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(8, 123, 131, 0.541);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

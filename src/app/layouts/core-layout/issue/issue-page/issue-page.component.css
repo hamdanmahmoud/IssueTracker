@@ -1,5 +1,27 @@
+.container {
+  overflow-y: auto;
+  height: 100%;
+}
+
 .main-container {
   display: flex;
+  /* overflow-y: scroll; */
+}
+
+:host::ng-deep .status-cell.dropdown-cell {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 35px !important;
+  line-height: 7rem;
+}
+
+/* :host::ng-deep .mat-select-panel {
+  max-width: 100px;
+} */
+
+::ng-deep .status-dropdown.mat-option {
+  line-height: 2em !important;
 }
 
 @media (max-width: 768px) {
@@ -66,6 +88,7 @@
 
 .action-dropdown {
   font-weight: bold;
+  width: 100px;
 }
 
 ::ng-deep .mat-select-arrow {
@@ -73,4 +96,20 @@
   border-right: none !important;
   border-top: 15px solid transparent !important;
   border-image-repeat: stretch !important;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(8, 123, 131, 0.541);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

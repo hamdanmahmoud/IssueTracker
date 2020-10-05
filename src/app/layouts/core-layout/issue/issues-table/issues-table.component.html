@@ -155,6 +155,7 @@
 
         <mat-select
           [(ngModel)]="element.status"
+          disableOptionCentering
           class="status-{{ element.status }} status-cell"
         >
           <mat-option
@@ -162,7 +163,9 @@
             [value]="status"
             class="status-dropdown not-empty-select"
           >
-            <span class="status-cell status-{{ status }}">{{ status }}</span>
+            <div class="status-cell dropdown-cell status-{{ status }}">
+              {{ status }}
+            </div>
           </mat-option>
         </mat-select>
       </mat-cell>

@@ -13,11 +13,32 @@
       "
       multiple
     >
-      <mat-option *ngFor="let option of allOptions" [value]="option">{{
-        optionsType === "assignees"
-          ? option.firstName + " " + option.lastName
-          : option
-      }}</mat-option>
+      <mat-select-trigger>
+        {{
+          selectedOptionsList.value && selectedOptionsList.value.length
+            ? optionsType === "assignees"
+              ? selectedOptionsList.value[0].lastName
+              : selectedOptionsList.value[0]
+            : ""
+        }}
+        <span
+          *ngIf="selectedOptionsList.value?.length > 1"
+          class="additional-selection"
+        >
+          (+{{ selectedOptionsList.value.length - 1 }}
+          {{ selectedOptionsList.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let option of allOptions"
+        [value]="option"
+        [ngClass]="'not-a-dropdown-option'"
+        >{{
+          optionsType === "assignees"
+            ? option.firstName + " " + option.lastName
+            : option
+        }}</mat-option
+      >
     </mat-select>
   </mat-form-field>
 </div>

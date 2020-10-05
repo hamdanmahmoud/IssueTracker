@@ -213,7 +213,83 @@ const task5: Issue = {
   selected: false,
 };
 
-export const tasks: Issue[] = [task1, task2, task3, task4, task5];
+const task6: Issue = {
+  project: project4,
+  summary: "Another summary here",
+  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  Ut enim ad minim veniam.`,
+  reporter: hori,
+  assignees: [mahmoud],
+  status: "PENDING",
+  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+  priority: 55,
+  type: "task",
+  id: "3fbb8319-61c8-413d-8778-8dce95fc47ae",
+  selected: false,
+};
+
+const task7: Issue = {
+  project: project4,
+  summary: "Summary for this issue",
+  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  Ut enim ad minim veniam.`,
+  reporter: mahmoud,
+  assignees: [ana, hori],
+  status: "RESOLVED",
+  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+  priority: 60,
+  type: "task",
+  id: "78c0014a-fd2f-411c-af98-3d574e4845df",
+  selected: false,
+};
+
+const task8: Issue = {
+  project: project4,
+  summary: "Summary for this task",
+  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
+  sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+  reporter: ana,
+  assignees: [mahmoud, hori],
+  status: "TO_DO",
+  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+  priority: 20,
+  type: "task",
+  id: "c2bfee57-6262-4b11-976a-1111c203b62e",
+  selected: false,
+};
+
+const task9: Issue = {
+  project: project4,
+  summary: "Summary for this issue right here.",
+  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
+  sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+  reporter: mahmoud,
+  assignees: [ana, hori],
+  status: "DONE",
+  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+  priority: 30,
+  type: "task",
+  id: "86501f3c-856e-4938-8f74-6d95ab33b8f9",
+  selected: false,
+};
+
+export const tasks: Issue[] = [
+  task1,
+  task2,
+  task3,
+  task4,
+  task5,
+  task6,
+  task7,
+  task8,
+  task9,
+];
 
 const bug1: Issue = {
   project: project1,
@@ -289,7 +365,24 @@ const bug4: Issue = {
   selected: false,
 };
 
-export const bugs: Issue[] = [bug1, bug2, bug3, bug4];
+const bug5: Issue = {
+  project: project4,
+  summary: "Some very smart summary for this bug",
+  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
+  sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+  reporter: ana,
+  assignees: [hori, mahmoud],
+  status: "CANCELED",
+  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
+  priority: 70,
+  type: "bug",
+  id: "320c739e-025a-46e5-905d-5c2f0013286c",
+  selected: false,
+};
+
+export const bugs: Issue[] = [bug1, bug2, bug3, bug4, bug4, bug5];
 
 export const allIssues: Issue[] = [...tasks, ...bugs];
 
