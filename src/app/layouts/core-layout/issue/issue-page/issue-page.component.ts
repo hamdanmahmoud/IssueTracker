@@ -47,9 +47,9 @@ export class IssuePageComponent implements OnInit {
       width: "300px",
       height: "600px",
       // data: {
-      //   optionsList: [Permission.ADD_COMMENTS, Permission.ASSIGN_ISSUES],
+      //   selectedOptionsList: [Permission.ADD_COMMENTS, Permission.ASSIGN_ISSUES],
       // },
-      data: { optionsList: this.selectedIssue.assignees },
+      data: { selectedOptionsList: this.selectedIssue.assignees },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

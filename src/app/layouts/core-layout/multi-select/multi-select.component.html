@@ -1,10 +1,17 @@
-<mat-form-field appearance="fill">
-  <mat-label>{{ optionsType }}</mat-label>
-  <mat-select [formControl]="options" multiple>
-    <mat-option *ngFor="let option of optionsList" [value]="option">{{
-      optionsType === "Users"
-        ? option.firstName + " " + option.lastName
-        : option
-    }}</mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="container">
+  <div class="options-label">
+    <h4>Manage {{ optionsType }}</h4>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>{{
+      optionsType.charAt(0).toUpperCase() + optionsType.slice(1)
+    }}</mat-label>
+    <mat-select [formControl]="allOptions" [compareWith]="compareFn" multiple>
+      <mat-option *ngFor="let option of selectedOptionsList" [value]="option">{{
+        optionsType === "assignees"
+          ? option.firstName + " " + option.lastName
+          : option
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
