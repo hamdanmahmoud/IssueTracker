@@ -2,9 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { User } from "app/models/User";
 import { Permission } from "../../../models/Permission";
-import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Inject } from "@angular/core";
 import { mahmoud, ana, hori, allPermissions } from "../../../fake/fakeData";
+import { ManageUserRolesComponent } from "../roles/manage-user-roles/manage-user-roles.component";
 
 @Component({
   selector: "app-multi-select",
@@ -14,12 +15,17 @@ import { mahmoud, ana, hori, allPermissions } from "../../../fake/fakeData";
 export class MultiSelectComponent implements OnInit {
   selectedOptionsList: FormControl;
   allOptions: User[] | Permission[];
+  projectId: string;
   optionsType: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.selectedOptionsList = new FormControl(this.data.selectedOptionsList);
+    this.projectId = this.data.projectId;
 
     if (!this.selectedOptionsList) return;
 
@@ -56,5 +62,24 @@ export class MultiSelectComponent implements OnInit {
 
   onSave() {
     console.log(this.selectedOptionsList.value);
+  }
+
+  manageRolesForUser(event: Event, user: User) {
+    console.log("Clicked manage permissions for user");
+    console.log(event, user);
+
+    // disabling option check - do not remove following two lines
+    event.preventDefault();
+    event.stopPropagation();
+
+    const dialogRef = this.dialog.open(ManageUserRolesComponent, {
+      width: "20rem",
+      height: "30rem",
+      data: { user: user, projectId: this.projectId },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
   }
 }

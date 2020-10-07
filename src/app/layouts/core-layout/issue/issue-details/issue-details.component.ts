@@ -1,20 +1,17 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { IssueType } from "app/models/IssueType";
-import { Project } from "app/models/Project";
+import { TrackerProject } from "app/models/TrackerProject";
 import { projectsCreatedByMe, collaborations } from "../../../../fake/fakeData";
 @Component({
   selector: "app-issue-details",
   templateUrl: "./issue-details.component.html",
-  styleUrls: [
-    "./issue-details.component.css",
-    "../../dashboard/dashboard.component.css",
-  ],
+  styleUrls: ["./issue-details.component.css"],
 })
 export class IssueDetailsComponent implements OnInit {
   @Input()
   action: "create" | "edit";
 
-  projects: Project[];
+  projects: TrackerProject[];
 
   defaultIssueType: IssueType;
 

@@ -39,4 +39,8 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {}
+
+  save() {
+    throw "Not implemented";
+  }
 }

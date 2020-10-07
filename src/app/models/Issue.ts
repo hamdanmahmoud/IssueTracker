@@ -1,8 +1,9 @@
 import { Project } from "./Project";
+import { TrackerProject } from "./TrackerProject";
 import { User } from "./User";
 
 export interface Issue {
-  project: Project;
+  project: TrackerProject;
   summary: string;
   description: string;
   reporter: User;

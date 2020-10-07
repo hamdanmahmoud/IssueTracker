@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Issue } from "app/models/Issue";
-import { Project } from "app/models/Project";
+import { TrackerProject } from "app/models/TrackerProject";
 import {
   tasks,
   bugs,
@@ -9,6 +10,10 @@ import {
   collaborations,
   mahmoud,
 } from "../../../../fake/fakeData";
+import { CreateRoleComponent } from "../../roles/create-role/create-role.component";
+import { ManageRolesOnProjectComponent } from "../../roles/manage-roles-on-project/manage-roles-on-project.component";
+import { ManageUsersOnProject } from "../../roles/manage-users-on-project/manage-users-on-project.component";
+import { ManageUserRolesComponent } from "../../roles/manage-user-roles/manage-user-roles.component";
 
 export interface Section {
   name: string;
@@ -25,13 +30,17 @@ export interface Section {
 })
 export class ProjectPageComponent implements OnInit {
   projectId: string;
-  project: Project;
+  project: TrackerProject;
   issues: Issue[];
   selectedIssue: Issue;
   selectedIssueId: string;
   sortBy: undefined | "open" | "mine" | "urgent";
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     console.log("Project-page");
@@ -120,5 +129,44 @@ export class ProjectPageComponent implements OnInit {
       }
     );
     console.log("Selected issue id changed to", this.selectedIssueId);
+  }
+
+  openCreateRole() {
+    console.log("Clicked open create role");
+    const dialogRef = this.dialog.open(CreateRoleComponent, {
+      width: "20rem",
+      height: "30rem",
+      data: { project: this.project },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  }
+
+  openManageRoles() {
+    console.log("Clicked open manage roles");
+    const dialogRef = this.dialog.open(ManageRolesOnProjectComponent, {
+      width: "20rem",
+      height: "25rem",
+      data: { project: this.project },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  }
+
+  openManageUsers() {
+    console.log("Clicked open manage users");
+    const dialogRef = this.dialog.open(ManageUsersOnProject, {
+      width: "20rem",
+      height: "25rem",
+      data: { project: this.project },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
   }
 }

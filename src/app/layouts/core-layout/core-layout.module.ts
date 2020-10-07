@@ -34,6 +34,11 @@ import { MatListModule } from "@angular/material/list";
 import { IssueListItems } from "./issue/issue-list-items/issue-list-items.component";
 import { MultiSelectComponent } from "./multi-select/multi-select.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { CreateRoleComponent } from "./roles/create-role/create-role.component";
+import { ManageUserRolesComponent } from "./roles/manage-user-roles/manage-user-roles.component";
+import { ManageUsersOnProject } from "./roles/manage-users-on-project/manage-users-on-project.component";
+import { ManageRolesOnProjectComponent } from "./roles/manage-roles-on-project/manage-roles-on-project.component";
+import { EditRoleComponent } from "./roles/edit-role/edit-role.component";
 
 @NgModule({
   imports: [
@@ -72,6 +77,11 @@ import { MatDialogModule } from "@angular/material/dialog";
     IssuePageComponent,
     IssueListItems,
     MultiSelectComponent,
+    CreateRoleComponent,
+    ManageUserRolesComponent,
+    ManageUsersOnProject,
+    ManageRolesOnProjectComponent,
+    EditRoleComponent,
   ],
   exports: [ProjectDetailsComponent, IssueDetailsComponent],
 })

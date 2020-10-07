@@ -1,3 +1,4 @@
+import { Role } from "./Role";
 import { User } from "./User";
 
 export class LoggedInUser extends User {
@@ -9,9 +10,10 @@ export class LoggedInUser extends User {
     lastName: string,
     mail: string,
     imageUrl: string,
+    roles: Role[],
     token: string
   ) {
-    super(id, firstName, lastName, mail, imageUrl);
+    super(id, firstName, lastName, mail, imageUrl, roles);
     this.token = token;
   }
 

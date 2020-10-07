@@ -15,7 +15,9 @@
       >
         Urgent issues
       </button>
-      <div class="dot-container">
+      <div
+        class="dot-container {{ !project.urgentIssues ? 'disabled-div' : '' }}"
+      >
         <span class="dot {{ !project.urgentIssues ? 'disabled-div' : '' }}">{{
           project.urgentIssues
         }}</span>
@@ -50,7 +52,7 @@
         All open
       </button>
       <div class="dot-container {{ !project.allOpen ? 'disabled-div' : '' }}">
-        <span class="dot {{ !project.assignedToMe ? 'disabled-div' : '' }}">{{
+        <span class="dot {{ !project.allOpen ? 'disabled-div' : '' }}">{{
           project.allOpen
         }}</span>
       </div>

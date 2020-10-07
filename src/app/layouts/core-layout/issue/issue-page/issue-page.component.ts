@@ -18,6 +18,7 @@ import { Permission } from "app/models/Permission";
 })
 export class IssuePageComponent implements OnInit {
   @Input() selectedIssueId: string;
+  @Input() projectId: string;
   selectedIssue: Issue;
   statusList: IssueStatus[];
 
@@ -52,7 +53,10 @@ export class IssuePageComponent implements OnInit {
       //     Permission.ASSIGN_ISSUES,
       //   ],
       // },
-      data: { selectedOptionsList: this.selectedIssue.assignees },
+      data: {
+        selectedOptionsList: this.selectedIssue.assignees,
+        projectId: this.projectId,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

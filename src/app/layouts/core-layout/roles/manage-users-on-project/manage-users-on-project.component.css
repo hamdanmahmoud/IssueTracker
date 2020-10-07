@@ -1,0 +1,19 @@
+.btn-create {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #03a9be;
+  font-weight: 700;
+}
+
+.btn-link {
+  float: right;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.options-label {
+  margin-bottom: 2rem;
+}

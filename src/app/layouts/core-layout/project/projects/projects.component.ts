@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { Project } from "../../../../models/Project";
 import {
   projectsCreatedByMe,
   collaborations,
   columnsToDisplayForMyProjects,
   columnsToDisplayForCollaborations,
 } from "../../../../fake/fakeData";
+import { TrackerProject } from "app/models/TrackerProject";
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html",
@@ -16,8 +16,8 @@ import {
 })
 export class ProjectsComponent implements OnInit {
   isRemoveButtonEnabled: boolean = true;
-  projectsCreatedByMe: Project[];
-  collaborations: Project[];
+  projectsCreatedByMe: TrackerProject[];
+  collaborations: TrackerProject[];
   columnsToDisplayForMyProjects: string[];
   columnsToDisplayForCollaborations: string[];
 

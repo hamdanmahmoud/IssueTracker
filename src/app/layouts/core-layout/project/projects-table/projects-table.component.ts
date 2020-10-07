@@ -2,7 +2,7 @@ import { SelectionModel } from "@angular/cdk/collections";
 import { Component, Input, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { API } from "../../../../API.conf";
-import { Project } from "app/models/Project";
+import { TrackerProject } from "app/models/TrackerProject";
 
 @Component({
   selector: "app-projects-table",
@@ -15,18 +15,18 @@ import { Project } from "app/models/Project";
 })
 export class ProjectsTableComponent implements OnInit {
   @Input()
-  data: Project[];
+  data: TrackerProject[];
 
   @Input()
   displayedColumns: string[];
 
-  dataSource: MatTableDataSource<Project>;
-  selection = new SelectionModel<Project>(true, []);
+  dataSource: MatTableDataSource<TrackerProject>;
+  selection = new SelectionModel<TrackerProject>(true, []);
 
   constructor(private API: API) {}
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Project>(this.data);
+    this.dataSource = new MatTableDataSource<TrackerProject>(this.data);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -44,7 +44,7 @@ export class ProjectsTableComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Project): string {
+  checkboxLabel(row?: TrackerProject): string {
     if (!row) {
       return `${this.isAllSelected() ? "select" : "deselect"} all`;
     }

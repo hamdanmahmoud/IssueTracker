@@ -1,16 +1,446 @@
 import { Issue } from "app/models/Issue";
 import { IssueStatus } from "app/models/IssueStatus";
 import { Permission } from "app/models/Permission";
-import { Project } from "app/models/Project";
 import { ProjectCard } from "app/models/ProjectCard";
+import { Role } from "app/models/Role";
+import { TrackerProject } from "app/models/TrackerProject";
 import { User } from "app/models/User";
+
+const role1: Role = new Role(
+  "debe1e35-274b-406c-8d43-d8903346c2fe",
+  "Project-leader",
+  "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
+  [
+    Permission.ADD_COMMENTS,
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+  ]
+);
+
+const role2: Role = new Role(
+  "30f2d76e-0a7b-43e0-9eb0-e4fa6b4aa90e",
+  "Tester",
+  "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+  ]
+);
+
+const role3: Role = new Role(
+  "8c096ea3-c498-40cc-9d87-1af6ace886d8",
+  "Owner",
+  "942391a3-3c7a-4bc2-8e26-f59f9c4ded30",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role4: Role = new Role(
+  "d98e1c65-9c6a-4de0-a4d0-101c85afaec4",
+  "Developer",
+  "d77de362-7804-4e9d-9b7c-ea338e80ec69",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+  ]
+);
+
+const role5: Role = new Role(
+  "4195ac93-26df-49ca-8485-f83bc637b647",
+  "Software Engineer",
+  "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+  ]
+);
+
+const role6: Role = new Role(
+  "891a8568-67c2-4943-8c8f-63e3b68927d7",
+  "Software developer",
+  "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+  ]
+);
+
+const role7: Role = new Role(
+  "e3de3f4c-14ad-4e4a-8f13-beac48a062f0",
+  "Technical Support",
+  "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+  [
+    Permission.ADD_COMMENTS,
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+  ]
+);
+
+const role8: Role = new Role(
+  "7793fdc5-b90f-4d3d-a889-986be91860b0",
+  "Project-leader",
+  "d77de362-7804-4e9d-9b7c-ea338e80ec69",
+  [
+    Permission.ADD_COMMENTS,
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+  ]
+);
+
+const role9: Role = new Role(
+  "96dc11c4-8393-4c6c-b2af-f977b0647b88",
+  "Owner",
+  "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role10: Role = new Role(
+  "8f9ed920-276f-4b2c-b1ea-5066dc6e1eb2",
+  "Owner",
+  "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role11: Role = new Role(
+  "112c96f0-b314-4d93-a063-0322a3c05e85",
+  "Owner",
+  "6108a364-6dbc-421f-a40e-ab3f8886c681",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role12: Role = new Role(
+  "1192a85e-1589-4777-b48b-59f83c571f3a",
+  "Owner",
+  "d77de362-7804-4e9d-9b7c-ea338e80ec69",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role14: Role = new Role(
+  "9443fd23-6ed9-46f2-9b8e-c6e299116102",
+  "Owner",
+  "62c5ad7c-6e00-48e9-b3d9-f14e13d41a07",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role15: Role = new Role(
+  "127ae0d2-b7bc-4d6f-85b4-dbdd506a06a2",
+  "Owner",
+  "2a559dac-c269-48cc-9ec6-539a4c260f73",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role16: Role = new Role(
+  "872568ce-8dc1-4afa-9982-0f9e14524a2e",
+  "Owner",
+  "ea23bf00-a45d-43db-963f-fc161891845f",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role20: Role = new Role(
+  "e0bbcb91-533d-4601-853f-dde9e478d546",
+  "Technician",
+  "ea23bf00-a45d-43db-963f-fc161891845f",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+  ]
+);
+
+const role21: Role = new Role(
+  "08e2dd33-040c-4e83-93c5-21c05f6edac3",
+  "IT Support",
+  "ea23bf00-a45d-43db-963f-fc161891845f",
+  [
+    Permission.ADD_COMMENTS,
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+  ]
+);
+
+const role17: Role = new Role(
+  "558d9a74-4901-402d-a4b6-1b6990756dc3",
+  "Owner",
+  "55623385-be29-4998-b45e-3c5340e12019",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_ISSUES,
+    Permission.DELETE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MANAGE_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADMINISTER_ROLES,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.DELETE_OWN_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role24: Role = new Role(
+  "b8780d99-5cb6-46d6-a404-9c5035ff4a97",
+  "Manager",
+  "55623385-be29-4998-b45e-3c5340e12019",
+  [
+    Permission.ADD_COMMENTS,
+    Permission.ASSIGN_ISSUES,
+    Permission.CANCEL_ISSUES,
+    Permission.CLOSE_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.DELETE_ALL_COMMENTS,
+    Permission.EDIT_ALL_COMMENTS,
+  ]
+);
+
+const role22: Role = new Role(
+  "558d9a74-4901-402d-a4b6-1b6990756dc3",
+  "Developer",
+  "4eb1fe83-2994-4cb9-b188-ae33f8a711a4"
+);
+
+const role18: Role = new Role(
+  "f4999ca8-0fe1-46cc-bdb1-ee96749a9f92",
+  "Software developer",
+  "62c5ad7c-6e00-48e9-b3d9-f14e13d41a07"
+);
+
+const role19: Role = new Role(
+  "ad506121-cc00-469e-87dd-590622d9b591",
+  "Technician",
+  "2a559dac-c269-48cc-9ec6-539a4c260f73",
+  [
+    Permission.ADD_COMMENTS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+  ]
+);
+
+const role23: Role = new Role(
+  "76667f26-0a36-4a29-b126-7d53dc487816",
+  "IT Support",
+  "942391a3-3c7a-4bc2-8e26-f59f9c4ded30",
+  [
+    Permission.ADD_COMMENTS,
+    Permission.CREATE_ISSUES,
+    Permission.EDIT_OWN_COMMENTS,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+  ]
+);
 
 export const mahmoud: User = new User(
   "4d3944fe-5861-477c-b50a-4eee542667d5",
   "Mahmoud-Tudor",
   "Hamdan",
   "hamdan.mahmoudtudor@gmail.com",
-  "https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_960_720.jpg"
+  "https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_960_720.jpg",
+  [
+    role9,
+    role10,
+    role11,
+    role12,
+    role18,
+    role19,
+    role21,
+    role22,
+    role23,
+    role24,
+  ]
 );
 
 export const ana: User = new User(
@@ -18,7 +448,8 @@ export const ana: User = new User(
   "Ana-Maria",
   "Tanase",
   "tanase.anamaria97@gmail.com",
-  "https://resilientblog.co/wp-content/uploads/2019/07/sky-quotes.jpg"
+  "https://resilientblog.co/wp-content/uploads/2019/07/sky-quotes.jpg",
+  [role2, role3, role5, role6, role7, role14, role15, role17, role20]
 );
 
 export const hori: User = new User(
@@ -26,98 +457,108 @@ export const hori: User = new User(
   "George-Horatiu",
   "Niculae",
   "niculae.georgehoratiu@gmail.com",
-  "https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+  "https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+  [role1, role4, role8, role16, role19, role23]
 );
 
-export const project1: Project = {
-  title: "Frontend",
-  summary: "This is the first part of the A project",
-  issues: [],
-  owner: mahmoud,
-  collaborators: [hori, ana],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
-};
+export const project1: TrackerProject = new TrackerProject(
+  "Frontend",
+  "This is the first part of the A project",
+  mahmoud,
+  [hori, ana],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
+  [role1, role6, role9]
+);
 
-export const project2: Project = {
-  title: "Backend",
-  summary: "Short description for project with title B",
-  issues: [],
-  owner: mahmoud,
-  collaborators: [ana],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
-};
+export const project2: TrackerProject = new TrackerProject(
+  "Backend",
+  "Short description for project with title B",
+  mahmoud,
+  [ana],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+  [role2, role5, role7, role10]
+);
 
-export const project3: Project = {
-  title: "System design",
-  summary: "Short description",
-  issues: [],
-  owner: mahmoud,
-  collaborators: [],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "6108a364-6dbc-421f-a40e-ab3f8886c681",
-};
+export const project3: TrackerProject = new TrackerProject(
+  "System design",
+  "Short description",
+  mahmoud,
+  [],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "6108a364-6dbc-421f-a40e-ab3f8886c681",
+  [role11]
+);
 
-export const project4: Project = {
-  title: "Database configuration",
-  summary: "Another short description for this last project",
-  issues: [],
-  owner: mahmoud,
-  collaborators: [hori],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "d77de362-7804-4e9d-9b7c-ea338e80ec69",
-};
+export const project4: TrackerProject = new TrackerProject(
+  "Database configuration",
+  "Another short description for this last project",
+  mahmoud,
+  [hori],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "d77de362-7804-4e9d-9b7c-ea338e80ec69",
+  [role4, role8, role12]
+);
 
-export const collab1: Project = {
-  title: "IssueTracker",
-  summary: "This is the first part of the A project",
-  issues: [],
-  owner: ana,
-  collaborators: [hori, mahmoud],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
-};
+export const collab1: TrackerProject = new TrackerProject(
+  "IssueTracker",
+  "This is the first part of the A project",
+  ana,
+  [hori, mahmoud],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "942391a3-3c7a-4bc2-8e26-f59f9c4ded30",
+  [role3, role23]
+);
 
-export const collab2: Project = {
-  title: "Scheduler",
-  summary: "Short description for project with title B",
-  issues: [],
-  owner: ana,
-  collaborators: [mahmoud],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
-};
+export const collab2: TrackerProject = new TrackerProject(
+  "Scheduler",
+  "Short description for project with title B",
+  ana,
+  [mahmoud],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "62c5ad7c-6e00-48e9-b3d9-f14e13d41a07",
+  [role14, role18]
+);
 
-export const collab3: Project = {
-  title: "SystemsCorp",
-  summary: "Short description",
-  issues: [],
-  owner: ana,
-  collaborators: [mahmoud, hori],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "6108a364-6dbc-421f-a40e-ab3f8886c681",
-};
+export const collab3: TrackerProject = new TrackerProject(
+  "SystemsCorp",
+  "Short description",
+  ana,
+  [mahmoud, hori],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "2a559dac-c269-48cc-9ec6-539a4c260f73",
+  [role15, role19]
+);
 
-export const collab4: Project = {
-  title: "Client UI Management",
-  summary: "Another short description for this last project",
-  issues: [],
-  owner: hori,
-  collaborators: [ana, mahmoud],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "d77de362-7804-4e9d-9b7c-ea338e80ec69",
-};
+export const collab4: TrackerProject = new TrackerProject(
+  "Client UI Management",
+  "Another short description for this last project",
+  hori,
+  [ana, mahmoud],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "ea23bf00-a45d-43db-963f-fc161891845f",
+  [role16, role20, role21]
+);
 
-export const collab5: Project = {
-  title: "Creative",
-  summary: "Short description for project ",
-  issues: [],
-  owner: ana,
-  collaborators: [mahmoud],
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  id: "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
-};
+export const collab5: TrackerProject = new TrackerProject(
+  "Creative",
+  "Short description for project ",
+  ana,
+  [mahmoud],
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  [],
+  "55623385-be29-4998-b45e-3c5340e12019",
+  [role17, role24]
+);
 
 const task1: Issue = {
   project: project1,
@@ -135,7 +576,7 @@ const task1: Issue = {
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 60,
   type: "task",
-  id: "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
+  id: "8ebd608e-c11a-4692-b885-9ba57962a526",
   selected: false,
 };
 
@@ -155,7 +596,7 @@ const task2: Issue = {
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 40,
   type: "task",
-  id: "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
+  id: "86139ecf-996c-4e93-b3e1-9303af6df8b0",
   selected: false,
 };
 
@@ -175,7 +616,7 @@ const task3: Issue = {
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 90,
   type: "task",
-  id: "6108a364-6dbc-421f-a40e-ab3f8886c681",
+  id: "dc88cb41-656e-49ee-bfa2-e6b45fca5236",
   selected: false,
 };
 
@@ -195,7 +636,7 @@ const task4: Issue = {
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 30,
   type: "task",
-  id: "d77de362-7804-4e9d-9b7c-ea338e80ec69",
+  id: "1e3ad2cd-15ba-4e88-bf31-29de2e116474",
   selected: false,
 };
 
@@ -217,7 +658,7 @@ const task5: Issue = {
 };
 
 const task6: Issue = {
-  project: project4,
+  project: collab5,
   summary: "Another summary here",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -233,7 +674,7 @@ const task6: Issue = {
 };
 
 const task7: Issue = {
-  project: project4,
+  project: collab5,
   summary: "Summary for this issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -249,7 +690,7 @@ const task7: Issue = {
 };
 
 const task8: Issue = {
-  project: project4,
+  project: collab5,
   summary: "Summary for this task",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -266,7 +707,7 @@ const task8: Issue = {
 };
 
 const task9: Issue = {
-  project: project4,
+  project: collab3,
   summary: "Summary for this issue right here.",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -352,7 +793,7 @@ const bug3: Issue = {
 };
 
 const bug4: Issue = {
-  project: project4,
+  project: collab2,
   summary: "Some very smart summary",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -369,7 +810,7 @@ const bug4: Issue = {
 };
 
 const bug5: Issue = {
-  project: project4,
+  project: collab1,
   summary: "Some very smart summary for this bug",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -446,14 +887,14 @@ export const statusOptions: IssueStatus[] = [
   IssueStatus.DONE,
 ];
 
-export const projectsCreatedByMe: Project[] = [
+export const projectsCreatedByMe: TrackerProject[] = [
   project1,
   project2,
   project3,
   project4,
 ];
 
-export const collaborations: Project[] = [
+export const collaborations: TrackerProject[] = [
   collab1,
   collab2,
   collab3,
@@ -461,7 +902,7 @@ export const collaborations: Project[] = [
   collab5,
 ];
 
-export const allProjects: Project[] = [
+export const allProjects: TrackerProject[] = [
   ...projectsCreatedByMe,
   ...collaborations,
 ];
@@ -470,42 +911,23 @@ export const dashboardProjects: ProjectCard[] = allProjects
   .map((project) => {
     return new ProjectCard().fromProjectToCard(project);
   })
-  .map((project) => project.setIssues(allIssues));
+  .map((project) => {
+    return project.setIssues(allIssues);
+  })
+  .filter(
+    (project) => project.assignedToMe || project.urgentIssues || project.allOpen
+  );
 
-// export const dashboardProjects: ProjectCard[] = [
-//   {
-//     title: "Frontend",
-//     summary: "This is the first part of the A project",
-//     urgentIssues: 3,
-//     assignedToMe: 2,
-//     allOpen: 7,
-//     id: "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
-//   },
-//   {
-//     title: "Backend",
-//     summary: "Short description for project with title B",
-//     urgentIssues: 2,
-//     assignedToMe: 2,
-//     allOpen: 5,
-//     id: "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
-//   },
-//   {
-//     title: "System design",
-//     summary: "Short description",
-//     urgentIssues: 0,
-//     assignedToMe: 2,
-//     allOpen: 4,
-//     id: "6108a364-6dbc-421f-a40e-ab3f8886c681",
-//   },
-//   {
-//     title: "Database configuration",
-//     summary: "Another short description for this last project",
-//     urgentIssues: 0,
-//     assignedToMe: 2,
-//     allOpen: 3,
-//     id: "d77de362-7804-4e9d-9b7c-ea338e80ec69",
-//   },
-// ];
+export const getRolesOfProjectById = (projectId: string): Role[] => {
+  return allProjects.find((project) => project.id === projectId).getRoles();
+};
+
+export const getUsersOfProjectById = (projectId: string): User[] => {
+  console.log(allProjects.find((project) => project.id === projectId));
+  return allProjects
+    .find((project) => project.id === projectId)
+    .getCollaborators();
+};
 
 export const profileDescription: string = `Don't be scared of the truth because we 
 need to restart the human 

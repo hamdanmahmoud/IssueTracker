@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="options-label">
+    <h4>Manage project roles</h4>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Project</mat-label>
+    <textarea matInput disabled rows="1" class="project">{{
+      project.title
+    }}</textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="roles-form-field">
+    <mat-label>Defined roles...</mat-label>
+    <mat-select
+      [formControl]="selectedRolesList"
+      [compareWith]="compareRoles"
+      multiple
+    >
+      <mat-select-trigger>
+        {{
+          selectedRolesList.value && selectedRolesList.value.length
+            ? selectedRolesList.value[0].getName()
+            : ""
+        }}
+        <span
+          *ngIf="selectedRolesList.value?.length > 1"
+          class="additional-selection"
+        >
+          (+{{ selectedRolesList.value.length - 1 }}
+          {{ selectedRolesList.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let role of allOptions"
+        [value]="role"
+        [ngClass]="'not-a-dropdown-option role-option'"
+        >{{ role.getName() }}
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Remove role"
+          [matTooltipPosition]="'above'"
+          class="btn btn-danger btn-link btn-sm btn-just-icon"
+          (click)="removeRole($event, role)"
+        >
+          <i class="material-icons">close</i>
+        </button>
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Manage role"
+          [matTooltipPosition]="'above'"
+          class="btn btn-primary btn-link btn-sm btn-just-icon"
+          (click)="editRole($event, role)"
+        >
+          <i class="material-icons">edit</i>
+        </button>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    type="button"
+    class="btn btn-submit btn-create"
+    (click)="saveModifications()"
+  >
+    Save
+  </button>
+</div>

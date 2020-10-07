@@ -27,7 +27,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectCards = dashboardProjects;
-
+    console.log(dashboardProjects);
+    console.log(this.projectCards);
     this.tasks = allIssues.filter((issue) => issue.type === "task");
     this.bugs = allIssues.filter((issue) => issue.type === "bug");
 

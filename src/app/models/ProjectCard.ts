@@ -1,6 +1,7 @@
 import { mahmoud } from "app/fake/fakeData"; // TODO: circular dependency, should be removed anyway cuz it s fake
 import { Issue } from "./Issue";
 import { Project } from "./Project";
+import { TrackerProject } from "./TrackerProject";
 
 const projectCardKeys = [
   // yes this is very lame but it was quick
@@ -12,7 +13,7 @@ const projectCardKeys = [
   "assignedToMe",
 ];
 
-export class ProjectCard {
+export class ProjectCard implements Project {
   title: string;
   summary: string;
   id: string;
@@ -20,7 +21,7 @@ export class ProjectCard {
   allOpen: number;
   assignedToMe: number;
 
-  fromProjectToCard(project: Project): ProjectCard {
+  fromProjectToCard(project: TrackerProject): ProjectCard {
     for (const key in project) {
       if (projectCardKeys.includes(key)) {
         this[key] = project[key];
@@ -31,6 +32,7 @@ export class ProjectCard {
 
   setIssues(issues: Issue[]): ProjectCard {
     issues = issues.filter((issue) => issue.project.id === this.id);
+
     this.urgentIssues = issues.filter((issue) => issue.priority >= 80).length;
     this.allOpen = issues.filter(
       (issue) =>

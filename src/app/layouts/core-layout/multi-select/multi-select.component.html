@@ -37,8 +37,18 @@
           optionsType === "assignees"
             ? option.firstName + " " + option.lastName
             : option
-        }}</mat-option
-      >
+        }}
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Manage permissions"
+          [matTooltipPosition]="'above'"
+          class="btn btn-primary btn-link btn-sm btn-just-icon"
+          (click)="manageRolesForUser($event, option)"
+        >
+          <i class="material-icons">edit</i>
+        </button>
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
