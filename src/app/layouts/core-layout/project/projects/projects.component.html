@@ -46,6 +46,7 @@
                         mat-raised-button
                         color="warn"
                         class="text-button remove-button"
+                        (click)="removeSelectedProjects()"
                         disabled="{{ !isRemoveButtonEnabled }}"
                       >
                         Remove

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   projectsCreatedByMe,
   collaborations,
@@ -6,6 +6,7 @@ import {
   columnsToDisplayForCollaborations,
 } from "../../../../fake/fakeData";
 import { TrackerProject } from "app/models/TrackerProject";
+import { ProjectsTableComponent } from "../projects-table/projects-table.component";
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html",
@@ -20,6 +21,7 @@ export class ProjectsComponent implements OnInit {
   collaborations: TrackerProject[];
   columnsToDisplayForMyProjects: string[];
   columnsToDisplayForCollaborations: string[];
+  @ViewChild(ProjectsTableComponent) projectsTable: ProjectsTableComponent;
 
   constructor() {
     console.log("Project");
@@ -38,5 +40,11 @@ export class ProjectsComponent implements OnInit {
     this.collaborations = collaborations;
     this.columnsToDisplayForMyProjects = columnsToDisplayForMyProjects;
     this.columnsToDisplayForCollaborations = columnsToDisplayForCollaborations;
+  }
+
+  removeSelectedProjects() {
+    const projectsToRemove: TrackerProject[] = this.projectsTable.selection
+      .selected;
+    console.log("Removing selected projects:", projectsToRemove);
   }
 }

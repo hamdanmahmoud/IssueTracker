@@ -36,14 +36,6 @@ export class IssuesTableComponent implements OnInit {
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
-    console.log(
-      "There are ",
-      numSelected,
-      " selected rows out of ",
-      numRows,
-      " rows in total, so the return value is ",
-      numSelected === numRows
-    );
     return numSelected === numRows;
   }
 
@@ -62,5 +54,9 @@ export class IssuesTableComponent implements OnInit {
     return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${
       this.dataSource.data.findIndex((element) => element.id === row.id) + 1
     }`;
+  }
+
+  removeIssue(issue: Issue) {
+    console.log("Remove issue ", issue);
   }
 }

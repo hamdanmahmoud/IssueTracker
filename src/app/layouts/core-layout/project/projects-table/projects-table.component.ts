@@ -54,4 +54,8 @@ export class ProjectsTableComponent implements OnInit {
       ) + 1
     }`;
   }
+
+  removeProject(project: TrackerProject) {
+    console.log("Remove project ", project);
+  }
 }

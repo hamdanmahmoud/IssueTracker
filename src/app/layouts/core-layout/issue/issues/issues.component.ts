@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { IssueStatus } from "app/models/IssueStatus";
 import { Issue } from "../../../../models/Issue";
 import {
@@ -6,6 +6,7 @@ import {
   columnsToDisplayForIssues,
   statusOptions,
 } from "../../../../fake/fakeData";
+import { IssuesTableComponent } from "../issues-table/issues-table.component";
 @Component({
   selector: "app-issues",
   templateUrl: "./issues.component.html",
@@ -20,6 +21,7 @@ export class IssuesComponent implements OnInit {
   bugs: Issue[];
   columnsToDisplayForIssues: string[];
   statusList: IssueStatus[];
+  @ViewChild(IssuesTableComponent) issuesTable: IssuesTableComponent;
 
   constructor() {
     console.log("Issues");
@@ -30,5 +32,10 @@ export class IssuesComponent implements OnInit {
     this.bugs = allIssues.filter((issue) => issue.type === "bug");
     this.columnsToDisplayForIssues = columnsToDisplayForIssues;
     this.statusList = statusOptions;
+  }
+
+  removeSelectedIssues() {
+    const issuesToRemove: Issue[] = this.issuesTable.selection.selected;
+    console.log("Removing selected issues:", issuesToRemove);
   }
 }

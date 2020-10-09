@@ -867,7 +867,6 @@ export const columnsToDisplayForIssues: string[] = [
   "status",
   "created",
   "priority",
-  "edit",
   "remove",
 ];
 
