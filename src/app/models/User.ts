@@ -1,12 +1,12 @@
 import { Role } from "./Role";
 
 export class User {
-  id: string;
-  firstName: string;
-  lastName: string;
-  mail: string;
-  imageUrl: string;
-  roles: Role[];
+  private id: string;
+  private firstName: string;
+  private lastName: string;
+  private mail: string;
+  private imageUrl: string;
+  private roles: Role[];
 
   constructor(
     id: string,

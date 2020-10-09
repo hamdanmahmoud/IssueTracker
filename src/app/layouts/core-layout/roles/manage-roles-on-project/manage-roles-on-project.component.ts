@@ -25,7 +25,7 @@ export class ManageRolesOnProjectComponent implements OnInit {
   ngOnInit(): void {
     this.selectedRolesList = new FormControl([]);
     this.project = this.data.project;
-    this.projectId = this.project.id;
+    this.projectId = this.project.getId();
     this.allOptions = getRolesOfProjectById(this.projectId);
   }
 

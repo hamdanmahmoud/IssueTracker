@@ -50,7 +50,7 @@ export class ProjectPageComponent implements OnInit {
     this.selectedIssueId = this.route.snapshot.paramMap.get("issueId");
 
     this.project = [...projectsCreatedByMe, ...collaborations].find(
-      (project) => project.id === this.projectId
+      (project) => project.getId() === this.projectId
     );
     console.log("Issues before filtering:", this.issues);
     this.issues = [...bugs, ...tasks].filter(

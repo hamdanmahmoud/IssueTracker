@@ -13,13 +13,24 @@ const projectCardKeys = [
   "assignedToMe",
 ];
 
-export class ProjectCard implements Project {
-  title: string;
-  summary: string;
-  id: string;
+export class ProjectCard extends Project {
   urgentIssues: number;
   allOpen: number;
   assignedToMe: number;
+
+  constructor(
+    id?: string,
+    title?: string,
+    summary?: string,
+    urgentIssues?: number,
+    allOpen?: number,
+    assignedToMe?: number
+  ) {
+    super(id, title, summary);
+    this.urgentIssues = urgentIssues;
+    this.allOpen = allOpen;
+    this.assignedToMe = assignedToMe;
+  }
 
   fromProjectToCard(project: TrackerProject): ProjectCard {
     for (const key in project) {
@@ -31,7 +42,7 @@ export class ProjectCard implements Project {
   }
 
   setIssues(issues: Issue[]): ProjectCard {
-    issues = issues.filter((issue) => issue.project.id === this.id);
+    issues = issues.filter((issue) => issue.project.getId() === this.getId());
 
     this.urgentIssues = issues.filter((issue) => issue.priority >= 80).length;
     this.allOpen = issues.filter(

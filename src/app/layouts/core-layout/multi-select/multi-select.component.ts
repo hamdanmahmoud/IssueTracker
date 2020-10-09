@@ -57,7 +57,7 @@ export class MultiSelectComponent implements OnInit {
   }
 
   compareUsers(availableOption: User, selectedOption: User) {
-    return availableOption.id === selectedOption.id;
+    return availableOption.getId() === selectedOption.getId();
   }
 
   onSave() {

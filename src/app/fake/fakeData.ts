@@ -389,13 +389,31 @@ const role24: Role = new Role(
 const role22: Role = new Role(
   "558d9a74-4901-402d-a4b6-1b6990756dc3",
   "Developer",
-  "4eb1fe83-2994-4cb9-b188-ae33f8a711a4"
+  "4eb1fe83-2994-4cb9-b188-ae33f8a711a4",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+  ]
 );
 
 const role18: Role = new Role(
   "f4999ca8-0fe1-46cc-bdb1-ee96749a9f92",
   "Software developer",
-  "62c5ad7c-6e00-48e9-b3d9-f14e13d41a07"
+  "62c5ad7c-6e00-48e9-b3d9-f14e13d41a07",
+  [
+    Permission.ASSIGN_ISSUES,
+    Permission.CREATE_ISSUES,
+    Permission.UPDATE_ISSUES_STATUS,
+    Permission.VIEW_WATCHERS,
+    Permission.MARK_ISSUES_FOR_CLOSURE,
+    Permission.ADD_COMMENTS,
+    Permission.EDIT_OWN_COMMENTS,
+  ]
 );
 
 const role19: Role = new Role(
@@ -919,13 +937,15 @@ export const dashboardProjects: ProjectCard[] = allProjects
   );
 
 export const getRolesOfProjectById = (projectId: string): Role[] => {
-  return allProjects.find((project) => project.id === projectId).getRoles();
+  return allProjects
+    .find((project) => project.getId() === projectId)
+    .getRoles();
 };
 
 export const getUsersOfProjectById = (projectId: string): User[] => {
-  console.log(allProjects.find((project) => project.id === projectId));
+  console.log(allProjects.find((project) => project.getId() === projectId));
   return allProjects
-    .find((project) => project.id === projectId)
+    .find((project) => project.getId() === projectId)
     .getCollaborators();
 };
 

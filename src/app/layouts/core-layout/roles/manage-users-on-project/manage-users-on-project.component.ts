@@ -24,7 +24,7 @@ export class ManageUsersOnProject implements OnInit {
   ngOnInit(): void {
     this.project = this.data.project;
     this.selectedOption = new FormControl();
-    this.allUsers = getUsersOfProjectById(this.project.id);
+    this.allUsers = getUsersOfProjectById(this.project.getId());
     console.log(this.allUsers);
   }
 
@@ -43,7 +43,7 @@ export class ManageUsersOnProject implements OnInit {
     const dialogRef = this.dialog.open(ManageUserRolesComponent, {
       width: "20rem",
       height: "30rem",
-      data: { user: user, projectId: this.project.id },
+      data: { user: user, projectId: this.project.getId() },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

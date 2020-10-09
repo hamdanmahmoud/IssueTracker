@@ -49,7 +49,9 @@ export class ProjectsTableComponent implements OnInit {
       return `${this.isAllSelected() ? "select" : "deselect"} all`;
     }
     return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${
-      this.dataSource.data.findIndex((element) => element.id === row.id) + 1
+      this.dataSource.data.findIndex(
+        (element) => element.getId() === row.getId()
+      ) + 1
     }`;
   }
 }

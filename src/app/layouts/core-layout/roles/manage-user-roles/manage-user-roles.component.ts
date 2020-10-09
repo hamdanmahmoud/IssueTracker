@@ -23,7 +23,9 @@ export class ManageUserRolesComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.data.user;
     this.projectId = this.data.projectId;
-    this.project = allProjects.find((project) => project.id === this.projectId);
+    this.project = allProjects.find(
+      (project) => project.getId() === this.projectId
+    );
     this.selectedRolesList = new FormControl(
       this.user.getRolesByProjectId(this.projectId)
     );

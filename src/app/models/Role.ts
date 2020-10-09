@@ -1,10 +1,10 @@
 import { Permission } from "./Permission";
 
 export class Role {
-  id: string;
-  name: string;
-  projectId: string;
-  private readonly permissions: Permission[];
+  private id: string;
+  private name: string;
+  private projectId: string;
+  private permissions: Permission[];
 
   constructor(
     id: string,
