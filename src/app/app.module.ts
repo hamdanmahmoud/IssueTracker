@@ -1,7 +1,8 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
+// import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 
 import { AppRoutingModule } from "./app.routing";
@@ -17,7 +18,7 @@ import { API } from "./API.conf";
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,

@@ -446,7 +446,7 @@ export const mahmoud: User = new User(
   "Mahmoud-Tudor",
   "Hamdan",
   "hamdan.mahmoudtudor@gmail.com",
-  "https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_960_720.jpg",
+  "https://user-images.githubusercontent.com/37018010/95596121-aca62680-0a55-11eb-802f-0a44c8700ee0.jpg",
   [
     role9,
     role10,
@@ -466,7 +466,7 @@ export const ana: User = new User(
   "Ana-Maria",
   "Tanase",
   "tanase.anamaria97@gmail.com",
-  "https://resilientblog.co/wp-content/uploads/2019/07/sky-quotes.jpg",
+  "https://user-images.githubusercontent.com/37018010/95596171-b92a7f00-0a55-11eb-9d1c-635f2b8fcf33.jpg",
   [role2, role3, role5, role6, role7, role14, role15, role17, role20]
 );
 
@@ -475,7 +475,7 @@ export const hori: User = new User(
   "George-Horatiu",
   "Niculae",
   "niculae.georgehoratiu@gmail.com",
-  "https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+  "https://user-images.githubusercontent.com/37018010/95596209-c34c7d80-0a55-11eb-9634-717904125dd2.jpg",
   [role1, role4, role8, role16, role19, role23]
 );
 
