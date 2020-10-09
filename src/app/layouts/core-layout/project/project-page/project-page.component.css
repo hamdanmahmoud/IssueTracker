@@ -90,3 +90,7 @@ mat-list.make-scrollable {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.nav-tabs-title {
+  font-size: x-large;
+}

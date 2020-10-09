@@ -61,14 +61,18 @@ export class MultiSelectComponent implements OnInit {
   }
 
   onSave() {
+    // TODO: should call service with new assignees
     console.log(this.selectedOptionsList.value);
   }
 
+  // event handler for edit button
   manageRolesForUser(event: Event, user: User) {
     console.log("Clicked manage permissions for user");
     console.log(event, user);
 
-    // disabling option check - do not remove following two lines
+    // disabling option check to prevent selection of mat-option
+    // as we only want to click on the edit button, not on the option itself
+    // DO NOT remove following two lines
     event.preventDefault();
     event.stopPropagation();
 

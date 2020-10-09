@@ -4,7 +4,7 @@ import { Issue } from "../../../models/Issue";
 import {
   dashboardProjects,
   allIssues,
-  columnsToDisplayForIssues,
+  columnsToDisplayForIssuesInDashboard,
   statusOptions,
 } from "../../../fake/fakeData";
 import { IssueStatus } from "app/models/IssueStatus";
@@ -32,18 +32,8 @@ export class DashboardComponent implements OnInit {
     this.tasks = allIssues.filter((issue) => issue.type === "task");
     this.bugs = allIssues.filter((issue) => issue.type === "bug");
 
-    this.columnsToDisplayForIssues = columnsToDisplayForIssues;
-    this.removeColumnsFromIssuesTable("select", "edit", "delete");
+    this.columnsToDisplayForIssues = columnsToDisplayForIssuesInDashboard;
 
     this.statusDropdownOptions = statusOptions;
-  }
-
-  removeColumnsFromIssuesTable(...columns: string[]): void {
-    columns.forEach((column) => {
-      this.columnsToDisplayForIssues.splice(
-        this.columnsToDisplayForIssues.indexOf(column),
-        1
-      );
-    });
   }
 }

@@ -670,7 +670,7 @@ const task5: Issue = {
   status: "IN_REVIEW",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 45,
-  type: "bug",
+  type: "task",
   id: "6a5c48e5-b5ae-4bbc-90bf-d304d7fc746d",
   selected: false,
 };
@@ -844,9 +844,19 @@ const bug5: Issue = {
   selected: false,
 };
 
-export const bugs: Issue[] = [bug1, bug2, bug3, bug4, bug4, bug5];
+export const bugs: Issue[] = [bug1, bug2, bug3, bug4, bug5];
 
 export const allIssues: Issue[] = [...tasks, ...bugs];
+
+export const columnsToDisplayForIssuesInDashboard: string[] = [
+  "project",
+  "summary",
+  "reporter",
+  "assignees",
+  "status",
+  "created",
+  "priority",
+];
 
 export const columnsToDisplayForIssues: string[] = [
   "select",
@@ -868,7 +878,6 @@ export const columnsToDisplayForMyProjects: string[] = [
   "owner",
   "collaborators",
   "created",
-  "edit",
   "remove",
 ];
 

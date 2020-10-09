@@ -131,24 +131,11 @@ export class ProjectPageComponent implements OnInit {
     console.log("Selected issue id changed to", this.selectedIssueId);
   }
 
-  openCreateRole() {
-    console.log("Clicked open create role");
-    const dialogRef = this.dialog.open(CreateRoleComponent, {
-      width: "20rem",
-      height: "30rem",
-      data: { project: this.project },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
-    });
-  }
-
   openManageRoles() {
     console.log("Clicked open manage roles");
     const dialogRef = this.dialog.open(ManageRolesOnProjectComponent, {
       width: "20rem",
-      height: "25rem",
+      height: "auto",
       data: { project: this.project },
     });
 
@@ -161,7 +148,8 @@ export class ProjectPageComponent implements OnInit {
     console.log("Clicked open manage users");
     const dialogRef = this.dialog.open(ManageUsersOnProject, {
       width: "20rem",
-      height: "25rem",
+      height: "auto",
+      maxHeight: "50rem",
       data: { project: this.project },
     });
 

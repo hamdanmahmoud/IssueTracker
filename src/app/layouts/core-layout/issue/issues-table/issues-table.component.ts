@@ -36,6 +36,14 @@ export class IssuesTableComponent implements OnInit {
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
+    console.log(
+      "There are ",
+      numSelected,
+      " selected rows out of ",
+      numRows,
+      " rows in total, so the return value is ",
+      numSelected === numRows
+    );
     return numSelected === numRows;
   }
 

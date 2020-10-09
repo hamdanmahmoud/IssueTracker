@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="options-label">
+  <div class="title-label">
     <h4>Manage project's users</h4>
   </div>
   <mat-form-field>
@@ -47,10 +47,40 @@
     </mat-select>
   </mat-form-field>
   <button
-    type="button"
-    class="btn btn-submit btn-create"
-    (click)="saveModifications()"
+    *ngIf="!isAddCollabsContainerVisible"
+    mat-raised-button
+    class="text-button new-button"
+    (click)="openAddCollabsContainer()"
   >
-    Save
+    Add collaborators
   </button>
+  <div class="add-collabs-container" *ngIf="isAddCollabsContainerVisible">
+    <mat-form-field appearance="" *ngFor="let mail of mails; let i = index">
+      <mat-label>Add collaborator's mail</mat-label>
+      <input matInput [(ngModel)]="mail.address" name="mail_{{ i }}" />
+    </mat-form-field>
+    <div class="buttons-bottom">
+      <button
+        type="button"
+        class="btn btn-danger btn-remove-mail"
+        (click)="removeLastMail()"
+      >
+        <mat-icon matSuffix>remove_circle_outline</mat-icon>
+      </button>
+      <button
+        type="button"
+        class="btn btn-info btn-add-mail"
+        (click)="addMail()"
+      >
+        <mat-icon matSuffix>person_add</mat-icon>
+      </button>
+    </div>
+    <button
+      type="button"
+      class="btn btn-submit btn-create"
+      (click)="sendInvitations()"
+    >
+      Send invitations
+    </button>
+  </div>
 </div>

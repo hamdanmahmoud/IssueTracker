@@ -15,6 +15,7 @@ export class ManageUsersOnProject implements OnInit {
   project: TrackerProject;
   selectedOption: FormControl;
   allUsers: User[];
+  isAddCollabsContainerVisible: boolean = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -51,7 +52,27 @@ export class ManageUsersOnProject implements OnInit {
     });
   }
 
-  saveModifications() {
+  public mails: any[] = [
+    {
+      address: "",
+    },
+  ];
+
+  addMail() {
+    this.mails.push({
+      address: "",
+    });
+  }
+
+  removeLastMail() {
+    if (this.mails.length > 1) this.mails.splice(this.mails.length - 1);
+  }
+
+  sendInvitations() {
     throw "Not implemented";
+  }
+
+  openAddCollabsContainer() {
+    this.isAddCollabsContainerVisible = true;
   }
 }
