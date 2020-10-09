@@ -13,6 +13,7 @@
                       mat-button
                       class="nav-link active"
                       href="#bugs"
+                      (click)="selectBugs()"
                       data-toggle="tab"
                     >
                       <i class="material-icons">bug_report</i> Bugs
@@ -24,6 +25,7 @@
                       mat-button
                       class="nav-link"
                       href="#tasks"
+                      (click)="selectTasks()"
                       data-toggle="tab"
                     >
                       <i class="material-icons">add_task</i> Tasks
@@ -61,6 +63,7 @@
               <div class="tab-pane active" id="bugs">
                 <app-issues-table
                   [data]="bugs"
+                  #bugsTable
                   [displayedColumns]="columnsToDisplayForIssues"
                   [statusList]="statusList"
                 ></app-issues-table>
@@ -69,6 +72,7 @@
               <div class="tab-pane" id="tasks">
                 <app-issues-table
                   [data]="tasks"
+                  #tasksTable
                   [displayedColumns]="columnsToDisplayForIssues"
                   [statusList]="statusList"
                 ></app-issues-table>

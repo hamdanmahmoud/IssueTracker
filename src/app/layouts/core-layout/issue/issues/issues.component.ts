@@ -7,6 +7,7 @@ import {
   statusOptions,
 } from "../../../../fake/fakeData";
 import { IssuesTableComponent } from "../issues-table/issues-table.component";
+import { SelectionModel } from "@angular/cdk/collections";
 @Component({
   selector: "app-issues",
   templateUrl: "./issues.component.html",
@@ -21,7 +22,8 @@ export class IssuesComponent implements OnInit {
   bugs: Issue[];
   columnsToDisplayForIssues: string[];
   statusList: IssueStatus[];
-  @ViewChild(IssuesTableComponent) issuesTable: IssuesTableComponent;
+  @ViewChild("bugsTable") bugsTable: IssuesTableComponent;
+  @ViewChild("tasksTable") tasksTable: IssuesTableComponent;
 
   constructor() {
     console.log("Issues");
@@ -35,7 +37,18 @@ export class IssuesComponent implements OnInit {
   }
 
   removeSelectedIssues() {
-    const issuesToRemove: Issue[] = this.issuesTable.selection.selected;
-    console.log("Removing selected issues:", issuesToRemove);
+    const bugsToRemove: Issue[] = this.bugsTable.selection.selected;
+    console.log("Removing selected bugs:", bugsToRemove);
+
+    const tasksToRemove: Issue[] = this.tasksTable.selection.selected;
+    console.log("Removing selected tasks:", tasksToRemove);
+  }
+
+  selectTasks() {
+    this.bugsTable.selection = new SelectionModel<Issue>(true, []);
+  }
+
+  selectBugs() {
+    this.tasksTable.selection = new SelectionModel<Issue>(true, []);
   }
 }

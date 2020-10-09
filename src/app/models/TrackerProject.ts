@@ -16,7 +16,6 @@ export class TrackerProject extends Project {
     owner: User,
     collaborators: User[],
     created: Date,
-    issues: Issue[],
     id: string,
     roles: Role[]
   ) {
@@ -24,7 +23,6 @@ export class TrackerProject extends Project {
     this.owner = owner;
     this.collaborators = collaborators;
     this.created = created;
-    this.issues = issues;
     this.roles = roles;
   }
 

@@ -485,7 +485,6 @@ export const project1: TrackerProject = new TrackerProject(
   mahmoud,
   [hori, ana],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "9c7e86b2-b9dc-4a62-9229-d17c774d0460",
   [role1, role6, role9]
 );
@@ -496,7 +495,6 @@ export const project2: TrackerProject = new TrackerProject(
   mahmoud,
   [ana],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "6f6b9331-b0e1-4ce3-845c-329897a7ca5e",
   [role2, role5, role7, role10]
 );
@@ -507,7 +505,6 @@ export const project3: TrackerProject = new TrackerProject(
   mahmoud,
   [],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "6108a364-6dbc-421f-a40e-ab3f8886c681",
   [role11]
 );
@@ -518,7 +515,6 @@ export const project4: TrackerProject = new TrackerProject(
   mahmoud,
   [hori],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "d77de362-7804-4e9d-9b7c-ea338e80ec69",
   [role4, role8, role12]
 );
@@ -529,7 +525,6 @@ export const collab1: TrackerProject = new TrackerProject(
   ana,
   [hori, mahmoud],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "942391a3-3c7a-4bc2-8e26-f59f9c4ded30",
   [role3, role23]
 );
@@ -540,7 +535,6 @@ export const collab2: TrackerProject = new TrackerProject(
   ana,
   [mahmoud],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "62c5ad7c-6e00-48e9-b3d9-f14e13d41a07",
   [role14, role18]
 );
@@ -551,7 +545,6 @@ export const collab3: TrackerProject = new TrackerProject(
   ana,
   [mahmoud, hori],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "2a559dac-c269-48cc-9ec6-539a4c260f73",
   [role15, role19]
 );
@@ -562,7 +555,6 @@ export const collab4: TrackerProject = new TrackerProject(
   hori,
   [ana, mahmoud],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "ea23bf00-a45d-43db-963f-fc161891845f",
   [role16, role20, role21]
 );
@@ -573,7 +565,6 @@ export const collab5: TrackerProject = new TrackerProject(
   ana,
   [mahmoud],
   new Date(Date.now() + Math.round(Math.random() * 10000)),
-  [],
   "55623385-be29-4998-b45e-3c5340e12019",
   [role17, role24]
 );
