@@ -3,6 +3,7 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   CanActivateChild,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from "@angular/router";
@@ -13,11 +14,14 @@ import { AuthService } from "./auth.service";
   providedIn: "root",
 })
 export class LoggedInGuard implements CanActivateChild {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+    this.authService.isLoggedIn.subscribe((value) => {
+      if (!value) this.router.navigate(["auth/login"]);
+    });
     return this.authService.isLoggedIn;
   }
 }

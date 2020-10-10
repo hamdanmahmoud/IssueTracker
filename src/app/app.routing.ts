@@ -14,14 +14,6 @@ const routes: Routes = [
     pathMatch: "full",
   },
   {
-    path: "auth",
-    loadChildren: () =>
-      import("./layouts/auth-layout/auth-layout.module").then(
-        (m) => m.AuthLayoutModule
-      ),
-    resolve: [AlreadyLoggedInResolver],
-  },
-  {
     path: "",
     component: CoreLayoutComponent,
     loadChildren: () =>
@@ -29,6 +21,14 @@ const routes: Routes = [
         (m) => m.CoreLayoutModule
       ),
     canActivateChild: [LoggedInGuard],
+  },
+  {
+    path: "auth",
+    loadChildren: () =>
+      import("./layouts/auth-layout/auth-layout.module").then(
+        (m) => m.AuthLayoutModule
+      ),
+    resolve: [AlreadyLoggedInResolver],
   },
 ];
 

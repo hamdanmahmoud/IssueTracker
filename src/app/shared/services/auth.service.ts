@@ -7,7 +7,7 @@ import { ServerService } from "./server.service";
 
 @Injectable()
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(true);
+  private loggedIn = new BehaviorSubject<boolean>(false);
   private token: string;
 
   get isLoggedIn() {

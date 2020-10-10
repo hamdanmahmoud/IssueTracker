@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Welcome to IssueTracker!</h1>
-          <p class="text-light-subtitle">
+          <p class="text-light-subtitle new">
             Please sign in so that you can experiment with the platform.
           </p>
         </div>
@@ -30,8 +30,8 @@
     <div class="col-lg-5 col-md-7">
       <div class="card bg-login shadow border-0">
         <div class="card-header bg-transparent pb-5 text-center">
-          <div class="text-center mt-2 mb-3">
-            <h3>Sign in with</h3>
+          <div class="text-center mt-2 mb-3 white-text">
+            Sign in with
           </div>
           <div class="">
             <a href="javascript:void(0)" class="btn btn-secondary">
@@ -45,16 +45,15 @@
           </div>
         </div>
         <div class="card-body px-lg-5 py-lg-5">
-          <div class="text-center mb-4">
-            <h3>Or sign in with credentials</h3>
+          <div class="text-center mb-4 white-text">
+            Or sign in with credentials
           </div>
           <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"
-                    ><i class="ni ni-email-83"></i
-                  ></span>
+                    ></span>
                 </div>
                 <input class="form-control" placeholder="Email" type="email" formControlName="email" required />
               </div>
@@ -63,8 +62,7 @@
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"
-                    ><i class="ni ni-lock-circle-open"></i
-                  ></span>
+                    ></span>
                 </div>
                 <input
                   class="form-control"
@@ -87,7 +85,7 @@
           >
         </div>
         <div class="col-6 text-right">
-          <a href="javascript:void(0)" class="text-muted"
+          <a routerLink="/auth/register" class="text-muted"
             ><small>Create new account</small></a
           >
         </div>
