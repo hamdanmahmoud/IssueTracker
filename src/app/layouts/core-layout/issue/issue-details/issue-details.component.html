@@ -8,10 +8,10 @@
         <mat-label>Project</mat-label>
         <mat-select [(value)]="project">
           <mat-select-trigger
-          >{{ project ? project.title : ''}}</mat-select-trigger
+          >{{ project ? project.getTitle() : ''}}</mat-select-trigger
           >
           <mat-option *ngFor="let project of projects" [value]="project">{{
-            project.title
+            project.getTitle()
           }}</mat-option>
         </mat-select>
       </mat-form-field>

@@ -13,7 +13,6 @@ import { getUsersOfProjectById } from "../../../../shared/services/fakeData";
 })
 export class ManageUsersOnProject implements OnInit {
   project: TrackerProject;
-  selectedOption: FormControl;
   allUsers: User[];
   isAddCollabsContainerVisible: boolean = false;
 
@@ -24,7 +23,6 @@ export class ManageUsersOnProject implements OnInit {
 
   ngOnInit(): void {
     this.project = this.data.project;
-    this.selectedOption = new FormControl();
     this.allUsers = getUsersOfProjectById(this.project.getId());
     console.log(this.allUsers);
   }

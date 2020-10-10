@@ -1,18 +1,18 @@
 <div class="container">
   <div class="options-label">
-    <h4>Manage {{ user.firstName }}'s roles</h4>
+    <h4>Manage {{ user.getFirstName() }}'s roles</h4>
   </div>
   <mat-form-field>
     <mat-label>User</mat-label>
     <textarea matInput disabled rows="1" class="user">{{
-      user.firstName + " " + user.lastName
+      user.getFirstName() + " " + user.getLastName()
     }}</textarea>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Project</mat-label>
     <textarea matInput disabled rows="1" class="project">{{
-      project.title
+      project.getTitle()
     }}</textarea>
   </mat-form-field>
   <mat-form-field appearance="fill" class="roles-form-field">

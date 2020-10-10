@@ -28,4 +28,12 @@ export class User {
     );
     this.roles = [...this.roles, ...selectedRolesList];
   }
+
+  getFirstName() {
+    return this.firstName;
+  }
+
+  getLastName() {
+    return this.lastName;
+  }
 }

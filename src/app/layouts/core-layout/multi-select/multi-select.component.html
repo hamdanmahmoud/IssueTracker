@@ -15,7 +15,7 @@
         {{
           selectedOptionsList.value && selectedOptionsList.value.length
             ? optionsType === "assignees"
-              ? selectedOptionsList.value[0].lastName
+              ? selectedOptionsList.value[0].getLastName()
               : selectedOptionsList.value[0]
             : ""
         }}
@@ -33,7 +33,7 @@
         [ngClass]="'not-a-dropdown-option'"
         >{{
           optionsType === "assignees"
-            ? option.firstName + " " + option.lastName
+            ? option.getFirstName() + " " + option.getLastName()
             : option
         }}
         <button

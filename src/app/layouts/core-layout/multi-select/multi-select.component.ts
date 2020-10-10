@@ -65,7 +65,7 @@ export class MultiSelectComponent implements OnInit {
     return availableOption.getId() === selectedOption.getId();
   }
 
-  onSave() {
+  saveModifications() {
     // TODO: should call service with new assignees
     console.log(this.selectedOptionsList.value);
   }

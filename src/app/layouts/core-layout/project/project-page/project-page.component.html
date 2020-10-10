@@ -6,7 +6,7 @@
           <div class="card-header card-header-tabs card-header-darker-cyan">
             <div class="nav-tabs-navigation">
               <div class="nav-tabs-wrapper">
-                <span class="nav-tabs-title">{{ project.title }}</span>
+                <span class="nav-tabs-title">{{ project.getTitle() }}</span>
                 <ul class="nav nav-tabs" data-tabs="tabs">
                   <div class="buttons-container">
                     <li>
@@ -55,7 +55,7 @@
                 <div class="make-scrollable">
                   <app-issue-page *ngIf="selectedIssueId"
                     [selectedIssueId]="selectedIssueId"
-                    [projectId]="project.id"
+                    [projectId]="project.getId()"
                   ></app-issue-page>
                 </div>
               </div>

@@ -8,7 +8,7 @@
     <div class="action">
       <button
         mat-button
-        [routerLink]="['/projects', project.id]"
+        [routerLink]="['/projects', project.getId()]"
         [queryParams]="{ sortBy: 'urgent' }"
         disabled="{{ !project.urgentIssues }}"
         class="button-text"
@@ -26,7 +26,7 @@
     <div class="action">
       <button
         mat-button
-        [routerLink]="['/projects', project.id]"
+        [routerLink]="['/projects', project.getId()]"
         [queryParams]="{ sortBy: 'mine' }"
         disabled="{{ !project.assignedToMe }}"
         class="button-text"
@@ -44,7 +44,7 @@
     <div class="action">
       <button
         mat-button
-        [routerLink]="['/projects', project.id]"
+        [routerLink]="['/projects', project.getId()]"
         [queryParams]="{ sortBy: 'open' }"
         disabled="{{ !project.allOpen }}"
         class="button-text"
