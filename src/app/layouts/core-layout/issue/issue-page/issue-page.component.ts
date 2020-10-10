@@ -2,7 +2,10 @@ import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Issue } from "app/models/Issue";
 import { IssueStatus } from "app/models/IssueStatus";
-import { statusOptions, getIssueById } from "../../../../fake/fakeData";
+import {
+  statusOptions,
+  getIssueById,
+} from "../../../../shared/services/fakeData";
 import { MatDialog } from "@angular/material/dialog";
 import { MultiSelectComponent } from "../../multi-select/multi-select.component";
 import { Permission } from "app/models/Permission";

@@ -13,6 +13,15 @@
                       <button
                         mat-raised-button
                         class="text-button new-button"
+                        (click)="openNewIssue()"
+                      >
+                        New issue
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        mat-raised-button
+                        class="text-button new-button"
                         (click)="openManageRoles()"
                       >
                         Manage roles
@@ -36,7 +45,7 @@
             <div class="main-container">
               <div class="left-container noselect">
                 <mat-list class="make-scrollable">
-                  <app-issue-list-items
+                  <app-issue-list-items *ngIf="issues"
                     [issues]="issues"
                     [selectIssue]="selectIssue.bind(this)"
                   ></app-issue-list-items>
@@ -44,7 +53,7 @@
               </div>
               <div class="right-container">
                 <div class="make-scrollable">
-                  <app-issue-page
+                  <app-issue-page *ngIf="selectedIssueId"
                     [selectedIssueId]="selectedIssueId"
                     [projectId]="project.id"
                   ></app-issue-page>

@@ -4,7 +4,10 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Role } from "app/models/Role";
 import { TrackerProject } from "app/models/TrackerProject";
 import { User } from "app/models/User";
-import { getRolesOfProjectById, allProjects } from "../../../../fake/fakeData";
+import {
+  getRolesOfProjectById,
+  allProjects,
+} from "../../../../shared/services/fakeData";
 
 @Component({
   selector: "app-manage-user-roles",

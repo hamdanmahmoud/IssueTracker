@@ -9,11 +9,13 @@ import {
   projectsCreatedByMe,
   collaborations,
   mahmoud,
-} from "../../../../fake/fakeData";
+} from "../../../../shared/services/fakeData";
 import { CreateRoleComponent } from "../../roles/create-role/create-role.component";
 import { ManageRolesOnProjectComponent } from "../../roles/manage-roles-on-project/manage-roles-on-project.component";
 import { ManageUsersOnProject } from "../../roles/manage-users-on-project/manage-users-on-project.component";
 import { ManageUserRolesComponent } from "../../roles/manage-user-roles/manage-user-roles.component";
+import { CreateIssueComponent } from "../../issue/create-issue/create-issue.component";
+import { IssueDetailsComponent } from "../../issue/issue-details/issue-details.component";
 
 export interface Section {
   name: string;
@@ -151,6 +153,20 @@ export class ProjectPageComponent implements OnInit {
       height: "auto",
       maxHeight: "50rem",
       data: { project: this.project },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  }
+
+  openNewIssue() {
+    console.log("Clicked open new issue");
+    const dialogRef = this.dialog.open(IssueDetailsComponent, {
+      width: "25rem",
+      height: "auto",
+      maxHeight: "70rem",
+      data: { project: this.project, action: "create" },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

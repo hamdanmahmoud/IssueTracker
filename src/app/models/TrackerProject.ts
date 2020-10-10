@@ -10,22 +10,6 @@ export class TrackerProject extends Project {
   private issues: Issue[];
   private roles: Role[];
 
-  constructor(
-    title: string,
-    summary: string,
-    owner: User,
-    collaborators: User[],
-    created: Date,
-    id: string,
-    roles: Role[]
-  ) {
-    super(id, title, summary);
-    this.owner = owner;
-    this.collaborators = collaborators;
-    this.created = created;
-    this.roles = roles;
-  }
-
   getRoles(): Role[] {
     return this.roles;
   }

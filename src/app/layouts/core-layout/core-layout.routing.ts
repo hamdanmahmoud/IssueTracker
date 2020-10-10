@@ -2,8 +2,6 @@ import { Routes } from "@angular/router";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { IconsComponent } from "../../icons/icons.component";
-import { NotificationsComponent } from "../../notifications/notifications.component";
 import { IssuesComponent } from "./issue/issues/issues.component";
 import { ProjectsComponent } from "./project/projects/projects.component";
 import { CreateProjectComponent } from "./project/create-project/create-project.component";
@@ -16,16 +14,11 @@ export const CoreLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
   { path: "projects", component: ProjectsComponent },
   { path: "issues", component: IssuesComponent },
-  { path: "icons", component: IconsComponent },
-  { path: "notifications", component: NotificationsComponent },
   {
     path: "projects/create",
     component: CreateProjectComponent,
   },
-  {
-    path: "issues/create",
-    component: CreateIssueComponent,
-  },
+
   {
     path: "projects/:projectId",
     component: ProjectPageComponent,

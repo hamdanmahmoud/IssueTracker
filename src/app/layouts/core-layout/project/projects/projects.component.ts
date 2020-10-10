@@ -4,7 +4,7 @@ import {
   collaborations,
   columnsToDisplayForMyProjects,
   columnsToDisplayForCollaborations,
-} from "../../../../fake/fakeData";
+} from "../../../../shared/services/fakeData";
 import { TrackerProject } from "app/models/TrackerProject";
 import { ProjectsTableComponent } from "../projects-table/projects-table.component";
 @Component({

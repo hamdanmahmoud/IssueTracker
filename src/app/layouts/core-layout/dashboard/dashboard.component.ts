@@ -6,7 +6,7 @@ import {
   allIssues,
   columnsToDisplayForIssuesInDashboard,
   statusOptions,
-} from "../../../fake/fakeData";
+} from "../../../shared/services/fakeData";
 import { IssueStatus } from "app/models/IssueStatus";
 
 @Component({

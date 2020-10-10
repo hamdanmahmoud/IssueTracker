@@ -4,7 +4,12 @@ import { User } from "app/models/User";
 import { Permission } from "../../../models/Permission";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Inject } from "@angular/core";
-import { mahmoud, ana, hori, allPermissions } from "../../../fake/fakeData";
+import {
+  mahmoud,
+  ana,
+  hori,
+  allPermissions,
+} from "../../../shared/services/fakeData";
 import { ManageUserRolesComponent } from "../roles/manage-user-roles/manage-user-roles.component";
 
 @Component({

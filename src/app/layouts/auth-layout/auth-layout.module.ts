@@ -17,6 +17,8 @@ import { AuthLayoutRoutes } from "./auth-layout.routing";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 
+import { AuthService } from "../../shared/services/auth.service";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -34,5 +36,6 @@ import { RegisterComponent } from "./register/register.component";
     MatCardModule,
   ],
   declarations: [LoginComponent, RegisterComponent],
+  providers: [AuthService],
 })
 export class AuthLayoutModule {}

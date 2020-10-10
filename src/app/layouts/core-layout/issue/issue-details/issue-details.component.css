@@ -5,15 +5,17 @@
 .container {
   background-color: white;
   border-radius: 6px;
+  height: fit-content;
+  overflow: auto;
 }
 
-@media (min-width: 1000px) {
+/* @media (min-width: 1000px) {
   .container {
     max-width: 400px;
     position: absolute;
     left: 30%;
   }
-}
+} */
 
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/

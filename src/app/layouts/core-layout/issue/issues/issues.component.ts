@@ -5,9 +5,11 @@ import {
   allIssues,
   columnsToDisplayForIssues,
   statusOptions,
-} from "../../../../fake/fakeData";
+} from "../../../../shared/services/fakeData";
 import { IssuesTableComponent } from "../issues-table/issues-table.component";
 import { SelectionModel } from "@angular/cdk/collections";
+import { MatDialog } from "@angular/material/dialog";
+import { IssueDetailsComponent } from "../issue-details/issue-details.component";
 @Component({
   selector: "app-issues",
   templateUrl: "./issues.component.html",
@@ -25,7 +27,7 @@ export class IssuesComponent implements OnInit {
   @ViewChild("bugsTable") bugsTable: IssuesTableComponent;
   @ViewChild("tasksTable") tasksTable: IssuesTableComponent;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     console.log("Issues");
   }
 
@@ -50,5 +52,19 @@ export class IssuesComponent implements OnInit {
 
   selectBugs() {
     this.tasksTable.selection = new SelectionModel<Issue>(true, []);
+  }
+
+  openNewIssue() {
+    console.log("Clicked open new issue");
+    const dialogRef = this.dialog.open(IssueDetailsComponent, {
+      width: "25rem",
+      height: "auto",
+      maxHeight: "70rem",
+      data: { action: "create" },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
   }
 }

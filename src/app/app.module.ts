@@ -6,12 +6,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 
 import { AppRoutingModule } from "./app.routing";
-import { ComponentsModule } from "./components/components.module";
+import { ComponentsModule } from "./shared/components/components.module";
 
 import { AppComponent } from "./app.component";
 
 import { CoreLayoutComponent } from "./layouts/core-layout/core-layout.component";
 import { API } from "./API.conf";
+import { AlreadyLoggedInResolver } from "./shared/services/already-logged-in-resolver";
+import { LoggedInGuard } from "./shared/services/logged-in-guard";
+import { AuthService } from "./shared/services/auth.service";
 
 @NgModule({
   imports: [
@@ -24,7 +27,7 @@ import { API } from "./API.conf";
     AppRoutingModule,
   ],
   declarations: [AppComponent, CoreLayoutComponent],
-  providers: [API],
+  providers: [API, AuthService, LoggedInGuard, AlreadyLoggedInResolver],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

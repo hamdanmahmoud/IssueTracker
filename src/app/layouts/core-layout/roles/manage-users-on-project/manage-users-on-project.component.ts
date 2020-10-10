@@ -4,7 +4,7 @@ import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { TrackerProject } from "app/models/TrackerProject";
 import { User } from "app/models/User";
 import { ManageUserRolesComponent } from "../manage-user-roles/manage-user-roles.component";
-import { getUsersOfProjectById } from "../../../../fake/fakeData";
+import { getUsersOfProjectById } from "../../../../shared/services/fakeData";
 
 @Component({
   selector: "app-manage-users",

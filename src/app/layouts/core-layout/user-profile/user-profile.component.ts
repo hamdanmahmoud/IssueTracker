@@ -3,7 +3,7 @@ import {
   profileDescription,
   profileName,
   profileTitle,
-} from "../../../fake/fakeData";
+} from "../../../shared/services/fakeData";
 
 @Component({
   selector: "app-user-profile",

@@ -6,18 +6,6 @@ export class Role {
   private projectId: string;
   private permissions: Permission[];
 
-  constructor(
-    id: string,
-    name: string,
-    projectId: string,
-    permissions: Permission[]
-  ) {
-    this.id = id;
-    this.name = name;
-    this.projectId = projectId;
-    this.permissions = permissions;
-  }
-
   getId(): string {
     return this.id;
   }

@@ -1,16 +1,19 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Inject, Input, OnInit } from "@angular/core";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { IssueType } from "app/models/IssueType";
 import { TrackerProject } from "app/models/TrackerProject";
-import { projectsCreatedByMe, collaborations } from "../../../../fake/fakeData";
+import {
+  projectsCreatedByMe,
+  collaborations,
+} from "../../../../shared/services/fakeData";
 @Component({
   selector: "app-issue-details",
   templateUrl: "./issue-details.component.html",
   styleUrls: ["./issue-details.component.css"],
 })
 export class IssueDetailsComponent implements OnInit {
-  @Input()
   action: "create" | "edit";
-
+  project: TrackerProject;
   projects: TrackerProject[];
 
   defaultIssueType: IssueType;
@@ -28,8 +31,10 @@ export class IssueDetailsComponent implements OnInit {
     },
   ];
 
-  constructor() {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     console.log("Issue-details");
+    this.project = this.data.project;
+    this.action = this.data.action;
   }
 
   ngOnInit(): void {

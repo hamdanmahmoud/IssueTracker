@@ -1,5 +1,4 @@
-<div class="col-lg-12 col-md-12">
-  <div class="card">
+
     <div class="container">
       <div class="headline">
         <h3>{{ action.charAt(0).toUpperCase() + action.slice(1) }} issue</h3>
@@ -7,7 +6,10 @@
       <br />
       <mat-form-field appearance="fill">
         <mat-label>Project</mat-label>
-        <mat-select>
+        <mat-select [(value)]="project">
+          <mat-select-trigger
+          >{{ project ? project.title : ''}}</mat-select-trigger
+          >
           <mat-option *ngFor="let project of projects" [value]="project">{{
             project.title
           }}</mat-option>
@@ -46,5 +48,3 @@
         {{ action }}
       </button>
     </div>
-  </div>
-</div>

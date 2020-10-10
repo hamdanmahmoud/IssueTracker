@@ -1,4 +1,4 @@
-import { mahmoud } from "app/fake/fakeData"; // TODO: circular dependency, should be removed anyway cuz it s fake
+import { mahmoud } from "app/shared/services/fakeData"; // TODO: circular dependency, should be removed anyway cuz it s fake
 import { Issue } from "./Issue";
 import { Project } from "./Project";
 import { TrackerProject } from "./TrackerProject";
@@ -17,20 +17,6 @@ export class ProjectCard extends Project {
   urgentIssues: number;
   allOpen: number;
   assignedToMe: number;
-
-  constructor(
-    id?: string,
-    title?: string,
-    summary?: string,
-    urgentIssues?: number,
-    allOpen?: number,
-    assignedToMe?: number
-  ) {
-    super(id, title, summary);
-    this.urgentIssues = urgentIssues;
-    this.allOpen = allOpen;
-    this.assignedToMe = assignedToMe;
-  }
 
   fromProjectToCard(project: TrackerProject): ProjectCard {
     for (const key in project) {

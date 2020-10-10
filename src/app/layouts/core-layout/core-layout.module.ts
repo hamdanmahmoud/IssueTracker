@@ -17,8 +17,6 @@ import { MatIconModule } from "@angular/material/icon";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { IconsComponent } from "../../icons/icons.component";
-import { NotificationsComponent } from "../../notifications/notifications.component";
 import { IssuesTableComponent } from "./issue/issues-table/issues-table.component";
 import { ProjectCardComponent } from "./project/project-card/project-card.component";
 import { IssuesComponent } from "app/layouts/core-layout/issue/issues/issues.component";
@@ -62,8 +60,6 @@ import { EditRoleComponent } from "./roles/edit-role/edit-role.component";
   declarations: [
     DashboardComponent,
     UserProfileComponent,
-    IconsComponent,
-    NotificationsComponent,
     IssuesTableComponent,
     IssuesComponent,
     ProjectsTableComponent,

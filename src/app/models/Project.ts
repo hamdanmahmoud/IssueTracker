@@ -3,12 +3,6 @@ export abstract class Project {
   private summary: string;
   private id: string;
 
-  constructor(id, title, summary) {
-    this.id = id;
-    this.title = title;
-    this.summary = summary;
-  }
-
   getId() {
     return this.id;
   }
