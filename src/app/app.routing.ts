@@ -13,24 +13,18 @@ const routes: Routes = [
   },
   {
     path: "auth",
-    children: [
-      {
-        path: "",
-        loadChildren:
-          "./layouts/auth-layout/auth-layout.module#AuthLayoutModule",
-      },
-    ],
+    loadChildren: () =>
+      import("./layouts/auth-layout/auth-layout.module").then(
+        (m) => m.AuthLayoutModule
+      ),
   },
   {
     path: "",
     component: CoreLayoutComponent,
-    children: [
-      {
-        path: "",
-        loadChildren:
-          "./layouts/core-layout/core-layout.module#CoreLayoutModule",
-      },
-    ],
+    loadChildren: () =>
+      import("./layouts/core-layout/core-layout.module").then(
+        (m) => m.CoreLayoutModule
+      ),
   },
 ];
 
