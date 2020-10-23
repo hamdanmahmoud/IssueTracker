@@ -67,6 +67,29 @@ export class AuthService extends RootInjectorGuard {
     }
   }
 
+  getToken() {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      console.log("Logged in from memory");
+      const user: LoggedInUser = Object.assign(
+        new LoggedInUser(),
+        JSON.parse(userData)
+      );
+      this.token = user.token;
+
+      // TODO: additional checks, such as expiration on token
+
+      // finally
+      this.server.setLoggedIn(true, this.token);
+      this.loggedIn.next(true);
+
+      return this.token;
+    } else {
+      this.logout();
+      return null;
+    }
+  }
+
   logout() {
     this.server.setLoggedIn(false);
     delete this.token;
