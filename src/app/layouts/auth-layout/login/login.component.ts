@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = this.fb.group({
-      email: ["", Validators.email],
+      username: ["", Validators.email],
       password: ["", Validators.required],
     });
   }
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       try {
         await this.authService.login(this.form.value);
       } catch (err) {
+        console.log("Catched error");
         this.loginInvalid = true;
       }
     } else {

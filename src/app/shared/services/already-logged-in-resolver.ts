@@ -8,6 +8,7 @@ export class AlreadyLoggedInResolver {
 
   resolve(): void {
     this.authService.isLoggedIn.subscribe((value) => {
+      console.log("VALUE RETURNED IS " + value);
       if (value) this.router.navigate(["/dashboard"]);
     });
   }

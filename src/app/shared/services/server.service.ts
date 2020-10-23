@@ -30,7 +30,7 @@ export class ServerService {
     return this.http.request(method, baseUrl + route, {
       body: data,
       responseType: "json",
-      observe: "body",
+      observe: "response",
       headers: header,
     });
   }

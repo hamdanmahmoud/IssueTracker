@@ -3,10 +3,13 @@ import { Router } from "@angular/router";
 import { LoggedInUser } from "app/models/LoggedInUser";
 import { UserToLogIn } from "app/models/UserToLogIn";
 import { BehaviorSubject } from "rxjs";
+import { RootInjectorGuard } from "./RootInjectorGuard";
 import { ServerService } from "./server.service";
 
-@Injectable()
-export class AuthService {
+@Injectable({
+  providedIn: "root",
+})
+export class AuthService extends RootInjectorGuard {
   private loggedIn = new BehaviorSubject<boolean>(false);
   private token: string;
 
@@ -15,6 +18,7 @@ export class AuthService {
   }
 
   constructor(private router: Router, private server: ServerService) {
+    super(AuthService);
     console.log("Auth Service");
     const userData = localStorage.getItem("user");
     if (userData) {
@@ -34,23 +38,31 @@ export class AuthService {
   }
 
   login(user: UserToLogIn) {
-    if (user.mail !== "" && user.password !== "") {
+    if (user.username !== "" && user.password !== "") {
       return this.server
         .request("POST", "/login", {
-          mail: user.mail,
+          username: user.username,
           password: user.password,
         })
-        .subscribe((response: any) => {
-          if (response.auth === true && response.token !== undefined) {
-            this.token = response.token;
+        .toPromise()
+        .then((response: any) => {
+          const authorization: string = response.headers.get("Authorization");
+          if (authorization) {
+            this.token = authorization.substring(7);
             this.server.setLoggedIn(true, this.token);
             this.loggedIn.next(true);
             const userData = {
               token: this.token,
             };
             localStorage.setItem("user", JSON.stringify(userData));
-            this.router.navigateByUrl("/profile");
+            this.router.navigate(["dashboard"]);
+          } else {
+            console.log("Credentials invalid");
+            throw "Credentials invalid";
           }
+        })
+        .catch((error) => {
+          throw error;
         });
     }
   }

@@ -20,6 +20,7 @@ export class LoggedInGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     this.authService.isLoggedIn.subscribe((value) => {
+      console.log(value);
       if (!value) this.router.navigate(["auth/login"]);
     });
     return this.authService.isLoggedIn;

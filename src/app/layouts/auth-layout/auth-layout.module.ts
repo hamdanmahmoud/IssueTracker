@@ -36,6 +36,6 @@ import { AuthService } from "../../shared/services/auth.service";
     MatCardModule,
   ],
   declarations: [LoginComponent, RegisterComponent],
-  providers: [AuthService],
+  providers: [],
 })
 export class AuthLayoutModule {}
