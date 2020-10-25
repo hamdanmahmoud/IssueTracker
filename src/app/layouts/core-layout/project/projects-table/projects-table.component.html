@@ -82,7 +82,7 @@
           ><a href="javascript:void(0)" class="avatar avatar-sm">
             <img
               alt="Image placeholder"
-              src="{{ element.owner.getImageUrl() }}"
+              <!-- src="{{ element.owner.getImageUrl() | async }}" -->
               class="rounded-circle"
             /> </a
         ></span>
@@ -112,7 +112,7 @@
             >
               <img
                 alt="Image placeholder"
-                src="{{ collaborator.getImageUrl() }}"
+                <!-- src="{{ collaborator.getImageUrl() | async }}" -->
                 class="rounded-circle"
               />
             </a>

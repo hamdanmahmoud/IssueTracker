@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { Issue } from "../../../../models/Issue";
 import { API } from "../../../../API.conf";
+import { ProjectService } from "app/shared/services/project.service";
+import { UserService } from "app/shared/services/user.service";
 
 @Component({
   selector: "app-issues-table",
@@ -26,10 +28,15 @@ export class IssuesTableComponent implements OnInit {
   dataSource: MatTableDataSource<Issue>;
   selection = new SelectionModel<Issue>(true, []);
 
-  constructor(private API: API) {}
+  constructor(
+    private API: API,
+    private projectService: ProjectService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Issue>(this.data);
+    console.log(this.data);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

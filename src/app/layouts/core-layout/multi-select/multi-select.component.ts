@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { User } from "app/models/User";
+import { User } from "../../../models/User";
 import { Permission } from "../../../models/Permission";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Inject } from "@angular/core";

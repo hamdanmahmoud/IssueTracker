@@ -5,7 +5,7 @@ import {
   columnsToDisplayForMyProjects,
   columnsToDisplayForCollaborations,
 } from "../../../../shared/services/fakeData";
-import { TrackerProject } from "app/models/TrackerProject";
+import { TrackerProject } from "../../../../models/TrackerProject";
 import { ProjectsTableComponent } from "../projects-table/projects-table.component";
 @Component({
   selector: "app-projects",

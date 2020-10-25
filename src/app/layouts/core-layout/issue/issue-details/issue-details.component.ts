@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { IssueType } from "app/models/IssueType";
-import { TrackerProject } from "app/models/TrackerProject";
+import { IssueType, IssueTypeName } from "../../../../models/IssueType";
+import { TrackerProject } from "../../../../models/TrackerProject";
 import {
   projectsCreatedByMe,
   collaborations,
@@ -20,12 +20,12 @@ export class IssueDetailsComponent implements OnInit {
 
   issueTypes: IssueType[] = [
     {
-      name: "Bug",
+      name: IssueTypeName.BUG,
       iconName: "bug_report",
       color: "red",
     },
     {
-      name: "Task",
+      name: IssueTypeName.TASK,
       iconName: "assignment",
       color: "green",
     },

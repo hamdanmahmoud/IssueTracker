@@ -2,12 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { ProjectCard } from "../../../models/ProjectCard";
 import { Issue } from "../../../models/Issue";
 import {
-  dashboardProjects,
-  allIssues,
   columnsToDisplayForIssuesInDashboard,
   statusOptions,
 } from "../../../shared/services/fakeData";
-import { IssueStatus } from "app/models/IssueStatus";
+import { IssueStatus } from "../../../models/IssueStatus";
+import { IssueTypeName } from "../../../models/IssueType";
+import { IssueService } from "app/shared/services/issue.service";
+import { ProjectService } from "app/shared/services/project.service";
 
 @Component({
   selector: "app-dashboard",
@@ -21,16 +22,22 @@ export class DashboardComponent implements OnInit {
   statusDropdownOptions: IssueStatus[];
   columnsToDisplayForIssues: string[];
 
-  constructor() {
+  constructor(
+    private projectService: ProjectService,
+    private issueService: IssueService
+  ) {
     console.log("Dashboard");
   }
 
-  ngOnInit(): void {
-    this.projectCards = dashboardProjects;
-    console.log(dashboardProjects);
+  async ngOnInit() {
+    // this.projectCards = dashboardProjects;
+    this.projectCards = await this.projectService.getMyProjectCards();
     console.log(this.projectCards);
-    this.tasks = allIssues.filter((issue) => issue.type === "task");
-    this.bugs = allIssues.filter((issue) => issue.type === "bug");
+    // console.log(dashboardProjects);
+    let myIssues = await this.issueService.getMyIssues();
+    console.log("MY ISSUES", myIssues);
+    this.tasks = myIssues.filter((issue) => issue.type === IssueTypeName.TASK);
+    this.bugs = myIssues.filter((issue) => issue.type === IssueTypeName.BUG);
 
     this.columnsToDisplayForIssues = columnsToDisplayForIssuesInDashboard;
 

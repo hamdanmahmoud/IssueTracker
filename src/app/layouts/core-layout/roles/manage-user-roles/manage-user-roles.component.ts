@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Role } from "app/models/Role";
-import { TrackerProject } from "app/models/TrackerProject";
-import { User } from "app/models/User";
+import { Role } from "../../../../models/Role";
+import { TrackerProject } from "../../../../models/TrackerProject";
+import { User } from "../../../../models/User";
 import {
   getRolesOfProjectById,
   allProjects,

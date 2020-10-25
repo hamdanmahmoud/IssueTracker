@@ -2,7 +2,7 @@ import { SelectionModel } from "@angular/cdk/collections";
 import { Component, Input, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { API } from "../../../../API.conf";
-import { TrackerProject } from "app/models/TrackerProject";
+import { TrackerProject } from "../../../../models/TrackerProject";
 
 @Component({
   selector: "app-projects-table",

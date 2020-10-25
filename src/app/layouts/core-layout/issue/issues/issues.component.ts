@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { IssueStatus } from "app/models/IssueStatus";
+import { IssueStatus } from "../../../../models/IssueStatus";
 import { Issue } from "../../../../models/Issue";
 import {
   allIssues,

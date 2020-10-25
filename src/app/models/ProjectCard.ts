@@ -1,4 +1,5 @@
-import { mahmoud } from "app/shared/services/fakeData"; // TODO: circular dependency, should be removed anyway cuz it s fake
+import { AuthService } from "../shared/services/auth.service";
+import { mahmoud } from "../shared/services/fakeData"; // TODO: circular dependency, should be removed anyway cuz it s fake
 import { Issue } from "./Issue";
 import { Project } from "./Project";
 import { TrackerProject } from "./TrackerProject";
@@ -19,16 +20,19 @@ export class ProjectCard extends Project {
   assignedToMe: number;
 
   fromProjectToCard(project: TrackerProject): ProjectCard {
+    console.log(project);
     for (const key in project) {
       if (projectCardKeys.includes(key)) {
         this[key] = project[key];
       }
     }
+    console.log(this);
     return this;
   }
 
-  setIssues(issues: Issue[]): ProjectCard {
-    issues = issues.filter((issue) => issue.project.getId() === this.getId());
+  setIssues(issues: Issue[], myUserId: string): ProjectCard {
+    console.log("Setting issues:", issues);
+    issues = issues.filter((issue) => issue.projectId === this.getId());
 
     this.urgentIssues = issues.filter((issue) => issue.priority >= 80).length;
     this.allOpen = issues.filter(
@@ -38,7 +42,7 @@ export class ProjectCard extends Project {
         issue.status !== "DONE"
     ).length;
     this.assignedToMe = issues.filter(
-      (issue) => issue.assignees.includes(mahmoud) // TODO: proper way not fake way
+      (issue) => issue.assignees.includes(myUserId) // TODO: proper way not fake way
     ).length;
     return this;
   }

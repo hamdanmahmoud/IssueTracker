@@ -4,9 +4,9 @@ import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import {
   allProjects,
   getRolesOfProjectById,
-} from "app/shared/services/fakeData";
-import { Role } from "app/models/Role";
-import { TrackerProject } from "app/models/TrackerProject";
+} from "../../../../shared/services/fakeData";
+import { Role } from "../../../../models/Role";
+import { TrackerProject } from "../../../../models/TrackerProject";
 import { CreateRoleComponent } from "../create-role/create-role.component";
 import { EditRoleComponent } from "../edit-role/edit-role.component";
 

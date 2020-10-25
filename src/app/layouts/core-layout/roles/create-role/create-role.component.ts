@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { allPermissions } from "app/shared/services/fakeData";
-import { Permission } from "app/models/Permission";
+import { allPermissions } from "../../../../shared/services/fakeData";
+import { Permission } from "../../../../models/Permission";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { TrackerProject } from "app/models/TrackerProject";
+import { TrackerProject } from "../../../../models/TrackerProject";
 
 @Component({
   selector: "app-create-role",

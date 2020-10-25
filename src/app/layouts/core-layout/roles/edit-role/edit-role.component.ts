@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { allPermissions } from "app/shared/services/fakeData";
-import { Permission } from "app/models/Permission";
+import { allPermissions } from "../../../../shared/services/fakeData";
+import { Permission } from "../../../../models/Permission";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { TrackerProject } from "app/models/TrackerProject";
-import { Role } from "app/models/Role";
+import { TrackerProject } from "../../../../models/TrackerProject";
+import { Role } from "../../../../models/Role";
 
 @Component({
   selector: "app-edit-role",

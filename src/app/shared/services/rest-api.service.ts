@@ -4,8 +4,10 @@ import { Observable, throwError } from "rxjs";
 import { retry, catchError } from "rxjs/operators";
 import { API } from "../../API.conf";
 import { AuthService } from "./auth.service";
-import { Project } from "app/models/Project";
-import { TrackerProject } from "app/models/TrackerProject";
+import { Project } from "../../models/Project";
+import { TrackerProject } from "../../models/TrackerProject";
+import { Issue } from "../../models/Issue";
+import { User } from "../../models/User";
 
 @Injectable({
   providedIn: "root",
@@ -27,18 +29,82 @@ export class RestApiService {
     }),
   };
 
+  async getUserById(id): Promise<User> {
+    // let user = await this.http
+    //   .get<User>(API.userURL + "/users/" + id, this.httpOptions)
+    //   .pipe(retry(1), catchError(this.handleError))
+    //   .toPromise();
+    // return user;
+    return;
+  }
+
   // HttpClient API get() method => Fetch projects list
-  getProjects(): Observable<TrackerProject> {
-    return this.http
-      .get<TrackerProject>(API.projectURL + "/projects", this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError));
+  async getMyProjects(): Promise<TrackerProject[]> {
+    let projects = await this.http
+      .get<any>(
+        API.projectURL +
+          "/api" +
+          "/projects" +
+          "?userId=" +
+          this.authService.getMyUserId(),
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((projects) => {
+        return new Promise((resolve, reject) =>
+          resolve(projects._embedded.projects)
+        );
+      })
+      .then((projects: TrackerProject[]) =>
+        projects.map((project) => Object.assign(new TrackerProject(), project))
+      );
+    console.log(projects);
+    return projects;
+  }
+
+  async getMyIssues(): Promise<Issue[]> {
+    let issues = await this.http
+      .get<any>(
+        API.issueURL +
+          "/api" +
+          "/issues" +
+          "?userId=" +
+          this.authService.getMyUserId(),
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((issues) => {
+        return new Promise((resolve, reject) =>
+          resolve(issues._embedded.issues)
+        );
+      })
+      // .then((issues: Issue[]) => {
+      //   return new Promise((resolve, reject) =>
+      //     resolve(
+      //       issues.map(
+      //         async (issue) =>
+      //           (issue.project = await this.getProject(issue.project))
+      //       )
+      //     )
+      //   );
+      // })
+      .then((issues: Issue[]) =>
+        issues.map((issue) => Object.assign(new Issue(), issue))
+      );
+
+    console.log("Returning issues", issues);
+
+    return issues;
   }
 
   // HttpClient API get() method => Fetch project
-  getProject(id): Observable<TrackerProject> {
+  getProject(id): Promise<TrackerProject> {
     return this.http
       .get<TrackerProject>(API.projectURL + "/projects/" + id, this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError));
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
   }
 
   // HttpClient API post() method => Create project

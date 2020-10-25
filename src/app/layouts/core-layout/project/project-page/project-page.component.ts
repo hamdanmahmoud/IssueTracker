@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Issue } from "app/models/Issue";
-import { TrackerProject } from "app/models/TrackerProject";
+import { Issue } from "../../../../models/Issue";
+import { TrackerProject } from "../../../../models/TrackerProject";
 import {
   tasks,
   bugs,
@@ -16,6 +16,7 @@ import { ManageUsersOnProject } from "../../roles/manage-users-on-project/manage
 import { ManageUserRolesComponent } from "../../roles/manage-user-roles/manage-user-roles.component";
 import { CreateIssueComponent } from "../../issue/create-issue/create-issue.component";
 import { IssueDetailsComponent } from "../../issue/issue-details/issue-details.component";
+import { AuthService } from "../../../../shared/services/auth.service";
 
 export interface Section {
   name: string;
@@ -41,7 +42,8 @@ export class ProjectPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +58,7 @@ export class ProjectPageComponent implements OnInit {
     );
     console.log("Issues before filtering:", this.issues);
     this.issues = [...bugs, ...tasks].filter(
-      (issue) => issue.project === this.project
+      (issue) => issue.projectId === this.project.getId()
     );
     console.log("Issues after filtering:", this.issues);
 
@@ -77,7 +79,7 @@ export class ProjectPageComponent implements OnInit {
         break;
       case "mine": // TODO: proper look up based on auth service or smth
         this.issues = this.issues.filter((issue) =>
-          issue.assignees.includes(mahmoud)
+          issue.assignees.includes(this.authService.getMyUserId())
         );
         break;
       case "open":

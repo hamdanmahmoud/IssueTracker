@@ -1,10 +1,10 @@
-import { Issue } from "app/models/Issue";
-import { IssueStatus } from "app/models/IssueStatus";
-import { Permission } from "app/models/Permission";
-import { ProjectCard } from "app/models/ProjectCard";
-import { Role } from "app/models/Role";
-import { TrackerProject } from "app/models/TrackerProject";
-import { User } from "app/models/User";
+import { Issue } from "../../models/Issue";
+import { IssueStatus } from "../../models/IssueStatus";
+import { Permission } from "../../models/Permission";
+import { ProjectCard } from "../../models/ProjectCard";
+import { Role } from "../../models/Role";
+import { TrackerProject } from "../../models/TrackerProject";
+import { User } from "../../models/User";
 
 const role1: Role = Object.assign(new Role(), {
   id: "debe1e35-274b-406c-8d43-d8903346c2fe",
@@ -573,7 +573,7 @@ export const collab5: TrackerProject = Object.assign(new TrackerProject(), {
 });
 
 const task1: Issue = {
-  project: project1,
+  projectId: project1.getId(),
   summary: "Summary for this particular issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -583,7 +583,7 @@ const task1: Issue = {
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: mahmoud,
-  assignees: [hori, ana],
+  assignees: [hori.getId(), ana.getId()],
   status: "CANCELED",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 60,
@@ -593,7 +593,7 @@ const task1: Issue = {
 };
 
 const task2: Issue = {
-  project: project4,
+  projectId: project4.getId(),
   summary: "Summary for this exact exact exact exact exact exact issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -603,7 +603,7 @@ const task2: Issue = {
     pariatur. Excepteur sint occaecat cupidatat non proident, 
     sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: hori,
-  assignees: [ana],
+  assignees: [ana.getId()],
   status: "RESOLVED",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 40,
@@ -613,7 +613,7 @@ const task2: Issue = {
 };
 
 const task3: Issue = {
-  project: project3,
+  projectId: project3.getId(),
   summary: "Summary for this awesome issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -623,7 +623,7 @@ const task3: Issue = {
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: hori,
-  assignees: [mahmoud, ana],
+  assignees: [mahmoud.getId(), ana.getId()],
   status: "IN_REVIEW",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 90,
@@ -633,7 +633,7 @@ const task3: Issue = {
 };
 
 const task4: Issue = {
-  project: project2,
+  projectId: project2.getId(),
   summary: "Summary for this issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -643,7 +643,7 @@ const task4: Issue = {
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: ana,
-  assignees: [mahmoud],
+  assignees: [mahmoud.getId()],
   status: "IN_PROGRESS",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 30,
@@ -653,14 +653,14 @@ const task4: Issue = {
 };
 
 const task5: Issue = {
-  project: project4,
+  projectId: project4.getId(),
   summary: "Some very smart summary",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: ana,
-  assignees: [hori, mahmoud],
+  assignees: [hori.getId(), mahmoud.getId()],
   status: "IN_REVIEW",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 45,
@@ -670,13 +670,13 @@ const task5: Issue = {
 };
 
 const task6: Issue = {
-  project: collab5,
+  projectId: collab5.getId(),
   summary: "Another summary here",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam.`,
   reporter: hori,
-  assignees: [mahmoud],
+  assignees: [mahmoud.getId()],
   status: "PENDING",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 55,
@@ -686,13 +686,13 @@ const task6: Issue = {
 };
 
 const task7: Issue = {
-  project: collab5,
+  projectId: collab5.getId(),
   summary: "Summary for this issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam.`,
   reporter: mahmoud,
-  assignees: [ana, hori],
+  assignees: [ana.getId(), hori.getId()],
   status: "RESOLVED",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 60,
@@ -702,14 +702,14 @@ const task7: Issue = {
 };
 
 const task8: Issue = {
-  project: collab5,
+  projectId: collab5.getId(),
   summary: "Summary for this task",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: ana,
-  assignees: [mahmoud, hori],
+  assignees: [mahmoud.getId(), hori.getId()],
   status: "TO_DO",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 20,
@@ -719,14 +719,14 @@ const task8: Issue = {
 };
 
 const task9: Issue = {
-  project: collab3,
+  projectId: collab3.getId(),
   summary: "Summary for this issue right here.",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: mahmoud,
-  assignees: [ana, hori],
+  assignees: [ana.getId(), hori.getId()],
   status: "DONE",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 30,
@@ -748,7 +748,7 @@ export const tasks: Issue[] = [
 ];
 
 const bug1: Issue = {
-  project: project1,
+  projectId: project1.getId(),
   summary: "Summary for this particular issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -758,7 +758,7 @@ const bug1: Issue = {
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: hori,
-  assignees: [mahmoud, ana],
+  assignees: [mahmoud.getId(), ana.getId()],
   status: "PENDING",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 80,
@@ -768,7 +768,7 @@ const bug1: Issue = {
 };
 
 const bug2: Issue = {
-  project: project2,
+  projectId: project2.getId(),
   summary: "Summary for this backend issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -786,7 +786,7 @@ const bug2: Issue = {
 };
 
 const bug3: Issue = {
-  project: project3,
+  projectId: project3.getId(),
   summary: "Don't forget about db schema",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -795,7 +795,7 @@ const bug3: Issue = {
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
   pariatur.`,
   reporter: ana,
-  assignees: [mahmoud],
+  assignees: [mahmoud.getId()],
   status: "RESOLVED",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 70,
@@ -805,14 +805,14 @@ const bug3: Issue = {
 };
 
 const bug4: Issue = {
-  project: collab2,
+  projectId: collab2.getId(),
   summary: "Some very smart summary",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: ana,
-  assignees: [hori, mahmoud],
+  assignees: [hori.getId(), mahmoud.getId()],
   status: "IN_REVIEW",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 35,
@@ -822,14 +822,14 @@ const bug4: Issue = {
 };
 
 const bug5: Issue = {
-  project: collab1,
+  projectId: collab1.getId(),
   summary: "Some very smart summary for this bug",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   reporter: ana,
-  assignees: [hori, mahmoud],
+  assignees: [hori.getId(), mahmoud.getId()],
   status: "CANCELED",
   created: new Date(Date.now() + Math.round(Math.random() * 10000)),
   priority: 70,
@@ -927,16 +927,16 @@ export const allProjects: TrackerProject[] = [
   ...collaborations,
 ];
 
-export const dashboardProjects: ProjectCard[] = allProjects
-  .map((project) => {
-    return new ProjectCard().fromProjectToCard(project);
-  })
-  .map((project) => {
-    return project.setIssues(allIssues);
-  })
-  .filter(
-    (project) => project.assignedToMe || project.urgentIssues || project.allOpen
-  );
+// export const dashboardProjects: ProjectCard[] = allProjects
+//   .map((project) => {
+//     return new ProjectCard().fromProjectToCard(project);
+//   })
+//   .map((project) => {
+//     return project.setIssues(allIssues);
+//   })
+//   .filter(
+//     (project) => project.assignedToMe || project.urgentIssues || project.allOpen
+//   );
 
 export const getRolesOfProjectById = (projectId: string): Role[] => {
   return allProjects

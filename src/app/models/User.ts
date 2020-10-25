@@ -8,6 +8,30 @@ export class User {
   private imageUrl: string;
   private roles: Role[];
 
+  constructor(
+    id?: string,
+    firstName?: string,
+    lastName?: string,
+    mail?: string,
+    imageUrl?: string,
+    roles?: Role[]
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.mail = mail;
+    this.imageUrl = imageUrl;
+    this.roles = roles;
+  }
+
+  setId(id: string) {
+    this.id = id;
+  }
+
+  setMail(mail: string) {
+    this.mail = mail;
+  }
+
   getId(): string {
     return this.id;
   }

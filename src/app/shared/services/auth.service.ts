@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { LoggedInUser } from "app/models/LoggedInUser";
-import { UserToLogIn } from "app/models/UserToLogIn";
+import { LoggedInUser } from "../../models/LoggedInUser";
+import { UserToLogIn } from "../../models/UserToLogIn";
 import { BehaviorSubject } from "rxjs";
 import { RootInjectorGuard } from "./RootInjectorGuard";
 import { ServerService } from "./server.service";
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: "root",
@@ -27,13 +28,27 @@ export class AuthService extends RootInjectorGuard {
         new LoggedInUser(),
         JSON.parse(userData)
       );
-      this.token = user.token;
+      this.token = user.getToken();
 
       // TODO: additional checks, such as expiration on token
 
       // finally
       this.server.setLoggedIn(true, this.token);
       this.loggedIn.next(true);
+    }
+  }
+
+  getMyUserId(): string {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      console.log("Getting user id");
+      // console.log(userData);
+      const user: LoggedInUser = Object.assign(
+        new LoggedInUser(),
+        JSON.parse(userData)
+      );
+      // console.log(user);
+      return user.getId();
     }
   }
 
@@ -51,10 +66,17 @@ export class AuthService extends RootInjectorGuard {
             this.token = authorization.substring(7);
             this.server.setLoggedIn(true, this.token);
             this.loggedIn.next(true);
-            const userData = {
-              token: this.token,
-            };
-            localStorage.setItem("user", JSON.stringify(userData));
+            const decodedToken = this.getDecodedAccessToken(this.token);
+            const user = new LoggedInUser(
+              decodedToken.id,
+              decodedToken.firstName,
+              decodedToken.lastName,
+              decodedToken.mail,
+              decodedToken.imageUrl,
+              decodedToken.roles,
+              this.token
+            );
+            localStorage.setItem("user", JSON.stringify(user));
             this.router.navigate(["dashboard"]);
           } else {
             console.log("Credentials invalid");
@@ -75,7 +97,7 @@ export class AuthService extends RootInjectorGuard {
         new LoggedInUser(),
         JSON.parse(userData)
       );
-      this.token = user.token;
+      this.token = user.getToken();
 
       // TODO: additional checks, such as expiration on token
 
@@ -97,5 +119,13 @@ export class AuthService extends RootInjectorGuard {
     this.loggedIn.next(false);
     localStorage.clear();
     this.router.navigate(["/"]);
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
   }
 }

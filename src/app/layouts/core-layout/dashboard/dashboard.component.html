@@ -10,6 +10,11 @@
               [project]="project"
             ></app-project-card>
           </div>
+          <div *ngIf="projectCards && projectCards.length != 0">
+          </div>
+          <!-- <div *ngIf="projectCards && projectCards.length == 0">
+            There are no projects to display
+          </div> -->
         </div>
       </div>
     </div>
@@ -50,7 +55,7 @@
 
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane active" id="bugs">
+              <div *ngIf="bugs" class="tab-pane active" id="bugs">
                 <app-issues-table
                   [data]="bugs"
                   [displayedColumns]="columnsToDisplayForIssues"
@@ -58,7 +63,7 @@
                 ></app-issues-table>
               </div>
 
-              <div class="tab-pane" id="tasks">
+              <div *ngIf="tasks" class="tab-pane" id="tasks">
                 <app-issues-table
                   [data]="tasks"
                   [displayedColumns]="columnsToDisplayForIssues"
