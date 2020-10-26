@@ -58,7 +58,7 @@ export class ProjectPageComponent implements OnInit {
     );
     console.log("Issues before filtering:", this.issues);
     this.issues = [...bugs, ...tasks].filter(
-      (issue) => issue.project.getId() === this.project.getId()
+      (issue) => issue.getProject().getId() === this.project.getId()
     );
     console.log("Issues after filtering:", this.issues);
 
@@ -70,24 +70,25 @@ export class ProjectPageComponent implements OnInit {
 
     // TODO: having the criteria, service call logic goes here
     this.issues = this.issues.sort(
-      (a, b) => new Date(b.created).valueOf() - new Date(a.created).valueOf()
+      (a, b) =>
+        new Date(b.getCreated()).valueOf() - new Date(a.getCreated()).valueOf()
     );
 
     switch (this.sortBy) {
       case "urgent":
-        this.issues = this.issues.filter((issue) => issue.priority >= 80);
+        this.issues = this.issues.filter((issue) => issue.getPriority() >= 80);
         break;
       case "mine": // TODO: proper look up based on auth service or smth
         this.issues = this.issues.filter((issue) =>
-          issue.assignees.includes(this.authService.getMyUserId())
+          issue.getAssignees().includes(this.authService.getMyUserId())
         );
         break;
       case "open":
         this.issues = this.issues.filter(
           (issue) =>
-            issue.status !== "RESOLVED" &&
-            issue.status !== "CANCELED" &&
-            issue.status !== "DONE"
+            issue.getStatus() !== "RESOLVED" &&
+            issue.getStatus() !== "CANCELED" &&
+            issue.getStatus() !== "DONE"
         );
         break;
       default:
@@ -97,11 +98,11 @@ export class ProjectPageComponent implements OnInit {
 
     // selection logic
 
-    this.issues.forEach((issue) => (issue.selected = false));
+    this.issues.forEach((issue) => issue.setSelected(false));
 
     if (this.selectedIssueId) {
       this.selectedIssue = this.issues.find(
-        (issue) => issue.id === this.selectedIssueId
+        (issue) => issue.getId() === this.selectedIssueId
       );
     } else {
       this.selectedIssue = this.issues[0];
@@ -109,8 +110,8 @@ export class ProjectPageComponent implements OnInit {
     }
     if (this.selectedIssue) {
       // if there is at least one issue
-      this.selectedIssue.selected = true;
-      this.selectedIssueId = this.selectedIssue.id;
+      this.selectedIssue.setSelected(true);
+      this.selectedIssueId = this.selectedIssue.getId();
       this.router.navigate(
         ["/projects", this.projectId, "issues", this.selectedIssueId],
         {
@@ -121,10 +122,10 @@ export class ProjectPageComponent implements OnInit {
   }
 
   selectIssue(issue: Issue): void {
-    this.selectedIssue.selected = false;
+    this.selectedIssue.setSelected(false);
     this.selectedIssue = issue;
-    this.selectedIssue.selected = true;
-    this.selectedIssueId = issue.id;
+    this.selectedIssue.setSelected(true);
+    this.selectedIssueId = issue.getId();
 
     this.router.navigate(
       ["/projects", this.projectId, "issues", this.selectedIssueId],

@@ -32,17 +32,21 @@ export class ProjectCard extends Project {
 
   setIssues(issues: Issue[], myUserId: string): ProjectCard {
     console.log("Setting issues:", issues);
-    issues = issues.filter((issue) => issue.project.getId() === this.getId());
+    issues = issues.filter(
+      (issue) => issue.getProject().getId() === this.getId()
+    );
 
-    this.urgentIssues = issues.filter((issue) => issue.priority >= 80).length;
+    this.urgentIssues = issues.filter(
+      (issue) => issue.getPriority() >= 80
+    ).length;
     this.allOpen = issues.filter(
       (issue) =>
-        issue.status !== "RESOLVED" &&
-        issue.status !== "CANCELED" &&
-        issue.status !== "DONE"
+        issue.getStatus() !== "RESOLVED" &&
+        issue.getStatus() !== "CANCELED" &&
+        issue.getStatus() !== "DONE"
     ).length;
     this.assignedToMe = issues.filter(
-      (issue) => issue.assignees.includes(myUserId) // TODO: proper way not fake way
+      (issue) => issue.getAssignees().includes(myUserId) // TODO: proper way not fake way
     ).length;
     return this;
   }

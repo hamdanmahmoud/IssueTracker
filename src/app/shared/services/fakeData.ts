@@ -572,168 +572,168 @@ export const collab5: TrackerProject = Object.assign(new TrackerProject(), {
   roles: [role17, role24],
 });
 
-const task1: Issue = {
-  project: project1,
-  summary: "Summary for this particular issue",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task1: Issue = new Issue(
+  project1,
+  "Summary for this particular issue",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: mahmoud,
-  assignees: [hori.getId(), ana.getId()],
-  status: "CANCELED",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 60,
-  type: "task",
-  id: "8ebd608e-c11a-4692-b885-9ba57962a526",
-  selected: false,
-};
+  mahmoud.getId(),
+  [hori.getId(), ana.getId()],
+  IssueStatus.CANCELED,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  60,
+  "task",
+  "8ebd608e-c11a-4692-b885-9ba57962a526",
+  false
+);
 
-const task2: Issue = {
-  project: project4,
-  summary: "Summary for this exact exact exact exact exact exact issue",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-    pariatur. Excepteur sint occaecat cupidatat non proident, 
-    sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: hori,
-  assignees: [ana.getId()],
-  status: "RESOLVED",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 40,
-  type: "task",
-  id: "86139ecf-996c-4e93-b3e1-9303af6df8b0",
-  selected: false,
-};
-
-const task3: Issue = {
-  project: project3,
-  summary: "Summary for this awesome issue",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task2: Issue = new Issue(
+  project4,
+  "Summary for this exact exact exact exact exact exact issue",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: hori,
-  assignees: [mahmoud.getId(), ana.getId()],
-  status: "IN_REVIEW",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 90,
-  type: "task",
-  id: "dc88cb41-656e-49ee-bfa2-e6b45fca5236",
-  selected: false,
-};
+  hori.getId(),
+  [ana.getId()],
+  IssueStatus.RESOLVED,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  40,
+  "task",
+  "86139ecf-996c-4e93-b3e1-9303af6df8b0",
+  false
+);
 
-const task4: Issue = {
-  project: project2,
-  summary: "Summary for this issue",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task3: Issue = new Issue(
+  project3,
+  "Summary for this awesome issue",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: ana,
-  assignees: [mahmoud.getId()],
-  status: "IN_PROGRESS",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 30,
-  type: "task",
-  id: "1e3ad2cd-15ba-4e88-bf31-29de2e116474",
-  selected: false,
-};
+  hori,
+  [mahmoud.getId(), ana.getId()],
+  IssueStatus.IN_REVIEW,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  90,
+  "task",
+  "dc88cb41-656e-49ee-bfa2-e6b45fca5236",
+  false
+);
 
-const task5: Issue = {
-  project: project4,
-  summary: "Some very smart summary",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task4: Issue = new Issue(
+  project2,
+  "Summary for this issue",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+  pariatur. Excepteur sint occaecat cupidatat non proident, 
+  sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+  ana.getId(),
+  [mahmoud.getId()],
+  IssueStatus.IN_PROGRESS,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  30,
+  "task",
+  "1e3ad2cd-15ba-4e88-bf31-29de2e116474",
+  false
+);
+
+const task5: Issue = new Issue(
+  project4,
+  "Some very smart summary",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: ana,
-  assignees: [hori.getId(), mahmoud.getId()],
-  status: "IN_REVIEW",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 45,
-  type: "task",
-  id: "6a5c48e5-b5ae-4bbc-90bf-d304d7fc746d",
-  selected: false,
-};
+  ana.getId(),
+  [hori.getId(), mahmoud.getId()],
+  IssueStatus.IN_REVIEW,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  45,
+  "task",
+  "6a5c48e5-b5ae-4bbc-90bf-d304d7fc746d",
+  false
+);
 
-const task6: Issue = {
-  project: collab5,
-  summary: "Another summary here",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task6: Issue = new Issue(
+  collab5,
+  "Another summary here",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam.`,
-  reporter: hori,
-  assignees: [mahmoud.getId()],
-  status: "PENDING",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 55,
-  type: "task",
-  id: "3fbb8319-61c8-413d-8778-8dce95fc47ae",
-  selected: false,
-};
+  hori.getId(),
+  [mahmoud.getId()],
+  IssueStatus.PENDING,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  55,
+  "task",
+  "3fbb8319-61c8-413d-8778-8dce95fc47ae",
+  false
+);
 
-const task7: Issue = {
-  project: collab5,
-  summary: "Summary for this issue",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task7: Issue = new Issue(
+  collab5,
+  "Summary for this issue",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam.`,
-  reporter: mahmoud,
-  assignees: [ana.getId(), hori.getId()],
-  status: "RESOLVED",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 60,
-  type: "task",
-  id: "78c0014a-fd2f-411c-af98-3d574e4845df",
-  selected: false,
-};
+  mahmoud.getId(),
+  [ana.getId(), hori.getId()],
+  IssueStatus.RESOLVED,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  60,
+  "task",
+  "78c0014a-fd2f-411c-af98-3d574e4845df",
+  false
+);
 
-const task8: Issue = {
-  project: collab5,
-  summary: "Summary for this task",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task8: Issue = new Issue(
+  collab5,
+  "Summary for this task",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: ana,
-  assignees: [mahmoud.getId(), hori.getId()],
-  status: "TO_DO",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 20,
-  type: "task",
-  id: "c2bfee57-6262-4b11-976a-1111c203b62e",
-  selected: false,
-};
+  ana,
+  [mahmoud.getId(), hori.getId()],
+  IssueStatus.TO_DO,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  20,
+  "task",
+  "c2bfee57-6262-4b11-976a-1111c203b62e",
+  false
+);
 
-const task9: Issue = {
-  project: collab3,
-  summary: "Summary for this issue right here.",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const task9: Issue = new Issue(
+  collab3,
+  "Summary for this issue right here.",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: mahmoud,
-  assignees: [ana.getId(), hori.getId()],
-  status: "DONE",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 30,
-  type: "task",
-  id: "86501f3c-856e-4938-8f74-6d95ab33b8f9",
-  selected: false,
-};
+  mahmoud.getId(),
+  [ana.getId(), hori.getId()],
+  IssueStatus.DONE,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  30,
+  "task",
+  "86501f3c-856e-4938-8f74-6d95ab33b8f9",
+  false
+);
 
 export const tasks: Issue[] = [
   task1,
@@ -747,96 +747,96 @@ export const tasks: Issue[] = [
   task9,
 ];
 
-const bug1: Issue = {
-  project: project1,
-  summary: "Summary for this particular issue",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const bug1: Issue = new Issue(
+  project1,
+  "Summary for this particular issue",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
   pariatur. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: hori,
-  assignees: [mahmoud.getId(), ana.getId()],
-  status: "PENDING",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 80,
-  type: "bug",
-  id: "4d3944fe-5861-477c-b50a-4eee542667d5",
-  selected: false,
-};
+  hori.getId(),
+  [mahmoud.getId(), ana.getId()],
+  IssueStatus.PENDING,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  80,
+  "bug",
+  "4d3944fe-5861-477c-b50a-4eee542667d5",
+  false
+);
 
-const bug2: Issue = {
-  project: project2,
-  summary: "Summary for this backend issue",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const bug2: Issue = new Issue(
+  project2,
+  "Summary for this backend issue",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
   nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: mahmoud,
-  assignees: [],
-  status: "TO_DO",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 50,
-  type: "bug",
-  id: "2e48e03d-c5f4-4596-a201-0e98a38d60e3",
-  selected: false,
-};
+  mahmoud.getId(),
+  [],
+  IssueStatus.TO_DO,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  50,
+  "bug",
+  "2e48e03d-c5f4-4596-a201-0e98a38d60e3",
+  false
+);
 
-const bug3: Issue = {
-  project: project3,
-  summary: "Don't forget about db schema",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const bug3: Issue = new Issue(
+  project3,
+  "Don't forget about db schema",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
   pariatur.`,
-  reporter: ana,
-  assignees: [mahmoud.getId()],
-  status: "RESOLVED",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 70,
-  type: "bug",
-  id: "1873b77a-1c61-4a6e-956f-43832fe4c021",
-  selected: false,
-};
+  ana.getId(),
+  [mahmoud.getId()],
+  IssueStatus.RESOLVED,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  70,
+  "bug",
+  "1873b77a-1c61-4a6e-956f-43832fe4c021",
+  false
+);
 
-const bug4: Issue = {
-  project: collab2,
-  summary: "Some very smart summary",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const bug4: Issue = new Issue(
+  collab2,
+  "Some very smart summary",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: ana,
-  assignees: [hori.getId(), mahmoud.getId()],
-  status: "IN_REVIEW",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 35,
-  type: "bug",
-  id: "4e7c3eeb-fe7a-4acd-b565-79d0ad73eba9",
-  selected: false,
-};
+  ana.getId(),
+  [hori.getId(), mahmoud.getId()],
+  IssueStatus.IN_REVIEW,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  35,
+  "bug",
+  "4e7c3eeb-fe7a-4acd-b565-79d0ad73eba9",
+  false
+);
 
-const bug5: Issue = {
-  project: collab1,
-  summary: "Some very smart summary for this bug",
-  description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
+const bug5: Issue = new Issue(
+  collab1,
+  "Some very smart summary for this bug",
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam. Excepteur sint occaecat cupidatat non proident, 
   sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-  reporter: ana,
-  assignees: [hori.getId(), mahmoud.getId()],
-  status: "CANCELED",
-  created: new Date(Date.now() + Math.round(Math.random() * 10000)),
-  priority: 70,
-  type: "bug",
-  id: "320c739e-025a-46e5-905d-5c2f0013286c",
-  selected: false,
-};
+  ana.getId(),
+  [hori.getId(), mahmoud.getId()],
+  IssueStatus.CANCELED,
+  new Date(Date.now() + Math.round(Math.random() * 10000)),
+  70,
+  "bug",
+  "320c739e-025a-46e5-905d-5c2f0013286c",
+  false
+);
 
 export const bugs: Issue[] = [bug1, bug2, bug3, bug4, bug5];
 
@@ -961,5 +961,5 @@ export const profileName: string = "Mahmoud Hamdan";
 export const profileTitle: string = "Software engineer";
 
 export function getIssueById(id: string) {
-  return allIssues.find((issue) => issue.id === id);
+  return allIssues.find((issue) => issue.getId() === id);
 }

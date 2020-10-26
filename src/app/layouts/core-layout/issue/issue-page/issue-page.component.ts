@@ -50,7 +50,7 @@ export class IssuePageComponent implements OnInit {
       width: "20rem",
       height: "16rem",
       data: {
-        selectedOptionsList: this.selectedIssue.assignees,
+        selectedOptionsList: this.selectedIssue.getAssignees(),
         projectId: this.projectId,
       },
     });

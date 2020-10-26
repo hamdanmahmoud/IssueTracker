@@ -32,8 +32,8 @@ export class IssuesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tasks = allIssues.filter((issue) => issue.type === "task");
-    this.bugs = allIssues.filter((issue) => issue.type === "bug");
+    this.tasks = allIssues.filter((issue) => issue.getType() === "task");
+    this.bugs = allIssues.filter((issue) => issue.getType() === "bug");
     this.columnsToDisplayForIssues = columnsToDisplayForIssues;
     this.statusList = statusOptions;
   }

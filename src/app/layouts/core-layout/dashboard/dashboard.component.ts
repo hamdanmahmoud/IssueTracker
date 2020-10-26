@@ -33,8 +33,12 @@ export class DashboardComponent implements OnInit {
     // this.projectCards = dashboardProjects;
     let myIssues = await this.issueService.getMyIssues();
     console.log("MY ISSUES IN DASHBOARD", myIssues);
-    this.tasks = myIssues.filter((issue) => issue.type === IssueTypeName.TASK);
-    this.bugs = myIssues.filter((issue) => issue.type === IssueTypeName.BUG);
+    this.tasks = myIssues.filter(
+      (issue) => issue.getType() === IssueTypeName.TASK
+    );
+    this.bugs = myIssues.filter(
+      (issue) => issue.getType() === IssueTypeName.BUG
+    );
 
     this.projectCards = await this.projectService.getMyProjectCards();
     console.log(this.projectCards);
