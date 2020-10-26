@@ -95,10 +95,11 @@
           ><a href="javascript:void(0)" class="avatar avatar-sm">
             <img
               alt=""
-              src="{{API.userURL + '/api/' + element.reporter + '/picture'}}"
-              title="{{element.reporter.firstName}}"
+              src="{{'http://localhost:8081' + '/api/' + element.reporterId + '/picture'}}"
+              title="{{element.reporterId}}"
               class="rounded-circle"
-            /> </a
+            /> 
+            </a
         ></span>
       </mat-cell>
     </ng-container>
@@ -127,7 +128,7 @@
             >
               <img
                 alt=""
-                src="{{API.userURL + '/api/' + assignee + '/picture'}}"
+                src="{{'http://localhost:8081' + '/api/' + assignee + '/picture'}}"
                 class="rounded-circle"
               />
             </a>

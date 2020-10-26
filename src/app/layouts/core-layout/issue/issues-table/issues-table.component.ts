@@ -29,10 +29,11 @@ export class IssuesTableComponent implements OnInit {
   selection = new SelectionModel<Issue>(true, []);
 
   constructor(
-    private API: API,
     private projectService: ProjectService,
     private userService: UserService
-  ) {}
+  ) {
+    console.log(API.userURL);
+  }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Issue>(this.data);
