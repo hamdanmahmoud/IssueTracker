@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Issue } from "../../../../models/Issue";
@@ -17,6 +17,8 @@ import { ManageUserRolesComponent } from "../../roles/manage-user-roles/manage-u
 import { CreateIssueComponent } from "../../issue/create-issue/create-issue.component";
 import { IssueDetailsComponent } from "../../issue/issue-details/issue-details.component";
 import { AuthService } from "../../../../shared/services/auth.service";
+import { ProjectService } from "app/shared/services/project.service";
+import { IssueService } from "app/shared/services/issue.service";
 
 export interface Section {
   name: string;
@@ -39,25 +41,41 @@ export class ProjectPageComponent implements OnInit {
   selectedIssueId: string;
   sortBy: undefined | "open" | "mine" | "urgent";
 
+  @Input()
+  allIssues: Issue[];
+
+  @Input()
+  allProjects: TrackerProject[];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private issueService: IssueService,
+    private projectService: ProjectService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     console.log("Project-page");
+
+    if (!this.allIssues) {
+      this.allIssues = await this.issueService.getMyIssues();
+    }
+
+    if (!this.allProjects) {
+      this.allProjects = await this.projectService.getMyProjects();
+    }
 
     this.projectId = this.route.snapshot.paramMap.get("projectId");
     console.log("Project id is", this.projectId);
     this.selectedIssueId = this.route.snapshot.paramMap.get("issueId");
 
-    this.project = [...projectsCreatedByMe, ...collaborations].find(
+    this.project = this.allProjects.find(
       (project) => project.getId() === this.projectId
     );
     console.log("Issues before filtering:", this.issues);
-    this.issues = [...bugs, ...tasks].filter(
+    this.issues = this.allIssues.filter(
       (issue) => issue.getProject().getId() === this.project.getId()
     );
     console.log("Issues after filtering:", this.issues);

@@ -21,7 +21,7 @@ import { MultiSelectComponent } from "../../multi-select/multi-select.component"
 export class IssuePageComponent implements OnInit {
   @Input() selectedIssueId: string;
   @Input() projectId: string;
-  selectedIssue: Issue;
+  @Input() selectedIssue: Issue;
   statusList: IssueStatus[];
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {}
@@ -30,7 +30,7 @@ export class IssuePageComponent implements OnInit {
     console.log("Selected issue id is", this.selectedIssueId);
     if (!this.selectedIssueId) {
       this.selectedIssueId = this.route.snapshot.paramMap.get("id");
-      this.selectedIssue = getIssueById(this.selectedIssueId);
+      // this.selectedIssue = getIssueById(this.selectedIssueId);
 
       if (!this.selectedIssueId) {
         throw "Id for issue not provided";
@@ -41,7 +41,9 @@ export class IssuePageComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.selectedIssue = getIssueById(this.selectedIssueId);
+    console.log("Changes to selected issue:", changes);
+    this.selectedIssueId = changes.selectedIssueId.currentValue;
+    // this.selectedIssue = getIssueById(this.selectedIssueId);
   }
 
   onEditAssigneesClick() {

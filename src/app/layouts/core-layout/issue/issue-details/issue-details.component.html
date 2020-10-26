@@ -4,7 +4,7 @@
         <h3>{{ action.charAt(0).toUpperCase() + action.slice(1) }} issue</h3>
       </div>
       <br />
-      <mat-form-field appearance="fill">
+      <mat-form-field *ngIf="projects" appearance="fill">
         <mat-label>Project</mat-label>
         <mat-select [(value)]="project">
           <mat-select-trigger

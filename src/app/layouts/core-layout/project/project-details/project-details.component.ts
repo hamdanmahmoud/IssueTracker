@@ -19,7 +19,7 @@ export class ProjectDetailsComponent implements OnInit {
   ];
 
   constructor() {
-    console.log("Project-details");
+    console.log("Project-details with action = ", this.action);
   }
 
   addMail() {

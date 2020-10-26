@@ -1,5 +1,6 @@
 import { Component, Inject, Input, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { ProjectService } from "app/shared/services/project.service";
 import { IssueType, IssueTypeName } from "../../../../models/IssueType";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import {
@@ -31,15 +32,18 @@ export class IssueDetailsComponent implements OnInit {
     },
   ];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private projectService: ProjectService
+  ) {
     console.log("Issue-details");
     this.project = this.data.project;
     this.action = this.data.action;
   }
 
-  ngOnInit(): void {
-    this.projects = [...projectsCreatedByMe, ...collaborations];
+  async ngOnInit() {
     this.defaultIssueType = this.issueTypes[0];
+    this.projects = await this.projectService.getMyProjects();
 
     if (this.action === "create") return;
 

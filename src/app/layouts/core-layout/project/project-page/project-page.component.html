@@ -6,7 +6,7 @@
           <div class="card-header card-header-tabs card-header-darker-cyan">
             <div class="nav-tabs-navigation">
               <div class="nav-tabs-wrapper">
-                <span class="nav-tabs-title">{{ project.getTitle() }}</span>
+                <span *ngIf="project" class="nav-tabs-title">{{ project.getTitle() }}</span>
                 <ul class="nav nav-tabs" data-tabs="tabs">
                   <div class="buttons-container">
                     <li>
@@ -52,11 +52,14 @@
                 </mat-list>
               </div>
               <div class="right-container">
+                <div class="issue-page-wrapper">
                 <div class="make-scrollable">
-                  <app-issue-page *ngIf="selectedIssueId"
+                    <app-issue-page *ngIf="selectedIssueId"
                     [selectedIssueId]="selectedIssueId"
+                    [selectedIssue]="selectedIssue"
                     [projectId]="project.getId()"
                   ></app-issue-page>
+                  </div>
                 </div>
               </div>
             </div>

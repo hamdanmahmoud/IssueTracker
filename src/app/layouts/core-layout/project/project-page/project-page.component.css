@@ -59,6 +59,11 @@
   margin-top: 2rem;
   display: flex;
   flex-shrink: 1;
+  width: 100%;
+}
+
+.issue-page-wrapper {
+  width: 100%;
 }
 
 .noselect {
