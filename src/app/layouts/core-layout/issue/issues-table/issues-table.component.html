@@ -38,7 +38,7 @@
 
         <span class="table-cell">
           <span class="table-cell"
-            ><a [routerLink]="['/projects', element.projectId]">{{
+            ><a [routerLink]="['/projects', element.project.getId()]">{{
               element.project.getTitle()
             }}</a></span
           >
@@ -66,11 +66,11 @@
           ><a
             [routerLink]="[
               '/projects',
-              element.projectId,
+              element.project.getId(),
               'issues',
               element.id
             ]"
-            >{{ element.description.substring(0, 20) }}</a
+            >{{ element.summary.substring(0, 30) }}</a
           ></span
         >
       </mat-cell>
@@ -96,7 +96,7 @@
             <img
               alt=""
               src="{{'http://localhost:8081' + '/api/' + element.reporterId + '/picture'}}"
-              title="{{element.reporterId}}"
+              title="{{element.reporter}}"
               class="rounded-circle"
             /> 
             </a

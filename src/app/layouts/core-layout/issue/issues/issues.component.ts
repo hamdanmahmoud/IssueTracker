@@ -10,6 +10,8 @@ import { IssuesTableComponent } from "../issues-table/issues-table.component";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatDialog } from "@angular/material/dialog";
 import { IssueDetailsComponent } from "../issue-details/issue-details.component";
+import { IssueService } from "app/shared/services/issue.service";
+import { IssueTypeName } from "app/models/IssueType";
 @Component({
   selector: "app-issues",
   templateUrl: "./issues.component.html",
@@ -20,6 +22,7 @@ import { IssueDetailsComponent } from "../issue-details/issue-details.component"
   ],
 })
 export class IssuesComponent implements OnInit {
+  allIssues: Issue[];
   tasks: Issue[];
   bugs: Issue[];
   columnsToDisplayForIssues: string[];
@@ -27,13 +30,18 @@ export class IssuesComponent implements OnInit {
   @ViewChild("bugsTable") bugsTable: IssuesTableComponent;
   @ViewChild("tasksTable") tasksTable: IssuesTableComponent;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private issueService: IssueService) {
     console.log("Issues");
   }
 
-  ngOnInit(): void {
-    this.tasks = allIssues.filter((issue) => issue.getType() === "task");
-    this.bugs = allIssues.filter((issue) => issue.getType() === "bug");
+  async ngOnInit() {
+    this.allIssues = await this.issueService.getMyIssues();
+    this.tasks = this.allIssues.filter(
+      (issue) => issue.getType() === IssueTypeName.TASK
+    );
+    this.bugs = this.allIssues.filter(
+      (issue) => issue.getType() === IssueTypeName.BUG
+    );
     this.columnsToDisplayForIssues = columnsToDisplayForIssues;
     this.statusList = statusOptions;
   }

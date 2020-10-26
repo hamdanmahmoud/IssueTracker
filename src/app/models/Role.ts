@@ -2,7 +2,7 @@ import { Permission } from "./Permission";
 
 export class Role {
   private id: string;
-  private name: string;
+  private authority: string;
   private projectId: string;
   private permissions: Permission[];
 
@@ -15,7 +15,7 @@ export class Role {
   }
 
   getName(): string {
-    return this.name;
+    return this.authority;
   }
 
   getPermissions(): Permission[] {

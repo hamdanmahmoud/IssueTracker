@@ -9,6 +9,7 @@ import { Role } from "../../../../models/Role";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import { CreateRoleComponent } from "../create-role/create-role.component";
 import { EditRoleComponent } from "../edit-role/edit-role.component";
+import { RoleService } from "app/shared/services/role.service";
 
 @Component({
   selector: "app-manage-roles-on-project",
@@ -23,14 +24,18 @@ export class ManageRolesOnProjectComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private roleService: RoleService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.selectedRolesList = new FormControl([]);
     this.project = this.data.project;
     this.projectId = this.project.getId();
-    this.allOptions = getRolesOfProjectById(this.projectId);
+    this.allOptions = await this.roleService.getRolesOfProjectById(
+      this.projectId
+    );
+    console.log("Retrieved", this.allOptions);
   }
 
   compareRoles(availableOption: Role, selectedOption: Role) {
@@ -58,6 +63,7 @@ export class ManageRolesOnProjectComponent implements OnInit {
   }
 
   removeRole(event, role) {
+    //TODO: open dialogue for confirmation => PUT method to update db
     console.log("Clicked manage role for a role");
     console.log(event, role);
 

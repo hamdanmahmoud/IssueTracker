@@ -8,6 +8,7 @@ import { Project } from "../../models/Project";
 import { TrackerProject } from "../../models/TrackerProject";
 import { Issue } from "../../models/Issue";
 import { User } from "../../models/User";
+import { Role } from "app/models/Role";
 
 @Injectable({
   providedIn: "root",
@@ -92,6 +93,32 @@ export class RestApiService {
     console.log(fullIssues);
 
     return fullIssues;
+  }
+
+  async getRolesOfProjectById(projectId: string): Promise<Role[]> {
+    let roles: Array<any> = await this.http
+      .get<any>(
+        API.aclURL + "/api" + "/roles" + "?projectId=" + projectId,
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((roles: any) => {
+        console.log(roles);
+        return new Promise((resolve, reject) => resolve(roles._embedded.roles));
+      });
+
+    let fullRoles = await roles
+      .map((role) => {
+        console.log(role);
+        role.permissions = role.permissions.map(
+          (permission) => permission.authority
+        );
+        return role;
+      })
+      .map((role) => Object.assign(new Role(), role));
+
+    return fullRoles;
   }
 
   // HttpClient API get() method => Fetch project
