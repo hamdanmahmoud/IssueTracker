@@ -17,9 +17,7 @@ export class ProjectService {
     private authService: AuthService,
     private apiService: RestApiService,
     private issueService: IssueService
-  ) {
-    this.getMyProjects();
-  }
+  ) {}
 
   async getMyProjectCards(): Promise<ProjectCard[]> {
     let myIssues = await this.issueService.getMyIssues();

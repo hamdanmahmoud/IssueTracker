@@ -31,14 +31,14 @@ export class DashboardComponent implements OnInit {
 
   async ngOnInit() {
     // this.projectCards = dashboardProjects;
-    this.projectCards = await this.projectService.getMyProjectCards();
-    console.log(this.projectCards);
-    // console.log(dashboardProjects);
     let myIssues = await this.issueService.getMyIssues();
-    console.log("MY ISSUES", myIssues);
+    console.log("MY ISSUES IN DASHBOARD", myIssues);
     this.tasks = myIssues.filter((issue) => issue.type === IssueTypeName.TASK);
     this.bugs = myIssues.filter((issue) => issue.type === IssueTypeName.BUG);
 
+    this.projectCards = await this.projectService.getMyProjectCards();
+    console.log(this.projectCards);
+    // console.log(dashboardProjects);
     this.columnsToDisplayForIssues = columnsToDisplayForIssuesInDashboard;
 
     this.statusDropdownOptions = statusOptions;

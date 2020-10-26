@@ -64,7 +64,7 @@ export class RestApiService {
   }
 
   async getMyIssues(): Promise<Issue[]> {
-    let issues = await this.http
+    let issuesFromDatabase: Array<any> = await this.http
       .get<any>(
         API.issueURL +
           "/api" +
@@ -79,30 +79,28 @@ export class RestApiService {
         return new Promise((resolve, reject) =>
           resolve(issues._embedded.issues)
         );
+      });
+
+    let fullIssues = await Promise.all(
+      issuesFromDatabase.map(async (issue) => {
+        let project = await this.getProject(issue.projectId);
+        issue.project = Object.assign(new TrackerProject(), project);
+        return Object.assign(new Issue(), issue);
       })
-      // .then((issues: Issue[]) => {
-      //   return new Promise((resolve, reject) =>
-      //     resolve(
-      //       issues.map(
-      //         async (issue) =>
-      //           (issue.project = await this.getProject(issue.project))
-      //       )
-      //     )
-      //   );
-      // })
-      .then((issues: Issue[]) =>
-        issues.map((issue) => Object.assign(new Issue(), issue))
-      );
+    );
 
-    console.log("Returning issues", issues);
+    console.log(fullIssues);
 
-    return issues;
+    return fullIssues;
   }
 
   // HttpClient API get() method => Fetch project
   getProject(id): Promise<TrackerProject> {
     return this.http
-      .get<TrackerProject>(API.projectURL + "/projects/" + id, this.httpOptions)
+      .get<TrackerProject>(
+        API.projectURL + "/api" + "/projects/" + id,
+        this.httpOptions
+      )
       .pipe(retry(1), catchError(this.handleError))
       .toPromise();
   }

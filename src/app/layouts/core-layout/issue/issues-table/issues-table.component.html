@@ -39,7 +39,7 @@
         <span class="table-cell">
           <span class="table-cell"
             ><a [routerLink]="['/projects', element.projectId]">{{
-              <!-- projectService.getProjectById(element.projectId).getTitle() -->
+              element.project.getTitle()
             }}</a></span
           >
         </span>
@@ -70,7 +70,7 @@
               'issues',
               element.id
             ]"
-            >{{ element.summary }}</a
+            >{{ element.description.substring(0, 20) }}</a
           ></span
         >
       </mat-cell>
@@ -94,8 +94,8 @@
         <span class="table-cell"
           ><a href="javascript:void(0)" class="avatar avatar-sm">
             <img
-              alt="Image placeholder"
-              <!-- src="{{ (userService.getUserById(element.reporter) | async)?.getImageUrl() }}" -->
+              alt=""
+              src="{{API.userURL + '/api/' + element.reporter + '/picture'}}"
               class="rounded-circle"
             /> </a
         ></span>
@@ -125,8 +125,8 @@
               class="avatar avatar-sm"
             >
               <img
-                alt="Image placeholder"
-                <!-- src="{{ (userService.getUserById(assignee) | async)?.getImageUrl() }}" -->
+                alt=""
+                src="{{API.userURL + '/api/' + assignee + '/picture'}}"
                 class="rounded-circle"
               />
             </a>

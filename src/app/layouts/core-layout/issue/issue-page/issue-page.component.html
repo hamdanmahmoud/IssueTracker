@@ -11,7 +11,7 @@
         <a href="javascript:void(0)" class="avatar avatar-sm">
           <img
             alt="Image placeholder"
-            <!-- src="{{ selectedIssue.reporter.getImageUrl() | async }}" -->
+            src="{{API.userURL + '/api/' + selectedIssue.reporter + '/picture'}}"
             class="rounded-circle"
           />
         </a>
@@ -27,7 +27,7 @@
             >
               <img
                 alt="Image placeholder"
-                <!-- src="{{ assignee.getImageUrl() | async }}" -->
+                src="{{API.userURL + '/api/' + selectedIssue.assignee + '/picture'}}"
                 class="rounded-circle"
               />
             </a>

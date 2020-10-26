@@ -36,7 +36,7 @@
       <a href="javascript:void(0)" class="avatar avatar-sm">
         <img
           alt="Profile picture of reporter"
-          <!-- src="{{ issue.reporter.getImageUrl() | async }}" -->
+          src="{{API.userURL + '/api/' + issue.reporter + '/picture'}}"
           class="rounded-circle"
         />
       </a>

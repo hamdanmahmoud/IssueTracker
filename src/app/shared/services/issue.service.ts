@@ -15,7 +15,7 @@ export class IssueService {
     private apiService: RestApiService
   ) {}
 
-  async getMyIssues(): Promise<Issue[]> {
+  getMyIssues(): Promise<Issue[]> {
     return this.apiService.getMyIssues();
   }
 }

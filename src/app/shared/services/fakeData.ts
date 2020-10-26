@@ -573,7 +573,7 @@ export const collab5: TrackerProject = Object.assign(new TrackerProject(), {
 });
 
 const task1: Issue = {
-  projectId: project1.getId(),
+  project: project1,
   summary: "Summary for this particular issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -593,7 +593,7 @@ const task1: Issue = {
 };
 
 const task2: Issue = {
-  projectId: project4.getId(),
+  project: project4,
   summary: "Summary for this exact exact exact exact exact exact issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -613,7 +613,7 @@ const task2: Issue = {
 };
 
 const task3: Issue = {
-  projectId: project3.getId(),
+  project: project3,
   summary: "Summary for this awesome issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -633,7 +633,7 @@ const task3: Issue = {
 };
 
 const task4: Issue = {
-  projectId: project2.getId(),
+  project: project2,
   summary: "Summary for this issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -653,7 +653,7 @@ const task4: Issue = {
 };
 
 const task5: Issue = {
-  projectId: project4.getId(),
+  project: project4,
   summary: "Some very smart summary",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -670,7 +670,7 @@ const task5: Issue = {
 };
 
 const task6: Issue = {
-  projectId: collab5.getId(),
+  project: collab5,
   summary: "Another summary here",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -686,7 +686,7 @@ const task6: Issue = {
 };
 
 const task7: Issue = {
-  projectId: collab5.getId(),
+  project: collab5,
   summary: "Summary for this issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -702,7 +702,7 @@ const task7: Issue = {
 };
 
 const task8: Issue = {
-  projectId: collab5.getId(),
+  project: collab5,
   summary: "Summary for this task",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -719,7 +719,7 @@ const task8: Issue = {
 };
 
 const task9: Issue = {
-  projectId: collab3.getId(),
+  project: collab3,
   summary: "Summary for this issue right here.",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -748,7 +748,7 @@ export const tasks: Issue[] = [
 ];
 
 const bug1: Issue = {
-  projectId: project1.getId(),
+  project: project1,
   summary: "Summary for this particular issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -768,7 +768,7 @@ const bug1: Issue = {
 };
 
 const bug2: Issue = {
-  projectId: project2.getId(),
+  project: project2,
   summary: "Summary for this backend issue",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -786,7 +786,7 @@ const bug2: Issue = {
 };
 
 const bug3: Issue = {
-  projectId: project3.getId(),
+  project: project3,
   summary: "Don't forget about db schema",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -805,7 +805,7 @@ const bug3: Issue = {
 };
 
 const bug4: Issue = {
-  projectId: collab2.getId(),
+  project: collab2,
   summary: "Some very smart summary",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -822,7 +822,7 @@ const bug4: Issue = {
 };
 
 const bug5: Issue = {
-  projectId: collab1.getId(),
+  project: collab1,
   summary: "Some very smart summary for this bug",
   description: `Lorem ipsum dolor sit amet,consectetur adipiscing elit, 
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 

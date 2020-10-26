@@ -58,7 +58,7 @@ export class ProjectPageComponent implements OnInit {
     );
     console.log("Issues before filtering:", this.issues);
     this.issues = [...bugs, ...tasks].filter(
-      (issue) => issue.projectId === this.project.getId()
+      (issue) => issue.project.getId() === this.project.getId()
     );
     console.log("Issues after filtering:", this.issues);
 
