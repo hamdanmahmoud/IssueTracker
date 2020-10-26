@@ -83,7 +83,7 @@ export class RestApiService {
 
     let fullIssues = await Promise.all(
       issuesFromDatabase.map(async (issue) => {
-        let project = await this.getProject(issue.projectId);
+        let project = await this.getProject(issue.project);
         issue.project = Object.assign(new TrackerProject(), project);
         return Object.assign(new Issue(), issue);
       })

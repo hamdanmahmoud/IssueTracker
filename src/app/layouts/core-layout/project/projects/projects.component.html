@@ -60,14 +60,14 @@
 
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane active" id="createdbyme">
+              <div *ngIf="projectsCreatedByMe" class="tab-pane active" id="createdbyme">
                 <app-projects-table
                   [data]="projectsCreatedByMe"
                   [displayedColumns]="columnsToDisplayForMyProjects"
                 ></app-projects-table>
               </div>
 
-              <div class="tab-pane" id="collabs">
+              <div *ngIf="collaborations" class="tab-pane" id="collabs">
                 <app-projects-table
                   [data]="collaborations"
                   [displayedColumns]="columnsToDisplayForCollaborations"

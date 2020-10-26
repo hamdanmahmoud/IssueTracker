@@ -7,7 +7,7 @@ export class Issue {
   private project: TrackerProject;
   private summary: string;
   private description: string;
-  private reporterId: string;
+  private reporter: string;
   private assignees: string[];
   private status:
     | IssueStatus.CANCELED
@@ -27,7 +27,7 @@ export class Issue {
     project?,
     summary?,
     description?,
-    reporterId?,
+    reporter?,
     assignees?,
     status?,
     created?,
@@ -40,7 +40,7 @@ export class Issue {
     this.project = project;
     this.summary = summary;
     this.description = description;
-    this.reporterId = reporterId;
+    this.reporter = reporter;
     this.assignees = assignees;
     this.status = status;
     this.created = created;

@@ -2,23 +2,20 @@ import { Role } from "./Role";
 
 export class User {
   private id: string;
-  private firstName: string;
-  private lastName: string;
+  private name: string;
   private mail: string;
   private imageUrl: string;
   private roles: Role[];
 
   constructor(
     id?: string,
-    firstName?: string,
-    lastName?: string,
+    name?: string,
     mail?: string,
     imageUrl?: string,
     roles?: Role[]
   ) {
     this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.name = name;
     this.mail = mail;
     this.imageUrl = imageUrl;
     this.roles = roles;
@@ -53,11 +50,7 @@ export class User {
     this.roles = [...this.roles, ...selectedRolesList];
   }
 
-  getFirstName() {
-    return this.firstName;
-  }
-
-  getLastName() {
-    return this.lastName;
+  getName() {
+    return this.name;
   }
 }

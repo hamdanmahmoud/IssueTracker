@@ -52,6 +52,20 @@ export class AuthService extends RootInjectorGuard {
     }
   }
 
+  getMyName(): string {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      console.log("Getting user id");
+      // console.log(userData);
+      const user: LoggedInUser = Object.assign(
+        new LoggedInUser(),
+        JSON.parse(userData)
+      );
+      // console.log(user);
+      return user.getName();
+    }
+  }
+
   login(user: UserToLogIn) {
     if (user.username !== "" && user.password !== "") {
       return this.server
@@ -69,8 +83,7 @@ export class AuthService extends RootInjectorGuard {
             const decodedToken = this.getDecodedAccessToken(this.token);
             const user = new LoggedInUser(
               decodedToken.id,
-              decodedToken.firstName,
-              decodedToken.lastName,
+              decodedToken.name,
               decodedToken.mail,
               decodedToken.imageUrl,
               decodedToken.roles,

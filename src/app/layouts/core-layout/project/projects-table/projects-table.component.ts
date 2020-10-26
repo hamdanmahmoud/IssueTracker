@@ -26,6 +26,7 @@ export class ProjectsTableComponent implements OnInit {
   constructor(private API: API) {}
 
   ngOnInit(): void {
+    console.log("Is this ever called?", this.data);
     this.dataSource = new MatTableDataSource<TrackerProject>(this.data);
   }
 

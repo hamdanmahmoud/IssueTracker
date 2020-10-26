@@ -7,6 +7,8 @@ import {
 } from "../../../../shared/services/fakeData";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import { ProjectsTableComponent } from "../projects-table/projects-table.component";
+import { ProjectService } from "app/shared/services/project.service";
+import { AuthService } from "app/shared/services/auth.service";
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html",
@@ -23,7 +25,10 @@ export class ProjectsComponent implements OnInit {
   columnsToDisplayForCollaborations: string[];
   @ViewChild(ProjectsTableComponent) projectsTable: ProjectsTableComponent;
 
-  constructor() {
+  constructor(
+    private projectService: ProjectService,
+    private authService: AuthService
+  ) {
     console.log("Project");
   }
 
@@ -35,9 +40,19 @@ export class ProjectsComponent implements OnInit {
     this.isRemoveButtonEnabled = true;
   }
 
-  ngOnInit(): void {
-    this.projectsCreatedByMe = projectsCreatedByMe;
-    this.collaborations = collaborations;
+  async ngOnInit() {
+    const allProjects = await this.projectService.getMyProjects();
+    const myUserId = this.authService.getMyUserId();
+    this.projectsCreatedByMe = allProjects.filter(
+      (project) => project.getOwnerId() === myUserId
+    );
+    // this.projectsCreatedByMe = projectsCreatedByMe;
+    this.collaborations = allProjects.filter(
+      (project) => project.getOwnerId() !== myUserId
+    );
+    console.log("My projects:", this.projectsCreatedByMe);
+    console.log("My collabs:", this.collaborations);
+    // this.collaborations = collaborations;
     this.columnsToDisplayForMyProjects = columnsToDisplayForMyProjects;
     this.columnsToDisplayForCollaborations = columnsToDisplayForCollaborations;
   }

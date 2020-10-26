@@ -10,14 +10,13 @@ export class LoggedInUser extends User {
 
   constructor(
     id?: string,
-    firstName?: string,
-    lastName?: string,
+    name?: string,
     mail?: string,
     imageUrl?: string,
     roles?: Role[],
     token?: string
   ) {
-    super(id, firstName, lastName, mail, imageUrl, roles);
+    super(id, name, mail, imageUrl, roles);
     this.token = token;
   }
 }
