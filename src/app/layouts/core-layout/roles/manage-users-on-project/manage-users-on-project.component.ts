@@ -5,6 +5,7 @@ import { TrackerProject } from "../../../../models/TrackerProject";
 import { User } from "../../../../models/User";
 import { ManageUserRolesComponent } from "../manage-user-roles/manage-user-roles.component";
 import { getUsersOfProjectById } from "../../../../shared/services/fakeData";
+import { UserService } from "app/shared/services/user.service";
 
 @Component({
   selector: "app-manage-users",
@@ -18,13 +19,16 @@ export class ManageUsersOnProject implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.project = this.data.project;
-    this.allUsers = getUsersOfProjectById(this.project.getId());
-    console.log(this.allUsers);
+    this.allUsers = await this.userService.getUsersOfProjectById(
+      this.project.getId()
+    );
+    console.log("Retrieved", this.allUsers);
   }
 
   compareUsers(availableOption: User, selectedOption: User) {

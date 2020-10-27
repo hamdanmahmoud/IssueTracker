@@ -6,6 +6,7 @@ import { RestApiService } from "./rest-api.service";
 import { ProjectCard } from "../../models/ProjectCard";
 import { Issue } from "../../models/Issue";
 import { IssueService } from "./issue.service";
+import { Role } from "app/models/Role";
 
 @Injectable({
   providedIn: "root",
@@ -46,5 +47,12 @@ export class ProjectService {
       (project: TrackerProject) => project.getId() === projectId
     );
     return project;
+  }
+
+  getRolesOfUserDefinedOnProject(
+    projectId: string,
+    userId: string
+  ): Promise<Role[]> {
+    return this.apiService.getRolesOfUserDefinedOnProject(projectId, userId);
   }
 }

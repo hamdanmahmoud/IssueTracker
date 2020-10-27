@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { ProjectService } from "app/shared/services/project.service";
+import { RoleService } from "app/shared/services/role.service";
 import { Role } from "../../../../models/Role";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import { User } from "../../../../models/User";
@@ -21,18 +23,27 @@ export class ManageUserRolesComponent implements OnInit {
   selectedRolesList: FormControl;
   allOptions: Role[];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private roleService: RoleService,
+    private projectService: ProjectService
+  ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.user = this.data.user;
     this.projectId = this.data.projectId;
     this.project = allProjects.find(
       (project) => project.getId() === this.projectId
     );
     this.selectedRolesList = new FormControl(
-      this.user.getRolesByProjectId(this.projectId)
+      await this.projectService.getRolesOfUserDefinedOnProject(
+        this.user.getId(),
+        this.projectId
+      )
     );
-    this.allOptions = getRolesOfProjectById(this.projectId);
+    this.allOptions = await this.roleService.getRolesOfProjectById(
+      this.projectId
+    );
   }
 
   compareRoles(availableOption: Role, selectedOption: Role) {

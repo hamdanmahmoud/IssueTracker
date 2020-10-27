@@ -31,12 +31,11 @@ export class RestApiService {
   };
 
   async getUserById(id): Promise<User> {
-    // let user = await this.http
-    //   .get<User>(API.userURL + "/users/" + id, this.httpOptions)
-    //   .pipe(retry(1), catchError(this.handleError))
-    //   .toPromise();
-    // return user;
-    return;
+    let user = await this.http
+      .get<User>(API.userURL + "/api" + "/users/" + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
+    return user;
   }
 
   // HttpClient API get() method => Fetch projects list
@@ -119,6 +118,43 @@ export class RestApiService {
       .map((role) => Object.assign(new Role(), role));
 
     return fullRoles;
+  }
+
+  async getUsersOfProjectById(projectId: string): Promise<User[]> {
+    let userIds: Array<any> = await this.http
+      .get<any>(
+        API.projectURL + "/api" + "/projects/" + projectId + "/userIds",
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((roles: any) => {
+        console.log(roles);
+        return new Promise((resolve, reject) => resolve(roles));
+      });
+
+    let users = await Promise.all(
+      userIds.map(async (id) => {
+        let user = await this.getUserById(id);
+        console.log(user);
+        return Object.assign(new User(), user);
+      })
+    );
+
+    return users;
+  }
+
+  async getRolesOfUserDefinedOnProject(
+    projectId: string,
+    userId: string
+  ): Promise<Role[]> {
+    //TODO: get role ids of user by id (from project microservice)
+
+    // with each id, new Promise to get that role from acl microservice
+
+    // return roles
+
+    throw new Error("Method not implemented.");
   }
 
   // HttpClient API get() method => Fetch project
