@@ -1,6 +1,7 @@
 import { SelectionModel } from "@angular/cdk/collections";
 import { Component, Input, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
+import { ProjectService } from "app/shared/services/project.service";
 import { API } from "../../../../API.conf";
 import { TrackerProject } from "../../../../models/TrackerProject";
 
@@ -23,7 +24,7 @@ export class ProjectsTableComponent implements OnInit {
   dataSource: MatTableDataSource<TrackerProject>;
   selection = new SelectionModel<TrackerProject>(true, []);
 
-  constructor(private API: API) {}
+  constructor(private API: API, private projectService: ProjectService) {}
 
   ngOnInit(): void {
     console.log("Is this ever called?", this.data);
@@ -58,5 +59,6 @@ export class ProjectsTableComponent implements OnInit {
 
   removeProject(project: TrackerProject) {
     console.log("Remove project ", project);
+    this.projectService.deleteProject(project.getId());
   }
 }

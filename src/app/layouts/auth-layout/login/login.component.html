@@ -58,7 +58,7 @@
                 <input class="form-control" placeholder="Email" type="email" formControlName="username" required />
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" (keyup.enter)="onSubmit()">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"

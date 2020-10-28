@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
+import { throwError } from "rxjs";
 import { retry, catchError } from "rxjs/operators";
 import { API } from "../../API.conf";
 import { AuthService } from "./auth.service";
@@ -9,6 +9,7 @@ import { TrackerProject } from "../../models/TrackerProject";
 import { Issue } from "../../models/Issue";
 import { User } from "../../models/User";
 import { Role } from "app/models/Role";
+import { IssueStatus } from "app/models/IssueStatus";
 
 @Injectable({
   providedIn: "root",
@@ -33,6 +34,15 @@ export class RestApiService {
   async getUserById(id): Promise<User> {
     let user = await this.http
       .get<User>(API.userURL + "/api" + "/users/" + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((user: User) => Object.assign(new User(), user));
+    return user;
+  }
+
+  async getUserByMail(mail): Promise<User> {
+    let user = await this.http
+      .get<User>(API.userURL + "/api" + "/users?mail=" + mail, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError))
       .toPromise()
       .then((user: User) => Object.assign(new User(), user));
@@ -236,35 +246,78 @@ export class RestApiService {
   }
 
   // HttpClient API post() method => Create project
-  createProject(project): Observable<TrackerProject> {
+  createProject(project: TrackerProject): Promise<TrackerProject> {
+    const projectToCreate = {
+      title: project.getTitle(),
+      owner: project.getOwnerId(),
+      collaborators: project
+        .getCollaborators()
+        .map((collaborator) => collaborator.getId()),
+      summary: project.getSummary(),
+      created: project.getCreated(),
+    };
     return this.http
       .post<TrackerProject>(
-        API.projectURL + "/projects",
-        JSON.stringify(project),
+        API.projectURL + "/api" + "/projects",
+        JSON.stringify(projectToCreate),
         this.httpOptions
       )
-      .pipe(retry(1), catchError(this.handleError));
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
+  }
+
+  createIssue(issue: Issue): Promise<Issue> {
+    const issueToCreate = {
+      name: "",
+      project: issue.getProject().getId(),
+      assignees: [],
+      reporter: this.authService.getMyUserId(),
+      created: issue.getCreated(),
+      status: issue.getStatus() ? issue.getStatus() : IssueStatus.PENDING,
+      summary: issue.getSummary(),
+      type: issue.getType(),
+      description: issue.getDescription(),
+      priority: 0,
+    };
+    console.log(issueToCreate);
+    return this.http
+      .post<Issue>(
+        API.issueURL + "/api" + "/issues",
+        JSON.stringify(issueToCreate),
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
   }
 
   // HttpClient API put() method => Update project
-  updateProject(id, project): Observable<TrackerProject> {
+  updateProject(id, project): Promise<TrackerProject> {
     return this.http
       .put<TrackerProject>(
-        API.projectURL + "/projects/" + id,
+        API.projectURL + "/api" + "/projects/" + id,
         JSON.stringify(project),
         this.httpOptions
       )
-      .pipe(retry(1), catchError(this.handleError));
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
   }
 
   // HttpClient API delete() method => Delete project
   deleteProject(id) {
-    return this.http
-      .delete<TrackerProject>(
-        API.projectURL + "/projects/" + id,
-        this.httpOptions
-      )
-      .pipe(retry(1), catchError(this.handleError));
+    this.http
+      .delete(API.projectURL + "/api" + "/projects/" + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((res) => console.log(res));
+  }
+
+  deleteIssue(id) {
+    console.log("deleting");
+    this.http
+      .delete(API.issueURL + "/api" + "/issues/" + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((res) => console.log(res));
   }
 
   // Error handling

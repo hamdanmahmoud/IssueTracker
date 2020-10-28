@@ -6,7 +6,6 @@ import { User } from "./User";
 export class TrackerProject extends Project {
   private owner: string;
   private collaborators: User[];
-  private created: Date;
   private issues: Issue[];
   private roles: Role[];
 
@@ -24,5 +23,13 @@ export class TrackerProject extends Project {
 
   getOwnerId(): string {
     return this.owner;
+  }
+
+  setOwner(owner: string) {
+    this.owner = owner;
+  }
+
+  setCollaborators(collaborators: User[]) {
+    this.collaborators = collaborators ? collaborators : [];
   }
 }

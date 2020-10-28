@@ -5,6 +5,7 @@ import { Issue } from "../../../../models/Issue";
 import { API } from "../../../../API.conf";
 import { ProjectService } from "app/shared/services/project.service";
 import { UserService } from "app/shared/services/user.service";
+import { IssueService } from "app/shared/services/issue.service";
 
 @Component({
   selector: "app-issues-table",
@@ -30,7 +31,8 @@ export class IssuesTableComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private userService: UserService
+    private userService: UserService,
+    private issueService: IssueService
   ) {
     console.log(API.userURL);
   }
@@ -68,5 +70,6 @@ export class IssuesTableComponent implements OnInit {
 
   removeIssue(issue: Issue) {
     console.log("Remove issue ", issue);
+    this.issueService.deleteIssue(issue.getId());
   }
 }

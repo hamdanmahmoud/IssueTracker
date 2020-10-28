@@ -61,5 +61,9 @@ export class ProjectsComponent implements OnInit {
     const projectsToRemove: TrackerProject[] = this.projectsTable.selection
       .selected;
     console.log("Removing selected projects:", projectsToRemove);
+
+    projectsToRemove.map((project) =>
+      this.projectService.deleteProject(project.getId())
+    );
   }
 }

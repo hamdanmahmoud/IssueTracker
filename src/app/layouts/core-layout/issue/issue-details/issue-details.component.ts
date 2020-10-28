@@ -1,5 +1,7 @@
 import { Component, Inject, Input, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Issue } from "app/models/Issue";
+import { IssueService } from "app/shared/services/issue.service";
 import { ProjectService } from "app/shared/services/project.service";
 import { IssueType, IssueTypeName } from "../../../../models/IssueType";
 import { TrackerProject } from "../../../../models/TrackerProject";
@@ -32,9 +34,14 @@ export class IssueDetailsComponent implements OnInit {
     },
   ];
 
+  selectedType: IssueTypeName = this.issueTypes[0].name;
+  summary: string = "";
+  description: string = "";
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private issueService: IssueService
   ) {
     console.log("Issue-details");
     this.project = this.data.project;
@@ -55,6 +62,23 @@ export class IssueDetailsComponent implements OnInit {
   }
 
   saveIssue() {
-    throw "Not implemented";
+    switch (this.action) {
+      case "create":
+        let issue = new Issue();
+        issue.setProject(this.project);
+        issue.setType(this.selectedType);
+        issue.setSummary(this.summary);
+        issue.setDescription(this.description);
+        issue.setCreated(new Date());
+
+        this.issueService
+          .createIssue(issue)
+          .then((issue) => console.log(issue));
+        break;
+      case "edit":
+        break;
+      default:
+        throw "Not a valid option";
+    }
   }
 }

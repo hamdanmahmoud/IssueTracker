@@ -13,11 +13,19 @@ import { User } from "../../models/User";
 export class UserService {
   constructor(private apiService: RestApiService) {}
 
-  async getUserById(id: string): Promise<User> {
+  getUserById(id: string): Promise<User> {
     return this.apiService.getUserById(id);
   }
 
   getUsersOfProjectById(projectId: string): Promise<User[]> {
     return this.apiService.getUsersOfProjectById(projectId);
+  }
+
+  getUserByMail(mail: string): Promise<User> {
+    return this.apiService.getUserByMail(mail);
+  }
+
+  createProject(project: TrackerProject): Promise<TrackerProject> {
+    return this.apiService.createProject(project);
   }
 }

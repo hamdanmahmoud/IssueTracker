@@ -7,11 +7,11 @@
       <br />
       <mat-form-field appearance="fill">
         <mat-label>Project title</mat-label>
-        <input matInput maxlength="40" />
+        <input matInput maxlength="40" [(ngModel)]="title"/>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Summary of the project</mat-label>
-        <textarea matInput maxlength="80"></textarea>
+        <textarea matInput maxlength="80" [(ngModel)]="summary">{{summary}}</textarea>
       </mat-form-field>
       <mat-form-field
         appearance="legacy"

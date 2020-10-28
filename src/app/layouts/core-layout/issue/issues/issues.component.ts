@@ -52,6 +52,10 @@ export class IssuesComponent implements OnInit {
 
     const tasksToRemove: Issue[] = this.tasksTable.selection.selected;
     console.log("Removing selected tasks:", tasksToRemove);
+
+    [...bugsToRemove, ...tasksToRemove].map((issue) =>
+      this.issueService.deleteIssue(issue.getId())
+    );
   }
 
   selectTasks() {

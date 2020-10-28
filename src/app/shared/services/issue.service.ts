@@ -18,4 +18,12 @@ export class IssueService {
   getMyIssues(): Promise<Issue[]> {
     return this.apiService.getMyIssues();
   }
+
+  deleteIssue(id: string) {
+    this.apiService.deleteIssue(id);
+  }
+
+  createIssue(issue: Issue): Promise<Issue> {
+    return this.apiService.createIssue(issue);
+  }
 }

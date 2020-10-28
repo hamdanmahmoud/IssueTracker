@@ -2,21 +2,19 @@
   <div class="options-label">
     <h4>Manage assigned users</h4>
   </div>
-  <mat-form-field appearance="fill">
+  <mat-form-field *ngIf="selectedOptionsList" appearance="fill">
     <mat-label>Assigned to this issue</mat-label>
     <mat-select
       [formControl]="selectedOptionsList"
       [compareWith]="
-        optionsType === 'assignees' ? compareUsers : comparePermissions
+        compareUsers
       "
       multiple
     >
       <mat-select-trigger>
         {{
           selectedOptionsList.value && selectedOptionsList.value.length
-            ? optionsType === "assignees"
-              ? selectedOptionsList.value[0].getLastName()
-              : selectedOptionsList.value[0]
+            ? selectedOptionsList.value[0].getName()
             : ""
         }}
         <span
@@ -32,9 +30,7 @@
         [value]="option"
         [ngClass]="'not-a-dropdown-option'"
         >{{
-          optionsType === "assignees"
-            ? option.getFirstName() + " " + option.getLastName()
-            : option
+          option.getName()
         }}
         <button
           mat-raised-button

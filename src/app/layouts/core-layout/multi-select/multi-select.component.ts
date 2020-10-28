@@ -11,6 +11,7 @@ import {
   allPermissions,
 } from "../../../shared/services/fakeData";
 import { ManageUserRolesComponent } from "../roles/manage-user-roles/manage-user-roles.component";
+import { RestApiService } from "app/shared/services/rest-api.service";
 
 @Component({
   selector: "app-multi-select",
@@ -25,36 +26,50 @@ export class MultiSelectComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private apiService: RestApiService
   ) {}
 
-  ngOnInit(): void {
-    this.selectedOptionsList = new FormControl(this.data.selectedOptionsList);
+  async ngOnInit(): Promise<void> {
+    await Promise.all(
+      this.data.selectedOptionsList.map(async (id) => {
+        console.log(id);
+        return await this.apiService.getUserById(id);
+      })
+    ).then(
+      (selectedOptions) =>
+        (this.selectedOptionsList = new FormControl(selectedOptions))
+    );
+
     this.projectId = this.data.projectId;
 
     if (!this.selectedOptionsList) return;
 
-    switch (true) {
-      case this.data.selectedOptionsList[0] instanceof User:
-        this.optionsType = "assignees";
-        break;
-      case typeof this.data.selectedOptionsList[0] === "string":
-        this.optionsType = "permissions";
-        break;
-      default:
-        throw "Options with this type not allowed";
-    }
+    this.allOptions = await this.apiService.getUsersOfProjectById(
+      this.projectId
+    );
 
-    switch (this.optionsType) {
-      case "assignees":
-        this.allOptions = [mahmoud, ana, hori]; // TODO : call service (for either users on project OR permissions list)
-        break;
-      case "permissions":
-        this.allOptions = allPermissions;
-        break;
-      default:
-        throw "Options with this type not allowed";
-    }
+    // switch (true) {
+    //   case this.data.selectedOptionsList[0] instanceof User:
+    //     this.optionsType = "assignees";
+    //     break;
+    //   case typeof this.data.selectedOptionsList[0] === "string":
+    //     this.optionsType = "permissions";
+    //     break;
+    //   default:
+    //     throw "Options with this type not allowed";
+    // }
+
+    // switch (this.optionsType) {
+    //   case "assignees":
+    //     this.allOptions = [mahmoud, ana, hori]; // TODO : call service (for either users on project OR permissions list)
+    //     break;
+    //   case "permissions":
+    //     this.allOptions = allPermissions;
+    //     break;
+    //   default:
+    //     throw "Options with this type not allowed";
+    // }
   }
 
   comparePermissions(availableOption: Permission, selectedOption: Permission) {

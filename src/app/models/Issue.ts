@@ -1,7 +1,6 @@
 import { IssueStatus } from "./IssueStatus";
-import { Project } from "./Project";
+import { IssueTypeName } from "./IssueType";
 import { TrackerProject } from "./TrackerProject";
-import { User } from "./User";
 
 export class Issue {
   private project: TrackerProject;
@@ -19,7 +18,7 @@ export class Issue {
     | IssueStatus.TO_DO;
   private created: Date;
   private priority: number;
-  private type: string;
+  private type: IssueTypeName.BUG | IssueTypeName.TASK;
   private id: string;
   private selected: boolean;
 
@@ -65,8 +64,16 @@ export class Issue {
     return this.project;
   }
 
+  getSummary() {
+    return this.summary;
+  }
+
   getPriority() {
     return this.priority;
+  }
+
+  getDescription() {
+    return this.description;
   }
 
   getCreated() {
@@ -81,8 +88,8 @@ export class Issue {
     return this.selected;
   }
 
-  setType(type: string) {
-    this.type = type;
+  setType(issueType: IssueTypeName.BUG | IssueTypeName.TASK) {
+    this.type = issueType;
   }
 
   setAssignees(assignees: string[]) {
@@ -107,5 +114,13 @@ export class Issue {
 
   setSelected(selected: boolean) {
     this.selected = selected;
+  }
+
+  setSummary(summary: string) {
+    this.summary = summary;
+  }
+
+  setDescription(description: string) {
+    this.description = description;
   }
 }

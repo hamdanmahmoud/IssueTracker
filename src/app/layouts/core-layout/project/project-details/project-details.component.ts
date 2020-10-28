@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { TrackerProject } from "app/models/TrackerProject";
+import { User } from "app/models/User";
+import { AuthService } from "app/shared/services/auth.service";
+import { UserService } from "app/shared/services/user.service";
 
 @Component({
   selector: "app-project-details",
@@ -11,6 +15,8 @@ import { Component, Input, OnInit } from "@angular/core";
 export class ProjectDetailsComponent implements OnInit {
   @Input()
   action: "create" | "edit";
+  title: string = "";
+  summary: string = "";
 
   public mails: any[] = [
     {
@@ -18,7 +24,10 @@ export class ProjectDetailsComponent implements OnInit {
     },
   ];
 
-  constructor() {
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {
     console.log("Project-details with action = ", this.action);
   }
 
@@ -40,7 +49,31 @@ export class ProjectDetailsComponent implements OnInit {
 
   ngAfterViewInit(): void {}
 
-  save() {
-    throw "Not implemented";
+  async save() {
+    switch (this.action) {
+      case "create":
+        let collaborators: User[] = await Promise.all<User>(
+          this.mails.map(async (mail) => {
+            let mailAddress = mail.address;
+            return await this.userService.getUserByMail(mailAddress);
+          })
+        );
+
+        let project = new TrackerProject();
+        project.setTitle(this.title);
+        project.setOwner(this.authService.getMyUserId());
+        project.setCollaborators(collaborators);
+        project.setSummary(this.summary);
+        project.setCreated(new Date());
+
+        this.userService
+          .createProject(project)
+          .then((project) => console.log(project));
+        break;
+      case "edit":
+        break;
+      default:
+        throw "Invalid option";
+    }
   }
 }

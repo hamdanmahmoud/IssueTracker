@@ -55,4 +55,8 @@ export class ProjectService {
   ): Promise<Role[]> {
     return this.apiService.getRolesOfUserDefinedOnProject(projectId, userId);
   }
+
+  deleteProject(id: string) {
+    this.apiService.deleteProject(id);
+  }
 }
