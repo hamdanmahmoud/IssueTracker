@@ -19,6 +19,10 @@ export class IssueService {
     return this.apiService.getMyIssues();
   }
 
+  getIssuesByProject(projectId: string): Promise<Issue[]> {
+    return this.apiService.getIssuesByProject(projectId);
+  }
+
   deleteIssue(id: string) {
     this.apiService.deleteIssue(id);
   }

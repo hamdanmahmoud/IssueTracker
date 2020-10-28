@@ -108,6 +108,33 @@ export class RestApiService {
     return fullIssues;
   }
 
+  async getIssuesByProject(projectId: string): Promise<Issue[]> {
+    let issuesFromDatabase: Array<any> = await this.http
+      .get<any>(
+        API.issueURL + "/api" + "/issues" + "?projectId=" + projectId,
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((issues) => {
+        return new Promise((resolve, reject) =>
+          issues._embedded ? resolve(issues._embedded.issues) : resolve([])
+        );
+      });
+
+    let fullIssues = await Promise.all(
+      issuesFromDatabase.map(async (issue) => {
+        let project = await this.getProject(issue.project);
+        issue.project = Object.assign(new TrackerProject(), project);
+        return Object.assign(new Issue(), issue);
+      })
+    );
+
+    console.log(fullIssues);
+
+    return fullIssues;
+  }
+
   async getRoleById(roleId: string): Promise<Role> {
     let role: Role = await this.http
       .get<any>(API.aclURL + "/api" + "/roles/" + roleId, this.httpOptions)

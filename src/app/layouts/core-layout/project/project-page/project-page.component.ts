@@ -59,16 +59,20 @@ export class ProjectPageComponent implements OnInit {
   async ngOnInit() {
     console.log("Project-page");
 
+    this.projectId = this.route.snapshot.paramMap.get("projectId");
+    console.log("Project id is", this.projectId);
+
     if (!this.allIssues) {
-      this.allIssues = await this.issueService.getMyIssues();
+      // TODO: change this, it should return ALL issues on project, not ALL OWNED issues on project
+      this.allIssues = await this.issueService.getIssuesByProject(
+        this.projectId
+      );
     }
 
     if (!this.allProjects) {
       this.allProjects = await this.projectService.getMyProjects();
     }
 
-    this.projectId = this.route.snapshot.paramMap.get("projectId");
-    console.log("Project id is", this.projectId);
     this.selectedIssueId = this.route.snapshot.paramMap.get("issueId");
 
     this.project = this.allProjects.find(
