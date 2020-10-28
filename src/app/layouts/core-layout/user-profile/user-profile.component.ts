@@ -3,6 +3,7 @@ import { User } from "app/models/User";
 import { AuthService } from "app/shared/services/auth.service";
 import { RestApiService } from "app/shared/services/rest-api.service";
 import { UserService } from "app/shared/services/user.service";
+import { Ng2ImgMaxService } from "ng2-img-max";
 import {
   profileDescription,
   profileName,
@@ -31,7 +32,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private apiService: RestApiService
+    private apiService: RestApiService,
+    private ng2ImgMax: Ng2ImgMaxService
   ) {}
 
   async ngOnInit() {
@@ -63,10 +65,25 @@ export class UserProfileComponent implements OnInit {
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
   }
-  _handleReaderLoaded(e) {
+
+  async _handleReaderLoaded(e) {
     let reader = e.target;
-    this.profilePicture = reader.result;
-    console.log(this.imageSrc);
+    this.profilePicture = await this.resizeImage(reader.result);
     this.apiService.uploadProfilePicture(this.profilePicture);
   }
+
+  resizeImage = (base64Str): Promise<string> => {
+    return new Promise((resolve) => {
+      var img = new Image();
+      img.src = base64Str;
+      var canvas = document.createElement("canvas");
+      canvas.width = 200;
+      canvas.height = 200;
+      var context = canvas.getContext("2d");
+      img.onload = function () {
+        context.drawImage(img, 0, 0, 200, 200); // this doesn't work for some reason
+        resolve(canvas.toDataURL());
+      };
+    });
+  };
 }

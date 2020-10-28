@@ -53,6 +53,7 @@ export class RestApiService {
       .pipe(retry(1), catchError(this.handleError))
       .toPromise()
       .then((projects) => {
+        console.log("Returned projects", projects);
         return new Promise((resolve, reject) =>
           projects._embedded
             ? resolve(projects._embedded.projects)
