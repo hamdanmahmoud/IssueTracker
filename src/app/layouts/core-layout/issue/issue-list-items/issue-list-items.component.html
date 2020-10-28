@@ -36,7 +36,7 @@
       <a href="javascript:void(0)" class="avatar avatar-sm">
         <img
           alt=""
-          src="{{'http://localhost:8081' + '/api/' + issue.reporter + '/picture'}}"
+          [attr.src]="'http://localhost:8081/api/users/' + issue.reporter + '/picture' | secure | async"
           class="rounded-circle"
         />
       </a>

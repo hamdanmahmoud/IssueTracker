@@ -34,7 +34,8 @@ export class RestApiService {
     let user = await this.http
       .get<User>(API.userURL + "/api" + "/users/" + id, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError))
-      .toPromise();
+      .toPromise()
+      .then((user: User) => Object.assign(new User(), user));
     return user;
   }
 
@@ -53,7 +54,9 @@ export class RestApiService {
       .toPromise()
       .then((projects) => {
         return new Promise((resolve, reject) =>
-          resolve(projects._embedded.projects)
+          projects._embedded
+            ? resolve(projects._embedded.projects)
+            : resolve([])
         );
       })
       .then((projects: TrackerProject[]) =>
@@ -77,7 +80,7 @@ export class RestApiService {
       .toPromise()
       .then((issues) => {
         return new Promise((resolve, reject) =>
-          resolve(issues._embedded.issues)
+          issues._embedded ? resolve(issues._embedded.issues) : resolve([])
         );
       });
 
@@ -92,6 +95,21 @@ export class RestApiService {
     console.log(fullIssues);
 
     return fullIssues;
+  }
+
+  async getRoleById(roleId: string): Promise<Role> {
+    let role: Role = await this.http
+      .get<any>(API.aclURL + "/api" + "/roles/" + roleId, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((role: any) => {
+        console.log(role);
+        return new Promise((resolve, reject) =>
+          resolve(Object.assign(new Role(), role))
+        );
+      });
+
+    return role;
   }
 
   async getRolesOfProjectById(projectId: string): Promise<Role[]> {
@@ -148,13 +166,37 @@ export class RestApiService {
     projectId: string,
     userId: string
   ): Promise<Role[]> {
-    //TODO: get role ids of user by id (from project microservice)
+    // get role ids of user by id (from project microservice)
+    let roleIds: Array<any> = await this.http
+      .get<any>(
+        API.projectURL +
+          "/api" +
+          "/users/" +
+          userId +
+          "/roles?projectId=" +
+          projectId,
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((ids: any) => {
+        console.log(ids);
+        return new Promise((resolve, reject) => resolve(ids.roleIds));
+      });
+    console.log("Ids retrieved", roleIds);
 
     // with each id, new Promise to get that role from acl microservice
-
+    let roles = await Promise.all(
+      roleIds.map(async (id) => {
+        let role = await this.getRoleById(id);
+        console.log(role);
+        return Object.assign(new Role(), role);
+      })
+    );
     // return roles
+    console.log("Roles retrieved", roles);
 
-    throw new Error("Method not implemented.");
+    return roles;
   }
 
   // HttpClient API get() method => Fetch project
@@ -162,6 +204,30 @@ export class RestApiService {
     return this.http
       .get<TrackerProject>(
         API.projectURL + "/api" + "/projects/" + id,
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
+  }
+
+  getProfilePicture(id: string): Promise<Blob> {
+    return this.http
+      .get(API.userURL + "/api" + "/users/" + id + "/picture", {
+        responseType: "blob",
+      })
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
+  }
+
+  uploadProfilePicture(file): Promise<any> {
+    return this.http
+      .post(
+        API.userURL +
+          "/api" +
+          "/users/" +
+          this.authService.getMyUserId() +
+          "/picture",
+        file,
         this.httpOptions
       )
       .pipe(retry(1), catchError(this.handleError))

@@ -16,19 +16,19 @@
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email address" type="email" />
+                    <input matInput placeholder="Email address" type="email" value="{{this.user ? this.user.getMail() : ''}}"/>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Fist Name" type="text" />
+                    <input matInput placeholder="Name" type="text" value="{{this.user ? this.user.getName() : ''}}"/>
                   </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <mat-form-field class="example-full-width">
                     <input matInput placeholder="Last Name" type="text" />
                   </mat-form-field>
-                </div>
+                </div> -->
               </div>
               <div class="row">
                 <div class="col-md-12">
@@ -36,12 +36,13 @@
                   <mat-form-field class="example-full-width">
                     <textarea
                       matInput
-                      placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                    ></textarea>
+                      placeholder="Description"
+                    >{{this.user ? this.user.getDescription(): ""}}</textarea>
                   </mat-form-field>
                 </div>
               </div>
-              <button
+              <div class="buttons-container">
+                <button
                 mat-raised-button
                 type="submit"
                 class="btn btn-info pull-right"
@@ -51,10 +52,11 @@
               <button
                 mat-raised-button
                 type="submit"
-                class="btn btn-info pull-right"
+                class="btn btn-info pull-right btn-save-profile"
               >
-                Update Profile
+                Save
               </button>
+              </div>
               <div class="clearfix"></div>
             </form>
           </div>
@@ -66,8 +68,10 @@
             <a href="javascript:void(0)">
               <img
                 class="img"
-                src="https://user-images.githubusercontent.com/37018010/95596121-aca62680-0a55-11eb-802f-0a44c8700ee0.jpg"
+                [src]="profilePicture"
+                (click)="openFile()"
               />
+              <input #fileInput type="file" style="display:none" accept="image/*" (change)="handle($event)">
             </a>
           </div>
           <div class="card-body">

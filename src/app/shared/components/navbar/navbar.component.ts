@@ -7,6 +7,7 @@ import {
 } from "@angular/common";
 import { Router } from "@angular/router";
 import { AuthService } from "../../../shared/services/auth.service";
+import { RestApiService } from "app/shared/services/rest-api.service";
 
 @Component({
   selector: "app-navbar",
@@ -20,6 +21,7 @@ import { AuthService } from "../../../shared/services/auth.service";
 export class NavbarComponent implements OnInit {
   private myName: string;
   private myUserId: string;
+  private profilePicture: string;
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -30,16 +32,21 @@ export class NavbarComponent implements OnInit {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private apiService: RestApiService
   ) {
     this.location = location;
     this.sidebarVisible = false;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.myName = this.authService.getMyName();
     this.myUserId = this.authService.getMyUserId();
-    this.listTitles = ROUTES.filter((listTitle) => listTitle);
+    this.profilePicture = await this.apiService
+      .getProfilePicture(this.myUserId)
+      .then((blob: Blob) => blob["text"]());
+
+    this.listTitles = await ROUTES.filter((listTitle) => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
     this.router.events.subscribe((event) => {

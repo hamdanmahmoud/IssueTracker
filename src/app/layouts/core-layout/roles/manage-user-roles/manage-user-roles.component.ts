@@ -31,14 +31,15 @@ export class ManageUserRolesComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.user = this.data.user;
+    console.log(this.user, this.user.getName());
     this.projectId = this.data.projectId;
     this.project = allProjects.find(
       (project) => project.getId() === this.projectId
     );
     this.selectedRolesList = new FormControl(
       await this.projectService.getRolesOfUserDefinedOnProject(
-        this.user.getId(),
-        this.projectId
+        this.projectId,
+        this.user.getId()
       )
     );
     this.allOptions = await this.roleService.getRolesOfProjectById(

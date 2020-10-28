@@ -82,7 +82,7 @@
           ><a href="javascript:void(0)" class="avatar avatar-sm">
             <img
               alt=""
-              src="{{'http://localhost:8081' + '/api/' + element.owner + '/picture'}}"
+              [attr.src]="'http://localhost:8081/api/users/' + element.owner + '/picture' | secure | async"
               class="rounded-circle"
             /> </a
         ></span>
@@ -112,7 +112,7 @@
             >
               <img
                 alt=""
-                src="{{'http://localhost:8081' + '/api/' + collaborator + '/picture'}}"
+                [attr.src]="'http://localhost:8081/api/users/' + collaborator + '/picture' | secure | async"
                 class="rounded-circle"
               />
             </a>

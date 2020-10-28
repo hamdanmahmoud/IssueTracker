@@ -15,6 +15,7 @@ import { API } from "./API.conf";
 import { AlreadyLoggedInResolver } from "./shared/services/already-logged-in-resolver";
 import { LoggedInGuard } from "./shared/services/logged-in-guard";
 import { AuthService } from "./shared/services/auth.service";
+import { MainPipeModule } from "./shared/pipes/main-pipe.module";
 
 @NgModule({
   imports: [
@@ -25,8 +26,10 @@ import { AuthService } from "./shared/services/auth.service";
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    MainPipeModule,
   ],
   declarations: [AppComponent, CoreLayoutComponent],
+  exports: [],
   providers: [API, AuthService, LoggedInGuard, AlreadyLoggedInResolver],
   bootstrap: [AppComponent],
 })

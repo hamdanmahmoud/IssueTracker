@@ -95,7 +95,7 @@
           ><a href="javascript:void(0)" class="avatar avatar-sm">
             <img
               alt=""
-              src="{{'http://localhost:8081' + '/api/' + element.reporterId + '/picture'}}"
+              [src]="'http://localhost:8081/api/users/' + element.reporter + '/picture' | secure | async"
               title="{{element.reporter}}"
               class="rounded-circle"
             /> 
@@ -128,7 +128,7 @@
             >
               <img
                 alt=""
-                src="{{'http://localhost:8081' + '/api/' + assignee + '/picture'}}"
+                [src]="'http://localhost:8081/api/users/' + assignee + '/picture' | secure | async"
                 class="rounded-circle"
               />
             </a>

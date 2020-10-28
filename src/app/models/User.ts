@@ -4,20 +4,22 @@ export class User {
   private id: string;
   private name: string;
   private mail: string;
-  private imageUrl: string;
+  private picture: string;
   private roles: Role[];
+  private title: string;
+  private description: string;
 
   constructor(
     id?: string,
     name?: string,
     mail?: string,
-    imageUrl?: string,
+    picture?: string,
     roles?: Role[]
   ) {
     this.id = id;
     this.name = name;
     this.mail = mail;
-    this.imageUrl = imageUrl;
+    this.picture = picture;
     this.roles = roles;
   }
 
@@ -33,8 +35,8 @@ export class User {
     return this.id;
   }
 
-  getImageUrl(): string {
-    return this.imageUrl;
+  getProfilePicture(): string {
+    return this.picture;
   }
 
   getRolesByProjectId(projectId: string): Role[] {
@@ -52,5 +54,17 @@ export class User {
 
   getName() {
     return this.name;
+  }
+
+  getTitle() {
+    return this.title;
+  }
+
+  getDescription() {
+    return this.description;
+  }
+
+  getMail() {
+    return this.mail;
   }
 }

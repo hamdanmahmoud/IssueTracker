@@ -37,6 +37,7 @@ import { ManageUserRolesComponent } from "./roles/manage-user-roles/manage-user-
 import { ManageUsersOnProject } from "./roles/manage-users-on-project/manage-users-on-project.component";
 import { ManageRolesOnProjectComponent } from "./roles/manage-roles-on-project/manage-roles-on-project.component";
 import { EditRoleComponent } from "./roles/edit-role/edit-role.component";
+import { MainPipeModule } from "../../shared/pipes/main-pipe.module";
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { EditRoleComponent } from "./roles/edit-role/edit-role.component";
     MatIconModule,
     MatListModule,
     MatDialogModule,
+    MainPipeModule,
   ],
   declarations: [
     DashboardComponent,
