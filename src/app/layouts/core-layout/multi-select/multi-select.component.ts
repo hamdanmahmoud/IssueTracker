@@ -4,14 +4,10 @@ import { User } from "../../../models/User";
 import { Permission } from "../../../models/Permission";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Inject } from "@angular/core";
-import {
-  mahmoud,
-  ana,
-  hori,
-  allPermissions,
-} from "../../../shared/services/fakeData";
 import { ManageUserRolesComponent } from "../roles/manage-user-roles/manage-user-roles.component";
 import { RestApiService } from "app/shared/services/rest-api.service";
+import { IssueService } from "app/shared/services/issue.service";
+import { Issue } from "app/models/Issue";
 
 @Component({
   selector: "app-multi-select",
@@ -22,17 +18,20 @@ export class MultiSelectComponent implements OnInit {
   selectedOptionsList: FormControl;
   allOptions: User[] | Permission[];
   projectId: string;
-  optionsType: string;
+  selectedIssue: Issue;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
-    private apiService: RestApiService
+    private apiService: RestApiService,
+    private issueService: IssueService
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.selectedIssue = this.data.selectedIssue;
+
     await Promise.all(
-      this.data.selectedOptionsList.map(async (id) => {
+      this.selectedIssue.getAssignees().map(async (id) => {
         console.log(id);
         return await this.apiService.getUserById(id);
       })
@@ -48,28 +47,6 @@ export class MultiSelectComponent implements OnInit {
     this.allOptions = await this.apiService.getUsersOfProjectById(
       this.projectId
     );
-
-    // switch (true) {
-    //   case this.data.selectedOptionsList[0] instanceof User:
-    //     this.optionsType = "assignees";
-    //     break;
-    //   case typeof this.data.selectedOptionsList[0] === "string":
-    //     this.optionsType = "permissions";
-    //     break;
-    //   default:
-    //     throw "Options with this type not allowed";
-    // }
-
-    // switch (this.optionsType) {
-    //   case "assignees":
-    //     this.allOptions = [mahmoud, ana, hori]; // TODO : call service (for either users on project OR permissions list)
-    //     break;
-    //   case "permissions":
-    //     this.allOptions = allPermissions;
-    //     break;
-    //   default:
-    //     throw "Options with this type not allowed";
-    // }
   }
 
   comparePermissions(availableOption: Permission, selectedOption: Permission) {
@@ -83,6 +60,12 @@ export class MultiSelectComponent implements OnInit {
   saveModifications() {
     // TODO: should call service with new assignees
     console.log(this.selectedOptionsList.value);
+    this.selectedIssue.setAssignees([
+      ...this.selectedOptionsList.value.map((assignee) => assignee.getId()),
+    ]);
+    this.issueService
+      .updateIssue(this.selectedIssue)
+      .then((issue) => console.log(issue));
   }
 
   // event handler for edit button

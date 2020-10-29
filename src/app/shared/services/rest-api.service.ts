@@ -62,6 +62,7 @@ export class RestApiService {
   }
 
   updateUserRolesByProjectId(projectId: string, userId: string, roles: Role[]) {
+    console.log("Sending for update:", roles);
     this.http
       .put<any>(
         API.projectURL +
@@ -400,7 +401,7 @@ export class RestApiService {
   }
 
   // HttpClient API put() method => Update project
-  updateProject(id, project): Promise<TrackerProject> {
+  updateProject(id, project: TrackerProject): Promise<TrackerProject> {
     const update = {
       title: project.getTitle(),
       owner: project.getOwnerId(),
@@ -411,6 +412,30 @@ export class RestApiService {
     return this.http
       .put<TrackerProject>(
         API.projectURL + "/api" + "/projects/" + id,
+        JSON.stringify(update),
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
+  }
+
+  updateIssue(id, issue: Issue): Promise<Issue> {
+    const update = {
+      name: "",
+      project: issue.getProject().getId(),
+      reporter: issue.getReporter(),
+      assignees: issue.getAssignees(),
+      summary: issue.getSummary(),
+      created: issue.getCreated(),
+      description: issue.getDescription(),
+      priority: issue.getPriority(),
+      type: issue.getType(),
+      status: issue.getStatus(),
+    };
+    console.log("Issue to update:", update, update.assignees);
+    return this.http
+      .put<Issue>(
+        API.issueURL + "/api" + "/issues/" + id,
         JSON.stringify(update),
         this.httpOptions
       )

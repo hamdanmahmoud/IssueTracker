@@ -30,4 +30,8 @@ export class IssueService {
   createIssue(issue: Issue): Promise<Issue> {
     return this.apiService.createIssue(issue);
   }
+
+  updateIssue(issue: Issue): Promise<Issue> {
+    return this.apiService.updateIssue(issue.getId(), issue);
+  }
 }

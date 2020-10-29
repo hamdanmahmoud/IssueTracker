@@ -51,6 +51,7 @@
         <div class="">
           <mat-select
             [(ngModel)]="selectedIssue.status"
+            (selectionChange)="changeStatusOfIssue($event.value)"
             class="status-{{
               selectedIssue.status
             }} status-cell action-dropdown"

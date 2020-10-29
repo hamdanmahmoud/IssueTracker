@@ -4,11 +4,6 @@ import { AuthService } from "app/shared/services/auth.service";
 import { RestApiService } from "app/shared/services/rest-api.service";
 import { UserService } from "app/shared/services/user.service";
 import { Ng2ImgMaxService } from "ng2-img-max";
-import {
-  profileDescription,
-  profileName,
-  profileTitle,
-} from "../../../shared/services/fakeData";
 
 @Component({
   selector: "app-user-profile",
@@ -86,4 +81,8 @@ export class UserProfileComponent implements OnInit {
       };
     });
   };
+
+  save() {
+    // this.apiService.updateProfile();
+  }
 }

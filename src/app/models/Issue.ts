@@ -88,6 +88,10 @@ export class Issue {
     return this.selected;
   }
 
+  getReporter() {
+    return this.reporter;
+  }
+
   setType(issueType: IssueTypeName.BUG | IssueTypeName.TASK) {
     this.type = issueType;
   }

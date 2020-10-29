@@ -15,6 +15,7 @@ import {
 } from "../../../../shared/services/fakeData";
 import { MatDialog } from "@angular/material/dialog";
 import { MultiSelectComponent } from "../../multi-select/multi-select.component";
+import { IssueService } from "app/shared/services/issue.service";
 
 @Component({
   selector: "app-issue-page",
@@ -32,7 +33,11 @@ export class IssuePageComponent implements OnInit {
   statusList: IssueStatus[];
   @ViewChild("progressBar") progressBar: ElementRef;
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) {}
+  constructor(
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
+    private issueService: IssueService
+  ) {}
 
   ngOnInit(): void {
     console.log("Selected issue id is", this.selectedIssueId);
@@ -60,7 +65,7 @@ export class IssuePageComponent implements OnInit {
       width: "20rem",
       height: "16rem",
       data: {
-        selectedOptionsList: this.selectedIssue.getAssignees(),
+        selectedIssue: this.selectedIssue,
         projectId: this.projectId,
       },
     });
@@ -70,6 +75,11 @@ export class IssuePageComponent implements OnInit {
     });
   }
 
+  changeStatusOfIssue(value) {
+    this.selectedIssue.setStatus(value);
+    this.issueService.updateIssue(this.selectedIssue);
+  }
+
   onClickOnPriorityBar(event, issue: Issue) {
     const width = this.progressBar.nativeElement.offsetWidth;
     const rect = event.target.getBoundingClientRect();
@@ -77,6 +87,7 @@ export class IssuePageComponent implements OnInit {
     const newPriority = Math.round((x / width) * 100);
     issue.setPriority(newPriority >= 0 ? newPriority : 0);
 
+    this.issueService.updateIssue(issue).then((issue) => console.log(issue));
     // TODO: update through service
   }
 }

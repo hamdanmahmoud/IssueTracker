@@ -60,5 +60,8 @@ export class ProjectsTableComponent implements OnInit {
   removeProject(project: TrackerProject) {
     console.log("Remove project ", project);
     this.projectService.deleteProject(project.getId());
+    this.dataSource.data = this.dataSource.data.filter(
+      (projectInTable) => !(projectInTable.getId() === project.getId())
+    );
   }
 }

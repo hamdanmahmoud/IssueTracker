@@ -42,6 +42,11 @@ export class IssuesTableComponent implements OnInit {
     console.log(this.data);
   }
 
+  changeStatusOfIssue(value, issue) {
+    issue.setStatus(value);
+    this.issueService.updateIssue(issue);
+  }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -71,5 +76,8 @@ export class IssuesTableComponent implements OnInit {
   removeIssue(issue: Issue) {
     console.log("Remove issue ", issue);
     this.issueService.deleteIssue(issue.getId());
+    this.dataSource.data = this.dataSource.data.filter(
+      (issueInTable) => !(issueInTable.getId() === issue.getId())
+    );
   }
 }
