@@ -25,6 +25,7 @@ export class ManageUsersOnProject implements OnInit {
 
   async ngOnInit() {
     this.project = this.data.project;
+    console.log(this.project);
     this.allUsers = await this.userService.getUsersOfProjectById(
       this.project.getId()
     );
@@ -70,8 +71,41 @@ export class ManageUsersOnProject implements OnInit {
     if (this.mails.length > 1) this.mails.splice(this.mails.length - 1);
   }
 
-  sendInvitations() {
-    throw "Not implemented";
+  async removeUser(event, user: User) {
+    console.log("User to remove:", user);
+    console.log(this.project);
+    const updatedCollabs = this.project
+      .getCollaborators()
+      .filter((collab) => collab.getId() != user.getId());
+
+    this.project.setCollaborators(updatedCollabs);
+
+    console.log(this.project.getCollaborators());
+    this.userService.updateProject(this.project).then(async (res) => {
+      console.log(res);
+
+      this.allUsers = await this.userService.getUsersOfProjectById(
+        this.project.getId()
+      );
+      console.log("Retrieved updated users", this.allUsers);
+    });
+  }
+
+  async sendInvitations() {
+    let collaborators: User[] = await Promise.all<User>(
+      this.mails.map(async (mail) => {
+        let mailAddress = mail.address;
+        return await this.userService.getUserByMail(mailAddress);
+      })
+    );
+
+    this.project.setCollaborators([
+      ...collaborators,
+      ...this.project.getCollaborators(),
+    ]);
+    this.userService
+      .updateProject(this.project)
+      .then((project) => console.log(project));
   }
 
   openAddCollabsContainer() {

@@ -59,4 +59,16 @@ export class ProjectService {
   deleteProject(id: string) {
     this.apiService.deleteProject(id);
   }
+
+  updateUserRolesByProjectId(
+    projectId: string,
+    userId: string,
+    selectedRoles: Role[]
+  ) {
+    this.apiService.updateUserRolesByProjectId(
+      projectId,
+      userId,
+      selectedRoles
+    );
+  }
 }

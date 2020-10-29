@@ -22,6 +22,14 @@ export class Role {
     return this.permissions;
   }
 
+  setAuthority(authority: string) {
+    this.authority = authority;
+  }
+
+  setProjectId(projectId: string) {
+    this.projectId = projectId;
+  }
+
   setPermissions(permissions: Permission[]) {
     console.log(this.permissions);
     this.permissions = permissions;

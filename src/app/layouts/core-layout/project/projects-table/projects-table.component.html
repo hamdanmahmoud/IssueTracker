@@ -112,7 +112,7 @@
             >
               <img
                 alt=""
-                [attr.src]="'http://localhost:8081/api/users/' + collaborator + '/picture' | secure | async"
+                [attr.src]="'http://localhost:8081/api/users/' + collaborator.getId() + '/picture' | secure | async"
                 class="rounded-circle"
               />
             </a>

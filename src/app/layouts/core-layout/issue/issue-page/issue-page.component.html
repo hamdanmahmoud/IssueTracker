@@ -71,7 +71,7 @@
         <div class="secondary-right-subtitle">Priority</div>
         <span class="mr-2">{{ selectedIssue.priority }}%</span>
         <div>
-          <div class="progress">
+          <div #progressBar class="progress" (click)="onClickOnPriorityBar($event, selectedIssue)">
             <div
               class="progress-bar {{
                 selectedIssue.priority >= 80

@@ -28,4 +28,8 @@ export class UserService {
   createProject(project: TrackerProject): Promise<TrackerProject> {
     return this.apiService.createProject(project);
   }
+
+  updateProject(project: TrackerProject): Promise<TrackerProject> {
+    return this.apiService.updateProject(project.getId(), project);
+  }
 }

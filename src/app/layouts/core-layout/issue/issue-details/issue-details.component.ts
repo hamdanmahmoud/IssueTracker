@@ -5,10 +5,6 @@ import { IssueService } from "app/shared/services/issue.service";
 import { ProjectService } from "app/shared/services/project.service";
 import { IssueType, IssueTypeName } from "../../../../models/IssueType";
 import { TrackerProject } from "../../../../models/TrackerProject";
-import {
-  projectsCreatedByMe,
-  collaborations,
-} from "../../../../shared/services/fakeData";
 @Component({
   selector: "app-issue-details",
   templateUrl: "./issue-details.component.html",
@@ -18,8 +14,6 @@ export class IssueDetailsComponent implements OnInit {
   action: "create" | "edit";
   project: TrackerProject;
   projects: TrackerProject[];
-
-  defaultIssueType: IssueType;
 
   issueTypes: IssueType[] = [
     {
@@ -33,8 +27,8 @@ export class IssueDetailsComponent implements OnInit {
       color: "green",
     },
   ];
+  selectedIssueType: IssueType;
 
-  selectedType: IssueTypeName = this.issueTypes[0].name;
   summary: string = "";
   description: string = "";
 
@@ -49,7 +43,8 @@ export class IssueDetailsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.defaultIssueType = this.issueTypes[0];
+    this.selectedIssueType = this.issueTypes[0];
+
     this.projects = await this.projectService.getMyProjects();
 
     if (this.action === "create") return;
@@ -66,7 +61,7 @@ export class IssueDetailsComponent implements OnInit {
       case "create":
         let issue = new Issue();
         issue.setProject(this.project);
-        issue.setType(this.selectedType);
+        issue.setType(this.selectedIssueType.name);
         issue.setSummary(this.summary);
         issue.setDescription(this.description);
         issue.setCreated(new Date());
@@ -80,5 +75,10 @@ export class IssueDetailsComponent implements OnInit {
       default:
         throw "Not a valid option";
     }
+  }
+
+  selectIssueType(type: IssueType) {
+    console.log(type);
+    this.selectedIssueType = type;
   }
 }

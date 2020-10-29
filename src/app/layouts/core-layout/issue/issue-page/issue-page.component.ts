@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Issue } from "../../../../models/Issue";
 import { IssueStatus } from "../../../../models/IssueStatus";
@@ -23,6 +30,7 @@ export class IssuePageComponent implements OnInit {
   @Input() projectId: string;
   @Input() selectedIssue: Issue;
   statusList: IssueStatus[];
+  @ViewChild("progressBar") progressBar: ElementRef;
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {}
 
@@ -60,5 +68,15 @@ export class IssuePageComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");
     });
+  }
+
+  onClickOnPriorityBar(event, issue: Issue) {
+    const width = this.progressBar.nativeElement.offsetWidth;
+    const rect = event.target.getBoundingClientRect();
+    const x = event.clientX - rect.left; //x position within the element.
+    const newPriority = Math.round((x / width) * 100);
+    issue.setPriority(newPriority >= 0 ? newPriority : 0);
+
+    // TODO: update through service
   }
 }

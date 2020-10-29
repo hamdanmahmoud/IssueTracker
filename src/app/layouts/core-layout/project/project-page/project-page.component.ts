@@ -72,6 +72,7 @@ export class ProjectPageComponent implements OnInit {
     if (!this.allProjects) {
       this.allProjects = await this.projectService.getMyProjects();
     }
+    console.log("All projects", this.allProjects);
 
     this.selectedIssueId = this.route.snapshot.paramMap.get("issueId");
 

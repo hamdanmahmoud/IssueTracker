@@ -5,8 +5,8 @@
 >
   <mat-icon
     mat-list-icon
-    [ngStyle]="{ color: issue.type === 'task' ? 'green' : 'red' }"
-    >{{ issue.type === "task" ? "assignment" : "bug_report" }}</mat-icon
+    [ngStyle]="{ color: issue.type === 'TASK' ? 'green' : 'red' }"
+    >{{ issue.type === "TASK" ? "assignment" : "bug_report" }}</mat-icon
   >
   <div mat-line class="ellipsis-overflow">{{ issue.summary }}</div>
   <div mat-line>

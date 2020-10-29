@@ -16,13 +16,13 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="legacy">
-        <mat-select [(value)]="defaultIssueType" [compareWith]="compareFn">
+        <mat-select [(value)]="selectedIssueType" [compareWith]="compareFn" (selectionChange)="selectIssueType($event.value)">
           <mat-select-trigger
             ><mat-icon
               class="selection-icon"
-              [ngStyle]="{ color: defaultIssueType.color }"
-              >{{ defaultIssueType.iconName }}</mat-icon
-            >{{ defaultIssueType.name }}</mat-select-trigger
+              [ngStyle]="{ color: selectedIssueType.color }"
+              >{{ selectedIssueType.iconName }}</mat-icon
+            >{{ selectedIssueType.name }}</mat-select-trigger
           >
           <mat-option *ngFor="let issueType of issueTypes" [value]="issueType">
             <mat-icon [ngStyle]="{ color: issueType.color }">{{

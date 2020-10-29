@@ -4,6 +4,8 @@ import { allPermissions } from "../../../../shared/services/fakeData";
 import { Permission } from "../../../../models/Permission";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { TrackerProject } from "../../../../models/TrackerProject";
+import { RoleService } from "app/shared/services/role.service";
+import { Role } from "app/models/Role";
 
 @Component({
   selector: "app-create-role",
@@ -14,8 +16,12 @@ export class CreateRoleComponent implements OnInit {
   project: TrackerProject;
   selectedPermissionsList: FormControl;
   allOptions: Permission[];
+  roleName: string = "";
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private roleService: RoleService
+  ) {}
 
   ngOnInit(): void {
     this.project = this.data.project;
@@ -29,6 +35,12 @@ export class CreateRoleComponent implements OnInit {
   }
 
   saveRole() {
+    console.log(this.roleName);
     console.log(this.selectedPermissionsList.value);
+    const newRole = new Role();
+    newRole.setAuthority(this.roleName);
+    newRole.setPermissions(this.selectedPermissionsList.value);
+    newRole.setProjectId(this.project.getId());
+    this.roleService.createRole(newRole);
   }
 }

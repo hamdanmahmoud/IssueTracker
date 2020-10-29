@@ -108,6 +108,10 @@ export class Issue {
     this.created = created;
   }
 
+  setPriority(priority: number) {
+    this.priority = priority;
+  }
+
   setStatus(status: IssueStatus) {
     this.status = status;
   }

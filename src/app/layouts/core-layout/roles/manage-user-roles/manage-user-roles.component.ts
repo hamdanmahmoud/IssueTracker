@@ -52,8 +52,17 @@ export class ManageUserRolesComponent implements OnInit {
   }
 
   saveModifications() {
-    this.user.setRolesOnProject(this.projectId, this.selectedRolesList.value);
+    let selectedRoles = this.selectedRolesList.value;
+
+    console.log(this.selectedRolesList);
+    this.user.setRolesOnProject(this.projectId, selectedRoles);
 
     //TODO: should close this component, perhaps should emit event to parent
+
+    this.projectService.updateUserRolesByProjectId(
+      this.projectId,
+      this.user.getId(),
+      selectedRoles
+    );
   }
 }

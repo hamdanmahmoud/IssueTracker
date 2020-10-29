@@ -46,10 +46,15 @@ export class User {
   }
 
   setRolesOnProject(projectId: string, selectedRolesList: Role[]) {
+    console.log(this.roles);
     this.roles = this.roles.filter(
       (role) => !(role.getProjectId() === projectId)
     );
     this.roles = [...this.roles, ...selectedRolesList];
+  }
+
+  setRoles(roles: Role[]) {
+    this.roles = roles;
   }
 
   getName() {

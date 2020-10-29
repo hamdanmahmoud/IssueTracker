@@ -31,20 +31,75 @@ export class RestApiService {
     }),
   };
 
-  async getUserById(id): Promise<User> {
-    let user = await this.http
-      .get<User>(API.userURL + "/api" + "/users/" + id, this.httpOptions)
+  async getRolesOfUserById(id): Promise<Role[]> {
+    let roles = await this.http
+      .get<any[]>(
+        API.projectURL + "/api/users/" + id + "/roles",
+        this.httpOptions
+      )
       .pipe(retry(1), catchError(this.handleError))
       .toPromise()
+      .then((roles: any) => {
+        console.log("Returned roles", roles);
+        return new Promise((resolve, reject) =>
+          roles.roleIds ? resolve(roles.roleIds) : resolve([])
+        );
+      })
+      .then((roleIds: any[]) => {
+        console.log("Roles of user:", roleIds);
+        return new Promise<Role[]>(async (resolve, reject) => {
+          await Promise.all(
+            roleIds.map(async (id) => {
+              const actualRole = await this.getRoleById(id);
+              console.log(actualRole);
+              return Object.assign(new Role(), actualRole);
+            })
+          ).then((roles) => resolve(roles));
+        });
+      });
+    console.log(roles);
+    return roles;
+  }
+
+  updateUserRolesByProjectId(projectId: string, userId: string, roles: Role[]) {
+    this.http
+      .put<any>(
+        API.projectURL +
+          "/api/users/" +
+          userId +
+          "/roles?projectId=" +
+          projectId,
+        JSON.stringify(roles),
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then((res) => console.log("Response on updating roles:", res));
+  }
+
+  async getUserById(id): Promise<User> {
+    let user = await this.http
+      .get<any>(API.userURL + "/api" + "/users/" + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise()
+      .then(async (user) => {
+        user.roles = await this.getRolesOfUserById(user.id);
+        return user;
+      })
       .then((user: User) => Object.assign(new User(), user));
+    console.log(user);
     return user;
   }
 
   async getUserByMail(mail): Promise<User> {
     let user = await this.http
-      .get<User>(API.userURL + "/api" + "/users?mail=" + mail, this.httpOptions)
+      .get<any>(API.userURL + "/api" + "/users?mail=" + mail, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError))
       .toPromise()
+      .then(async (user) => {
+        user.roles = await this.getRolesOfUserById(user.id);
+        return user;
+      })
       .then((user: User) => Object.assign(new User(), user));
     return user;
   }
@@ -70,6 +125,22 @@ export class RestApiService {
             : resolve([])
         );
       })
+      .then(
+        (projects: Array<any>) =>
+          new Promise(async (resolve, reject) => {
+            await Promise.all(
+              projects.map(async (project) => {
+                project.collaborators = await Promise.all(
+                  project.collaborators.map(async (collaboratorId) => {
+                    let collaborator = await this.getUserById(collaboratorId);
+                    return Object.assign(new User(), collaborator);
+                  })
+                );
+              })
+            );
+            resolve(projects);
+          })
+      )
       .then((projects: TrackerProject[]) =>
         projects.map((project) => Object.assign(new TrackerProject(), project))
       );
@@ -317,12 +388,30 @@ export class RestApiService {
       .toPromise();
   }
 
+  createRole(role: Role): Promise<Role> {
+    return this.http
+      .post<Role>(
+        API.aclURL + "/api" + "/roles",
+        JSON.stringify(role),
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
+  }
+
   // HttpClient API put() method => Update project
   updateProject(id, project): Promise<TrackerProject> {
+    const update = {
+      title: project.getTitle(),
+      owner: project.getOwnerId(),
+      collaborators: project.getCollaborators().map((collab) => collab.getId()),
+      summary: project.getSummary(),
+      created: project.getCreated(),
+    };
     return this.http
       .put<TrackerProject>(
         API.projectURL + "/api" + "/projects/" + id,
-        JSON.stringify(project),
+        JSON.stringify(update),
         this.httpOptions
       )
       .pipe(retry(1), catchError(this.handleError))

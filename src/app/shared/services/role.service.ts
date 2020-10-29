@@ -11,4 +11,8 @@ export class RoleService {
   getRolesOfProjectById(projectId: string): Promise<Role[]> {
     return this.apiService.getRolesOfProjectById(projectId);
   }
+
+  createRole(role: Role) {
+    return this.apiService.createRole(role);
+  }
 }
