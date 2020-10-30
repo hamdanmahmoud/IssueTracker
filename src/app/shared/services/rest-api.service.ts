@@ -10,6 +10,7 @@ import { Issue } from "../../models/Issue";
 import { User } from "../../models/User";
 import { Role } from "app/models/Role";
 import { IssueStatus } from "app/models/IssueStatus";
+import { BasicUser } from "app/models/BasicUser";
 
 @Injectable({
   providedIn: "root",
@@ -30,6 +31,24 @@ export class RestApiService {
       Authorization: "Bearer " + this.authService.getToken(),
     }),
   };
+
+  updateProfile(id: string, user: BasicUser): Promise<BasicUser> {
+    const update = {
+      mail: user.getMail(),
+      name: user.getName(),
+      description: user.getDescription() ? user.getDescription() : "",
+      title: user.getTitle() ? user.getTitle() : "",
+    };
+
+    return this.http
+      .put<any>(
+        API.userURL + "/api/users/" + id + "/profile",
+        update,
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.handleError))
+      .toPromise();
+  }
 
   async getRolesOfUserById(id): Promise<Role[]> {
     let roles = await this.http

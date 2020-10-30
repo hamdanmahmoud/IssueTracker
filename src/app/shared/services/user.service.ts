@@ -6,6 +6,7 @@ import { RestApiService } from "./rest-api.service";
 import { ProjectCard } from "../../models/ProjectCard";
 import { Issue } from "../../models/Issue";
 import { User } from "../../models/User";
+import { BasicUser } from "app/models/BasicUser";
 
 @Injectable({
   providedIn: "root",
@@ -31,5 +32,9 @@ export class UserService {
 
   updateProject(project: TrackerProject): Promise<TrackerProject> {
     return this.apiService.updateProject(project.getId(), project);
+  }
+
+  updateProfile(id: string, user: BasicUser) {
+    return this.apiService.updateProfile(id, user);
   }
 }

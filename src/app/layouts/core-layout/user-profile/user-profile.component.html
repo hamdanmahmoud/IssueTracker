@@ -16,19 +16,19 @@
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email address" type="email" value="{{this.user ? this.user.getMail() : ''}}"/>
+                    <input matInput placeholder="Email address" name="mail" type="email" [(ngModel)]="mail" value="{{this.user ? this.user.getMail() : ''}}"/>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Name" type="text" value="{{this.user ? this.user.getName() : ''}}"/>
+                    <input matInput placeholder="Name" name="name" type="text" [(ngModel)]="name" value="{{this.user ? this.user.getName() : ''}}"/>
                   </mat-form-field>
                 </div>
-                <!-- <div class="col-md-4">
+                <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Last Name" type="text" />
+                    <input matInput placeholder="Title" type="text" name="title" [(ngModel)]="title" value="{{this.user ? this.user.getTitle() : ''}}"/>
                   </mat-form-field>
-                </div> -->
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
@@ -37,6 +37,8 @@
                     <textarea
                       matInput
                       placeholder="Description"
+                      name="description"
+                      [(ngModel)]="description"
                     >{{this.user ? this.user.getDescription(): ""}}</textarea>
                   </mat-form-field>
                 </div>

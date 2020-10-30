@@ -38,7 +38,6 @@ import { ManageUsersOnProject } from "./roles/manage-users-on-project/manage-use
 import { ManageRolesOnProjectComponent } from "./roles/manage-roles-on-project/manage-roles-on-project.component";
 import { EditRoleComponent } from "./roles/edit-role/edit-role.component";
 import { MainPipeModule } from "../../shared/pipes/main-pipe.module";
-import { Ng2ImgMaxModule } from "ng2-img-max";
 
 @NgModule({
   imports: [
@@ -59,7 +58,6 @@ import { Ng2ImgMaxModule } from "ng2-img-max";
     MatListModule,
     MatDialogModule,
     MainPipeModule,
-    Ng2ImgMaxModule,
   ],
   declarations: [
     DashboardComponent,

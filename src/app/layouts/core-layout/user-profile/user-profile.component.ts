@@ -1,9 +1,8 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import { User } from "app/models/User";
+import { BasicUser } from "app/models/BasicUser";
 import { AuthService } from "app/shared/services/auth.service";
 import { RestApiService } from "app/shared/services/rest-api.service";
 import { UserService } from "app/shared/services/user.service";
-import { Ng2ImgMaxService } from "ng2-img-max";
 
 @Component({
   selector: "app-user-profile",
@@ -15,20 +14,19 @@ export class UserProfileComponent implements OnInit {
   @Input()
   action?: string;
 
-  user: User;
+  user: BasicUser;
 
   description: string;
   name: string;
   title: string;
+  mail: string;
 
-  private imageSrc: string = "";
   private profilePicture: string = "";
 
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private apiService: RestApiService,
-    private ng2ImgMax: Ng2ImgMaxService
+    private apiService: RestApiService
   ) {}
 
   async ngOnInit() {
@@ -38,6 +36,7 @@ export class UserProfileComponent implements OnInit {
     this.name = this.user.getName();
     this.description = this.user.getDescription();
     this.title = this.user.getTitle();
+    this.mail = this.user.getMail();
 
     this.profilePicture = await this.apiService
       .getProfilePicture(myUserId)
@@ -84,5 +83,13 @@ export class UserProfileComponent implements OnInit {
 
   save() {
     // this.apiService.updateProfile();
+    this.user.setName(this.name);
+    this.user.setMail(this.mail);
+    this.user.setDescription(this.description);
+    this.user.setTitle(this.title);
+
+    console.log(this.user);
+
+    this.userService.updateProfile(this.user["id"], this.user);
   }
 }

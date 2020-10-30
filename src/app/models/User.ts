@@ -1,13 +1,10 @@
+import { BasicUser } from "./BasicUser";
 import { Role } from "./Role";
 
-export class User {
+export class User extends BasicUser {
   private id: string;
-  private name: string;
-  private mail: string;
   private picture: string;
   private roles: Role[];
-  private title: string;
-  private description: string;
 
   constructor(
     id?: string,
@@ -16,19 +13,14 @@ export class User {
     picture?: string,
     roles?: Role[]
   ) {
+    super(name, mail);
     this.id = id;
-    this.name = name;
-    this.mail = mail;
     this.picture = picture;
     this.roles = roles;
   }
 
   setId(id: string) {
     this.id = id;
-  }
-
-  setMail(mail: string) {
-    this.mail = mail;
   }
 
   getId(): string {
@@ -55,21 +47,5 @@ export class User {
 
   setRoles(roles: Role[]) {
     this.roles = roles;
-  }
-
-  getName() {
-    return this.name;
-  }
-
-  getTitle() {
-    return this.title;
-  }
-
-  getDescription() {
-    return this.description;
-  }
-
-  getMail() {
-    return this.mail;
   }
 }
