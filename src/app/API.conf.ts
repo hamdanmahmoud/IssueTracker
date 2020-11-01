@@ -7,9 +7,9 @@
 // }
 
 export class API {
-  static aclURL: string = "http://34218b2173a9.ngrok.io/acl";
-  static userURL: string = "http://34218b2173a9.ngrok.io/user";
-  static projectURL: string = "http://34218b2173a9.ngrok.io/project";
-  static issueURL: string = "http://34218b2173a9.ngrok.io/issue";
-  static authURL: string = "http://34218b2173a9.ngrok.io/auth";
+  static aclURL: string = "https://34218b2173a9.ngrok.io/acl";
+  static userURL: string = "https://34218b2173a9.ngrok.io/user";
+  static projectURL: string = "https://34218b2173a9.ngrok.io/project";
+  static issueURL: string = "https://34218b2173a9.ngrok.io/issue";
+  static authURL: string = "https://34218b2173a9.ngrok.io/auth";
 }
