@@ -19,10 +19,10 @@ import { RestApiService } from "app/shared/services/rest-api.service";
   ],
 })
 export class NavbarComponent implements OnInit {
-  private myName: string;
-  private myUserId: string;
-  private profilePicture: string;
-  private listTitles: any[];
+  public myName: string;
+  public myUserId: string;
+  public profilePicture: string;
+  public listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
   private toggleButton: any;

@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
   title: string;
   mail: string;
 
-  private profilePicture: string = "";
+  public profilePicture: string = "";
 
   constructor(
     private userService: UserService,
