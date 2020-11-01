@@ -92,12 +92,15 @@ export class ManageUsersOnProject implements OnInit {
   }
 
   async sendInvitations() {
-    let collaborators: User[] = await Promise.all<User>(
-      this.mails.map(async (mail) => {
-        let mailAddress = mail.address;
-        return await this.userService.getUserByMail(mailAddress);
-      })
-    );
+    let collaborators: User[];
+    if (this.mails[0].address)
+      collaborators = await Promise.all<User>(
+        this.mails.map(async (mail) => {
+          let mailAddress = mail.address;
+          return await this.userService.getUserByMail(mailAddress);
+        })
+      );
+    else collaborators = [];
 
     this.project.setCollaborators([
       ...collaborators,
