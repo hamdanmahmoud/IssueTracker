@@ -381,7 +381,13 @@ export class RestApiService {
         this.httpOptions
       )
       .pipe(retry(1), catchError(this.handleError))
-      .toPromise();
+      .toPromise()
+      .then(
+        (project) =>
+          new Promise<TrackerProject>((resolve) => {
+            resolve(Object.assign(new TrackerProject(), project));
+          })
+      );
   }
 
   createIssue(issue: Issue): Promise<Issue> {
@@ -405,7 +411,13 @@ export class RestApiService {
         this.httpOptions
       )
       .pipe(retry(1), catchError(this.handleError))
-      .toPromise();
+      .toPromise()
+      .then(
+        (issue) =>
+          new Promise<Issue>((resolve) => {
+            resolve(Object.assign(new Issue(), issue));
+          })
+      );
   }
 
   createRole(role: Role): Promise<Role> {
