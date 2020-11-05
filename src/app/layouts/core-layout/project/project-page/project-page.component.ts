@@ -3,18 +3,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Issue } from "../../../../models/Issue";
 import { TrackerProject } from "../../../../models/TrackerProject";
-import {
-  tasks,
-  bugs,
-  projectsCreatedByMe,
-  collaborations,
-  mahmoud,
-} from "../../../../shared/services/fakeData";
-import { CreateRoleComponent } from "../../roles/create-role/create-role.component";
 import { ManageRolesOnProjectComponent } from "../../roles/manage-roles-on-project/manage-roles-on-project.component";
 import { ManageUsersOnProject } from "../../roles/manage-users-on-project/manage-users-on-project.component";
-import { ManageUserRolesComponent } from "../../roles/manage-user-roles/manage-user-roles.component";
-import { CreateIssueComponent } from "../../issue/create-issue/create-issue.component";
 import { IssueDetailsComponent } from "../../issue/issue-details/issue-details.component";
 import { AuthService } from "../../../../shared/services/auth.service";
 import { ProjectService } from "app/shared/services/project.service";

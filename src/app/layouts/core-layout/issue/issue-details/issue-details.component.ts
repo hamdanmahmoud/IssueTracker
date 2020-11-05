@@ -1,5 +1,6 @@
 import { Component, Inject, Input, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Router } from "@angular/router";
 import { Issue } from "app/models/Issue";
 import { IssueService } from "app/shared/services/issue.service";
 import { ProjectService } from "app/shared/services/project.service";
@@ -35,7 +36,8 @@ export class IssueDetailsComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private projectService: ProjectService,
-    private issueService: IssueService
+    private issueService: IssueService,
+    private router: Router
   ) {
     console.log("Issue-details");
     this.project = this.data.project;
@@ -66,9 +68,16 @@ export class IssueDetailsComponent implements OnInit {
         issue.setDescription(this.description);
         issue.setCreated(new Date());
 
-        this.issueService
-          .createIssue(issue)
-          .then((issue) => console.log(issue));
+        this.issueService.createIssue(issue).then((issue) => {
+          console.log(issue);
+          const issueId = issue.getId();
+          this.router.navigate([
+            "/projects",
+            this.project.getId(),
+            "issues",
+            issueId,
+          ]);
+        });
         break;
       case "edit":
         break;
