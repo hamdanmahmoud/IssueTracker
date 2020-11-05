@@ -71,10 +71,12 @@ export class ProjectDetailsComponent implements OnInit {
         project.setSummary(this.summary);
         project.setCreated(new Date());
 
-        this.userService.createProject(project).then((project) => {
-          this.router.navigate(["/projects", project.getId()]);
-          console.log(project);
-        });
+        this.userService
+          .createProject(project)
+          .then((project: TrackerProject) => {
+            this.router.navigate(["/projects", project.getId()]);
+            console.log("Newly created project:", project);
+          });
         break;
       case "edit":
         break;
