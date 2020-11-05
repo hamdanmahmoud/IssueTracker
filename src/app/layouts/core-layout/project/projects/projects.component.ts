@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import {
-  projectsCreatedByMe,
-  collaborations,
   columnsToDisplayForMyProjects,
   columnsToDisplayForCollaborations,
-} from "../../../../shared/services/fakeData";
+} from "../../../../shared/services/appData";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import { ProjectsTableComponent } from "../projects-table/projects-table.component";
 import { ProjectService } from "app/shared/services/project.service";

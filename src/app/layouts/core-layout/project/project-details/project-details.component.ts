@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { TrackerProject } from "app/models/TrackerProject";
 import { User } from "app/models/User";
 import { AuthService } from "app/shared/services/auth.service";
@@ -26,7 +27,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     console.log("Project-details with action = ", this.action);
   }
@@ -69,9 +71,10 @@ export class ProjectDetailsComponent implements OnInit {
         project.setSummary(this.summary);
         project.setCreated(new Date());
 
-        this.userService
-          .createProject(project)
-          .then((project) => console.log(project));
+        this.userService.createProject(project).then((project) => {
+          this.router.navigate(["/projects", project.getId()]);
+          console.log(project);
+        });
         break;
       case "edit":
         break;

@@ -1,5 +1,3 @@
-import { AuthService } from "../shared/services/auth.service";
-import { mahmoud } from "../shared/services/fakeData"; // TODO: circular dependency, should be removed anyway cuz it s fake
 import { Issue } from "./Issue";
 import { Project } from "./Project";
 import { TrackerProject } from "./TrackerProject";

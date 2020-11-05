@@ -4,7 +4,7 @@ import { Issue } from "../../../models/Issue";
 import {
   columnsToDisplayForIssuesInDashboard,
   statusOptions,
-} from "../../../shared/services/fakeData";
+} from "../../../shared/services/appData";
 import { IssueStatus } from "../../../models/IssueStatus";
 import { IssueTypeName } from "../../../models/IssueType";
 import { IssueService } from "app/shared/services/issue.service";

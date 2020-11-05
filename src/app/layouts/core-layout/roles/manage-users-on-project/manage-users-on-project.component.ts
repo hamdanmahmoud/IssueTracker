@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { FormControl } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import { User } from "../../../../models/User";
 import { ManageUserRolesComponent } from "../manage-user-roles/manage-user-roles.component";
-import { getUsersOfProjectById } from "../../../../shared/services/fakeData";
 import { UserService } from "app/shared/services/user.service";
 
 @Component({

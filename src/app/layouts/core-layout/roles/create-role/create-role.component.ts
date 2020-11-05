@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { allPermissions } from "../../../../shared/services/fakeData";
+import { allPermissions } from "../../../../shared/services/appData";
 import { Permission } from "../../../../models/Permission";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { TrackerProject } from "../../../../models/TrackerProject";

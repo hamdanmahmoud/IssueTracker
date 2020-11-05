@@ -1,10 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import {
-  allProjects,
-  getRolesOfProjectById,
-} from "../../../../shared/services/fakeData";
+
 import { Role } from "../../../../models/Role";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import { CreateRoleComponent } from "../create-role/create-role.component";

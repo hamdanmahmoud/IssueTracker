@@ -2,10 +2,9 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { IssueStatus } from "../../../../models/IssueStatus";
 import { Issue } from "../../../../models/Issue";
 import {
-  allIssues,
   columnsToDisplayForIssues,
   statusOptions,
-} from "../../../../shared/services/fakeData";
+} from "../../../../shared/services/appData";
 import { IssuesTableComponent } from "../issues-table/issues-table.component";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatDialog } from "@angular/material/dialog";

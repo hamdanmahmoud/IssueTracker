@@ -6,10 +6,7 @@ import { RoleService } from "app/shared/services/role.service";
 import { Role } from "../../../../models/Role";
 import { TrackerProject } from "../../../../models/TrackerProject";
 import { User } from "../../../../models/User";
-import {
-  getRolesOfProjectById,
-  allProjects,
-} from "../../../../shared/services/fakeData";
+import { allProjects } from "../../../../shared/services/appData";
 
 @Component({
   selector: "app-manage-user-roles",

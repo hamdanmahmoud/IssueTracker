@@ -9,10 +9,7 @@ import {
 import { ActivatedRoute } from "@angular/router";
 import { Issue } from "../../../../models/Issue";
 import { IssueStatus } from "../../../../models/IssueStatus";
-import {
-  statusOptions,
-  getIssueById,
-} from "../../../../shared/services/fakeData";
+import { statusOptions } from "../../../../shared/services/appData";
 import { MatDialog } from "@angular/material/dialog";
 import { MultiSelectComponent } from "../../multi-select/multi-select.component";
 import { IssueService } from "app/shared/services/issue.service";

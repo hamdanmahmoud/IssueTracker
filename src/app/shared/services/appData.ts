@@ -1,7 +1,6 @@
 import { Issue } from "../../models/Issue";
 import { IssueStatus } from "../../models/IssueStatus";
 import { Permission } from "../../models/Permission";
-import { ProjectCard } from "../../models/ProjectCard";
 import { Role } from "../../models/Role";
 import { TrackerProject } from "../../models/TrackerProject";
 import { User } from "../../models/User";
