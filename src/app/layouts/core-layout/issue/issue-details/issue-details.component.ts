@@ -68,8 +68,8 @@ export class IssueDetailsComponent implements OnInit {
         issue.setDescription(this.description);
         issue.setCreated(new Date());
 
-        this.issueService.createIssue(issue).then((issue) => {
-          console.log(issue);
+        this.issueService.createIssue(issue).then((issue: Issue) => {
+          console.log("Newly created issue:", issue);
           const issueId = issue.getId();
           this.router.navigate([
             "/projects",
