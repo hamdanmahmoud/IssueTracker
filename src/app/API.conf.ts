@@ -15,14 +15,9 @@
 // }
 
 export class API {
-  static aclURL: string =
-    "https://[2a04:241e:101:8100:48dc:fb65:3e7c:6c48]/acl";
-  static userURL: string =
-    "https://[2a04:241e:101:8100:48dc:fb65:3e7c:6c48]/user";
-  static projectURL: string =
-    "https://[2a04:241e:101:8100:48dc:fb65:3e7c:6c48]/project";
-  static issueURL: string =
-    "https://[2a04:241e:101:8100:48dc:fb65:3e7c:6c48]/issue";
-  static authURL: string =
-    "https://[2a04:241e:101:8100:48dc:fb65:3e7c:6c48]/auth";
+  static aclURL: string = "https://issuetracker.club/acl";
+  static userURL: string = "https://issuetracker.club/user";
+  static projectURL: string = "https://issuetracker.club/project";
+  static issueURL: string = "https://issuetracker.club/issue";
+  static authURL: string = "https://issuetracker.club/auth";
 }
