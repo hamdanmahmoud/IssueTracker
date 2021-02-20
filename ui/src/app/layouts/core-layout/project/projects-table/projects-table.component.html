@@ -1,0 +1,192 @@
+<div *ngIf="data">
+  <mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef class="mat-column-select">
+        <mat-checkbox
+          (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+          [aria-label]="checkboxLabel()"
+        >
+        </mat-checkbox>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row" class="only-desktop mat-column-select">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)"
+          [aria-label]="checkboxLabel(row)"
+        >
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell
+        fxLayoutAlign="start center"
+        *matHeaderCellDef
+        class="mat-column-title"
+      >
+        Title
+      </mat-header-cell>
+      <mat-cell
+        fxLayoutAlign="start center"
+        *matCellDef="let element"
+        class="mat-column-title"
+      >
+        <span class="mobile-label">Title:</span>
+
+        <span class="table-cell">
+          <span class="table-cell">
+            <a routerLink="{{ element.id }}"> {{ element.title }}</a></span
+          >
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="summary">
+      <mat-header-cell
+        fxLayoutAlign="start center"
+        *matHeaderCellDef
+        class="mat-column-summary"
+      >
+        Summary
+      </mat-header-cell>
+      <mat-cell
+        fxLayoutAlign="start center"
+        mat-cell
+        *matCellDef="let element"
+        class="mat-column-summary"
+      >
+        <span class="mobile-label">Summary:</span>
+        <span class="table-cell">{{ element.summary }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <mat-header-cell
+        fxLayoutAlign="start center"
+        *matHeaderCellDef
+        class="mat-column-owner"
+      >
+        Owner
+      </mat-header-cell>
+      <mat-cell
+        fxLayoutAlign="start center"
+        *matCellDef="let element"
+        class="mat-column-owner"
+      >
+        <span class="mobile-label">Owner:</span>
+        <span class="table-cell"
+          ><a href="javascript:void(0)" class="avatar avatar-sm">
+            <img
+              alt=""
+              [attr.src]="'https://issuetracker.club/user/api/users/' + element.owner + '/picture' | secure | async"
+              class="rounded-circle"
+            /> </a
+        ></span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="collaborators">
+      <mat-header-cell
+        fxLayoutAlign="start center"
+        *matHeaderCellDef
+        class="mat-column-collaborators"
+      >
+        Collaborators
+      </mat-header-cell>
+      <mat-cell
+        fxLayoutAlign="start center"
+        class="mat-column-collaborators"
+        *matCellDef="let element"
+      >
+        <span class="mobile-label">Collaborators:</span>
+        <div class="avatar-group" data-toggle="tooltip">
+          <span class="table-cell">
+            <a
+              *ngFor="let collaborator of element.collaborators"
+              href="javascript:void(0)"
+              class="avatar avatar-sm"
+            >
+              <img
+                alt=""
+                [attr.src]="'https://issuetracker.club/user/api/users/' + collaborator.getId() + '/picture' | secure | async"
+                class="rounded-circle"
+              />
+            </a>
+          </span>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created">
+      <mat-header-cell
+        fxLayoutAlign="start center"
+        class="mat-column-created"
+        *matHeaderCellDef
+      >
+        Created
+      </mat-header-cell>
+      <mat-cell
+        fxLayoutAlign="start center"
+        *matCellDef="let element"
+        class="mat-column-created"
+      >
+        <span class="mobile-label">Created:</span>
+        <span class="table-cell">{{ element.created | date: "medium" }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell
+        fxLayoutAlign="start center"
+        class="mat-column-edit"
+        *matHeaderCellDef
+      ></mat-header-cell>
+      <mat-cell
+        fxLayoutAlign="start center"
+        *matCellDef="let element"
+        class="mat-column-edit only-desktop"
+      >
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Edit Project"
+          [matTooltipPosition]="'above'"
+          class="btn btn-primary btn-link btn-sm btn-just-icon"
+        >
+          <i class="material-icons">edit</i>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="remove">
+      <mat-header-cell
+        fxLayoutAlign="start center"
+        class="mat-column-remove"
+        *matHeaderCellDef
+      ></mat-header-cell>
+      <mat-cell
+        fxLayoutAlign="start center"
+        *matCellDef="let element"
+        class="mat-column-remove only-desktop"
+      >
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Remove"
+          [matTooltipPosition]="'above'"
+          (click)="removeProject(element)"
+          class="btn btn-danger btn-link btn-sm btn-just-icon"
+        >
+          <i class="material-icons">close</i>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

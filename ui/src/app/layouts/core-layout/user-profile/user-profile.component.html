@@ -1,0 +1,91 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-darker-cyan">
+            <h4 class="card-title">
+              {{ action === "edit" ? "Edit " : "" }}Profile
+            </h4>
+            <p class="card-category">
+              {{ action === "edit" ? "Complete your " : "" }}profile
+            </p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email address" name="mail" type="email" [(ngModel)]="mail" value="{{this.user ? this.user.getMail() : ''}}"/>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Name" name="name" type="text" [(ngModel)]="name" value="{{this.user ? this.user.getName() : ''}}"/>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Title" type="text" name="title" [(ngModel)]="title" value="{{this.user ? this.user.getTitle() : ''}}"/>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>About Me</label>
+                  <mat-form-field class="example-full-width">
+                    <textarea
+                      matInput
+                      placeholder="Description"
+                      name="description"
+                      [(ngModel)]="description"
+                    >{{this.user ? this.user.getDescription(): ""}}</textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="buttons-container">
+                <button
+                mat-raised-button
+                type="submit"
+                class="btn btn-info pull-right"
+              >
+                Password reset
+              </button>
+              <button
+                mat-raised-button
+                type="submit"
+                class="btn btn-info pull-right btn-save-profile"
+                (click)="save()"
+              >
+                Save
+              </button>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar profile-picture">
+            <a href="javascript:void(0)">
+              <img
+                class="img"
+                [src]="profilePicture"
+                (click)="openFile()"
+              />
+              <input #fileInput type="file" style="display:none" accept="image/*" (change)="handle($event)">
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">{{ title }}</h6>
+            <h4 class="card-title">{{ name }}</h4>
+            <p class="card-description">
+              {{ description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+// User tries to authenticate
+// Auth Service retrieves info from USERS
+{
+    "userData": {
+        "id": "rf4ff3f3ffdsf",
+        "mail": "g5uhj64h5t@gmail.com",
+        "firstName": "ferfr2rf3",
+        "lastName": "fewrf32fgty5y54",
+        "rolesOnProjects": [
+            {
+                "project": "f43rf3",
+                "roles": ["hgh45tg", "h6u5h6"]
+            },
+            {
+                "project": "bfvf34",
+                "roles": ["kuymyj"]
+            },
+            {
+                "project": "nbgnbbv34",
+                "roles": ["mtyn54"]
+            },
+            {
+                "project": "zxswa2",
+                "roles": ["piooihjg", "fcddsde", "hbtg434"]
+            }
+        ]
+        
+    }
+}
+
+// Auth Service queries ROLES to get permissions for specified role, grouped by project
+{
+    "rolesData": [
+        {
+            "project": "f43rf3",
+            "roles": [
+                {
+                    "id": "hgh45tg",
+                    "permissions": ["administer_projects"]
+                },
+                {
+                    "id": "h6u5h6",                         
+                    "permissions": ["browse_projects"]
+                },
+            ]
+        },
+        {
+            "project": "bfvf34",
+            "roles": [
+                {
+                    "id": "kuymyj",
+                    "permissions": ["be_assignable_to_issues"]
+                }
+            ]
+        },
+        {
+            "project": "nbgnbbv34",
+            "roles": [
+                {
+                    "id": "mtyn54",
+                    "permissions": ["be_assignable_to_issues", "assign_issues"]
+                }
+            ]
+        },
+        {
+            "project": "zxswa2",
+            "roles": [
+                {
+                    "id": "piooihjg",
+                    "permissions": [
+                        "create_issues",
+                        "cancel_issues",
+                        "edit_issues",
+                        "delete_issues",
+                        "update_issues_status",
+                        "mark_issues_for_closure",
+                        "close_issues"
+                    ]
+                },
+                {
+                    "id": "fcddsde",
+                    "permissions": [
+                        "view_watchers",
+                        "manage_watchers"
+                    ]
+                },
+                {
+                    "id": "hbtg434",
+                    "permissions": [
+                        "add_comments",
+                        "delete_all_comments",
+                        "delete_own_comments",
+                        "edit_all_comments",
+                        "edit_own_comments"
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+// Auth Service merges the two
+{
+    "userData": {
+        "id": "rf4ff3f3ffdsf",
+        "mail": "g5uhj64h5t@gmail.com",
+        "firstName": "ferfr2rf3",
+        "lastName": "fewrf32fgty5y54",
+        "rolesOnProjects": [
+            {
+                "project": "f43rf3",
+                "roles": [
+                    {
+                        "id": "hgh45tg",
+                        "permissions": ["administer_projects"]
+                    },
+                    {
+                        "id": "h6u5h6",                         
+                        "permissions": ["browse_projects"]
+                    },
+                ]
+            },
+            {
+                "project": "bfvf34",
+                "roles": [
+                    {
+                        "id": "kuymyj",
+                        "permissions": ["be_assignable_to_issues"]
+                    }
+                ]
+            },
+            {
+                "project": "nbgnbbv34",
+                "roles": [
+                    {
+                        "id": "mtyn54",
+                        "permissions": ["be_assignable_to_issues", "assign_issues"]
+                    }
+                ]
+            },
+            {
+                "project": "zxswa2",
+                "roles": [
+                    {
+                        "id": "piooihjg",
+                        "permissions": [
+                            "create_issues",
+                            "cancel_issues",
+                            "edit_issues",
+                            "delete_issues",
+                            "update_issues_status",
+                            "mark_issues_for_closure",
+                            "close_issues"
+                        ]
+                    },
+                    {
+                        "id": "fcddsde",
+                        "permissions": [
+                            "view_watchers",
+                            "manage_watchers"
+                        ]
+                    },
+                    {
+                        "id": "hbtg434",
+                        "permissions": [
+                            "add_comments",
+                            "delete_all_comments",
+                            "delete_own_comments",
+                            "edit_all_comments",
+                            "edit_own_comments"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+}
+
+// The above object gets signed as a JWT, for example into "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+// And then it is reintegrated and sent to the user:
+{
+    "userData": {
+        "id": "rf4ff3f3ffdsf",
+        "mail": "g5uhj64h5t@gmail.com",
+        "firstName": "ferfr2rf3",
+        "lastName": "fewrf32fgty5y54",
+        "rolesOnProjects": [
+            {
+                "project": "f43rf3",
+                "roles": [
+                    {
+                        "id": "hgh45tg",
+                        "permissions": ["administer_projects"]
+                    },
+                    {
+                        "id": "h6u5h6",                         
+                        "permissions": ["browse_projects"]
+                    },
+                ]
+            },
+            {
+                "project": "bfvf34",
+                "roles": [
+                    {
+                        "id": "kuymyj",
+                        "permissions": ["be_assignable_to_issues"]
+                    }
+                ]
+            },
+            {
+                "project": "nbgnbbv34",
+                "roles": [
+                    {
+                        "id": "mtyn54",
+                        "permissions": ["be_assignable_to_issues", "assign_issues"]
+                    }
+                ]
+            },
+            {
+                "project": "zxswa2",
+                "roles": [
+                    {
+                        "id": "piooihjg",
+                        "permissions": [
+                            "create_issues",
+                            "cancel_issues",
+                            "edit_issues",
+                            "delete_issues",
+                            "update_issues_status",
+                            "mark_issues_for_closure",
+                            "close_issues"
+                        ]
+                    },
+                    {
+                        "id": "fcddsde",
+                        "permissions": [
+                            "view_watchers",
+                            "manage_watchers"
+                        ]
+                    },
+                    {
+                        "id": "hbtg434",
+                        "permissions": [
+                            "add_comments",
+                            "delete_all_comments",
+                            "delete_own_comments",
+                            "edit_all_comments",
+                            "edit_own_comments"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+}
+

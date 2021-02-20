@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="title-label">
+    <h4>Manage project's users</h4>
+  </div>
+  <mat-form-field>
+    <mat-label>Project</mat-label>
+    <textarea matInput disabled rows="1" class="project">{{
+      project.getTitle()
+    }}</textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Users in project...</mat-label>
+    <mat-select>
+      <mat-option
+        *ngFor="let user of allUsers"
+        [value]="user"
+        [ngClass]="'not-a-dropdown-option'"
+        >{{ user.getName() }}
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Remove user"
+          [matTooltipPosition]="'above'"
+          class="btn btn-danger btn-link btn-sm btn-just-icon"
+          (click)="removeUser($event, user)"
+        >
+          <i class="material-icons">close</i>
+        </button>
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Manage user"
+          [matTooltipPosition]="'above'"
+          class="btn btn-primary btn-link btn-sm btn-just-icon"
+          (click)="editUser($event, user)"
+        >
+          <i class="material-icons">edit</i>
+        </button>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    *ngIf="!isAddCollabsContainerVisible"
+    mat-raised-button
+    class="text-button new-button"
+    (click)="openAddCollabsContainer()"
+  >
+    Add collaborators
+  </button>
+  <div class="add-collabs-container" *ngIf="isAddCollabsContainerVisible">
+    <mat-form-field appearance="" *ngFor="let mail of mails; let i = index">
+      <mat-label>Add collaborator's mail</mat-label>
+      <input matInput [(ngModel)]="mail.address" name="mail_{{ i }}" />
+    </mat-form-field>
+    <div class="buttons-bottom">
+      <button
+        type="button"
+        class="btn btn-danger btn-remove-mail"
+        (click)="removeLastMail()"
+      >
+        <mat-icon matSuffix>remove_circle_outline</mat-icon>
+      </button>
+      <button
+        type="button"
+        class="btn btn-info btn-add-mail"
+        (click)="addMail()"
+      >
+        <mat-icon matSuffix>person_add</mat-icon>
+      </button>
+    </div>
+    <button
+      type="button"
+      class="btn btn-submit btn-create"
+      (click)="sendInvitations()"
+    >
+      Send invitations
+    </button>
+  </div>
+</div>

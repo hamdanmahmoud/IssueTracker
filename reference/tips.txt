@@ -1,0 +1,27 @@
+Docker image for postgres that initializes the db:
+
+(ex for project on port 5434)
+docker run --name issuetracker-project-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=projectdb -d -p 5434:5432 onjin/alpine-postgres
+
+
+Get ip of docker image by name:
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' issuetracker-project-db
+
+
+
+1. In AccessControl extinde GrantedAuthority cu class member fields projectId si permissions (va fi ampulea ptr ca e one to many fgm sql) .
+In constructor tre sa ia atat String name cat si UUID projectId dar si Collection<? extends GranthedAuthority> permissions. Asta va fi un rol definit pe un proiect.
+Permissions nu este altceva decat o colectie de SimpleGranthedAuthorities, adica o Collection<? extends GranthedAuthority>. 
+
+2. In Auth, extinde interfata UserDetails. Adauga o metoda builder asemanatoare celei de roles() din clasa User din spring, adaptata clasei de la punctul 1.
+Aceasta intoarce Collection(List<? extends GrantedAuthority). Deci practic intoarce autoritati, doar ca de tipul definit la 1 in loc de SimpleGranthedAuthoriy cum era definita in clasa User din spring.
+Deci acea clasa din AccessControl explicata la punctul 1 se regaseste si in codul sursa de la Auth. 
+
+3. Paseaza in constructorul clasei de la punctul 2 username, parola, etc, dar si colectia returnata la punctul 2 de builderul acestei clase.
+Interfata are o metoda getAuthorities() care va intoarce aceasta colectie pasata initial in constructor. Cu asta ne jucam mai departe.
+
+4. Pentru a verifica in securityConfig-ul fiecarui microserviciu rolul, e usor, avand metoda hasRole() deja implementata.
+Va trebui totusi sa o reimplementam pentru ca metoda asta ia in calcul doar numele unui rol si nu si proiectul (si deci endpointul) pe care se actioneaza.
+Odata reimplementata, metoda va fi folosita pentru a citi tokenul stocat in securityContext.
+E posibil sa trebuiasca sa aducem clasa de la punctele 2 si 3 in codul sursa al fiecarui microserviciu dar asta ramane de vazut in functie de cat de greu e sa faci legatura
+dintre permisiunile citite din jwt si metoda redefinita hasRole().

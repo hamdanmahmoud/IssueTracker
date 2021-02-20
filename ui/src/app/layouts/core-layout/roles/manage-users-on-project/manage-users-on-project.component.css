@@ -1,0 +1,61 @@
+.container {
+  height: fit-content;
+  overflow: auto;
+}
+
+.btn-create {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #03a9be;
+  font-weight: 700;
+}
+
+.btn-link {
+  float: right;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.title-label {
+  margin-bottom: 2rem;
+}
+
+.add-collaborators-header {
+  margin-top: 2rem;
+}
+
+.buttons-buttom {
+  width: 100%;
+  display: inline-block;
+}
+
+.btn-add-mail,
+.btn-remove-mail {
+  width: 100%;
+}
+
+.btn-add-mail {
+  float: right;
+}
+
+.btn-remove-mail {
+  float: left;
+}
+
+:host::ng-deep .mat-form-field-infix {
+  border-top: 0;
+}
+
+.text-button {
+  height: 3rem;
+  font-weight: 600;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.new-button {
+  color: rgb(5, 61, 71);
+}

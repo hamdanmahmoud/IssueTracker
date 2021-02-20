@@ -1,0 +1,28 @@
+User nu calluieste pe nimeni.
+
+Auth calluieste userdb deja, si mai trebuie sa calluiasca (sau nu?) projectdb ca sa isi ia rolurile pe proiecte.
+
+Project calluieste user pentru user_on_project.id, daca primeste 200 OK, atunci calluieste accesscontrol pentru a crea un rol
+de OWNER cu projectId == propriul lui id, si, daca primeste si aici 200 OK, atunci adauga ownerul in user_on_project,
+respectiv rolul in role_on_user, cu role_id dat de accesscontrol si user_on_project_id acela pe care tocmai l-a adaugat in user_on_project.
+
+Accesscontrol nu calluieste pe nimeni mai departe, intrucat a obtinut deja de la Project project_id-ul.
+
+Issue calluieste Project ca sa verifice project_id, calluieste User ca sa verifice issuer_id, iar cand este assignuit un user
+pe un issue, in user_assigned_on_issue, calluieste din nou User ca sa verifice user_id.
+
+
+Pentru auth: 
+
+Call pe project microservice:
+
+SELECT role_id
+FROM role_on_user
+INNER JOIN user_on_project
+ON user_on_project_id = id
+WHERE user_id = ?
+
+Unde user_id este field-ul id din ApplicationUser in Auth Microservice.
+
+Odata retrievuite role_id-urile userului care se autentifica, calluim AccessControl Microservice
+pentru a retrieveui permisiunile aferente fiecarui rol pe baza id-ului.

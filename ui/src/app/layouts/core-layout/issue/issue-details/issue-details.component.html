@@ -1,0 +1,50 @@
+
+    <div class="container">
+      <div class="headline">
+        <h3>{{ action.charAt(0).toUpperCase() + action.slice(1) }} issue</h3>
+      </div>
+      <br />
+      <mat-form-field *ngIf="projects" appearance="fill">
+        <mat-label>Project</mat-label>
+        <mat-select [(value)]="project">
+          <mat-select-trigger
+          >{{ project ? project.getTitle() : ''}}</mat-select-trigger
+          >
+          <mat-option *ngFor="let project of projects" [value]="project">{{
+            project.getTitle()
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-select [(value)]="selectedIssueType" [compareWith]="compareFn" (selectionChange)="selectIssueType($event.value)">
+          <mat-select-trigger
+            ><mat-icon
+              class="selection-icon"
+              [ngStyle]="{ color: selectedIssueType.color }"
+              >{{ selectedIssueType.iconName }}</mat-icon
+            >{{ selectedIssueType.name }}</mat-select-trigger
+          >
+          <mat-option *ngFor="let issueType of issueTypes" [value]="issueType">
+            <mat-icon [ngStyle]="{ color: issueType.color }">{{
+              issueType.iconName
+            }}</mat-icon
+            >{{ issueType.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Summary</mat-label>
+        <textarea matInput maxlength="60" [(ngModel)]="summary"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput maxlength="1200" rows="15" [(ngModel)]="description">{{description}}</textarea>
+      </mat-form-field>
+      <button
+        type="button"
+        class="btn btn-submit btn-create"
+        (click)="saveIssue()"
+      >
+        {{ action }}
+      </button>
+    </div>

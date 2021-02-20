@@ -1,0 +1,46 @@
+<mat-list-item
+  *ngFor="let issue of issues"
+  (click)="selectIssue(issue)"
+  class="{{ issue.selected ? 'selected' : '' }}"
+>
+  <mat-icon
+    mat-list-icon
+    [ngStyle]="{ color: issue.type === 'TASK' ? 'green' : 'red' }"
+    >{{ issue.type === "TASK" ? "assignment" : "bug_report" }}</mat-icon
+  >
+  <div mat-line class="ellipsis-overflow">{{ issue.summary }}</div>
+  <div mat-line>
+    <span class="mr-2">{{ issue.priority }}%</span>
+
+    <div class="progress">
+      <div
+        class="progress-bar {{
+          issue.priority >= 80
+            ? 'bg-danger'
+            : issue.priority >= 60
+            ? 'bg-warning'
+            : issue.priority >= 40
+            ? 'bg-info'
+            : 'bg-success'
+        }}"
+        role="progressbar"
+        attr.aria-valuenow="{{ issue.priority }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width: {{ issue.priority }}%"
+      ></div>
+    </div>
+  </div>
+  <div mat-line>
+    <div class="avatar-container">
+      <a href="javascript:void(0)" class="avatar avatar-sm">
+        <img
+          alt=""
+          [attr.src]="'https://issuetracker.club/user/api/users/' + issue.reporter + '/picture' | secure | async"
+          class="rounded-circle"
+        />
+      </a>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</mat-list-item>

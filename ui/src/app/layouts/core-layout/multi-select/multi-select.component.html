@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="options-label">
+    <h4>Manage assigned users</h4>
+  </div>
+  <mat-form-field *ngIf="selectedOptionsList" appearance="fill">
+    <mat-label>Assigned to this issue</mat-label>
+    <mat-select
+      [formControl]="selectedOptionsList"
+      [compareWith]="
+        compareUsers
+      "
+      multiple
+    >
+      <mat-select-trigger>
+        {{
+          selectedOptionsList.value && selectedOptionsList.value.length
+            ? selectedOptionsList.value[0].getName()
+            : ""
+        }}
+        <span
+          *ngIf="selectedOptionsList.value?.length > 1"
+          class="additional-selection"
+        >
+          (+{{ selectedOptionsList.value.length - 1 }}
+          {{ selectedOptionsList.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let option of allOptions"
+        [value]="option"
+        [ngClass]="'not-a-dropdown-option'"
+        >{{
+          option.getName()
+        }}
+        <button
+          mat-raised-button
+          type="button"
+          matTooltip="Manage permissions"
+          [matTooltipPosition]="'above'"
+          class="btn btn-primary btn-link btn-sm btn-just-icon"
+          (click)="manageRolesForUser($event, option)"
+        >
+          <i class="material-icons">edit</i>
+        </button>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    type="button"
+    class="btn btn-submit btn-create"
+    (click)="saveModifications()"
+  >
+    Save
+  </button>
+</div>

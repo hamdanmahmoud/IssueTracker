@@ -1,0 +1,10 @@
+// role
+{
+  "id": "f3rfrff33f",
+  "name": "Administrator",
+  "permissions": [
+    "administer_projects",
+    "browse_projects",
+    "be_assignable_to_issues"
+  ]
+}

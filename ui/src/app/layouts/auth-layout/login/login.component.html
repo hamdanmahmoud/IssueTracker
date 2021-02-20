@@ -1,0 +1,100 @@
+<div class="header bg-gradient-cyan-darker py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="text-white">Welcome to IssueTracker!</h1>
+          <p class="text-light-subtitle new">
+            Please sign in.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg
+      x="0"
+      y="0"
+      viewBox="0 0 2560 100"
+      preserveAspectRatio="none"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-login shadow border-0">
+        <!-- <div class="card-header bg-transparent pb-5 text-center">
+          <div class="text-center mt-2 mb-3 white-text">
+            Sign in with
+          </div>
+          <div class="">
+            <a href="javascript:void(0)" class="btn btn-secondary">
+              <span class=""><img src="https://user-images.githubusercontent.com/37018010/95665875-f4fc3c00-0b5c-11eb-80a8-1fbc1ad0dea5.png" /></span>
+              <span class="">Github</span>
+            </a>
+            <a href="javascript:void(0)" class="btn btn-secondary">
+              <span class=""><img src="https://user-images.githubusercontent.com/37018010/95665883-fe85a400-0b5c-11eb-9690-4faef7e870f1.png" /></span>
+              <span class="">Google</span>
+            </a>
+          </div>
+        </div> -->
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center mb-4 white-text">
+            Sign in
+          </div>
+          <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ></span>
+                </div>
+                <input class="form-control" placeholder="Email" type="email" formControlName="username" required />
+              </div>
+            </div>
+            <div class="form-group" (keyup.enter)="onSubmit()">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Password"
+                  type="password"
+                  formControlName="password" required
+                />
+              </div>
+              <div *ngIf="loginInvalid" class="alert alert-danger invalid-credentials">
+                Invalid credentials.
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="button" (click)="onSubmit()" class="btn btn-secondary">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6">
+          <a href="javascript:void(0)" class="text-muted"
+            ><small>
+              <!-- Forgot password? -->
+            </small></a
+          >
+        </div>
+        <div class="col-6 text-right">
+          <a routerLink="/auth/register" class="text-muted"
+            ><small>Create new account</small></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
