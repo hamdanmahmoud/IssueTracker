@@ -1,8 +1,12 @@
 Docker image for postgres that initializes the db:
 
 (ex for project on port 5434)
-docker run --name issuetracker-project-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=projectdb -d -p 5434:5432 onjin/alpine-postgres
+pentru project db: docker run --name issuetracker-project-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=projectdb -d -p 5434:5432 onjin/alpine-postgres
+pentru user db: docker run --name issuetracker-user-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=userdb -d -p 5433:5432 onjin/alpine-postgrese
+important: vezi configuratiile pe aplicatiile Spring pentru a intelege ce porturi asteapta fiecare pentru conexiunea pe db
 
+GENERATE ANGULAR DEPLOYABLES:
+ng build --prod --baseHref=" https://hamdanmahmoud.github.io/IssueTrackerFrontend/"
 
 Get ip of docker image by name:
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' issuetracker-project-db
