@@ -82,7 +82,7 @@
           ><a href="javascript:void(0)" class="avatar avatar-sm">
             <img
               alt=""
-              [attr.src]="'https://issuetracker.club/user/api/users/' + element.owner + '/picture' | secure | async"
+              [attr.src]="'https://http://localhost:8081/user/api/users/' + element.owner + '/picture' | secure | async"
               class="rounded-circle"
             /> </a
         ></span>
@@ -112,7 +112,7 @@
             >
               <img
                 alt=""
-                [attr.src]="'https://issuetracker.club/user/api/users/' + collaborator.getId() + '/picture' | secure | async"
+                [attr.src]="'https://http://localhost:8081/user/api/users/' + collaborator.getId() + '/picture' | secure | async"
                 class="rounded-circle"
               />
             </a>
