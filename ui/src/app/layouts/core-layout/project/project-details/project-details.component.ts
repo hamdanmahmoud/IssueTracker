@@ -65,6 +65,10 @@ export class ProjectDetailsComponent implements OnInit {
         else collaborators = [];
 
         let project = new TrackerProject();
+
+        // TODO: properly handle with invalid inputs
+        if (!this.title || !this.authService.getMyUserId() || !this.summary) return;
+
         project.setTitle(this.title);
         project.setOwner(this.authService.getMyUserId());
         project.setCollaborators(collaborators);

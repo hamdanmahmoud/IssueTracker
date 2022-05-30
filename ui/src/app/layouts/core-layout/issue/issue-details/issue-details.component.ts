@@ -62,12 +62,16 @@ export class IssueDetailsComponent implements OnInit {
     switch (this.action) {
       case "create":
         let issue = new Issue();
+
+        // TODO: properly handle with invalid inputs
+        if (!this.project || !this.selectedIssueType.name || !this.summary || !this.description) return;
+
         issue.setProject(this.project);
         issue.setType(this.selectedIssueType.name);
         issue.setSummary(this.summary);
         issue.setDescription(this.description);
         issue.setCreated(new Date());
-
+        
         this.issueService.createIssue(issue).then((issue: Issue) => {
           console.log("Newly created issue:", issue);
           const issueId = issue.getId();
