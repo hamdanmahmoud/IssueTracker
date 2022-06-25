@@ -80,6 +80,14 @@
   margin-left: auto;
 }
 
+.status-row {
+  width: 100%;
+}
+
+.status-cell.action-dropdown {
+  width: 100%;
+}
+
 .action {
   margin-top: 1rem;
 }
