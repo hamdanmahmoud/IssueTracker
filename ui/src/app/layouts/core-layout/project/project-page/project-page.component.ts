@@ -185,6 +185,12 @@ export class ProjectPageComponent implements OnInit {
       data: { project: this.project, action: "create" },
     });
 
+    dialogRef.componentInstance.save.subscribe((res) => {
+      console.log("Closing dialog...");
+      dialogRef.close();
+    }
+  );
+
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");
     });

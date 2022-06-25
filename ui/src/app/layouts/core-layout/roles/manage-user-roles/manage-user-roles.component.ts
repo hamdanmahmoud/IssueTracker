@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, EventEmitter, Inject, OnInit, Output } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ProjectService } from "app/shared/services/project.service";
@@ -19,6 +19,7 @@ export class ManageUserRolesComponent implements OnInit {
   projectId: string;
   selectedRolesList: FormControl;
   allOptions: Role[];
+  @Output() save = new EventEmitter<boolean>();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -54,12 +55,12 @@ export class ManageUserRolesComponent implements OnInit {
     console.log(this.selectedRolesList);
     this.user.setRolesOnProject(this.projectId, selectedRoles);
 
-    //TODO: should close this component, perhaps should emit event to parent
-
     this.projectService.updateUserRolesByProjectId(
       this.projectId,
       this.user.getId(),
       selectedRoles
     );
+
+    this.save.emit(true);
   }
 }

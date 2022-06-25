@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { User } from "../../../models/User";
 import { Permission } from "../../../models/Permission";
@@ -19,6 +19,7 @@ export class MultiSelectComponent implements OnInit {
   allOptions: User[] | Permission[];
   projectId: string;
   selectedIssue: Issue;
+  @Output() save = new EventEmitter<boolean>();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -66,6 +67,8 @@ export class MultiSelectComponent implements OnInit {
     this.issueService
       .updateIssue(this.selectedIssue)
       .then((issue) => console.log(issue));
+
+    this.save.emit(true);
   }
 
   // event handler for edit button
@@ -83,6 +86,11 @@ export class MultiSelectComponent implements OnInit {
       width: "20rem",
       height: "30rem",
       data: { user: user, projectId: this.projectId },
+    });
+
+    dialogRef.componentInstance.save.subscribe((res) => {
+      console.log("Closing dialog...");
+      dialogRef.close();
     });
 
     dialogRef.afterClosed().subscribe((result) => {

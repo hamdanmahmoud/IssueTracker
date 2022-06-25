@@ -54,6 +54,11 @@ export class ManageRolesOnProjectComponent implements OnInit {
       autoFocus: false,
     });
 
+    dialogRef.componentInstance.save.subscribe((res) => {
+      console.log("Closing dialog...");
+      dialogRef.close();
+    });
+
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");
     });
@@ -83,6 +88,10 @@ export class ManageRolesOnProjectComponent implements OnInit {
       height: "auto",
       data: { project: this.project },
     });
+
+    dialogRef.componentInstance.save.subscribe((res) => {
+      dialogRef.close();
+    })
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");

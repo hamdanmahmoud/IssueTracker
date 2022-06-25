@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, EventEmitter, Inject, OnInit, Output } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { allPermissions } from "../../../../shared/services/appData";
 import { Permission } from "../../../../models/Permission";
@@ -16,6 +16,7 @@ export class EditRoleComponent implements OnInit {
   selectedPermissionsList: FormControl;
   allOptions: Permission[];
   role: Role;
+  @Output() save = new EventEmitter<boolean>();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
@@ -34,5 +35,6 @@ export class EditRoleComponent implements OnInit {
   saveRole() {
     console.log(this.selectedPermissionsList.value);
     this.role.setPermissions(this.selectedPermissionsList.value);
+    this.save.emit(true);
   }
 }

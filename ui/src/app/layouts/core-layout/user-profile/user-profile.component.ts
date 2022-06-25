@@ -91,5 +91,6 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
 
     this.userService.updateProfile(this.user["id"], this.user);
+    alert('Profile saved');
   }
 }

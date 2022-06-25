@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from "@angular/core";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { Issue } from "app/models/Issue";
@@ -15,7 +15,6 @@ export class IssueDetailsComponent implements OnInit {
   action: "create" | "edit";
   project: TrackerProject;
   projects: TrackerProject[];
-
   issueTypes: IssueType[] = [
     {
       name: IssueTypeName.BUG,
@@ -29,9 +28,9 @@ export class IssueDetailsComponent implements OnInit {
     },
   ];
   selectedIssueType: IssueType;
-
   summary: string = "";
   description: string = "";
+  @Output() save = new EventEmitter<boolean>();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -71,17 +70,24 @@ export class IssueDetailsComponent implements OnInit {
         issue.setSummary(this.summary);
         issue.setDescription(this.description);
         issue.setCreated(new Date());
-        
+        console.log("CREATING ISSUE");
         this.issueService.createIssue(issue).then((issue: Issue) => {
           console.log("Newly created issue:", issue);
           const issueId = issue.getId();
+          console.log("Navigating...");
           this.router.navigate([
             "/projects",
             this.project.getId(),
             "issues",
             issueId,
-          ]);
-        });
+          ]).then(() => {
+            const currentUrl = this.router.url;
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+              this.router.navigate([currentUrl]);
+            });
+          });
+          this.save.emit(true);
+        })
         break;
       case "edit":
         break;
