@@ -27,7 +27,7 @@ public class IssueEntity implements Serializable {
     private @Id @NotBlank String description;
     private @NotBlank String status;
     private @NotBlank String type;
-    private Integer priority;
+    private Integer progress;
     private @NotBlank String summary;
     private @Temporal(TemporalType.TIME) Date created;
     private @ElementCollection @NotNull List<UUID> assignees;
@@ -39,7 +39,7 @@ public class IssueEntity implements Serializable {
             @JsonProperty String description,
             @JsonProperty String status,
             @JsonProperty String type,
-            @JsonProperty Integer priority,
+            @JsonProperty Integer progress,
             @JsonProperty String summary,
             @JsonProperty Date created,
             @JsonProperty List<UUID> assignees) {
@@ -49,7 +49,7 @@ public class IssueEntity implements Serializable {
         this.description = description;
         this.status = status;
         this.type = type;
-        this.priority = priority;
+        this.progress = progress;
         this.summary = summary;
         this.created = created;
         this.assignees = assignees;

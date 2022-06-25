@@ -25,7 +25,7 @@ public class IssueDataAccessService implements IssueDao {
     public IssueEntity insertIssue(IssueEntity issue) {
         System.out.println("Description " + issue.getDescription());
         final String statement = "INSERT INTO issue(" +
-                "name, project_id, reporter, description, status, type, priority, summary, created) " +
+                "name, project_id, reporter, description, status, type, progress, summary, created) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
@@ -36,7 +36,7 @@ public class IssueDataAccessService implements IssueDao {
             ps.setString(4, issue.getDescription());
             ps.setString(5, issue.getStatus());
             ps.setString(6, issue.getType());
-            ps.setInt(7, issue.getPriority());
+            ps.setInt(7, issue.getProgress());
             ps.setString(8, issue.getSummary());
             ps.setDate(9, issue.getCreated());
             return ps;
@@ -49,7 +49,7 @@ public class IssueDataAccessService implements IssueDao {
         var description = (String) Objects.requireNonNull(keyHolder.getKeys().get("description"));
         var status = (String) Objects.requireNonNull(keyHolder.getKeys().get("status"));
         var type = (String) Objects.requireNonNull(keyHolder.getKeys().get("type"));
-        var priority = (Integer) Objects.requireNonNull(keyHolder.getKeys().get("priority"));
+        var progress = (Integer) Objects.requireNonNull(keyHolder.getKeys().get("progress"));
         var summary = (String) Objects.requireNonNull(keyHolder.getKeys().get("summary"));
         var created = (Date) Objects.requireNonNull(keyHolder.getKeys().get("created"));
         return new IssueEntity(
@@ -60,7 +60,7 @@ public class IssueDataAccessService implements IssueDao {
                 description,
                 status,
                 type,
-                priority,
+                progress,
                 summary,
                 created,
                 null
@@ -81,7 +81,7 @@ public class IssueDataAccessService implements IssueDao {
                     String description = resultSet.getString("description");
                     String status = resultSet.getString("status");
                     String type = resultSet.getString("type");
-                    Integer priority = resultSet.getInt("priority");
+                    Integer progress = resultSet.getInt("progress");
                     String summary = resultSet.getString("summary");
                     Date created = resultSet.getDate("created");
                     return new IssueEntity(
@@ -92,7 +92,7 @@ public class IssueDataAccessService implements IssueDao {
                             description,
                             status,
                             type,
-                            priority,
+                            progress,
                             summary,
                             created,
                             null
@@ -125,7 +125,7 @@ public class IssueDataAccessService implements IssueDao {
                     String description = resultSet.getString("description");
                     String type = resultSet.getString("type");
                     String status = resultSet.getString("status");
-                    Integer priority = resultSet.getInt("priority");
+                    Integer progress = resultSet.getInt("progress");
                     String summary = resultSet.getString("summary");
                     Date created = resultSet.getDate("created");
                     return new IssueEntity(
@@ -136,7 +136,7 @@ public class IssueDataAccessService implements IssueDao {
                             description,
                             status,
                             type,
-                            priority,
+                            progress,
                             summary,
                             created,
                             null
@@ -167,7 +167,7 @@ public class IssueDataAccessService implements IssueDao {
                     String description = resultSet.getString("description");
                     String type = resultSet.getString("type");
                     String status = resultSet.getString("status");
-                    Integer priority = resultSet.getInt("priority");
+                    Integer progress = resultSet.getInt("progress");
                     String summary = resultSet.getString("summary");
                     Date created = resultSet.getDate("created");
                     return new IssueEntity(
@@ -178,7 +178,7 @@ public class IssueDataAccessService implements IssueDao {
                             description,
                             status,
                             type,
-                            priority,
+                            progress,
                             summary,
                             created,
                             null
@@ -199,7 +199,7 @@ public class IssueDataAccessService implements IssueDao {
                 "description = ?, " +
                 "status = ?, " +
                 "type = ?, " +
-                "priority = ?, " +
+                "progress = ?, " +
                 "summary = ? " +
                 "WHERE id = ?";
         Object[] args = new Object[] {
@@ -207,7 +207,7 @@ public class IssueDataAccessService implements IssueDao {
                 issue.getDescription(),
                 issue.getStatus(),
                 issue.getType(),
-                issue.getPriority(),
+                issue.getProgress(),
                 issue.getSummary(),
                 id
         };

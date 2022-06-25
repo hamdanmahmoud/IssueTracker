@@ -89,7 +89,7 @@ export class ProjectPageComponent implements OnInit {
 
     switch (this.sortBy) {
       case "urgent":
-        this.issues = this.issues.filter((issue) => issue.getPriority() >= 80);
+        this.issues = this.issues.filter((issue) => issue.getProgress() >= 80);
         break;
       case "mine": // TODO: proper look up based on auth service or smth
         this.issues = this.issues.filter((issue) =>

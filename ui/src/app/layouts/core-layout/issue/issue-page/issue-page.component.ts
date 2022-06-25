@@ -77,12 +77,12 @@ export class IssuePageComponent implements OnInit {
     this.issueService.updateIssue(this.selectedIssue);
   }
 
-  onClickOnPriorityBar(event, issue: Issue) {
+  onClickOnProgressBar(event, issue: Issue) {
     const width = this.progressBar.nativeElement.offsetWidth;
     const rect = event.target.getBoundingClientRect();
     const x = event.clientX - rect.left; //x position within the element.
-    const newPriority = Math.round((x / width) * 100);
-    issue.setPriority(newPriority >= 0 ? newPriority : 0);
+    const newProgress = Math.round((x / width) * 100);
+    issue.setProgress(newProgress >= 0 ? newProgress : 0);
 
     this.issueService.updateIssue(issue).then((issue) => console.log(issue));
     // TODO: update through service

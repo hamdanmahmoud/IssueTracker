@@ -35,7 +35,7 @@ export class ProjectCard extends Project {
     );
 
     this.urgentIssues = issues.filter(
-      (issue) => issue.getPriority() >= 80
+      (issue) => issue.getProgress() >= 80
     ).length;
     this.allOpen = issues.filter(
       (issue) =>

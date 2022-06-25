@@ -36,7 +36,7 @@ public class IssueModelAssembler extends RepresentationModelAssemblerSupport<Iss
         issueModel.setDescription(entity.getDescription());
         issueModel.setStatus(entity.getStatus());
         issueModel.setType(entity.getType());
-        issueModel.setPriority(entity.getPriority());
+        issueModel.setProgress(entity.getProgress());
         issueModel.setSummary(entity.getSummary());
         issueModel.setCreated(entity.getCreated());
         issueModel.setAssignees(entity.getAssignees());

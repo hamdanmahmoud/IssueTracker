@@ -190,13 +190,13 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="priority">
+    <ng-container matColumnDef="progress">
       <mat-header-cell
         fxLayoutAlign="start center"
         *matHeaderCellDef
         class="mat-column-priority"
       >
-        Priority
+        Progress
       </mat-header-cell>
       <td
         fxLayoutAlign="start center"
@@ -205,26 +205,26 @@
         class="mat-column-priority only-desktop"
       >
         <div class="d-flex align-items-center">
-          <span class="mobile-label">Priority:</span>
+          <span class="mobile-label">Progress:</span>
 
-          <span class="mr-2">{{ element.priority }}%</span>
+          <span class="mr-2">{{ element.progress }}%</span>
           <div>
             <span class="progress">
               <div
                 class="progress-bar {{
-                  element.priority >= 80
+                  element.progress >= 80
                     ? 'bg-danger'
-                    : element.priority >= 60
+                    : element.progress >= 60
                     ? 'bg-warning'
-                    : element.priority >= 40
+                    : element.progress >= 40
                     ? 'bg-info'
                     : 'bg-success'
                 }}"
                 role="progressbar"
-                attr.aria-valuenow="{{ element.priority }}"
+                attr.aria-valuenow="{{ element.progress }}"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style="width: {{ element.priority }}%"
+                style="width: {{ element.progress }}%"
               ></div>
             </span>
           </div>

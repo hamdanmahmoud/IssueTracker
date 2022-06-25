@@ -40,7 +40,7 @@ public class IssueController {
         var description = issueModel.getDescription();
         var status = issueModel.getStatus();
         var type = issueModel.getType();
-        var priority = issueModel.getPriority();
+        var progress = issueModel.getProgress();
         var summary = issueModel.getSummary();
         var created = issueModel.getCreated();
         var assignees = issueModel.getAssignees();
@@ -60,7 +60,7 @@ public class IssueController {
                         description,
                         status,
                         type,
-                        priority,
+                        progress,
                         summary,
                         created,
                         assignees

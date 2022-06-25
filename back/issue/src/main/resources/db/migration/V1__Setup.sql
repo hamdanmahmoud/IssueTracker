@@ -8,7 +8,7 @@ CREATE TABLE issue (
     description VARCHAR(1200) NOT NULL,
     summary VARCHAR(60) NOT NULL,
     created DATE NOT NULL,
-    priority INTEGER NOT NULL CHECK (priority >= 0 AND priority <= 100),
+    progress INTEGER NOT NULL CHECK (progress >= 0 AND progress <= 100),
     type VARCHAR(4) NOT NULL CHECK (type IN ('TASK', 'BUG')),
     status VARCHAR(20) NOT NULL CHECK (status IN ('PENDING', 'CANCELED', 'IN_PROGRESS', 'RESOLVED', 'IN_REVIEW', 'TO_DO', 'DONE'))
 );

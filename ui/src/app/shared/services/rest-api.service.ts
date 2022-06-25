@@ -401,7 +401,7 @@ export class RestApiService {
       summary: issue.getSummary(),
       type: issue.getType(),
       description: issue.getDescription(),
-      priority: 0,
+      progress: 0,
     };
     console.log(issueToCreate);
     return this.http
@@ -459,7 +459,7 @@ export class RestApiService {
       summary: issue.getSummary(),
       created: issue.getCreated(),
       description: issue.getDescription(),
-      priority: issue.getPriority(),
+      progress: issue.getProgress(),
       type: issue.getType(),
       status: issue.getStatus(),
     };

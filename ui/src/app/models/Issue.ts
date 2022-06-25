@@ -17,7 +17,7 @@ export class Issue {
     | IssueStatus.RESOLVED
     | IssueStatus.TO_DO;
   private created: Date;
-  private priority: number;
+  private progress: number;
   private type: IssueTypeName.BUG | IssueTypeName.TASK;
   private id: string;
   private selected: boolean;
@@ -30,7 +30,7 @@ export class Issue {
     assignees?,
     status?,
     created?,
-    priority?,
+    progress?,
     type?,
     id?,
     selected?
@@ -43,7 +43,7 @@ export class Issue {
     this.assignees = assignees;
     this.status = status;
     this.created = created;
-    this.priority = priority;
+    this.progress = progress;
     this.type = type;
     this.selected = selected;
   }
@@ -68,8 +68,8 @@ export class Issue {
     return this.summary;
   }
 
-  getPriority() {
-    return this.priority;
+  getProgress() {
+    return this.progress;
   }
 
   getDescription() {
@@ -112,8 +112,8 @@ export class Issue {
     this.created = created;
   }
 
-  setPriority(priority: number) {
-    this.priority = priority;
+  setProgress(progress: number) {
+    this.progress = progress;
   }
 
   setStatus(status: IssueStatus) {

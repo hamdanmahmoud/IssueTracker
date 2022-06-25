@@ -32,7 +32,7 @@ public class IssueModel extends RepresentationModel<IssueModel>
     private String description;
     private String status;
     private String type;
-    private Integer priority;
+    private Integer progress;
     private String summary;
     private @Temporal(TemporalType.TIME) Date created;
 
@@ -43,7 +43,7 @@ public class IssueModel extends RepresentationModel<IssueModel>
                       String description,
                       String status,
                       String type,
-                      Integer priority,
+                      Integer progress,
                       String summary,
                       Date created) {
         this.name = name;
@@ -53,7 +53,7 @@ public class IssueModel extends RepresentationModel<IssueModel>
         this.description = description;
         this.status = status;
         this.type = type;
-        this.priority = priority;
+        this.progress = progress;
         this.summary = summary;
         this.created = created;
     }

@@ -848,7 +848,7 @@ export const columnsToDisplayForIssuesInDashboard: string[] = [
   "assignees",
   "status",
   "created",
-  "priority",
+  "progress",
 ];
 
 export const columnsToDisplayForIssues: string[] = [
@@ -859,7 +859,7 @@ export const columnsToDisplayForIssues: string[] = [
   "assignees",
   "status",
   "created",
-  "priority",
+  "progress",
   "remove",
 ];
 

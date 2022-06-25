@@ -69,25 +69,25 @@
         </div>
       </div>
       <div class="priority">
-        <div class="secondary-right-subtitle">Priority</div>
-        <span class="mr-2">{{ selectedIssue.priority }}%</span>
+        <div class="secondary-right-subtitle">Progress</div>
+        <span class="mr-2">{{ selectedIssue.progress }}%</span>
         <div>
-          <div #progressBar class="progress" (click)="onClickOnPriorityBar($event, selectedIssue)">
+          <div #progressBar class="progress" (click)="onClickOnProgressBar($event, selectedIssue)">
             <div
               class="progress-bar {{
-                selectedIssue.priority >= 80
+                selectedIssue.progress >= 80
                   ? 'bg-danger'
-                  : selectedIssue.priority >= 60
+                  : selectedIssue.progress >= 60
                   ? 'bg-warning'
-                  : selectedIssue.priority >= 40
+                  : selectedIssue.progress >= 40
                   ? 'bg-info'
                   : 'bg-success'
               }}"
               role="progressbar"
-              attr.aria-valuenow="{{ selectedIssue.priority }}"
+              attr.aria-valuenow="{{ selectedIssue.progress }}"
               aria-valuemin="0"
               aria-valuemax="100"
-              style="width: {{ selectedIssue.priority }}%"
+              style="width: {{ selectedIssue.progress }}%"
             ></div>
           </div>
         </div>

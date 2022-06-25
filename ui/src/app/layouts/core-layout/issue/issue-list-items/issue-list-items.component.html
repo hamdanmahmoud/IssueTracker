@@ -10,24 +10,24 @@
   >
   <div mat-line class="ellipsis-overflow">{{ issue.summary }}</div>
   <div mat-line>
-    <span class="mr-2">{{ issue.priority }}%</span>
+    <span class="mr-2">{{ issue.progress }}%</span>
 
     <div class="progress">
       <div
         class="progress-bar {{
-          issue.priority >= 80
+          issue.progress >= 80
             ? 'bg-danger'
-            : issue.priority >= 60
+            : issue.progress >= 60
             ? 'bg-warning'
-            : issue.priority >= 40
+            : issue.progress >= 40
             ? 'bg-info'
             : 'bg-success'
         }}"
         role="progressbar"
-        attr.aria-valuenow="{{ issue.priority }}"
+        attr.aria-valuenow="{{ issue.progress }}"
         aria-valuemin="0"
         aria-valuemax="100"
-        style="width: {{ issue.priority }}%"
+        style="width: {{ issue.progress }}%"
       ></div>
     </div>
   </div>
