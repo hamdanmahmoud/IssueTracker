@@ -926,17 +926,6 @@ export const allProjects: TrackerProject[] = [
   ...collaborations,
 ];
 
-// export const dashboardProjects: ProjectCard[] = allProjects
-//   .map((project) => {
-//     return new ProjectCard().fromProjectToCard(project);
-//   })
-//   .map((project) => {
-//     return project.setIssues(allIssues);
-//   })
-//   .filter(
-//     (project) => project.assignedToMe || project.urgentIssues || project.allOpen
-//   );
-
 export const getRolesOfProjectById = (projectId: string): Role[] => {
   return allProjects
     .find((project) => project.getId() === projectId)

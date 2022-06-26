@@ -5,7 +5,6 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./create-project.component.html",
   styleUrls: [
     "./create-project.component.css",
-    "../../dashboard/dashboard.component.css",
   ],
 })
 export class CreateProjectComponent implements OnInit {

@@ -19,8 +19,7 @@ export interface Section {
   templateUrl: "./project-page.component.html",
   styleUrls: [
     "./project-page.component.css",
-    "../../dashboard/dashboard.component.css",
-    // "../../../../../assets/css/argon.css",
+    // "../../../../../assets/css/argon.scss",
   ],
 })
 export class ProjectPageComponent implements OnInit {

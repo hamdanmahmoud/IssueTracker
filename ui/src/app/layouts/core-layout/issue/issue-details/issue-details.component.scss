@@ -1,3 +1,5 @@
+@import "../../../../../assets/scss/core/variables/colors";
+
 .headline {
   text-align: center;
 }
@@ -19,14 +21,14 @@
 
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
-  color: rgb(8, 147, 172) !important;
+  color: $light-blue-700 !important;
 }
 
 .btn-create {
   width: 100%;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  background-color: #03a9be;
+  background-color: $light-blue-700;
   font-weight: 700;
 }
 

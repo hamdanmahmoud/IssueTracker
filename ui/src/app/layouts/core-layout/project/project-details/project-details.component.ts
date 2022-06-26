@@ -9,8 +9,7 @@ import { UserService } from "app/shared/services/user.service";
   selector: "app-project-details",
   templateUrl: "./project-details.component.html",
   styleUrls: [
-    "./project-details.component.css",
-    "../../dashboard/dashboard.component.css",
+    "./project-details.component.scss",
   ],
 })
 export class ProjectDetailsComponent implements OnInit {

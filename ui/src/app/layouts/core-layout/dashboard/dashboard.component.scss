@@ -1,7 +1,9 @@
+@import "../../../../assets/scss/core/variables/colors";
+
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
 ::ng-deep .mat-checkbox .mat-checkbox-frame,
 ::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
-  background-color: #01bdd6 !important;
+  background-color: $light-blue-800 !important;
   transform: scale(1);
 }
 
@@ -59,39 +61,34 @@
   hyphens: auto;
 }
 
-/* .container-project-cards {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: white;
-  align-items: stretch;
-  align-content: stretch;
-  padding: 5px;
-}
-
-.project-card {
-  float: inline-start;
-  display: flex;
-  height: auto;
-  margin: 5px;
-  transition: box-shadow 1s;
-  padding: 1.5rem;
-  border-radius: 16px;
-} */
-
 .container-project-cards {
   display: flex;
   flex-direction: row;
   background-color: white;
   align-items: stretch;
   align-content: stretch;
-  padding: 5px;
+  padding: 25px;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-@media (min-width: 850px) {
+@media (max-width: 1320px) {
+  .container-project-cards {
+    flex-direction: column;
+  }
+  .project-card {
+    width: 100% !important;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1320px) {
+  .project-card {
+    margin: 0 15px;
+  }
+}
+
+@media (min-width: 1320px) {
   .project-card:hover {
     transform: translateY(-1rem);
   }
@@ -105,7 +102,7 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1320px) {
   .container-project-cards {
     overflow-x: unset;
     justify-content: center;
@@ -113,7 +110,6 @@
 
   .project-card {
     margin: 5px;
-    width: auto;
   }
 }
 
@@ -123,7 +119,9 @@
   height: auto;
   transition: box-shadow 1s;
   border-radius: 16px;
-  /* box-shadow: -1rem 0 3rem rgb(0, 179, 211); */
+  -webkit-box-shadow: 0px 18px 30px -33px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 18px 30px -33px rgba(0,0,0,0.75);
+  box-shadow: 0px 18px 30px -33px rgba(0,0,0,0.75);
   transition: 0.4s;
 }
 
@@ -144,7 +142,7 @@
 }
 
 .project-card:hover {
-  box-shadow: 0 10px 50px 0 rgba(0, 179, 211, 0.5);
+  box-shadow: 0 10px 50px 0 $light-blue-100;
 }
 
 .project-card:hover::after {

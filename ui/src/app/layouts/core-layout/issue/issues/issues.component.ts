@@ -17,7 +17,6 @@ import { IssueTypeName } from "app/models/IssueType";
   styleUrls: [
     "./issues.component.css",
     "../../project/projects/projects.component.css",
-    "../../dashboard/dashboard.component.css",
   ],
 })
 export class IssuesComponent implements OnInit {

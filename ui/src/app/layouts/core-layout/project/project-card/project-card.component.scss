@@ -1,6 +1,20 @@
+@import "../../../../../assets/scss/core/variables/colors";
+
 .mat-card {
   // background: linear-gradient(60deg, #00acc1, #00838f);
   box-shadow: -1rem 0 3rem rgba(0, 179, 211, 0.151);
+  padding: 0px;
+  width: 300px;
+}
+
+@media (max-width: 1320px) {
+  .mat-card {
+    width: 100%;
+  }
+}
+
+mat-card::ng-deep .mat-card-header {
+  margin-top: 30px;
 }
 
 ::ng-deep .mat-card-header-text {
@@ -25,27 +39,26 @@ mat-card::ng-deep.mat-card-subtitle {
   font-size: small;
 }
 
+mat-card::ng-deep.mat-card-actions {
+  height: 50px;
+  border-top: 1px solid rgb(230, 230, 230);
+  padding: 0 10px;
+  background-color: $light-blue-50;
+  border-radius: 0 0 16px 16px;;
+}
+
 mat-card::ng-deep.mat-card-actions,
 mat-card::ng-deep.mat-card-subtitle {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   margin: 0 0;
-}
-
-.actions-header {
-  margin: 1rem;
-  font-size: medium;
-  margin-bottom: 0rem;
-  font-weight: 700;
-  font-family: "DM Mono", monospace;
-
-  // color: rgb(230, 230, 230);
 }
 
 .mat-card-actions .mat-button,
 .mat-card-actions .mat-raised-button,
 .mat-card-actions .mat-stroked-button {
   margin: 0 0px !important;
+  padding: 0px;
 }
 
 .button-text {
@@ -72,7 +85,7 @@ mat-card::ng-deep.mat-card-subtitle {
 .dot {
   height: 1.5rem;
   width: 1.5rem;
-  background-color: #14757c;
+  background-color: $light-blue-700;
   border-radius: 50%;
   text-align: center;
   color: white;
@@ -84,4 +97,12 @@ mat-card::ng-deep.mat-card-subtitle {
   align-items: center;
   justify-content: center;
   margin-left: auto;
+  padding: 5px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

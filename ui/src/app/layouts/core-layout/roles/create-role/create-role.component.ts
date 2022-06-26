@@ -10,7 +10,7 @@ import { Role } from "app/models/Role";
 @Component({
   selector: "app-create-role",
   templateUrl: "./create-role.component.html",
-  styleUrls: ["./create-role.component.css"],
+  styleUrls: ["./create-role.component.scss"],
 })
 export class CreateRoleComponent implements OnInit {
   project: TrackerProject;

@@ -31,7 +31,7 @@ export class ProjectService {
         )
         .filter(
           (project) =>
-            project.assignedToMe || project.urgentIssues || project.allOpen
+            project.assignedToMe || project.allOpen
         )
     );
   }

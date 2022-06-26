@@ -13,7 +13,7 @@ import { IssueService } from "app/shared/services/issue.service";
   styleUrls: [
     "./issues-table.component.scss",
     "../../../../../assets/scss/responsive-table-styles.scss",
-    "../../../../../assets/css/argon.css",
+    "../../../../../assets/css/argon.scss",
   ],
 })
 export class IssuesTableComponent implements OnInit {

@@ -8,7 +8,7 @@ import { UserService } from "app/shared/services/user.service";
 @Component({
   selector: "app-manage-users",
   templateUrl: "./manage-users-on-project.component.html",
-  styleUrls: ["./manage-users-on-project.component.css"],
+  styleUrls: ["./manage-users-on-project.component.scss"],
 })
 export class ManageUsersOnProject implements OnInit {
   project: TrackerProject;

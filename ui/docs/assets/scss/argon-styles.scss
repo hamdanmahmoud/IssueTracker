@@ -15,6 +15,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
+@import "../../../src/assets/scss/core/variables/colors";
+
 :root {
   --blue: #004050;
   --indigo: #5603ad;
@@ -213,7 +216,7 @@ a {
 a:hover {
   text-decoration: none;
 
-  color: #233dd2;
+  color: $light-blue-800;
 }
 
 a:not([href]):not([tabindex]) {
@@ -3329,7 +3332,7 @@ fieldset:disabled a.btn {
 .btn-link:hover {
   text-decoration: none;
 
-  color: #233dd2;
+  color: $light-blue-800;
   border-color: transparent;
   background-color: transparent;
 }

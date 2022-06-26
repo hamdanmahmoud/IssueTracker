@@ -213,7 +213,7 @@ a {
 a:hover {
   text-decoration: none;
 
-  color: #233dd2;
+  color: $light-blue-800;
 }
 
 a:not([href]):not([tabindex]) {
@@ -3329,7 +3329,7 @@ fieldset:disabled a.btn {
 .btn-link:hover {
   text-decoration: none;
 
-  color: #233dd2;
+  color: $light-blue-800;
   border-color: transparent;
   background-color: transparent;
 }

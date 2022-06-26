@@ -14,7 +14,7 @@ import { RestApiService } from "app/shared/services/rest-api.service";
   templateUrl: "./navbar.component.html",
   styleUrls: [
     "./navbar.component.css",
-    "../../../../assets/css/argon.css",
+    "../../../../assets/css/argon.scss",
     "../../../../assets/scss/argon-styles.scss",
   ],
 })

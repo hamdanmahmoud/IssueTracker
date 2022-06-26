@@ -12,7 +12,6 @@ import { AuthService } from "app/shared/services/auth.service";
   templateUrl: "./projects.component.html",
   styleUrls: [
     "./projects.component.css",
-    "../../dashboard/dashboard.component.css",
   ],
 })
 export class ProjectsComponent implements OnInit {

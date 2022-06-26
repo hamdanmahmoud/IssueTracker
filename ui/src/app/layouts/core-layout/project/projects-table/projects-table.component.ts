@@ -11,7 +11,7 @@ import { TrackerProject } from "../../../../models/TrackerProject";
   styleUrls: [
     "./projects-table.component.scss",
     "../../../../../assets/scss/responsive-table-styles.scss",
-    "../../../../../assets/css/argon.css",
+    "../../../../../assets/css/argon.scss",
   ],
 })
 export class ProjectsTableComponent implements OnInit {

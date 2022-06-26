@@ -20,7 +20,7 @@ import { IssueService } from "app/shared/services/issue.service";
   styleUrls: [
     "./issue-page.component.css",
     "../../issue/issues-table/issues-table.component.scss",
-    "../../../../../assets/css/argon.css",
+    "../../../../../assets/css/argon.scss",
   ],
 })
 export class IssuePageComponent implements OnInit {

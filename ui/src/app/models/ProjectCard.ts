@@ -7,13 +7,11 @@ const projectCardKeys = [
   "title",
   "summary",
   "id",
-  "urgentIssues",
   "allOpen",
   "assignedToMe",
 ];
 
 export class ProjectCard extends Project {
-  urgentIssues: number;
   allOpen: number;
   assignedToMe: number;
 
@@ -34,9 +32,6 @@ export class ProjectCard extends Project {
       (issue) => issue.getProject().getId() === this.getId()
     );
 
-    this.urgentIssues = issues.filter(
-      (issue) => issue.getProgress() >= 80
-    ).length;
     this.allOpen = issues.filter(
       (issue) =>
         issue.getStatus() !== "RESOLVED" &&

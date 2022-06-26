@@ -6,7 +6,7 @@ import { Issue } from "../../../../models/Issue";
   templateUrl: "./issue-list-items.component.html",
   styleUrls: [
     "./issue-list-items.component.css",
-    "../../../../../assets/css/argon.css",
+    "../../../../../assets/css/argon.scss",
   ],
 })
 export class IssueListItems implements OnInit {

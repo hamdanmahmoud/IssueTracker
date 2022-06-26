@@ -11,7 +11,7 @@ import { RoleService } from "app/shared/services/role.service";
 @Component({
   selector: "app-manage-roles-on-project",
   templateUrl: "./manage-roles-on-project.component.html",
-  styleUrls: ["./manage-roles-on-project.component.css"],
+  styleUrls: ["./manage-roles-on-project.component.scss"],
 })
 export class ManageRolesOnProjectComponent implements OnInit {
   selectedRolesList: FormControl;
