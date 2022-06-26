@@ -13,7 +13,6 @@ import { AuthService } from "../../../shared/services/auth.service";
 export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   public loginInvalid: boolean;
-  private formSubmitAttempt: boolean;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
@@ -27,7 +26,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   async onSubmit() {
     this.loginInvalid = false;
-    this.formSubmitAttempt = false;
     if (this.form.valid) {
       try {
         await this.authService.login(this.form.value);
@@ -35,8 +33,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log("Catched error");
         this.loginInvalid = true;
       }
-    } else {
-      this.formSubmitAttempt = true;
     }
   }
 }

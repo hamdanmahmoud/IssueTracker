@@ -1,8 +1,11 @@
 Docker image for postgres that initializes the db:
 
 (ex for project on port 5434)
-pentru project db: docker run --name issuetracker-project-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=projectdb -d -p 5434:5432 onjin/alpine-postgres
-pentru user db: docker run --name issuetracker-user-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=userdb -d -p 5433:5432 onjin/alpine-postgrese
+docker run --name issuetracker-issue-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=issuedb -d -p 5435:5432 onjin/alpine-postgres
+docker run --name issuetracker-project-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=projectdb -d -p 5434:5432 onjin/alpine-postgres
+docker run --name issuetracker-user-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=userdb -d -p 5433:5432 onjin/alpine-postgres
+docker run --name issuetracker-accesscontrol-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=accesscontroldb -d -p 5432:5432 onjin/alpine-postgres
+
 important: vezi configuratiile pe aplicatiile Spring pentru a intelege ce porturi asteapta fiecare pentru conexiunea pe db
 
 GENERATE ANGULAR DEPLOYABLES:
@@ -10,8 +13,6 @@ ng build --prod --baseHref=" https://hamdanmahmoud.github.io/IssueTrackerFronten
 
 Get ip of docker image by name:
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' issuetracker-project-db
-
-
 
 1. In AccessControl extinde GrantedAuthority cu class member fields projectId si permissions (va fi ampulea ptr ca e one to many fgm sql) .
 In constructor tre sa ia atat String name cat si UUID projectId dar si Collection<? extends GranthedAuthority> permissions. Asta va fi un rol definit pe un proiect.

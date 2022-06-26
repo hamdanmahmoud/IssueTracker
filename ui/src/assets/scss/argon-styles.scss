@@ -1944,16 +1944,12 @@ pre code {
 .form-control {
   font-size: 1rem;
   line-height: 1.5;
-
   display: block;
-
   width: 100%;
   height: calc(2.75rem + 2px);
   padding: 0.625rem 0.75rem;
-
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-  color: #007c85;
+  color: $light-blue-500;
   border: 1px solid #cad1d7;
   border-radius: 0.375rem;
   background-color: #fff;
@@ -1970,8 +1966,8 @@ pre code {
   background-color: transparent;
 }
 .form-control:focus {
-  color: #2a8086;
-  border-color: rgba(50, 151, 211, 0.25);
+  color: $light-blue-300;
+  border-color: $light-blue-800;
   outline: 0;
   background-color: #fff;
   box-shadow: none, none;
@@ -6828,12 +6824,8 @@ button.bg-success:focus {
   background-color: #11cdef !important;
 }
 
-.bg-login {
-  background-color: #0c6d7a !important;
-}
-
-.bg-signup {
-  background-color: #0c6d7a !important;
+.bg-login, .bg-signup {
+  background-color: $light-blue-800 !important;
 }
 
 a.bg-info:hover,
@@ -12575,6 +12567,11 @@ button.bg-lighter:focus {
 
 .bg-gradient-cyan-darker {
   background: linear-gradient(87deg, #2be6ff 0, #026779 100%) !important;
+}
+
+.bg-gradient-light-blue {
+  background: linear-gradient(87deg, $light-blue-800 0, $light-blue-300 100%) !important;
+
 }
 
 .bg-gradient-white {

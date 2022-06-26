@@ -6,6 +6,8 @@ import { BehaviorSubject } from "rxjs";
 import { RootInjectorGuard } from "./RootInjectorGuard";
 import { ServerService } from "./server.service";
 import jwt_decode from "jwt-decode";
+import { HttpClient } from "@angular/common/http";
+import { API } from "../../API.conf";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +20,7 @@ export class AuthService extends RootInjectorGuard {
     return this.loggedIn.asObservable();
   }
 
-  constructor(private router: Router, private server: ServerService) {
+  constructor(private router: Router, private server: ServerService, private http: HttpClient) {
     super(AuthService);
     console.log("Auth Service");
     const userData = localStorage.getItem("user");
@@ -102,6 +104,25 @@ export class AuthService extends RootInjectorGuard {
     }
   }
 
+  register(user) {
+    if (user.name !== "" && user.password !== "" && user.mail !== "") {
+      return this.http.request("POST", API.userURL + "/register", {
+        body: {
+          name: user.name,
+          password: user.password,
+          mail: user.mail,
+        }
+      })
+      .toPromise()
+      .then((response: any) => {
+        this.router.navigate(["auth/login"]);
+      })
+      .catch((error) => {
+        throw error;
+      });
+    }
+  }
+
   getToken() {
     const userData = localStorage.getItem("user");
     if (userData) {
@@ -131,7 +152,7 @@ export class AuthService extends RootInjectorGuard {
 
     this.loggedIn.next(false);
     localStorage.clear();
-    this.router.navigate(["/"]);
+    this.router.navigate(["auth/login"]);
   }
 
   getDecodedAccessToken(token: string): any {
